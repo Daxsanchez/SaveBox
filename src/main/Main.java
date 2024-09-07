@@ -12,5 +12,6 @@ public class Main {
         new VInicio().setVisible(true);
         System.out.println("Prueba");
         System.out.println("Cmbio para que lo vea Alda");
+        System.out.println("Hola Dax");
     }
 }
