@@ -16,8 +16,9 @@ public class Persona {
     private String direccion;
     private String cuenta;
     private String contrasena;
+    private int id;
 
-    public Persona(String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena) {
+    public Persona(String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena, int id) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.edad = edad;
@@ -25,6 +26,7 @@ public class Persona {
         this.direccion = direccion;
         this.cuenta = cuenta;
         this.contrasena = contrasena;
+        this.id = id;
     }
 
     public Persona() {
@@ -86,5 +88,12 @@ public class Persona {
         this.contrasena = contrasena;
     }
 
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
 }

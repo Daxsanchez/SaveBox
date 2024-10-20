@@ -12,8 +12,8 @@ public class Socios extends Persona{
     private double saldo;
     private double interes;
 
-    public Socios(double saldo, double interes, String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena) {
-        super(nombre, apellidos, edad, correo, direccion, cuenta, contrasena);
+    public Socios(double saldo, double interes, String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena, int id) {
+        super(nombre, apellidos, edad, correo, direccion, cuenta, contrasena, id);
         this.saldo = saldo;
         this.interes = interes;
     }
@@ -37,4 +37,6 @@ public class Socios extends Persona{
     public void setInteres(double interes) {
         this.interes = interes;
     }
+
+
 }

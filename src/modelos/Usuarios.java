@@ -12,8 +12,8 @@ public class Usuarios extends Persona{
     private String tipoUsuario;
     private double salario;
 
-    public Usuarios(String tipoUsuario, double salario, String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena) {
-        super(nombre, apellidos, edad, correo, direccion, cuenta, contrasena);
+    public Usuarios(String tipoUsuario, double salario, String nombre, String apellidos, int edad, String correo, String direccion, String cuenta, String contrasena, int id) {
+        super(nombre, apellidos, edad, correo, direccion, cuenta, contrasena, id);
         this.tipoUsuario = tipoUsuario;
         this.salario = salario;
     }
@@ -38,7 +38,4 @@ public class Usuarios extends Persona{
         this.salario = salario;
     }
 
-    
-    
-    
 }
