@@ -1,6 +1,5 @@
 package main;
 
-import bd.BaseConexion;
 import controladores.CSocio;
 import java.util.ArrayList;
 import modelos.Socios;
@@ -14,9 +13,8 @@ import ventanas.Login;
 public class Main {
 
     public static void main(String[] args) {
-        Login dialog = new Login(new javax.swing.JFrame(), true);
-
-        /*dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+        /*Login dialog = new Login(new javax.swing.JFrame(), true);
+        dialog.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 System.exit(0);
