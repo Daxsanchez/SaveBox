@@ -1,5 +1,10 @@
 package ventanas;
 
+import controladores.CSocio;
+import java.util.ArrayList;
+import modelos.Socios;
+import utilerias.GenerarReporte;
+
 /**
  *
  * @author daxsa
@@ -18,6 +23,7 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         dp = new javax.swing.JDesktopPane();
+        btnReporte = new javax.swing.JButton();
         mbBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -29,6 +35,16 @@ public class VInicio extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         dp.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnReporte.setText("Generar reporte");
+        btnReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReporteActionPerformed(evt);
+            }
+        });
+        dp.add(btnReporte);
+        btnReporte.setBounds(10, 50, 130, 40);
+
         jPanel1.add(dp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 550));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 550));
@@ -58,7 +74,15 @@ public class VInicio extends javax.swing.JFrame {
         vntEmpresa.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void btnReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteActionPerformed
+        ArrayList<Socios> socios = CSocio.getRegistros();
+
+        GenerarReporte reporte = new GenerarReporte("Prueba", socios);
+        reporte.start();
+    }//GEN-LAST:event_btnReporteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReporte;
     private javax.swing.JDesktopPane dp;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
