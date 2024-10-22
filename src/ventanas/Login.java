@@ -31,6 +31,7 @@ public class Login extends javax.swing.JDialog {
         jLabel13 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
         pfContrasena = new javax.swing.JPasswordField();
+        helpCentro1 = new help.helpCentro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -114,7 +115,9 @@ public class Login extends javax.swing.JDialog {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(50, 50, 50))
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
@@ -144,11 +147,17 @@ public class Login extends javax.swing.JDialog {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jLabel10))))
                 .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
+                .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -178,7 +187,7 @@ public class Login extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 0, -1, 430));
@@ -198,6 +207,7 @@ public class Login extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
+    private help.helpCentro helpCentro1;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
