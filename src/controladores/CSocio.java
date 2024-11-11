@@ -12,7 +12,7 @@ import modelos.Socios;
 public class CSocio {
     
     public static ArrayList<Socios> getRegistros() {
-        String consulta = "SELECT * FROM Heroe";
+        String consulta = "SELECT * FROM Socio";
         ArrayList<Socios> socios = new ArrayList<>();
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);
