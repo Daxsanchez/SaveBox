@@ -3,7 +3,6 @@ package ventanas;
 import controladores.CUsuario;
 import java.awt.Color;
 import javax.swing.JOptionPane;
-import ventanas.VInicio;
 
 public class Login extends javax.swing.JFrame {
 
@@ -11,6 +10,7 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+        txtUsuario.requestFocus();
     }
 
     @SuppressWarnings("unchecked")
@@ -126,6 +126,11 @@ public class Login extends javax.swing.JFrame {
         txtUsuario.setForeground(new java.awt.Color(204, 204, 204));
         txtUsuario.setText("Ingrese su nombre de usuario");
         txtUsuario.setBorder(null);
+        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsuarioFocusGained(evt);
+            }
+        });
         txtUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtUsuarioMousePressed(evt);
@@ -143,6 +148,11 @@ public class Login extends javax.swing.JFrame {
         txtPassword.setForeground(new java.awt.Color(204, 204, 204));
         txtPassword.setText("********");
         txtPassword.setBorder(null);
+        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtPasswordFocusGained(evt);
+            }
+        });
         txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 txtPasswordMousePressed(evt);
@@ -301,10 +311,32 @@ public class Login extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
             }
         } else {
-            JOptionPane.showMessageDialog(this, "El usuario ingresado no existe", 
+            JOptionPane.showMessageDialog(this, "El usuario ingresado no existe",
                     "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_loginBtnTxtMouseClicked
+
+    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
+        if (txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
+            txtUsuario.setText("");
+            txtUsuario.setForeground(Color.black);
+        }
+        if (String.valueOf(txtPassword.getPassword()).isEmpty()) {
+            txtPassword.setText("********");
+            txtPassword.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtUsuarioFocusGained
+
+    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
+        if (String.valueOf(txtPassword.getPassword()).equals("********")) {
+            txtPassword.setText("");
+            txtPassword.setForeground(Color.black);
+        }
+        if (txtUsuario.getText().isEmpty()) {
+            txtUsuario.setText("Ingrese su nombre de usuario");
+            txtUsuario.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_txtPasswordFocusGained
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
