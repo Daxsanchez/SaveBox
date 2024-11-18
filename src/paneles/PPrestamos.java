@@ -67,77 +67,25 @@ public class PPrestamos extends javax.swing.JPanel {
 
         jSeparator2 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
-        panelRedondeado1 = new utilerias.PanelRedondeado();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPrestamos = new javax.swing.JTable();
         panelRedondeado2 = new utilerias.PanelRedondeado();
         jLabel2 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblPrestamos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 73, 1110, 10));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 73, 1110, 20));
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Prestamos Efectuados");
         add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 50));
-
-        panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRedondeado1.setRoundTopLeft(32);
-        panelRedondeado1.setRoundTopRight(32);
-
-        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
-        jScrollPane1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
-        jScrollPane1.setOpaque(false);
-
-        tblPrestamos.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        tblPrestamos.setForeground(new java.awt.Color(7, 20, 123));
-        tblPrestamos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Foto", "Nombre", "Monto", "Fecha Aprobado", "Próximo Pago"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblPrestamos.setGridColor(new java.awt.Color(255, 255, 255));
-        tblPrestamos.setRowHeight(50);
-        tblPrestamos.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblPrestamos.getTableHeader().setResizingAllowed(false);
-        tblPrestamos.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblPrestamos);
-
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 3, Short.MAX_VALUE))
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 608, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1340, 620));
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(22);
@@ -193,6 +141,38 @@ public class PPrestamos extends javax.swing.JPanel {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo2.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
+        jScrollPane1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jScrollPane1.setOpaque(false);
+
+        tblPrestamos.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        tblPrestamos.setForeground(new java.awt.Color(7, 20, 123));
+        tblPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Foto", "Nombre", "Monto", "Fecha Aprobado", "Próximo Pago"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblPrestamos.setGridColor(new java.awt.Color(255, 255, 255));
+        tblPrestamos.setRowHeight(50);
+        tblPrestamos.setSelectionBackground(new java.awt.Color(7, 20, 123));
+        tblPrestamos.getTableHeader().setResizingAllowed(false);
+        tblPrestamos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblPrestamos);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1340, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
@@ -215,7 +195,6 @@ public class PPrestamos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
-    private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado2;
     private javax.swing.JTable tblPrestamos;
     private javax.swing.JTextField txtBuscar;

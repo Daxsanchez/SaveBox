@@ -5,8 +5,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ventanas.VRegistrarSocio;
 //import ventanas.VRegistrarSocio;
 
 /**
@@ -33,7 +36,34 @@ public class PSocio extends javax.swing.JPanel {
         tabla.addRow(ob);
 
         tblSocios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
+        eventoTabla();
+    }
+    
+    private void eventoTabla() {
+        tblSocios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = tblSocios.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String nombre = tblSocios.getValueAt(selectedRow, 1).toString();
 
+                        VRegistrarSocio registrarUsuario = new VRegistrarSocio(nombre);
+                        registrarUsuario.setSize(376, 750);
+                        registrarUsuario.setVisible(true);
+
+                        if (dp != null) {
+                            try {
+                                dp.add(registrarUsuario);
+                                registrarUsuario.setSelected(true);
+                            } catch (java.beans.PropertyVetoException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     public class IconCellRenderer extends DefaultTableCellRenderer {
@@ -228,8 +258,8 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        /*VRegistrarSocio registrarSocio = new VRegistrarSocio();
-        registrarSocio.setSize(390, 700);
+        VRegistrarSocio registrarSocio = new VRegistrarSocio();
+        registrarSocio.setSize(376, 750);
         registrarSocio.setVisible(true);
 
         if (dp != null) {
@@ -241,7 +271,7 @@ public class PSocio extends javax.swing.JPanel {
             }
         } else {
             System.out.println("No se encontró un JDesktopPane para añadir el InternalFrame");
-        }*/
+        }
     }//GEN-LAST:event_lbAgregarMouseClicked
 
 

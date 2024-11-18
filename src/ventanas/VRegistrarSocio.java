@@ -4,21 +4,20 @@ package ventanas;
  *
  * @author rafae
  */
-public class VRegistrarUsuario extends javax.swing.JInternalFrame {
+public class VRegistrarSocio extends javax.swing.JInternalFrame {
 
     private boolean modifica = false;
     
-    public VRegistrarUsuario() {
+    public VRegistrarSocio() {
         initComponents();
     }
     
-    public VRegistrarUsuario(String nombre) {
+    public VRegistrarSocio(String nombre) {
         initComponents();
         modifica = true;
-        lbTitulo.setText("Usuario");
+        lbTitulo.setText("Socio");
         txtNombre.setText(nombre);
         txtApellidos.setText(nombre);
-        txtUsuario.setText(nombre);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,14 +35,13 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         lbTitulo = new javax.swing.JLabel();
         panelRedondeado13 = new utilerias.PanelRedondeado();
         txtNombre = new javax.swing.JTextField();
-        panelRedondeado15 = new utilerias.PanelRedondeado();
-        txtUsuario = new javax.swing.JTextField();
         panelRedondeado17 = new utilerias.PanelRedondeado();
         txtTelefono = new javax.swing.JTextField();
         panelRedondeado24 = new utilerias.PanelRedondeado();
-        pfPass = new javax.swing.JPasswordField();
+        txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        cmbRol = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        dcFechaNac = new com.toedter.calendar.JDateChooser();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -127,7 +125,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         lbTitulo.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         lbTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lbTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/agregar-usuario (1).png"))); // NOI18N
-        lbTitulo.setText("Nuevo Usuario");
+        lbTitulo.setText("Nuevo Socio");
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
@@ -173,7 +171,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
             panelRedondeado13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado13Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtNombre)
+                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelRedondeado13Layout.setVerticalGroup(
@@ -182,43 +180,6 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addContainerGap())
-        );
-
-        panelRedondeado15.setBackground(new java.awt.Color(7, 20, 123));
-        panelRedondeado15.setRoundBottomLeft(16);
-        panelRedondeado15.setRoundBottomRight(16);
-        panelRedondeado15.setRoundTopLeft(16);
-        panelRedondeado15.setRoundTopRight(16);
-
-        txtUsuario.setBackground(new java.awt.Color(7, 20, 123));
-        txtUsuario.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        txtUsuario.setText("Usuario");
-        txtUsuario.setBorder(null);
-        txtUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtUsuarioFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtUsuarioFocusLost(evt);
-            }
-        });
-
-        javax.swing.GroupLayout panelRedondeado15Layout = new javax.swing.GroupLayout(panelRedondeado15);
-        panelRedondeado15.setLayout(panelRedondeado15Layout);
-        panelRedondeado15Layout.setHorizontalGroup(
-            panelRedondeado15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado15Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtUsuario)
-                .addContainerGap())
-        );
-        panelRedondeado15Layout.setVerticalGroup(
-            panelRedondeado15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado15Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
-                .addGap(8, 8, 8))
         );
 
         panelRedondeado17.setBackground(new java.awt.Color(7, 20, 123));
@@ -268,17 +229,17 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         panelRedondeado24.setRoundTopLeft(16);
         panelRedondeado24.setRoundTopRight(16);
 
-        pfPass.setBackground(new java.awt.Color(7, 20, 123));
-        pfPass.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        pfPass.setForeground(new java.awt.Color(255, 255, 255));
-        pfPass.setText("Contraseña");
-        pfPass.setBorder(null);
-        pfPass.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtCorreo.setBackground(new java.awt.Color(7, 20, 123));
+        txtCorreo.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
+        txtCorreo.setText("Correo");
+        txtCorreo.setBorder(null);
+        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                pfPassFocusGained(evt);
+                txtCorreoFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                pfPassFocusLost(evt);
+                txtCorreoFocusLost(evt);
             }
         });
 
@@ -286,17 +247,17 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         panelRedondeado24.setLayout(panelRedondeado24Layout);
         panelRedondeado24Layout.setHorizontalGroup(
             panelRedondeado24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado24Layout.createSequentialGroup()
+            .addGroup(panelRedondeado24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pfPass)
+                .addComponent(txtCorreo)
                 .addContainerGap())
         );
         panelRedondeado24Layout.setVerticalGroup(
             panelRedondeado24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado24Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         btnGuardar.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
@@ -304,10 +265,10 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
 
-        cmbRol.setBackground(new java.awt.Color(7, 20, 123));
-        cmbRol.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        cmbRol.setForeground(new java.awt.Color(255, 255, 255));
-        cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un rol", "Administrador", "Gestor" }));
+        jLabel3.setBackground(new java.awt.Color(7, 20, 123));
+        jLabel3.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(7, 20, 123));
+        jLabel3.setText("Fecha Nacimiento:");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -330,12 +291,14 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(dcFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(panelRedondeado11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(panelRedondeado15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(panelRedondeado24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbRol, 0, 311, Short.MAX_VALUE))))
+                                    .addComponent(panelRedondeado24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -354,17 +317,17 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRedondeado13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(37, 37, 37)
                 .addComponent(panelRedondeado11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(35, 35, 35)
                 .addComponent(panelRedondeado17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(cmbRol, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(panelRedondeado15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
                 .addComponent(panelRedondeado24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(69, 69, 69)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(54, 54, 54))
         );
@@ -404,49 +367,35 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtTelefonoFocusLost
 
-    private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
-        txtUsuario.setText("");
-    }//GEN-LAST:event_txtUsuarioFocusGained
+    private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
+        txtCorreo.setText("");
+    }//GEN-LAST:event_txtCorreoFocusGained
 
-    private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
-        if(txtUsuario.getText().isEmpty()){
-            txtUsuario.setText("Usuario");
+    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
+        if(txtCorreo.getText().isEmpty()){
+            txtCorreo.setText("Correo");
         }
-    }//GEN-LAST:event_txtUsuarioFocusLost
-
-    private void pfPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusGained
-        pfPass.setText("");
-    }//GEN-LAST:event_pfPassFocusGained
-
-    private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
-        if(pfPass.getText().isEmpty()){
-            pfPass.setText("Contraseña");
-        }
-    }//GEN-LAST:event_pfPassFocusLost
+    }//GEN-LAST:event_txtCorreoFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cmbRol;
+    private com.toedter.calendar.JDateChooser dcFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lbTitulo;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado11;
     private utilerias.PanelRedondeado panelRedondeado13;
     private utilerias.PanelRedondeado panelRedondeado14;
-    private utilerias.PanelRedondeado panelRedondeado15;
     private utilerias.PanelRedondeado panelRedondeado17;
-    private utilerias.PanelRedondeado panelRedondeado22;
-    private utilerias.PanelRedondeado panelRedondeado23;
     private utilerias.PanelRedondeado panelRedondeado24;
-    private javax.swing.JPasswordField pfPass;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

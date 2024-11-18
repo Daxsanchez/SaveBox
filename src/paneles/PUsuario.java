@@ -4,7 +4,11 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import ventanas.VRegistrarUsuario;
@@ -35,22 +39,50 @@ public class PUsuario extends javax.swing.JPanel {
 
         tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
 
+        eventoTabla();
+    }
+
+    private void eventoTabla() {
+        tblUsuarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = tblUsuarios.getSelectedRow();
+                    if (selectedRow != -1) {
+                        String nombre = tblUsuarios.getValueAt(selectedRow, 1).toString();
+
+                        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(nombre);
+                        registrarUsuario.setSize(376, 750);
+                        registrarUsuario.setVisible(true);
+
+                        if (dp != null) {
+                            try {
+                                dp.add(registrarUsuario);
+                                registrarUsuario.setSelected(true);
+                            } catch (java.beans.PropertyVetoException ex) {
+                                System.out.println(ex);
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     public class IconCellRenderer extends DefaultTableCellRenderer {
 
         public IconCellRenderer() {
-            setHorizontalAlignment(SwingConstants.CENTER); // Centrar horizontalmente
-            setVerticalAlignment(SwingConstants.CENTER);   // Centrar verticalmente
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setVerticalAlignment(SwingConstants.CENTER);
         }
 
         @Override
         public void setValue(Object value) {
             if (value instanceof Icon) {
-                setIcon((Icon) value); // Muestra el ícono
-                setText(null);         // No muestra texto
+                setIcon((Icon) value);
+                setText(null);
             } else {
-                super.setValue(value); // Usa el comportamiento predeterminado para otros valores
+                super.setValue(value);
             }
         }
     }
@@ -237,12 +269,12 @@ public class PUsuario extends javax.swing.JPanel {
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
         VRegistrarUsuario registrarUsuario = new VRegistrarUsuario();
-        registrarUsuario.setSize(390, 700);
+        registrarUsuario.setSize(376, 750);
         registrarUsuario.setVisible(true);
 
         if (dp != null) {
-            dp.add(registrarUsuario);
             try {
+                dp.add(registrarUsuario);
                 registrarUsuario.setSelected(true);
             } catch (java.beans.PropertyVetoException e) {
                 System.out.println(e);
