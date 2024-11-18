@@ -202,7 +202,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="pPres" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                          <Component id="pAhorro" min="-2" max="-2" attributes="0"/>
+                          <Component id="pAho" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="pIAcerca" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -234,7 +234,7 @@
                               <Component id="pSocios" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pI" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pPres" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="pAhorro" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="pAho" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="pIAcerca" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="16" max="32767" attributes="0"/>
@@ -443,7 +443,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="utilerias.PanelRedondeado" name="pAhorro">
+                <Container class="utilerias.PanelRedondeado" name="pAho">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="7b" green="14" red="7" type="rgb"/>
@@ -454,8 +454,9 @@
                     <Property name="roundTopRight" type="int" value="50"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pAhorroMouseEntered"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pAhorroMouseExited"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pAhoMouseClicked"/>
+                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pAhoMouseEntered"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pAhoMouseExited"/>
                   </Events>
 
                   <Layout>

@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import paneles.PAhorro;
 import paneles.PInicio;
 import paneles.PSocio;
 import paneles.PUsuario;
@@ -25,6 +26,7 @@ public class VInicio extends javax.swing.JFrame {
     private PUsuario pUsuario = null;
     private PPrestamos pprestamo = null;
     private PRealizarPrestamo pRPrestamo = null;
+    private PAhorro pAhorro = null;
 
     public VInicio() {
         initComponents();
@@ -60,7 +62,7 @@ public class VInicio extends javax.swing.JFrame {
         lbUsuario = new javax.swing.JLabel();
         pPres = new utilerias.PanelRedondeado();
         lbPrestamo = new javax.swing.JLabel();
-        pAhorro = new utilerias.PanelRedondeado();
+        pAho = new utilerias.PanelRedondeado();
         lbAhorro = new javax.swing.JLabel();
         pIAcerca = new utilerias.PanelRedondeado();
         lbAcerca = new javax.swing.JLabel();
@@ -292,17 +294,20 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        pAhorro.setBackground(new java.awt.Color(7, 20, 123));
-        pAhorro.setRoundBottomLeft(50);
-        pAhorro.setRoundBottomRight(50);
-        pAhorro.setRoundTopLeft(50);
-        pAhorro.setRoundTopRight(50);
-        pAhorro.addMouseListener(new java.awt.event.MouseAdapter() {
+        pAho.setBackground(new java.awt.Color(7, 20, 123));
+        pAho.setRoundBottomLeft(50);
+        pAho.setRoundBottomRight(50);
+        pAho.setRoundTopLeft(50);
+        pAho.setRoundTopRight(50);
+        pAho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pAhoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pAhorroMouseEntered(evt);
+                pAhoMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                pAhorroMouseExited(evt);
+                pAhoMouseExited(evt);
             }
         });
 
@@ -310,18 +315,18 @@ public class VInicio extends javax.swing.JFrame {
         lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
         lbAhorro.setText("Ahorros");
 
-        javax.swing.GroupLayout pAhorroLayout = new javax.swing.GroupLayout(pAhorro);
-        pAhorro.setLayout(pAhorroLayout);
-        pAhorroLayout.setHorizontalGroup(
-            pAhorroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAhorroLayout.createSequentialGroup()
+        javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
+        pAho.setLayout(pAhoLayout);
+        pAhoLayout.setHorizontalGroup(
+            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAhoLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(lbAhorro)
                 .addContainerGap(36, Short.MAX_VALUE))
         );
-        pAhorroLayout.setVerticalGroup(
-            pAhorroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhorroLayout.createSequentialGroup()
+        pAhoLayout.setVerticalGroup(
+            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhoLayout.createSequentialGroup()
                 .addContainerGap(18, Short.MAX_VALUE)
                 .addComponent(lbAhorro)
                 .addGap(17, 17, 17))
@@ -385,7 +390,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addComponent(pAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
@@ -413,7 +418,7 @@ public class VInicio extends javax.swing.JFrame {
                     .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -455,13 +460,13 @@ public class VInicio extends javax.swing.JFrame {
         entraPanel(pIAcerca, lbAcerca);
     }//GEN-LAST:event_pIAcercaMouseEntered
 
-    private void pAhorroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhorroMouseExited
-        salePanel(pAhorro, lbAhorro);
-    }//GEN-LAST:event_pAhorroMouseExited
+    private void pAhoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhoMouseExited
+        salePanel(pAho, lbAhorro);
+    }//GEN-LAST:event_pAhoMouseExited
 
-    private void pAhorroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhorroMouseEntered
-        entraPanel(pAhorro, lbAhorro);
-    }//GEN-LAST:event_pAhorroMouseEntered
+    private void pAhoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhoMouseEntered
+        entraPanel(pAho, lbAhorro);
+    }//GEN-LAST:event_pAhoMouseEntered
 
     private void pPresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPresMouseExited
         salePanel(pPres, lbPrestamo);
@@ -547,6 +552,19 @@ public class VInicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pPresMouseClicked
 
+    private void pAhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhoMouseClicked
+        quitarPaneles();
+        if (pAhorro == null) {
+            pAhorro = new PAhorro(this.dp);
+            pAhorro.setVisible(true);
+            pAhorro.setBounds(x, y, width, height);
+            pEspacio.add(pAhorro);
+            pEspacio.setComponentZOrder(pAhorro, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_pAhoMouseClicked
+
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -590,6 +608,10 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(pprestamo);
             pprestamo = null;
         }
+        if (pRPrestamo != null) {
+            pEspacio.remove(pRPrestamo);
+            pRPrestamo = null;
+        }
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
@@ -623,7 +645,7 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbPrestamo;
     private javax.swing.JLabel lbSocio;
     private javax.swing.JLabel lbUsuario;
-    private utilerias.PanelRedondeado pAhorro;
+    private utilerias.PanelRedondeado pAho;
     private javax.swing.JPanel pEspacio;
     private utilerias.PanelRedondeado pI;
     private utilerias.PanelRedondeado pIAcerca;
