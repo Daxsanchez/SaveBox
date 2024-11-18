@@ -221,8 +221,8 @@ public class VInicio extends javax.swing.JFrame {
             pUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pUsuarioLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(lbUsuario)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         pUsuarioLayout.setVerticalGroup(
             pUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -537,7 +537,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseClicked
         quitarPaneles();
         if (pSocio == null) {
-            pSocio = new PSocio();
+            pSocio = new PSocio(this.dp);
             pSocio.setVisible(true);
             pSocio.setBounds(x, y, width, height);
             pEspacio.add(pSocio);

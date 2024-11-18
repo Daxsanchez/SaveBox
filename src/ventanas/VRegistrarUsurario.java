@@ -1,19 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
- */
 package ventanas;
 
 /**
  *
  * @author rafae
  */
-public class RegistrarUsurario extends javax.swing.JInternalFrame {
+public class VRegistrarUsurario extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form RegistrarUsurario
      */
-    public RegistrarUsurario() {
+    public VRegistrarUsurario() {
         initComponents();
     }
 
@@ -54,6 +50,7 @@ public class RegistrarUsurario extends javax.swing.JInternalFrame {
         );
 
         setBackground(new java.awt.Color(204, 204, 204));
+        setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
