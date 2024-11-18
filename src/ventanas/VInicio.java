@@ -7,6 +7,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import paneles.PInicio;
+import paneles.PSocio;
 
 /**
  *
@@ -15,18 +16,22 @@ import paneles.PInicio;
 public class VInicio extends javax.swing.JFrame {
 
     private static VEmpresa vntEmpresa = null;
+    private static int x = 30;
+    private static int y = 120;
+    private static int width = 1250;
+    private static int height = 600;
     private PInicio pinicio = null;
+    private PSocio pSocio = null;
 
     public VInicio() {
         initComponents();
 
         pinicio = new PInicio();
-        pinicio.setLocation(44, 332);
         pinicio.setVisible(true);
 
-        pinicio.setBounds(44, 332, 1350, 400); // Ajusta según tus necesidades
+        pinicio.setBounds(x, y, width, height);
         pEspacio.add(pinicio);
-        pEspacio.setComponentZOrder(pinicio, 0); // Asegúrate de que PInicio esté al frente
+        pEspacio.setComponentZOrder(pinicio, 0);
         pEspacio.repaint();
         pEspacio.revalidate();
     }
@@ -60,15 +65,6 @@ public class VInicio extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        panelRedondeado2 = new utilerias.PanelRedondeado();
-        jLabel9 = new javax.swing.JLabel();
-        lbRol = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -411,112 +407,13 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        panelRedondeado2.setBackground(new java.awt.Color(7, 20, 123));
-        panelRedondeado2.setRoundBottomLeft(10);
-        panelRedondeado2.setRoundBottomRight(10);
-        panelRedondeado2.setRoundTopLeft(10);
-        panelRedondeado2.setRoundTopRight(10);
-
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario (1).png"))); // NOI18N
-
-        lbRol.setBackground(new java.awt.Color(255, 255, 255));
-        lbRol.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbRol.setForeground(new java.awt.Color(255, 255, 255));
-        lbRol.setText("ADMINISTRADOR");
-
-        jLabel10.setFont(new java.awt.Font("Agrandir", 0, 48)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Bienvenido a SaveBox");
-
-        jLabel11.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Dax Naim Sánchez López");
-
-        jLabel12.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Empresa: XXXXXX");
-
-        jLabel13.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("ID: XXXXXXX");
-
-        jLabel14.setFont(new java.awt.Font("Agrandir", 1, 24)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("____");
-
-        jLabel15.setFont(new java.awt.Font("Agrandir", 1, 24)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel15.setText("____");
-
-        javax.swing.GroupLayout panelRedondeado2Layout = new javax.swing.GroupLayout(panelRedondeado2);
-        panelRedondeado2.setLayout(panelRedondeado2Layout);
-        panelRedondeado2Layout.setHorizontalGroup(
-            panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                .addGap(162, 162, 162)
-                .addComponent(lbRol)
-                .addGap(286, 286, 286)
-                .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel15)
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel14)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGap(55, 55, 55)
-                        .addComponent(jLabel12)
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                .addGap(171, 171, 171)
-                .addComponent(jLabel9)
-                .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(jLabel11)))
-                .addContainerGap(367, Short.MAX_VALUE))
-        );
-        panelRedondeado2Layout.setVerticalGroup(
-            panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel13)
-                            .addComponent(jLabel12))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(jLabel14)))
-                    .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbRol)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         javax.swing.GroupLayout pEspacioLayout = new javax.swing.GroupLayout(pEspacio);
         pEspacio.setLayout(pEspacioLayout);
         pEspacioLayout.setHorizontalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pEspacioLayout.createSequentialGroup()
-                .addGroup(pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pEspacioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(panelRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(pEspacioLayout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 40, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pEspacioLayout.setVerticalGroup(
@@ -524,9 +421,7 @@ public class VInicio extends javax.swing.JFrame {
             .addGroup(pEspacioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(488, 488, 488))
+                .addGap(696, 696, 696))
         );
 
         dp.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -627,11 +522,11 @@ public class VInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_pIMouseEntered
 
     private void pIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pIMouseClicked
+        quitarPaneles();
         if (pinicio == null) {
-            pinicio = new PInicio(); // Asignamos la referencia a la variable de clase
-            pinicio.setLocation(44, 332);
+            pinicio = new PInicio();
             pinicio.setVisible(true);
-            pinicio.setBounds(44, 332, 1350, 400);
+            pinicio.setBounds(x, y, width, height);
             pEspacio.add(pinicio);
             pEspacio.setComponentZOrder(pinicio, 0);
             pEspacio.repaint();
@@ -641,16 +536,29 @@ public class VInicio extends javax.swing.JFrame {
 
     private void pSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseClicked
         quitarPaneles();
+        if (pSocio == null) {
+            pSocio = new PSocio();
+            pSocio.setVisible(true);
+            pSocio.setBounds(x, y, width, height);
+            pEspacio.add(pSocio);
+            pEspacio.setComponentZOrder(pSocio, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pSociosMouseClicked
 
     public void quitarPaneles() {
         if (pinicio != null) {
             pEspacio.remove(pinicio);
-            pEspacio.invalidate();
-            pEspacio.validate();
-            pEspacio.repaint();
             pinicio = null;
         }
+        if (pSocio != null) {
+            pEspacio.remove(pSocio);
+            pSocio = null;
+        }
+        pEspacio.invalidate();
+        pEspacio.validate();
+        pEspacio.repaint();
     }
 
     private void entraPanel(JPanel panel, JLabel lb) {
@@ -666,12 +574,6 @@ public class VInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -679,7 +581,6 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbAcerca;
@@ -687,7 +588,6 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbEmpresa;
     private javax.swing.JLabel lbInicio;
     private javax.swing.JLabel lbPrestamo;
-    private javax.swing.JLabel lbRol;
     private javax.swing.JLabel lbSocio;
     private utilerias.PanelRedondeado pAhorro;
     private utilerias.PanelRedondeado pEmpresa;
@@ -697,6 +597,5 @@ public class VInicio extends javax.swing.JFrame {
     private utilerias.PanelRedondeado pPrestamo;
     private utilerias.PanelRedondeado pSocios;
     private utilerias.PanelRedondeado panelRedondeado1;
-    private utilerias.PanelRedondeado panelRedondeado2;
     // End of variables declaration//GEN-END:variables
 }
