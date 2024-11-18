@@ -16,8 +16,8 @@ public class PInicio extends javax.swing.JPanel {
         Object[] ob = new Object[4];
         ob[0] = "José Hernández";
         ob[1] = "Préstamo";
-        ob[2] = "15/11/2024";
-        ob[3] = "$10,000";
+        ob[3] = "15/11/2024";
+        ob[2] = "$10,000";
         tabla.addRow(ob);
     }
 
