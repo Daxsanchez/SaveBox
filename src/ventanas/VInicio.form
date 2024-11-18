@@ -211,7 +211,7 @@
                               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Component id="pSocios" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="pUsuario" min="-2" max="-2" attributes="0"/>
+                              <Component id="pUs" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                               <Component id="pPrestamo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
@@ -240,7 +240,7 @@
                                           <Component id="pAhorro" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Component id="pPrestamo" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="pUsuario" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="pUs" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="pSocios" min="-2" max="-2" attributes="0"/>
                                                   <Component id="pI" min="-2" max="-2" attributes="0"/>
@@ -376,7 +376,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="utilerias.PanelRedondeado" name="pUsuario">
+                    <Container class="utilerias.PanelRedondeado" name="pUs">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="7b" green="14" red="7" type="rgb"/>
@@ -387,8 +387,9 @@
                         <Property name="roundTopRight" type="int" value="50"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pUsuarioMouseEntered"/>
-                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pUsuarioMouseExited"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pUsMouseClicked"/>
+                        <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pUsMouseEntered"/>
+                        <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="pUsMouseExited"/>
                       </Events>
 
                       <Layout>
