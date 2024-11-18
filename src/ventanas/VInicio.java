@@ -6,6 +6,7 @@ import javax.swing.JPanel;
 import paneles.PInicio;
 import paneles.PSocio;
 import paneles.PUsuario;
+import paneles.PPrestamos;
 
 /**
  *
@@ -21,6 +22,7 @@ public class VInicio extends javax.swing.JFrame {
     private PInicio pinicio = null;
     private PSocio pSocio = null;
     private PUsuario pUsuario = null;
+    private PPrestamos pprestamo = null;
 
     public VInicio() {
         initComponents();
@@ -63,13 +65,14 @@ public class VInicio extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        helpCentro2 = new help.helpCentro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         dp.setBackground(new java.awt.Color(255, 255, 255));
+        dp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
 
@@ -112,7 +115,22 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
+        dp.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 757));
+
         pEspacio.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout pEspacioLayout = new javax.swing.GroupLayout(pEspacio);
+        pEspacio.setLayout(pEspacioLayout);
+        pEspacioLayout.setHorizontalGroup(
+            pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1359, Short.MAX_VALUE)
+        );
+        pEspacioLayout.setVerticalGroup(
+            pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 757, Short.MAX_VALUE)
+        );
+
+        dp.add(pEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado1.setRoundBottomLeft(50);
@@ -140,15 +158,19 @@ public class VInicio extends javax.swing.JFrame {
         lbInicio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbInicio.setForeground(new java.awt.Color(255, 255, 255));
         lbInicio.setText("Inicio");
+        lbInicio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                lbInicioKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pILayout = new javax.swing.GroupLayout(pI);
         pI.setLayout(pILayout);
         pILayout.setHorizontalGroup(
             pILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pILayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addComponent(lbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+            .addGroup(pILayout.createSequentialGroup()
+                .addComponent(lbInicio)
+                .addGap(0, 73, Short.MAX_VALUE))
         );
         pILayout.setVerticalGroup(
             pILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,10 +205,10 @@ public class VInicio extends javax.swing.JFrame {
         pSocios.setLayout(pSociosLayout);
         pSociosLayout.setHorizontalGroup(
             pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSociosLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+            .addGroup(pSociosLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbSocio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
         pSociosLayout.setVerticalGroup(
             pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,15 +238,20 @@ public class VInicio extends javax.swing.JFrame {
         lbUsuario.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lbUsuario.setText("Usuario");
+        lbUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbUsuarioMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pUsLayout = new javax.swing.GroupLayout(pUs);
         pUs.setLayout(pUsLayout);
         pUsLayout.setHorizontalGroup(
             pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pUsLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pUsLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pUsLayout.setVerticalGroup(
             pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,6 +267,9 @@ public class VInicio extends javax.swing.JFrame {
         pPrestamo.setRoundTopLeft(50);
         pPrestamo.setRoundTopRight(50);
         pPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPrestamoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pPrestamoMouseEntered(evt);
             }
@@ -251,15 +281,20 @@ public class VInicio extends javax.swing.JFrame {
         lbPrestamo.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbPrestamo.setForeground(new java.awt.Color(255, 255, 255));
         lbPrestamo.setText("Prestamos");
+        lbPrestamo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbPrestamoMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pPrestamoLayout = new javax.swing.GroupLayout(pPrestamo);
         pPrestamo.setLayout(pPrestamoLayout);
         pPrestamoLayout.setHorizontalGroup(
             pPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPrestamoLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+            .addGroup(pPrestamoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(lbPrestamo)
-                .addGap(15, 15, 15))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         pPrestamoLayout.setVerticalGroup(
             pPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,10 +326,9 @@ public class VInicio extends javax.swing.JFrame {
         pAhorro.setLayout(pAhorroLayout);
         pAhorroLayout.setHorizontalGroup(
             pAhorroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhorroLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
+            .addGroup(pAhorroLayout.createSequentialGroup()
                 .addComponent(lbAhorro)
-                .addGap(23, 23, 23))
+                .addGap(0, 47, Short.MAX_VALUE))
         );
         pAhorroLayout.setVerticalGroup(
             pAhorroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,9 +361,8 @@ public class VInicio extends javax.swing.JFrame {
         pIAcercaLayout.setHorizontalGroup(
             pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pIAcercaLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
                 .addComponent(lbAcerca)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(0, 50, Short.MAX_VALUE))
         );
         pIAcercaLayout.setVerticalGroup(
             pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,8 +380,6 @@ public class VInicio extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avatar_chico.png"))); // NOI18N
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ayuda.png"))); // NOI18N
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
@@ -369,13 +400,13 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(35, 35, 35)
+                .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel8)
-                .addGap(42, 42, 42))
+                .addGap(35, 35, 35))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,57 +427,18 @@ public class VInicio extends javax.swing.JFrame {
                                 .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(panelRedondeado1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel5))
-                            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel7))))
+                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)))
                     .addGroup(panelRedondeado1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout pEspacioLayout = new javax.swing.GroupLayout(pEspacio);
-        pEspacio.setLayout(pEspacioLayout);
-        pEspacioLayout.setHorizontalGroup(
-            pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pEspacioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pEspacioLayout.setVerticalGroup(
-            pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pEspacioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(696, 696, 696))
-        );
-
-        dp.setLayer(jPanel2, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        dp.setLayer(pEspacio, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout dpLayout = new javax.swing.GroupLayout(dp);
-        dp.setLayout(dpLayout);
-        dpLayout.setHorizontalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dpLayout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        dpLayout.setVerticalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dpLayout.createSequentialGroup()
-                .addGroup(dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 27, Short.MAX_VALUE))
-        );
+        dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1360, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -507,6 +499,19 @@ public class VInicio extends javax.swing.JFrame {
         entraPanel(pUs, lbUsuario);
     }//GEN-LAST:event_pUsMouseEntered
 
+    private void pUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pUsMouseClicked
+        quitarPaneles();
+        if (pUsuario == null) {
+            pUsuario = new PUsuario(this.dp);
+            pUsuario.setVisible(true);
+            pUsuario.setBounds(x, y, width, height);
+            pEspacio.add(pUsuario);
+            pEspacio.setComponentZOrder(pUsuario, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_pUsMouseClicked
+
     private void pSociosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseExited
         salePanel(pSocios, lbSocio);
     }//GEN-LAST:event_pSociosMouseExited
@@ -514,6 +519,19 @@ public class VInicio extends javax.swing.JFrame {
     private void pSociosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseEntered
         entraPanel(pSocios, lbSocio);
     }//GEN-LAST:event_pSociosMouseEntered
+
+    private void pSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseClicked
+        quitarPaneles();
+        if (pSocio == null) {
+            pSocio = new PSocio(this.dp);
+            pSocio.setVisible(true);
+            pSocio.setBounds(x, y, width, height);
+            pEspacio.add(pSocio);
+            pEspacio.setComponentZOrder(pSocio, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_pSociosMouseClicked
 
     private void pIMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pIMouseExited
         salePanel(pI, lbInicio);
@@ -536,31 +554,33 @@ public class VInicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pIMouseClicked
 
-    private void pSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseClicked
-        quitarPaneles();
-        if (pSocio == null) {
-            pSocio = new PSocio(this.dp);
-            pSocio.setVisible(true);
-            pSocio.setBounds(x, y, width, height);
-            pEspacio.add(pSocio);
-            pEspacio.setComponentZOrder(pSocio, 0);
-            pEspacio.repaint();
-            pEspacio.revalidate();
-        }
-    }//GEN-LAST:event_pSociosMouseClicked
+    private void lbUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbUsuarioMouseClicked
 
-    private void pUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pUsMouseClicked
+
+    }//GEN-LAST:event_lbUsuarioMouseClicked
+
+    private void lbPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbPrestamoMouseClicked
+
+    }//GEN-LAST:event_lbPrestamoMouseClicked
+
+    private void lbInicioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbInicioKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbInicioKeyPressed
+
+    private void pPrestamoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPrestamoMouseClicked
+
         quitarPaneles();
-        if (pUsuario == null) {
-            pUsuario = new PUsuario(this.dp);
-            pUsuario.setVisible(true);
-            pUsuario.setBounds(x, y, width, height);
-            pEspacio.add(pUsuario);
-            pEspacio.setComponentZOrder(pUsuario, 0);
+        if (pprestamo == null) {
+            pprestamo = new PPrestamos();
+            pinicio.setVisible(true);
+            pprestamo.setBounds(x, y, width, height);
+            pEspacio.add(pinicio);
+            pEspacio.setComponentZOrder(pinicio, 0);
             pEspacio.repaint();
             pEspacio.revalidate();
         }
-    }//GEN-LAST:event_pUsMouseClicked
+
+    }//GEN-LAST:event_pPrestamoMouseClicked
 
     public void quitarPaneles() {
         if (pinicio != null) {
@@ -592,13 +612,13 @@ public class VInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
+    private help.helpCentro helpCentro2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

@@ -79,7 +79,6 @@ public class PInicio extends javax.swing.JPanel {
         tblTransacciones.setGridColor(new java.awt.Color(255, 255, 255));
         tblTransacciones.setRowHeight(50);
         tblTransacciones.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblTransacciones.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblTransacciones.getTableHeader().setResizingAllowed(false);
         tblTransacciones.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblTransacciones);

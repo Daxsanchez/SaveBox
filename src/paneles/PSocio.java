@@ -7,7 +7,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import ventanas.VRegistrarUsurario;
+import ventanas.VRegistrarSocio;
 
 /**
  *
@@ -156,7 +156,6 @@ public class PSocio extends javax.swing.JPanel {
         tblSocios.setGridColor(new java.awt.Color(255, 255, 255));
         tblSocios.setRowHeight(50);
         tblSocios.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblSocios.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblSocios.getTableHeader().setResizingAllowed(false);
         tblSocios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblSocios);
@@ -241,14 +240,14 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        VRegistrarUsurario registrarUsuario = new VRegistrarUsurario();
-        registrarUsuario.setSize(390, 700);
-        registrarUsuario.setVisible(true);
+        VRegistrarSocio registrarSocio = new VRegistrarSocio();
+        registrarSocio.setSize(390, 700);
+        registrarSocio.setVisible(true);
 
         if (dp != null) {
-            dp.add(registrarUsuario);
+            dp.add(registrarSocio);
             try {
-                registrarUsuario.setSelected(true);
+                registrarSocio.setSelected(true);
             } catch (java.beans.PropertyVetoException e) {
                 System.out.println(e);
             }

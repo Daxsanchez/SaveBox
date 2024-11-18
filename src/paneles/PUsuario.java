@@ -7,7 +7,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import ventanas.VRegistrarUsurario;
+import ventanas.VRegistrarUsuario;
 
 /**
  *
@@ -157,7 +157,6 @@ public class PUsuario extends javax.swing.JPanel {
         tblSocios.setGridColor(new java.awt.Color(255, 255, 255));
         tblSocios.setRowHeight(50);
         tblSocios.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblSocios.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblSocios.getTableHeader().setResizingAllowed(false);
         tblSocios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblSocios);
@@ -204,9 +203,7 @@ public class PUsuario extends javax.swing.JPanel {
         dp.setLayout(dpLayout);
         dpLayout.setHorizontalGroup(
             dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dpLayout.createSequentialGroup()
-                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+            .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         dpLayout.setVerticalGroup(
             dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,16 +217,17 @@ public class PUsuario extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(6, 6, 6))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(dp)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -242,7 +240,7 @@ public class PUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        VRegistrarUsurario registrarUsuario = new VRegistrarUsurario();
+        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario();
         registrarUsuario.setSize(390, 700);
         registrarUsuario.setVisible(true);
 
