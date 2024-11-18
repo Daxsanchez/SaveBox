@@ -22,7 +22,7 @@ public class PUsuario extends javax.swing.JPanel {
 
         this.dp = desktopPane;
 
-        tabla = (DefaultTableModel) tblSocios.getModel();
+        tabla = (DefaultTableModel) tblUsuarios.getModel();
         Object[] ob = new Object[6];
         ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
         ob[0] = icon;
@@ -33,7 +33,7 @@ public class PUsuario extends javax.swing.JPanel {
         ob[5] = "Activo";
         tabla.addRow(ob);
 
-        tblSocios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
+        tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
 
     }
 
@@ -68,9 +68,20 @@ public class PUsuario extends javax.swing.JPanel {
         lbAgregar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblSocios = new javax.swing.JTable();
+        tblUsuarios = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout dpLayout = new javax.swing.GroupLayout(dp);
+        dp.setLayout(dpLayout);
+        dpLayout.setHorizontalGroup(
+            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1216, Short.MAX_VALUE)
+        );
+        dpLayout.setVerticalGroup(
+            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado1.setRoundBottomLeft(10);
@@ -136,9 +147,9 @@ public class PUsuario extends javax.swing.JPanel {
         jScrollPane1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jScrollPane1.setOpaque(false);
 
-        tblSocios.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        tblSocios.setForeground(new java.awt.Color(7, 20, 123));
-        tblSocios.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        tblUsuarios.setForeground(new java.awt.Color(7, 20, 123));
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -154,12 +165,12 @@ public class PUsuario extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblSocios.setGridColor(new java.awt.Color(255, 255, 255));
-        tblSocios.setRowHeight(50);
-        tblSocios.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblSocios.getTableHeader().setResizingAllowed(false);
-        tblSocios.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblSocios);
+        tblUsuarios.setGridColor(new java.awt.Color(255, 255, 255));
+        tblUsuarios.setRowHeight(50);
+        tblUsuarios.setSelectionBackground(new java.awt.Color(7, 20, 123));
+        tblUsuarios.getTableHeader().setResizingAllowed(false);
+        tblUsuarios.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblUsuarios);
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
@@ -169,11 +180,8 @@ public class PUsuario extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(279, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -181,6 +189,7 @@ public class PUsuario extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbAgregar)
                         .addGap(20, 20, 20))))
+            .addComponent(jScrollPane1)
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,24 +202,9 @@ public class PUsuario extends javax.swing.JPanel {
                         .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
-        );
-
-        dp.setLayer(panelRedondeado1, javax.swing.JLayeredPane.DEFAULT_LAYER);
-
-        javax.swing.GroupLayout dpLayout = new javax.swing.GroupLayout(dp);
-        dp.setLayout(dpLayout);
-        dpLayout.setHorizontalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        dpLayout.setVerticalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -218,14 +212,16 @@ public class PUsuario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(125, Short.MAX_VALUE)
                 .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
+            .addComponent(panelRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dp)
                 .addContainerGap())
         );
@@ -251,8 +247,6 @@ public class PUsuario extends javax.swing.JPanel {
             } catch (java.beans.PropertyVetoException e) {
                 System.out.println(e);
             }
-        } else {
-            System.out.println("No se encontró un JDesktopPane para añadir el InternalFrame");
         }
     }//GEN-LAST:event_lbAgregarMouseClicked
 
@@ -266,7 +260,7 @@ public class PUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel lbAgregar;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado2;
-    private javax.swing.JTable tblSocios;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }
