@@ -7,6 +7,7 @@ import paneles.PInicio;
 import paneles.PSocio;
 import paneles.PUsuario;
 import paneles.PPrestamos;
+import paneles.PRealizarPrestamo;
 
 /**
  *
@@ -23,6 +24,7 @@ public class VInicio extends javax.swing.JFrame {
     private PSocio pSocio = null;
     private PUsuario pUsuario = null;
     private PPrestamos pprestamo = null;
+    private PRealizarPrestamo pRPrestamo = null;
 
     public VInicio() {
         initComponents();
@@ -535,7 +537,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pPresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPresMouseClicked
         quitarPaneles();
         if (pprestamo == null) {
-            pprestamo = new PPrestamos(this.dp);
+            pprestamo = new PPrestamos(this.dp, this);
             pprestamo.setVisible(true);
             pprestamo.setBounds(x, y, width, height);
             pEspacio.add(pprestamo);
@@ -544,6 +546,32 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }//GEN-LAST:event_pPresMouseClicked
+
+    public void abrirRealizarPrestamo() {
+        quitarPaneles();
+        if (pRPrestamo == null) {
+            pRPrestamo = new PRealizarPrestamo(this);
+            pRPrestamo.setVisible(true);
+            pRPrestamo.setBounds(x, y, width, height);
+            pEspacio.add(pRPrestamo);
+            pEspacio.setComponentZOrder(pRPrestamo, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }
+
+    public void abrirPrestamo() {
+        quitarPaneles();
+        if (pprestamo == null) {
+            pprestamo = new PPrestamos(this.dp, this);
+            pprestamo.setVisible(true);
+            pprestamo.setBounds(x, y, width, height);
+            pEspacio.add(pprestamo);
+            pEspacio.setComponentZOrder(pprestamo, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }
 
     public void quitarPaneles() {
         if (pinicio != null) {
