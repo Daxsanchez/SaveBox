@@ -571,7 +571,7 @@ public class VInicio extends javax.swing.JFrame {
 
         quitarPaneles();
         if (pprestamo == null) {
-            pprestamo = new PPrestamos();
+            pprestamo = new PPrestamos(this.dp);
             pinicio.setVisible(true);
             pprestamo.setBounds(x, y, width, height);
             pEspacio.add(pinicio);

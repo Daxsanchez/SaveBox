@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package paneles;
 
 import java.awt.Component;
@@ -123,7 +119,7 @@ public class PPrestamos extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Prestamos Efectuados");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 17, -1, 40));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 7, -1, 50));
 
         panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado1.setRoundBottomLeft(32);
@@ -162,10 +158,10 @@ public class PPrestamos extends javax.swing.JPanel {
         });
         panelRedondeado2.add(txtBuscar);
 
-        add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 30, 170, 30));
+        add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 170, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/loaning_money_bag_icon_152048.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 30, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 20, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Moonlit Asteroid (1).jpg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, -1));

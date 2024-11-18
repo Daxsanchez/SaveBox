@@ -7,7 +7,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import ventanas.VRegistrarSocio;
+//import ventanas.VRegistrarSocio;
 
 /**
  *
@@ -39,17 +39,17 @@ public class PSocio extends javax.swing.JPanel {
     public class IconCellRenderer extends DefaultTableCellRenderer {
 
         public IconCellRenderer() {
-            setHorizontalAlignment(SwingConstants.CENTER); // Centrar horizontalmente
-            setVerticalAlignment(SwingConstants.CENTER);   // Centrar verticalmente
+            setHorizontalAlignment(SwingConstants.CENTER);
+            setVerticalAlignment(SwingConstants.CENTER);
         }
 
         @Override
         public void setValue(Object value) {
             if (value instanceof Icon) {
-                setIcon((Icon) value); // Muestra el ícono
-                setText(null);         // No muestra texto
+                setIcon((Icon) value);
+                setText(null);
             } else {
-                super.setValue(value); // Usa el comportamiento predeterminado para otros valores
+                super.setValue(value);
             }
         }
     }
@@ -240,7 +240,7 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        VRegistrarSocio registrarSocio = new VRegistrarSocio();
+        /*VRegistrarSocio registrarSocio = new VRegistrarSocio();
         registrarSocio.setSize(390, 700);
         registrarSocio.setVisible(true);
 
@@ -253,7 +253,7 @@ public class PSocio extends javax.swing.JPanel {
             }
         } else {
             System.out.println("No se encontró un JDesktopPane para añadir el InternalFrame");
-        }
+        }*/
     }//GEN-LAST:event_lbAgregarMouseClicked
 
 
