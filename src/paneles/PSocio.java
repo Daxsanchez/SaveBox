@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ventanas.VInicio;
 import ventanas.VRegistrarSocio;
 //import ventanas.VRegistrarSocio;
 
@@ -19,11 +20,13 @@ import ventanas.VRegistrarSocio;
 public class PSocio extends javax.swing.JPanel {
 
     private DefaultTableModel tabla;
+    private VInicio vInicio = new VInicio();
 
-    public PSocio(JDesktopPane desktopPane) {
+    public PSocio(VInicio ini) {
         initComponents();
 
-        this.dp = desktopPane;
+        vInicio = ini;
+        this.dp = ini.getDesktopPane();
 
         tabla = (DefaultTableModel) tblSocios.getModel();
         Object[] ob = new Object[5];
@@ -263,6 +266,7 @@ public class PSocio extends javax.swing.JPanel {
         registrarSocio.setVisible(true);
 
         if (dp != null) {
+            vInicio.centrarInternalFrame(registrarSocio, dp);
             dp.add(registrarSocio);
             try {
                 registrarSocio.setSelected(true);

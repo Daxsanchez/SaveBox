@@ -6,6 +6,7 @@ import utilerias.TablaAccionCellEditor;
 import utilerias.TablaAccionCellRender;
 import utilerias.TablaAccionEvent;
 import ventanas.VDepositar;
+import ventanas.VInicio;
 import ventanas.VRetirar;
 
 /**
@@ -18,12 +19,13 @@ public class PAhorro extends javax.swing.JPanel {
      * Creates new form PPrestamos
      */
     private javax.swing.JDesktopPane dp;
+    private VInicio vInicio;
     private DefaultTableModel tabla;
 
-    public PAhorro(JDesktopPane desktopPane) {
+    public PAhorro(VInicio ini) {
         initComponents();
-
-        dp = desktopPane;
+        vInicio = ini;
+        dp = vInicio.getDesktopPane();
 
         tabla = (DefaultTableModel) tblPrestamos.getModel();
         Object[] ob = new Object[4];
@@ -45,6 +47,7 @@ public class PAhorro extends javax.swing.JPanel {
                 depositar.setVisible(true);
 
                 if (dp != null) {
+                    vInicio.centrarInternalFrame(depositar, dp);
                     dp.add(depositar);
                     try {
                         depositar.setSelected(true);
@@ -61,6 +64,7 @@ public class PAhorro extends javax.swing.JPanel {
                 retirar.setVisible(true);
 
                 if (dp != null) {
+                    vInicio.centrarInternalFrame(retirar, dp);
                     dp.add(retirar);
                     try {
                         retirar.setSelected(true);

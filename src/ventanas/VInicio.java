@@ -1,6 +1,11 @@
 package ventanas;
 
 import java.awt.Color;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.Config;
@@ -89,7 +94,6 @@ public class VInicio extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         dp.setBackground(new java.awt.Color(255, 255, 255));
-        dp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
 
@@ -132,7 +136,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(19, 19, 19))
         );
 
-        dp.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 757));
+        dp.add(jPanel2);
+        jPanel2.setBounds(0, 0, 62, 757);
 
         pEspacio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -147,7 +152,8 @@ public class VInicio extends javax.swing.JFrame {
             .addGap(0, 757, Short.MAX_VALUE)
         );
 
-        dp.add(pEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
+        dp.add(pEspacio);
+        pEspacio.setBounds(90, 110, 1359, 757);
 
         panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado1.setRoundBottomLeft(50);
@@ -436,17 +442,22 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1340, -1));
+        dp.add(panelRedondeado1);
+        panelRedondeado1.setBounds(88, 13, 1342, 82);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dp)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, 1449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, 755, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -458,7 +469,7 @@ public class VInicio extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 754, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -500,7 +511,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pUsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pUsMouseClicked
         quitarPaneles();
         if (pUsuario == null) {
-            pUsuario = new PUsuario(this.dp);
+            pUsuario = new PUsuario(this);
             pUsuario.setVisible(true);
             pUsuario.setBounds(x, y, width, height);
             pEspacio.add(pUsuario);
@@ -521,7 +532,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pSociosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pSociosMouseClicked
         quitarPaneles();
         if (pSocio == null) {
-            pSocio = new PSocio(this.dp);
+            pSocio = new PSocio(this);
             pSocio.setVisible(true);
             pSocio.setBounds(x, y, width, height);
             pEspacio.add(pSocio);
@@ -568,7 +579,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pAhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pAhoMouseClicked
         quitarPaneles();
         if (pAhorro == null) {
-            pAhorro = new PAhorro(this.dp);
+            pAhorro = new PAhorro(this);
             pAhorro.setVisible(true);
             pAhorro.setBounds(x, y, width, height);
             pEspacio.add(pAhorro);
@@ -642,6 +653,23 @@ public class VInicio extends javax.swing.JFrame {
     private void salePanel(JPanel panel, JLabel lb) {
         panel.setBackground(Color.decode("#07147b"));
         lb.setForeground(Color.WHITE);
+    }
+
+    public void centrarInternalFrame(JInternalFrame internalFrame, JDesktopPane desktopPane) {
+        int desktopWidth = desktopPane.getWidth();
+        int desktopHeight = desktopPane.getHeight();
+
+        int frameWidth = internalFrame.getWidth();
+        int frameHeight = internalFrame.getHeight();
+
+        int x = (desktopWidth - frameWidth) / 2;
+        int y = (desktopHeight - frameHeight) / 2;
+
+        internalFrame.setLocation(x, y);
+    }
+
+    public JDesktopPane getDesktopPane() {
+        return this.dp;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

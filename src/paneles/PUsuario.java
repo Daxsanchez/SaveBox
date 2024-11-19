@@ -11,6 +11,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import ventanas.VInicio;
 import ventanas.VRegistrarUsuario;
 
 /**
@@ -20,11 +21,12 @@ import ventanas.VRegistrarUsuario;
 public class PUsuario extends javax.swing.JPanel {
 
     private DefaultTableModel tabla;
+    private VInicio vInicio;
 
-    public PUsuario(JDesktopPane desktopPane) {
+    public PUsuario(VInicio ini) {
         initComponents();
-
-        this.dp = desktopPane;
+        vInicio = ini;
+        this.dp = vInicio.getDesktopPane();
 
         tabla = (DefaultTableModel) tblUsuarios.getModel();
         Object[] ob = new Object[6];
@@ -274,6 +276,7 @@ public class PUsuario extends javax.swing.JPanel {
 
         if (dp != null) {
             try {
+                vInicio.centrarInternalFrame(registrarUsuario, dp);
                 dp.add(registrarUsuario);
                 registrarUsuario.setSelected(true);
             } catch (java.beans.PropertyVetoException e) {
