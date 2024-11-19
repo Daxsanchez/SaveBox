@@ -612,6 +612,10 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(pRPrestamo);
             pRPrestamo = null;
         }
+        if (pAhorro != null) {
+            pEspacio.remove(pAhorro);
+            pAhorro = null;
+        }
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
