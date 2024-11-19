@@ -155,6 +155,7 @@ public class PAhorro extends javax.swing.JPanel {
         tblPrestamos.setGridColor(new java.awt.Color(255, 255, 255));
         tblPrestamos.setRowHeight(50);
         tblPrestamos.setSelectionBackground(new java.awt.Color(7, 20, 123));
+        tblPrestamos.setSelectionForeground(new java.awt.Color(255, 255, 255));
         tblPrestamos.getTableHeader().setResizingAllowed(false);
         tblPrestamos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblPrestamos);
