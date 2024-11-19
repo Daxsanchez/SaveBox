@@ -2,6 +2,7 @@ package controladores;
 
 import static bd.BaseConexion.getConexion;
 import java.sql.ResultSet;
+import main.Config;
 import utilerias.Password;
 
 /**
@@ -9,18 +10,19 @@ import utilerias.Password;
  * @author daxsa
  */
 public class CUsuario {
-
+    
     public static boolean autentificarUsuario(String contra, String usuario) {
-        String consulta = "SELECT pass,salt FROM Usuario WHERE usuario = '" + usuario + "'";
-
+        String consulta = "SELECT pass,salt,rol FROM Usuario WHERE usuario = '" + usuario + "'";
+        
         String pass = "", salt = "";
         
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);
-
+            
             if (rs.next()) {
                 pass = rs.getString(1);
                 salt = rs.getString(2);
+                Config.setRol(rs.getString(3));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -37,7 +39,7 @@ public class CUsuario {
         
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);
-
+            
             if (rs.next()) {
                 existe = true;
             }
@@ -47,4 +49,5 @@ public class CUsuario {
         
         return existe;
     }
+    
 }

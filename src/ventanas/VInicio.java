@@ -3,6 +3,7 @@ package ventanas;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import main.Config;
 import paneles.PAhorro;
 import paneles.PInicio;
 import paneles.PSocio;
@@ -39,6 +40,18 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.setComponentZOrder(pinicio, 0);
         pEspacio.repaint();
         pEspacio.revalidate();
+
+        validarRol();
+    }
+
+    public void validarRol() {
+        String rol = Config.getRol();
+        if (rol.equals("GESTOR")) {
+            pUs.setVisible(false);
+            pPres.setVisible(false);
+        } else if (rol.equals("ADMINISTRADOR")) {
+
+        }
     }
 
     @SuppressWarnings("unchecked")
