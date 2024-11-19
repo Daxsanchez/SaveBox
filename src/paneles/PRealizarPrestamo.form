@@ -88,7 +88,7 @@
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="panelRedondeado4" pref="0" max="32767" attributes="0"/>
+                                      <Component id="panelRedondeado4" pref="301" max="32767" attributes="0"/>
                                       <Component id="panelRedondeado5" pref="301" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -215,12 +215,12 @@
                   <Component id="jSeparator6" min="-2" pref="20" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                       <Component id="panelRedondeado8" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                           <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
                           <Component id="panelRedondeado9" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel22" alignment="1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">

@@ -454,7 +454,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                                     .addComponent(jLabel25))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(panelRedondeado4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addComponent(panelRedondeado4, javax.swing.GroupLayout.PREFERRED_SIZE, 301, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado5, javax.swing.GroupLayout.PREFERRED_SIZE, 301, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(573, 573, 573)
@@ -552,11 +552,11 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel22)
                     .addComponent(panelRedondeado8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel27)
-                        .addComponent(panelRedondeado9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelRedondeado9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel30)
@@ -624,24 +624,16 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado10;
-    private utilerias.PanelRedondeado panelRedondeado11;
     private utilerias.PanelRedondeado panelRedondeado12;
     private utilerias.PanelRedondeado panelRedondeado13;
     private utilerias.PanelRedondeado panelRedondeado14;
     private utilerias.PanelRedondeado panelRedondeado15;
     private utilerias.PanelRedondeado panelRedondeado16;
-    private utilerias.PanelRedondeado panelRedondeado2;
     private utilerias.PanelRedondeado panelRedondeado4;
     private utilerias.PanelRedondeado panelRedondeado5;
-    private utilerias.PanelRedondeado panelRedondeado6;
-    private utilerias.PanelRedondeado panelRedondeado7;
     private utilerias.PanelRedondeado panelRedondeado8;
     private utilerias.PanelRedondeado panelRedondeado9;
     private javax.swing.JTextField txtFolio;
-    private javax.swing.JTextField txtFolio1;
-    private javax.swing.JTextField txtFolio10;
-    private javax.swing.JTextField txtFolio5;
-    private javax.swing.JTextField txtFolio6;
     private javax.swing.JTextField txtFormaPago;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtNumCuotas;
