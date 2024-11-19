@@ -57,6 +57,7 @@ public class PSocio extends javax.swing.JPanel {
 
                         if (dp != null) {
                             try {
+                                vInicio.centrarInternalFrame(registrarUsuario, dp);
                                 dp.add(registrarUsuario);
                                 registrarUsuario.setSelected(true);
                             } catch (java.beans.PropertyVetoException ex) {

@@ -2,10 +2,6 @@ package paneles;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -59,6 +55,7 @@ public class PUsuario extends javax.swing.JPanel {
 
                         if (dp != null) {
                             try {
+                                vInicio.centrarInternalFrame(registrarUsuario, dp);
                                 dp.add(registrarUsuario);
                                 registrarUsuario.setSelected(true);
                             } catch (java.beans.PropertyVetoException ex) {
