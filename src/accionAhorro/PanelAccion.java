@@ -1,8 +1,8 @@
-package paneles;
+package accionAhorro;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import utilerias.TablaAccionEvent;
+import accionAhorro.TablaAccionEvent;
 
 /**
  *

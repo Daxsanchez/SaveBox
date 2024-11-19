@@ -2,9 +2,9 @@ package paneles;
 
 import javax.swing.JDesktopPane;
 import javax.swing.table.DefaultTableModel;
-import utilerias.TablaAccionCellEditor;
-import utilerias.TablaAccionCellRender;
-import utilerias.TablaAccionEvent;
+import accionAhorro.TablaAccionCellEditor;
+import accionAhorro.TablaAccionCellRender;
+import accionAhorro.TablaAccionEvent;
 import ventanas.VDepositar;
 import ventanas.VInicio;
 import ventanas.VRetirar;
@@ -27,7 +27,7 @@ public class PAhorro extends javax.swing.JPanel {
         vInicio = ini;
         dp = vInicio.getDesktopPane();
 
-        tabla = (DefaultTableModel) tblPrestamos.getModel();
+        tabla = (DefaultTableModel) tblAhorros.getModel();
         Object[] ob = new Object[4];
         ob[0] = "Juan Benítez Jiménez";
         ob[1] = "$300";
@@ -75,8 +75,8 @@ public class PAhorro extends javax.swing.JPanel {
             }
         };
 
-        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRender());
-        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditor(ev));
+        tblAhorros.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRender());
+        tblAhorros.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditor(ev));
     }
 
     @SuppressWarnings("unchecked")
@@ -89,7 +89,7 @@ public class PAhorro extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPrestamos = new javax.swing.JTable();
+        tblAhorros = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(7, 20, 123));
@@ -138,9 +138,9 @@ public class PAhorro extends javax.swing.JPanel {
         jScrollPane1.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jScrollPane1.setOpaque(false);
 
-        tblPrestamos.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        tblPrestamos.setForeground(new java.awt.Color(7, 20, 123));
-        tblPrestamos.setModel(new javax.swing.table.DefaultTableModel(
+        tblAhorros.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        tblAhorros.setForeground(new java.awt.Color(7, 20, 123));
+        tblAhorros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -156,13 +156,13 @@ public class PAhorro extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblPrestamos.setGridColor(new java.awt.Color(255, 255, 255));
-        tblPrestamos.setRowHeight(50);
-        tblPrestamos.setSelectionBackground(new java.awt.Color(7, 20, 123));
-        tblPrestamos.setSelectionForeground(new java.awt.Color(255, 255, 255));
-        tblPrestamos.getTableHeader().setResizingAllowed(false);
-        tblPrestamos.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblPrestamos);
+        tblAhorros.setGridColor(new java.awt.Color(255, 255, 255));
+        tblAhorros.setRowHeight(50);
+        tblAhorros.setSelectionBackground(new java.awt.Color(7, 20, 123));
+        tblAhorros.setSelectionForeground(new java.awt.Color(255, 255, 255));
+        tblAhorros.getTableHeader().setResizingAllowed(false);
+        tblAhorros.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblAhorros);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 600));
 
@@ -197,7 +197,7 @@ public class PAhorro extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private utilerias.PanelRedondeado panelRedondeado2;
-    private javax.swing.JTable tblPrestamos;
+    private javax.swing.JTable tblAhorros;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

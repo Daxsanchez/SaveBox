@@ -566,7 +566,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pPresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPresMouseClicked
         quitarPaneles();
         if (pprestamo == null) {
-            pprestamo = new PPrestamos(this.dp, this);
+            pprestamo = new PPrestamos(this);
             pprestamo.setVisible(true);
             pprestamo.setBounds(x, y, width, height);
             pEspacio.add(pprestamo);
@@ -605,7 +605,7 @@ public class VInicio extends javax.swing.JFrame {
     public void abrirPrestamo() {
         quitarPaneles();
         if (pprestamo == null) {
-            pprestamo = new PPrestamos(this.dp, this);
+            pprestamo = new PPrestamos(this);
             pprestamo.setVisible(true);
             pprestamo.setBounds(x, y, width, height);
             pEspacio.add(pprestamo);

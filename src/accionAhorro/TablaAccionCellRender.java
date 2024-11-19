@@ -1,10 +1,10 @@
-package utilerias;
+package accionAhorro;
 
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import paneles.PanelAccion;
+import accionAhorro.PanelAccion;
 
 /**
  *

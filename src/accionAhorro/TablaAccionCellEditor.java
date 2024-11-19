@@ -1,11 +1,11 @@
-package utilerias;
+package accionAhorro;
 
 import java.awt.Component;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import paneles.PanelAccion;
+import accionAhorro.PanelAccion;
 
 /**
  *

@@ -2,6 +2,7 @@ package ventanas;
 
 import controladores.CUsuario;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -158,6 +159,11 @@ public class Login extends javax.swing.JFrame {
                 txtPasswordMousePressed(evt);
             }
         });
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
+            }
+        });
         bg.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 340, 30));
 
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
@@ -298,22 +304,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPasswordMousePressed
 
     private void loginBtnTxtMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnTxtMouseClicked
-        if (CUsuario.usuarioExistente(txtUsuario.getText())) {
-            boolean autetificar = CUsuario.autentificarUsuario(txtPassword.getText(), txtUsuario.getText());
-            if (autetificar) {
-                java.awt.EventQueue.invokeLater(() -> {
-                    VInicio inicio = new VInicio();
-                    inicio.setVisible(true);
-                    inicio.requestFocus();
-                });
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
-            }
-        } else {
-            JOptionPane.showMessageDialog(this, "El usuario ingresado no existe",
-                    "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
-        }
+        inicarSesion();
     }//GEN-LAST:event_loginBtnTxtMouseClicked
 
     private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
@@ -338,6 +329,31 @@ public class Login extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtPasswordFocusGained
 
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPasswordKeyPressed
+        char c = evt.getKeyChar();
+        if (c == KeyEvent.VK_ENTER) {
+            inicarSesion();
+        }
+    }//GEN-LAST:event_txtPasswordKeyPressed
+
+    private void inicarSesion() {
+        if (CUsuario.usuarioExistente(txtUsuario.getText())) {
+            boolean autetificar = CUsuario.autentificarUsuario(txtPassword.getText(), txtUsuario.getText());
+            if (autetificar) {
+                java.awt.EventQueue.invokeLater(() -> {
+                    VInicio inicio = new VInicio();
+                    inicio.setVisible(true);
+                    inicio.requestFocus();
+                });
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "El usuario ingresado no existe",
+                    "Usuario inexistente", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel bg;

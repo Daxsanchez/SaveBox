@@ -9,6 +9,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import utilerias.IconCellRenderer;
 import ventanas.VInicio;
 import ventanas.VRegistrarSocio;
 //import ventanas.VRegistrarSocio;
@@ -68,24 +69,6 @@ public class PSocio extends javax.swing.JPanel {
                 }
             }
         });
-    }
-
-    public class IconCellRenderer extends DefaultTableCellRenderer {
-
-        public IconCellRenderer() {
-            setHorizontalAlignment(SwingConstants.CENTER);
-            setVerticalAlignment(SwingConstants.CENTER);
-        }
-
-        @Override
-        public void setValue(Object value) {
-            if (value instanceof Icon) {
-                setIcon((Icon) value);
-                setText(null);
-            } else {
-                super.setValue(value);
-            }
-        }
     }
 
     @SuppressWarnings("unchecked")
