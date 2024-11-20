@@ -5,7 +5,7 @@ package ventanas;
  * @author rafae
  */
 public class VRegistrarSocio extends javax.swing.JInternalFrame {
-
+    
     private boolean modifica = false;
     
     public VRegistrarSocio() {
@@ -18,8 +18,10 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         lbTitulo.setText("Socio");
         txtNombre.setText(nombre);
         txtApellidos.setText(nombre);
+        txtMontoMensual.setText("$500");
+        txtMontoMensual.setEnabled(false);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,6 +44,8 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         dcFechaNac = new com.toedter.calendar.JDateChooser();
+        panelRedondeado25 = new utilerias.PanelRedondeado();
+        txtMontoMensual = new javax.swing.JTextField();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -249,14 +253,13 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             panelRedondeado24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondeado24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtCorreo)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelRedondeado24Layout.setVerticalGroup(
             panelRedondeado24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado24Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+            .addGroup(panelRedondeado24Layout.createSequentialGroup()
+                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -269,6 +272,43 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(7, 20, 123));
         jLabel3.setText("Fecha Nacimiento:");
+
+        panelRedondeado25.setBackground(new java.awt.Color(7, 20, 123));
+        panelRedondeado25.setRoundBottomLeft(16);
+        panelRedondeado25.setRoundBottomRight(16);
+        panelRedondeado25.setRoundTopLeft(16);
+        panelRedondeado25.setRoundTopRight(16);
+
+        txtMontoMensual.setBackground(new java.awt.Color(7, 20, 123));
+        txtMontoMensual.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtMontoMensual.setForeground(new java.awt.Color(255, 255, 255));
+        txtMontoMensual.setText("Monto mensual");
+        txtMontoMensual.setBorder(null);
+        txtMontoMensual.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMontoMensualFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMontoMensualFocusLost(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRedondeado25Layout = new javax.swing.GroupLayout(panelRedondeado25);
+        panelRedondeado25.setLayout(panelRedondeado25Layout);
+        panelRedondeado25Layout.setHorizontalGroup(
+            panelRedondeado25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondeado25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMontoMensual)
+                .addContainerGap())
+        );
+        panelRedondeado25Layout.setVerticalGroup(
+            panelRedondeado25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado25Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtMontoMensual, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -289,22 +329,23 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel1)
                                         .addGap(59, 59, 59))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(110, 110, 110)
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(dcFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(panelRedondeado11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(panelRedondeado24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(panelRedondeado24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(panelRedondeado25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,13 +362,15 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 .addComponent(panelRedondeado11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(panelRedondeado17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(27, 27, 27)
                 .addComponent(panelRedondeado24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
+                .addGap(30, 30, 30)
+                .addComponent(panelRedondeado25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(69, 69, 69)
+                    .addComponent(jLabel3)
+                    .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(54, 54, 54))
         );
@@ -342,7 +385,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreFocusGained
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        if(txtNombre.getText().isEmpty()){
+        if (txtNombre.getText().isEmpty()) {
             txtNombre.setText("Nombre");
         }
     }//GEN-LAST:event_txtNombreFocusLost
@@ -352,7 +395,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtApellidosFocusGained
 
     private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
-        if(txtApellidos.getText().isEmpty()){
+        if (txtApellidos.getText().isEmpty()) {
             txtApellidos.setText("Apellidos");
         }
     }//GEN-LAST:event_txtApellidosFocusLost
@@ -362,7 +405,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtTelefonoFocusGained
 
     private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        if(txtTelefono.getText().isEmpty()){
+        if (txtTelefono.getText().isEmpty()) {
             txtTelefono.setText("Telefono");
         }
     }//GEN-LAST:event_txtTelefonoFocusLost
@@ -372,10 +415,20 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCorreoFocusGained
 
     private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        if(txtCorreo.getText().isEmpty()){
+        if (txtCorreo.getText().isEmpty()) {
             txtCorreo.setText("Correo");
         }
     }//GEN-LAST:event_txtCorreoFocusLost
+
+    private void txtMontoMensualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoMensualFocusGained
+        txtMontoMensual.setText("");
+    }//GEN-LAST:event_txtMontoMensualFocusGained
+
+    private void txtMontoMensualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoMensualFocusLost
+        if (txtMontoMensual.getText().isEmpty()) {
+            txtMontoMensual.setText("Monto mensual");
+        }
+    }//GEN-LAST:event_txtMontoMensualFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -393,8 +446,10 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     private utilerias.PanelRedondeado panelRedondeado14;
     private utilerias.PanelRedondeado panelRedondeado17;
     private utilerias.PanelRedondeado panelRedondeado24;
+    private utilerias.PanelRedondeado panelRedondeado25;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtMontoMensual;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
