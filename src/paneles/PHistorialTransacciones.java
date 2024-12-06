@@ -39,7 +39,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 70, 30));
 
         cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un cliente" }));
-        jPanel1.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 210, 30));
+        jPanel1.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 110, 430, 30));
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1350, 640));
     }// </editor-fold>//GEN-END:initComponents
