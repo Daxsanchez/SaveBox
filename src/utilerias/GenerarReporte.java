@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
-import modelos.Socios;
+import modelos.Socio;
 
 /**
  *
@@ -17,9 +17,9 @@ import modelos.Socios;
 public class GenerarReporte extends Thread {
 
     private String nombre;
-    private ArrayList<Socios> datos;
+    private ArrayList<Socio> datos;
 
-    public GenerarReporte(String nombre, ArrayList<Socios> datos) {
+    public GenerarReporte(String nombre, ArrayList<Socio> datos) {
         this.nombre = nombre;
         this.datos = datos;
     }
@@ -45,7 +45,7 @@ public class GenerarReporte extends Thread {
             // Título
             documento.add(new Paragraph("Reporte de Datos"));
 
-            for (Socios socio : datos) {
+            for (Socio socio : datos) {
                 StringBuilder sb = new StringBuilder();
                 sb.append("Nombre: ").append(socio.getNombre()).append(" ")
                         .append(", Edad: ").append(socio.getEdad());

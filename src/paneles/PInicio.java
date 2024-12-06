@@ -1,6 +1,15 @@
 package paneles;
 
+import controladores.CAbonoPrestamo;
+import controladores.CDeposito;
+import controladores.CRetiro;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import modelos.AbonoPrestamo;
+import modelos.Deposito;
+import modelos.Retiro;
+import utilerias.Utileria;
 
 /**
  *
@@ -8,17 +17,49 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PInicio extends javax.swing.JPanel {
 
-    private DefaultTableModel tabla;
+    private DefaultTableModel tbl;
+    private ArrayList<AbonoPrestamo> abonos = new ArrayList<>();
+    private ArrayList<Deposito> depositos = new ArrayList<>();
+    private ArrayList<Retiro> retiros = new ArrayList<>();
 
     public PInicio() {
         initComponents();
-        tabla = (DefaultTableModel) tblTransacciones.getModel();
-        Object[] ob = new Object[4];
-        ob[0] = "José Hernández";
-        ob[1] = "Préstamo";
-        ob[3] = "15/11/2024";
-        ob[2] = "$10,000";
-        tabla.addRow(ob);
+        tbl = (DefaultTableModel) tblTransacciones.getModel();
+
+        Date fechaI = Utileria.sumarRestarDias(new Date(), -100);
+        Date fechaF = new Date();
+        abonos = CAbonoPrestamo.abonosPorFechas(fechaI, fechaF);
+        depositos = CDeposito.depositosPorFechas(fechaI, fechaF);
+        retiros = CRetiro.retirosPorFechas(fechaI, fechaF);
+
+        tabla();
+    }
+
+    private void tabla() {
+        int filas = tbl.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            tbl.removeRow(0);
+        }
+        for (int i = 0; abonos.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                abonos.get(i).getPrestamo().getSocio().getNombre(),
+                "Abono Préstamo", abonos.get(i).getMonto(),
+                abonos.get(i).getFecha()});
+        }
+
+        for (int i = 0; depositos.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                depositos.get(i).getAhorro().getSocio().getNombre(),
+                "Depósito", depositos.get(i).getMonto(),
+                depositos.get(i).getFecha()});
+        }
+
+        for (int i = 0; retiros.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                retiros.get(i).getAhorro().getSocio().getNombre(),
+                "Retiro", retiros.get(i).getMonto(),
+                retiros.get(i).getFecha()});
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -85,9 +126,14 @@ public class PInicio extends javax.swing.JPanel {
 
         jLabel17.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(7, 20, 123));
-        jLabel17.setText("Ver todas");
+        jLabel17.setText("Buscar");
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_d.png"))); // NOI18N
+        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel19MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout PiniLayout = new javax.swing.GroupLayout(Pini);
         Pini.setLayout(PiniLayout);
@@ -239,6 +285,10 @@ public class PInicio extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+        
+    }//GEN-LAST:event_jLabel19MouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

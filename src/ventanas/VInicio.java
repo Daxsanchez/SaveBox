@@ -55,7 +55,7 @@ public class VInicio extends javax.swing.JFrame {
             pUs.setVisible(false);
             pPres.setVisible(false);
         } else if (rol.equals("ADMINISTRADOR")) {
-
+            
         }
     }
 

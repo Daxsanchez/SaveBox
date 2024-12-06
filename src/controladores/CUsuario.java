@@ -3,6 +3,7 @@ package controladores;
 import static bd.BaseConexion.getConexion;
 import java.sql.ResultSet;
 import main.Config;
+import modelos.Usuario;
 import utilerias.Password;
 
 /**
@@ -48,6 +49,34 @@ public class CUsuario {
         }
         
         return existe;
+    }
+    
+    public static Usuario usuarioPorId(int id) {
+        String consulta = "SELECT * FROM Usuario WHERE id = " + id;
+        Usuario usuario = new Usuario();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+            
+            while (rs.next()) {
+                usuario.setId(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setEdad(rs.getInt(4));
+                usuario.setCorreo(rs.getString(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setRol(rs.getString(7));
+                usuario.setUsuario(rs.getString(8));
+                usuario.setPass(rs.getString(9));
+                usuario.setSalario(rs.getDouble(10));
+                usuario.setFechaCreacion(rs.getDate(11));
+                usuario.setEstatus(rs.getInt(12));
+                //usuario.setEmpresa(empresa);
+                usuario.setSalt(rs.getString(14));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return usuario;
     }
     
 }
