@@ -72,7 +72,7 @@ public class PInicio extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTransacciones = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        lbBuscar = new javax.swing.JLabel();
         panelRedondeado2 = new utilerias.PanelRedondeado();
         jLabel9 = new javax.swing.JLabel();
         lbRol = new javax.swing.JLabel();
@@ -128,10 +128,10 @@ public class PInicio extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(7, 20, 123));
         jLabel17.setText("Buscar");
 
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_d.png"))); // NOI18N
-        jLabel19.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/flecha_d.png"))); // NOI18N
+        lbBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel19MouseClicked(evt);
+                lbBuscarMouseClicked(evt);
             }
         });
 
@@ -149,7 +149,7 @@ public class PInicio extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PiniLayout.createSequentialGroup()
                         .addComponent(jScrollPane1)
@@ -165,7 +165,7 @@ public class PInicio extends javax.swing.JPanel {
                     .addComponent(jLabel16)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PiniLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jLabel19)))
+                        .addComponent(lbBuscar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -286,9 +286,9 @@ public class PInicio extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel19MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel19MouseClicked
+    private void lbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBuscarMouseClicked
         
-    }//GEN-LAST:event_jLabel19MouseClicked
+    }//GEN-LAST:event_lbBuscarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -302,9 +302,9 @@ public class PInicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbBuscar;
     private javax.swing.JLabel lbRol;
     private utilerias.PanelRedondeado panelRedondeado2;
     private javax.swing.JTable tblTransacciones;
