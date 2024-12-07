@@ -2,6 +2,8 @@ package controladores;
 
 import static bd.BaseConexion.getConexion;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Date;
 import modelos.Prestamo;
 
 /**

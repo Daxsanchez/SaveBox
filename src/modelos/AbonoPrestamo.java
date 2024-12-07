@@ -13,6 +13,7 @@ public class AbonoPrestamo {
     double monto;
     Date fecha;
     String metodo;
+    Usuario usuario;
 
     public AbonoPrestamo(int id, Prestamo prestamo, double monto, Date fecha, String metodo) {
         this.id = id;
@@ -23,6 +24,14 @@ public class AbonoPrestamo {
     }
 
     public AbonoPrestamo() {
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public int getId() {

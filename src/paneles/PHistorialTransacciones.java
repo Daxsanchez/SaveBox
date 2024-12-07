@@ -87,8 +87,8 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jLabel1.setText("Usuario:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 70, 30));
 
-        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un cliente" }));
-        jPanel1.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 230, 30));
+        cmbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
+        jPanel1.add(cmbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 230, 30));
 
         jLabel2.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(7, 20, 123));
@@ -99,26 +99,26 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         rbRetiro.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         rbRetiro.setForeground(new java.awt.Color(7, 20, 123));
         rbRetiro.setText("Retiro");
-        jPanel1.add(rbRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, -1, -1));
+        jPanel1.add(rbRetiro, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
         bgGrupo.add(rbDeposito);
         rbDeposito.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         rbDeposito.setForeground(new java.awt.Color(7, 20, 123));
         rbDeposito.setText("Deposito");
-        jPanel1.add(rbDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, -1, -1));
+        jPanel1.add(rbDeposito, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(7, 20, 123));
         jLabel3.setText("Tipo:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 50, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 50, 30));
 
-        cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona usuario" }));
+        cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
         jPanel1.add(cmbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(7, 20, 123));
         jLabel4.setText("Socio:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 50, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 50, 30));
 
         jLabel5.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(7, 20, 123));
@@ -175,7 +175,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         rbAbono.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         rbAbono.setForeground(new java.awt.Color(7, 20, 123));
         rbAbono.setText("Abono Préstamo");
-        jPanel1.add(rbAbono, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, -1));
+        jPanel1.add(rbAbono, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresarAzul.png"))); // NOI18N
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
