@@ -1,12 +1,12 @@
 package paneles;
 
-import javax.swing.Icon;
+import controladores.CUsuario;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import modelos.Usuario;
 import utilerias.IconCellRenderer;
 import ventanas.VInicio;
 import ventanas.VRegistrarUsuario;
@@ -17,28 +17,36 @@ import ventanas.VRegistrarUsuario;
  */
 public class PUsuario extends javax.swing.JPanel {
 
-    private DefaultTableModel tabla;
+    private DefaultTableModel tbl;
     private VInicio vInicio;
+    private ArrayList<Usuario> usuarios = new ArrayList<>();
+    private ImageIcon icon;
 
     public PUsuario(VInicio ini) {
         initComponents();
         vInicio = ini;
         this.dp = vInicio.getDesktopPane();
 
-        tabla = (DefaultTableModel) tblUsuarios.getModel();
-        Object[] ob = new Object[6];
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
-        ob[0] = icon;
-        ob[1] = "Roberto Fernandez Gonzales";
-        ob[2] = "roberto@gmail.com";
-        ob[3] = "Administrador";
-        ob[4] = "17/11/2024";
-        ob[5] = "Activo";
-        tabla.addRow(ob);
+        usuarios = CUsuario.getRegistros();
+        tbl = (DefaultTableModel) tblUsuarios.getModel();
+        icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
+        tabla();
 
         tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
 
         eventoTabla();
+    }
+
+    private void tabla() {
+        int filas = tbl.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            tbl.removeRow(0);
+        }
+        for (int i = 0; usuarios.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                icon, usuarios.get(i).getNombre(), usuarios.get(i).getCorreo(), usuarios.get(i).getRol(),
+                usuarios.get(i).getFechaCreacion(), usuarios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
+        }
     }
 
     private void eventoTabla() {

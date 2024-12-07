@@ -1,14 +1,12 @@
 package paneles;
 
-import javax.swing.Icon;
+import controladores.CSocio;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.JInternalFrame;
-import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import modelos.Socio;
 import utilerias.IconCellRenderer;
 import ventanas.VInicio;
 import ventanas.VRegistrarSocio;
@@ -20,29 +18,36 @@ import ventanas.VRegistrarSocio;
  */
 public class PSocio extends javax.swing.JPanel {
 
-    private DefaultTableModel tabla;
+    private DefaultTableModel tbl;
     private VInicio vInicio = new VInicio();
+    private ArrayList<Socio> socios = new ArrayList<>();
+    private ImageIcon icon;
 
     public PSocio(VInicio ini) {
         initComponents();
-
         vInicio = ini;
         this.dp = ini.getDesktopPane();
-
-        tabla = (DefaultTableModel) tblSocios.getModel();
-        Object[] ob = new Object[5];
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
-        ob[0] = icon;
-        ob[1] = "Luis Ramírez Flores";
-        ob[2] = "luis@gmail.com";
-        ob[3] = "17/11/2024";
-        ob[4] = "Activo";
-        tabla.addRow(ob);
+        socios = CSocio.getRegistros();
+        tbl = (DefaultTableModel) tblSocios.getModel();
+        icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
+        tabla();
 
         tblSocios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
         eventoTabla();
     }
-    
+
+    private void tabla() {
+        int filas = tbl.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            tbl.removeRow(0);
+        }
+        for (int i = 0; socios.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                icon, socios.get(i).getNombre(), socios.get(i).getCorreo(),
+                socios.get(i).getFechaCreacion(), socios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
+        }
+    }
+
     private void eventoTabla() {
         tblSocios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
