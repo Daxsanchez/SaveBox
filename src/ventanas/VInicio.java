@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.Config;
 import paneles.PAhorro;
+import paneles.PHistorialTransacciones;
 import paneles.PInicio;
 import paneles.PSocio;
 import paneles.PUsuario;
@@ -33,11 +34,12 @@ public class VInicio extends javax.swing.JFrame {
     private PPrestamos pprestamo = null;
     private PRealizarPrestamo pRPrestamo = null;
     private PAhorro pAhorro = null;
+    private PHistorialTransacciones pHistorialT = null;
 
     public VInicio() {
         initComponents();
 
-        pinicio = new PInicio();
+        pinicio = new PInicio(this);
         pinicio.setVisible(true);
 
         pinicio.setBounds(x, y, width, height);
@@ -55,7 +57,7 @@ public class VInicio extends javax.swing.JFrame {
             pUs.setVisible(false);
             pPres.setVisible(false);
         } else if (rol.equals("ADMINISTRADOR")) {
-            
+
         }
     }
 
@@ -553,7 +555,7 @@ public class VInicio extends javax.swing.JFrame {
     private void pIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pIMouseClicked
         quitarPaneles();
         if (pinicio == null) {
-            pinicio = new PInicio();
+            pinicio = new PInicio(this);
             pinicio.setVisible(true);
             pinicio.setBounds(x, y, width, height);
             pEspacio.add(pinicio);
@@ -610,6 +612,32 @@ public class VInicio extends javax.swing.JFrame {
             pprestamo.setBounds(x, y, width, height);
             pEspacio.add(pprestamo);
             pEspacio.setComponentZOrder(pprestamo, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }
+
+    public void abrirHistorialTransacciones() {
+        quitarPaneles();
+        if (pHistorialT == null) {
+            pHistorialT = new PHistorialTransacciones(this);
+            pHistorialT.setVisible(true);
+            pHistorialT.setBounds(x, y, width, height);
+            pEspacio.add(pHistorialT);
+            pEspacio.setComponentZOrder(pHistorialT, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }
+
+    public void abrirInicio() {
+        quitarPaneles();
+        if (pinicio == null) {
+            pinicio = new PInicio(this);
+            pinicio.setVisible(true);
+            pinicio.setBounds(x, y, width, height);
+            pEspacio.add(pinicio);
+            pEspacio.setComponentZOrder(pinicio, 0);
             pEspacio.repaint();
             pEspacio.revalidate();
         }

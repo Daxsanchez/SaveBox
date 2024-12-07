@@ -10,6 +10,7 @@ import modelos.AbonoPrestamo;
 import modelos.Deposito;
 import modelos.Retiro;
 import utilerias.Utileria;
+import ventanas.VInicio;
 
 /**
  *
@@ -21,9 +22,11 @@ public class PInicio extends javax.swing.JPanel {
     private ArrayList<AbonoPrestamo> abonos = new ArrayList<>();
     private ArrayList<Deposito> depositos = new ArrayList<>();
     private ArrayList<Retiro> retiros = new ArrayList<>();
+    private VInicio vInicio = null;
 
-    public PInicio() {
+    public PInicio(VInicio vIni) {
         initComponents();
+        vInicio = vIni;
         tbl = (DefaultTableModel) tblTransacciones.getModel();
 
         Date fechaI = Utileria.sumarRestarDias(new Date(), -100);
@@ -287,7 +290,7 @@ public class PInicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lbBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbBuscarMouseClicked
-        
+        vInicio.abrirHistorialTransacciones();
     }//GEN-LAST:event_lbBuscarMouseClicked
 
 
