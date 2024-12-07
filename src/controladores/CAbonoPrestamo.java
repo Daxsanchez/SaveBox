@@ -6,6 +6,13 @@ import modelos.AbonoPrestamo;
 import static bd.BaseConexion.getConexion;
 import java.sql.ResultSet;
 import utilerias.Utileria;
+import java.sql.CallableStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelos.Prestamo;
+import modelos.Socio;
+import modelos.Usuario;
 
 /**
  *
@@ -37,4 +44,47 @@ public class CAbonoPrestamo {
         }
         return abonos;
     }
+
+    public static ArrayList<AbonoPrestamo> getHistorialAbonos(Integer idSocio, Integer idUsuario, Double montoMenor,
+            Double montoMayor, Date fechaInicial, Date fechaFinal) {
+
+        String procedimiento = "{call sp_historialAbonoPrestamo(?, ?, ?, ?, ?, ?)}";
+        ArrayList<AbonoPrestamo> abonos = new ArrayList<>();
+
+        try {
+
+            CallableStatement cs = getConexion().prepareCall(procedimiento);
+
+            cs.setObject(1, idSocio, java.sql.Types.INTEGER);
+            cs.setObject(2, idUsuario, java.sql.Types.INTEGER);
+            cs.setObject(3, montoMenor, java.sql.Types.DOUBLE);
+            cs.setObject(4, montoMayor, java.sql.Types.DOUBLE);
+            cs.setDate(5, fechaInicial != null ? new java.sql.Date(fechaInicial.getTime()) : null);
+            cs.setDate(6, fechaFinal != null ? new java.sql.Date(fechaFinal.getTime()) : null);
+
+            ResultSet rs = cs.executeQuery();
+
+            while (rs.next()) {
+                Socio s = new Socio();
+                Prestamo p = new Prestamo();
+                AbonoPrestamo abono = new AbonoPrestamo();
+                Usuario us = new Usuario();
+
+                s.setNombre(rs.getString("socio"));
+                p.setSocio(s);
+                us.setId(rs.getInt("idU"));
+                us.setNombre(rs.getString("usuario"));
+                abono.setPrestamo(p);
+                abono.setUsuario(us);
+                abono.setMonto(rs.getDouble("monto"));
+                abono.setFecha(rs.getDate("fecha"));
+                abonos.add(abono);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return abonos;
+    }
+
 }

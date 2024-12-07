@@ -5,7 +5,12 @@ import java.util.Date;
 import modelos.Retiro;
 import static bd.BaseConexion.getConexion;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import utilerias.Utileria;
+import java.sql.CallableStatement;
+import modelos.Ahorro;
+import modelos.Socio;
+import modelos.Usuario;
 
 /**
  *
@@ -37,5 +42,47 @@ public class CRetiro {
             e.printStackTrace();
         }
         return retiros;
+    }
+
+    public static ArrayList<Retiro> getHistorialRetiros(Integer idSocio, Integer idUsuario, Double montoMenor,
+            Double montoMayor, Date fechaInicial, Date fechaFinal) {
+
+        String procedimiento = "{call sp_historialRetiro(?, ?, ?, ?, ?, ?)}";
+        ArrayList<Retiro> abonos = new ArrayList<>();
+
+        try {
+
+            CallableStatement cs = getConexion().prepareCall(procedimiento);
+
+            cs.setObject(1, idSocio, java.sql.Types.INTEGER);
+            cs.setObject(2, idUsuario, java.sql.Types.INTEGER);
+            cs.setObject(3, montoMenor, java.sql.Types.DOUBLE);
+            cs.setObject(4, montoMayor, java.sql.Types.DOUBLE);
+            cs.setDate(5, fechaInicial != null ? new java.sql.Date(fechaInicial.getTime()) : null);
+            cs.setDate(6, fechaFinal != null ? new java.sql.Date(fechaFinal.getTime()) : null);
+
+            ResultSet rs = cs.executeQuery();
+
+            while (rs.next()) {
+                Socio s = new Socio();
+                Ahorro a = new Ahorro();
+                Retiro retiro = new Retiro();
+                Usuario us = new Usuario();
+
+                s.setNombre(rs.getString("socio"));
+                a.setSocio(s);
+                us.setId(rs.getInt("idU"));
+                us.setNombre(rs.getString("usuario"));
+                retiro.setAhorro(a);
+                retiro.setUsuario(us);
+                retiro.setMonto(rs.getDouble("monto"));
+                retiro.setFecha(rs.getDate("fecha"));
+                abonos.add(retiro);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return abonos;
     }
 }
