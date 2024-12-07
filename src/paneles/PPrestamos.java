@@ -3,13 +3,12 @@ package paneles;
 import accionPrestamo.TablaAccionCellEditorP;
 import accionPrestamo.TablaAccionCellRenderP;
 import accionPrestamo.TablaAccionEventP;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JDesktopPane;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
+import controladores.CAbonoPrestamo;
+import controladores.CPrestamo;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import utilerias.IconCellRenderer;
+import modelos.AbonoPrestamo;
+import modelos.Prestamo;
 import ventanas.VAbonoPrestamo;
 import ventanas.VInicio;
 
@@ -23,26 +22,33 @@ public class PPrestamos extends javax.swing.JPanel {
      * Creates new form PPrestamos
      */
     private javax.swing.JDesktopPane dp;
-    private DefaultTableModel tabla;
+    private DefaultTableModel tbl;
     private VInicio vInicio = null;
+    private ArrayList<Prestamo> prestamos = new ArrayList<>();
 
     public PPrestamos(VInicio vIni) {
         initComponents();
         vInicio = vIni;
         dp = vIni.getDesktopPane();
 
-        tabla = (DefaultTableModel) tblPrestamos.getModel();
-        Object[] ob = new Object[5];
-        ImageIcon icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
-        ob[0] = icon;
-        ob[1] = "Luis Ramírez Flores";
-        ob[2] = "$10,000";
-        ob[3] = "$5,000";
-        ob[4] = "21/12/2024";
-        tabla.addRow(ob);
-
-        tblPrestamos.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
+        prestamos = CPrestamo.getRegistros();
+        tbl = (DefaultTableModel) tblPrestamos.getModel();
+        tabla();
         accionTabla();
+    }
+
+    private void tabla() {
+        int filas = tbl.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            tbl.removeRow(0);
+        }
+        for (int i = 0; prestamos.size() > i; i++) {
+            double saldoRestante = prestamos.get(i).getSaldoRestante();
+            double abonado = prestamos.get(i).getMonto() - saldoRestante;
+            tbl.addRow(new Object[]{
+                prestamos.get(i).getSocio().getNombre(), abonado,
+                saldoRestante, prestamos.get(i).getFechaAprobacion()});
+        }
     }
 
     private void accionTabla() {
@@ -52,7 +58,7 @@ public class PPrestamos extends javax.swing.JPanel {
                 VAbonoPrestamo abonar = new VAbonoPrestamo();
                 abonar.setSize(412, 482);
                 abonar.setVisible(true);
-                System.out.println("Entró "+ row);
+                System.out.println("Entró " + row);
 
                 if (dp != null) {
                     vInicio.centrarInternalFrame(abonar, dp);
@@ -65,8 +71,8 @@ public class PPrestamos extends javax.swing.JPanel {
                 }
             }
         };
-        tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(new TablaAccionCellRenderP());
-        tblPrestamos.getColumnModel().getColumn(5).setCellEditor(new TablaAccionCellEditorP(ev));
+        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRenderP());
+        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditorP(ev));
     }
 
     @SuppressWarnings("unchecked")
@@ -167,11 +173,11 @@ public class PPrestamos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Foto", "Nombre", "Monto", "Abonado", "Próximo Pago", "Acciones"
+                "Socio", "Abonado", "Restante", "Fecha Aprobado", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

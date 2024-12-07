@@ -12,6 +12,31 @@ import modelos.Prestamo;
  */
 public class CPrestamo {
 
+    public static ArrayList<Prestamo> getRegistros() {
+        String consulta = "SELECT * FROM Prestamo";
+        ArrayList<Prestamo> prestamos = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Prestamo prestamo = new Prestamo();
+                prestamo.setId(rs.getInt(1));
+                prestamo.setSocio(CSocio.socioPorId(rs.getInt(2)));
+                prestamo.setMonto(rs.getDouble(3));
+                prestamo.setIntereses(rs.getDouble(4));
+                prestamo.setFechaAprobacion(rs.getDate(5));
+                prestamo.setFechaLiquidacion(rs.getDate(6));
+                prestamo.setSaldoRestante(rs.getDouble(7));
+                prestamo.setEstatus(rs.getString(8));
+                prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamos.add(prestamo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prestamos;
+    }
+
     public static Prestamo prestamoPorId(int id) {
         String consulta = "SELECT * FROM Prestamo WHERE id = " + id;
         Prestamo prestamo = new Prestamo();

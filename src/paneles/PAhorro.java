@@ -5,6 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import accionAhorro.TablaAccionCellEditor;
 import accionAhorro.TablaAccionCellRender;
 import accionAhorro.TablaAccionEvent;
+import controladores.CAhorro;
+import java.util.ArrayList;
+import modelos.Ahorro;
 import ventanas.VDepositar;
 import ventanas.VInicio;
 import ventanas.VRetirar;
@@ -20,22 +23,30 @@ public class PAhorro extends javax.swing.JPanel {
      */
     private javax.swing.JDesktopPane dp;
     private VInicio vInicio;
-    private DefaultTableModel tabla;
+    private DefaultTableModel tbl;
+    private ArrayList<Ahorro> ahorros = new ArrayList<>();
 
     public PAhorro(VInicio ini) {
         initComponents();
         vInicio = ini;
         dp = vInicio.getDesktopPane();
 
-        tabla = (DefaultTableModel) tblAhorros.getModel();
-        Object[] ob = new Object[4];
-        ob[0] = "Juan Benítez Jiménez";
-        ob[1] = "$300";
-        ob[2] = "$1,200";
-        ob[3] = "21/12/2024";
-        tabla.addRow(ob);
-
+        tbl = (DefaultTableModel) tblAhorros.getModel();
+        ahorros = CAhorro.getRegistros();
+        tabla();
         accionTabla();
+    }
+    
+    private void tabla() {
+        int filas = tbl.getRowCount();
+        for (int i = 0; i < filas; i++) {
+            tbl.removeRow(0);
+        }
+        for (int i = 0; ahorros.size() > i; i++) {
+            tbl.addRow(new Object[]{
+                ahorros.get(i).getSocio().getNombre(), ahorros.get(i).getMontoMensual(),
+                ahorros.get(i).getAhorrado()});
+        }
     }
 
     private void accionTabla() {
@@ -75,8 +86,8 @@ public class PAhorro extends javax.swing.JPanel {
             }
         };
 
-        tblAhorros.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRender());
-        tblAhorros.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditor(ev));
+        tblAhorros.getColumnModel().getColumn(3).setCellRenderer(new TablaAccionCellRender());
+        tblAhorros.getColumnModel().getColumn(3).setCellEditor(new TablaAccionCellEditor(ev));
     }
 
     @SuppressWarnings("unchecked")
@@ -145,11 +156,11 @@ public class PAhorro extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Socio", "Monto Mensual", "Ahorrado", "Próximo Pago", "Acciones"
+                "Socio", "Monto Mensual", "Ahorrado", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

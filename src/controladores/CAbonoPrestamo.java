@@ -20,6 +20,28 @@ import modelos.Usuario;
  */
 public class CAbonoPrestamo {
 
+    public static ArrayList<AbonoPrestamo> getRegistros() {
+        String consulta = "SELECT * FROM AbonoPrestamo";
+        ArrayList<AbonoPrestamo> abonos = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                AbonoPrestamo abono = new AbonoPrestamo();
+                abono.setId(rs.getInt(1));
+                abono.setPrestamo(CPrestamo.prestamoPorId(rs.getInt(2)));
+                abono.setMonto(rs.getDouble(3));
+                abono.setFecha(rs.getDate(4));
+                abono.setMetodo(rs.getString(5));
+                abono.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+                abonos.add(abono);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return abonos;
+    }
+
     public static ArrayList<AbonoPrestamo> abonosPorFechas(Date fechaI, Date fechaF) {
         String consulta = "SELECT ap.id, p.id, ap.monto, ap.fecha, ap.metodo "
                 + "FROM Socio s INNER JOIN Prestamo p ON p.idSocio = s.id "
