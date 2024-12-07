@@ -14,17 +14,17 @@ import ventanas.VInicio;
  * @author daxsa
  */
 public class PHistorialTransacciones extends javax.swing.JPanel {
-    
+
     private ArrayList<Socio> socios = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private VInicio vInicio = new VInicio();
-    
+
     public PHistorialTransacciones(VInicio vIni) {
         initComponents();
         vInicio = vIni;
         cargarParametros();
     }
-    
+
     private void cargarParametros() {
         socios = CSocio.getRegistros();
         for (Socio s : socios) {
@@ -33,7 +33,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         rbAbono.setSelected(true);
         usuarios = CUsuario.getRegistros();
         for (Usuario u : usuarios) {
-            cmbCliente.addItem(u.getNombre() + " " + u.getApellidos());
+            cmbUsuario.addItem(u.getNombre() + " " + u.getApellidos());
         }
         ftMontoMenor.setValue(0);
         ftMontoMayor.setValue(0);
@@ -42,7 +42,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         dcFechaInicial.setDate(fechaI);
         dcFechaFinal.setDate(fechaF);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
