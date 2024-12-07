@@ -1,9 +1,13 @@
 package controladores;
 
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import modelos.Ahorro;
+import utilerias.Utileria;
 
 /**
  *
@@ -23,7 +27,7 @@ public class CAhorro {
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
                 ahorro.setMontoMensual(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
-                ahorro.setEstatus(rs.getString(5));
+                ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
                 ahorro.setAhorrado(rs.getDouble(7));
                 ahorros.add(ahorro);
@@ -45,7 +49,7 @@ public class CAhorro {
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
                 ahorro.setMontoMensual(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
-                ahorro.setEstatus(rs.getString(5));
+                ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
                 ahorro.setAhorrado(rs.getDouble(7));
             }
@@ -53,5 +57,27 @@ public class CAhorro {
             e.printStackTrace();
         }
         return ahorro;
+    }
+
+    public static boolean guardarRegistro(Ahorro ahorro) {
+        int registrado = 0;
+
+        String query = "INSERT INTO Ahorro (" + Ahorro.CAMPOS + ") VALUES(";
+
+        Object[] valores = {ahorro.getSocio().getId(), ahorro.getMontoMensual(),
+            Utileria.getFechaFormateada(ahorro.getFechaApertura(), Utileria.ANIO_MES_DIA), ahorro.getEstatus(),
+            ahorro.getUsuario().getId(), ahorro.getAhorrado()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
     }
 }

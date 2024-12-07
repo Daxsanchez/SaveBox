@@ -8,14 +8,16 @@ import java.util.Date;
  */
 public class Socio {
     
-    int id;
-    String nombre;
-    String apellidos;
-    int edad;
-    String correo;
-    String direccion;
-    Date fechaCreacion;
-    int estatus;
+    private int id;
+    private String nombre;
+    private String apellidos;
+    private int edad;
+    private String correo;
+    private String direccion;
+    private Date fechaCreacion;
+    private int estatus;
+    
+    public static String CAMPOS = "nombre,apellidos,edad,correo,direccion,fechaCreacion,estatus";
 
     public Socio(int id, String nombre, String apellidos, int edad, String correo, String direccion, Date fechaCreacion, int estatus) {
         this.id = id;

@@ -44,7 +44,7 @@ public class CUsuario {
     }
     
     public static boolean autentificarUsuario(String contra, String usuario) {
-        String consulta = "SELECT pass,salt,rol FROM Usuario WHERE usuario = '" + usuario + "'";
+        String consulta = "SELECT pass,salt,rol,id FROM Usuario WHERE usuario = '" + usuario + "'";
         
         String pass = "", salt = "";
         
@@ -55,6 +55,7 @@ public class CUsuario {
                 pass = rs.getString(1);
                 salt = rs.getString(2);
                 Config.setRol(rs.getString(3));
+                Config.setUsuarioLog(CUsuario.usuarioPorId(rs.getInt(4)));
             }
         } catch (Exception e) {
             e.printStackTrace();

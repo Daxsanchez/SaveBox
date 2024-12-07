@@ -8,15 +8,17 @@ import java.util.Date;
  */
 public class Ahorro {
 
-    int id;
-    Socio socio;
-    double montoMensual;
-    Date fechaApertura;
-    String estatus;
-    Usuario usuario;
-    double ahorrado;
+    private int id;
+    private Socio socio;
+    private double montoMensual;
+    private Date fechaApertura;
+    private int estatus;
+    private Usuario usuario;
+    private double ahorrado;
+    
+    public static String CAMPOS = "idSocio,montoMensual,fechaApertura,estatus,idUsuario,ahorrado";
 
-    public Ahorro(int id, Socio socio, double montoMensual, Date fechaApertura, String estatus, Usuario usuario, double ahorrado) {
+    public Ahorro(int id, Socio socio, double montoMensual, Date fechaApertura, int estatus, Usuario usuario, double ahorrado) {
         this.id = id;
         this.socio = socio;
         this.montoMensual = montoMensual;
@@ -61,11 +63,11 @@ public class Ahorro {
         this.fechaApertura = fechaApertura;
     }
 
-    public String getEstatus() {
+    public int getEstatus() {
         return estatus;
     }
 
-    public void setEstatus(String estatus) {
+    public void setEstatus(int estatus) {
         this.estatus = estatus;
     }
 

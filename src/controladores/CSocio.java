@@ -1,9 +1,13 @@
 package controladores;
 
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import modelos.Socio;
+import utilerias.Utileria;
 
 /**
  *
@@ -51,9 +55,48 @@ public class CSocio {
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return socio;
     }
+
+    public static boolean guardarRegistro(Socio socio) {
+        int registrado = 0;
+
+        String query = "INSERT INTO Socio (" + Socio.CAMPOS + ") VALUES(";
+
+        Object[] valores = {socio.getNombre(), socio.getApellidos(), socio.getEdad(),
+            socio.getCorreo(), socio.getDireccion(),
+            Utileria.getFechaFormateada(socio.getFechaCreacion(), Utileria.ANIO_MES_DIA), socio.getEstatus()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
+    }
+    
+    public static int getUltimoId(){
+        ResultSet rs = CBaseDatos.getUltimoRegistro("Socio", "id");
+        Integer id = null;
+        try {
+            while (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (NullPointerException ex) {
+            System.out.println(ex);
+
+        }
+        return id;
+    }
+
 }

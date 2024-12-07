@@ -1,17 +1,28 @@
 package ventanas;
 
+import bd.CBaseDatos;
+import controladores.CAhorro;
+import controladores.CSocio;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
+import modelos.Ahorro;
+import modelos.Socio;
+
 /**
  *
  * @author rafae
  */
 public class VRegistrarSocio extends javax.swing.JInternalFrame {
-    
+
     private boolean modifica = false;
-    
+    private Socio socio = new Socio();
+    private Ahorro ahorro = new Ahorro();
+
     public VRegistrarSocio() {
         initComponents();
     }
-    
+
     public VRegistrarSocio(String nombre) {
         initComponents();
         modifica = true;
@@ -21,7 +32,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtMontoMensual.setText("$500");
         txtMontoMensual.setEnabled(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -38,7 +49,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         panelRedondeado13 = new utilerias.PanelRedondeado();
         txtNombre = new javax.swing.JTextField();
         panelRedondeado17 = new utilerias.PanelRedondeado();
-        txtTelefono = new javax.swing.JTextField();
+        txtDirección = new javax.swing.JTextField();
         panelRedondeado24 = new utilerias.PanelRedondeado();
         txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
@@ -192,17 +203,17 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         panelRedondeado17.setRoundTopLeft(16);
         panelRedondeado17.setRoundTopRight(16);
 
-        txtTelefono.setBackground(new java.awt.Color(7, 20, 123));
-        txtTelefono.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Teléfono");
-        txtTelefono.setBorder(null);
-        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtDirección.setBackground(new java.awt.Color(7, 20, 123));
+        txtDirección.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtDirección.setForeground(new java.awt.Color(255, 255, 255));
+        txtDirección.setText("Dirección");
+        txtDirección.setBorder(null);
+        txtDirección.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusGained(evt);
+                txtDirecciónFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusLost(evt);
+                txtDirecciónFocusLost(evt);
             }
         });
 
@@ -214,7 +225,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             .addGroup(panelRedondeado17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRedondeado17Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(txtDirección, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addGap(16, 16, 16)))
         );
         panelRedondeado17Layout.setVerticalGroup(
@@ -223,7 +234,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             .addGroup(panelRedondeado17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRedondeado17Layout.createSequentialGroup()
                     .addGap(7, 7, 7)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(txtDirección, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addGap(8, 8, 8)))
         );
 
@@ -267,6 +278,11 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         btnGuardar.setForeground(new java.awt.Color(7, 20, 123));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(7, 20, 123));
         jLabel3.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
@@ -400,15 +416,15 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_txtApellidosFocusLost
 
-    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
-        txtTelefono.setText("");
-    }//GEN-LAST:event_txtTelefonoFocusGained
+    private void txtDirecciónFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirecciónFocusGained
+        txtDirección.setText("");
+    }//GEN-LAST:event_txtDirecciónFocusGained
 
-    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        if (txtTelefono.getText().isEmpty()) {
-            txtTelefono.setText("Telefono");
+    private void txtDirecciónFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirecciónFocusLost
+        if (txtDirección.getText().isEmpty()) {
+            txtDirección.setText("Telefono");
         }
-    }//GEN-LAST:event_txtTelefonoFocusLost
+    }//GEN-LAST:event_txtDirecciónFocusLost
 
     private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
         txtCorreo.setText("");
@@ -425,11 +441,39 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoMensualFocusGained
 
     private void txtMontoMensualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoMensualFocusLost
-        if (txtMontoMensual.getText().isEmpty()) {
-            txtMontoMensual.setText("Monto mensual");
-        }
+
     }//GEN-LAST:event_txtMontoMensualFocusLost
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if (!modifica) {
+            guardar();
+        } else {
+
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void guardar() {
+        socio.setNombre(txtNombre.getText());
+        socio.setApellidos(txtApellidos.getText());
+        socio.setDireccion(txtDirección.getText());
+        socio.setCorreo(txtCorreo.getText());
+        socio.setEstatus(1);
+        socio.setFechaCreacion(new Date());
+        boolean guardado = CSocio.guardarRegistro(socio);
+        if (guardado) {
+            socio.setId(CSocio.getUltimoId());
+            ahorro.setMontoMensual(Double.parseDouble(txtMontoMensual.getText()));
+            ahorro.setEstatus(1);
+            ahorro.setAhorrado(0);
+            ahorro.setFechaApertura(new Date());
+            ahorro.setSocio(socio);
+            ahorro.setUsuario(Config.getUsuarioLog());
+            CAhorro.guardarRegistro(ahorro);
+        }
+        JOptionPane.showMessageDialog(this, "El socio ha sido guardado correctamente", "Socio Guardado",
+                JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -449,8 +493,8 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     private utilerias.PanelRedondeado panelRedondeado25;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDirección;
     private javax.swing.JTextField txtMontoMensual;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }
