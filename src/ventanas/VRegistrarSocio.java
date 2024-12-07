@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import main.Config;
 import modelos.Ahorro;
 import modelos.Socio;
+import paneles.PSocio;
 
 /**
  *
@@ -18,13 +19,16 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     private boolean modifica = false;
     private Socio socio = new Socio();
     private Ahorro ahorro = new Ahorro();
+    private PSocio pSocio;
 
-    public VRegistrarSocio() {
+    public VRegistrarSocio(PSocio ps) {
         initComponents();
+        pSocio = ps;
     }
 
-    public VRegistrarSocio(String nombre) {
+    public VRegistrarSocio(PSocio ps, String nombre) {
         initComponents();
+        pSocio = ps;
         modifica = true;
         lbTitulo.setText("Socio");
         txtNombre.setText(nombre);
@@ -472,6 +476,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         }
         JOptionPane.showMessageDialog(this, "El socio ha sido guardado correctamente", "Socio Guardado",
                 JOptionPane.INFORMATION_MESSAGE);
+        pSocio.actualizarTabla();
         this.dispose();
     }
 

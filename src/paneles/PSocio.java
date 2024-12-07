@@ -41,14 +41,17 @@ public class PSocio extends javax.swing.JPanel {
         for (int i = 0; i < filas; i++) {
             tbl.removeRow(0);
         }
+        System.out.println(socios.get(15).getNombre());
         for (int i = 0; socios.size() > i; i++) {
+            String nombreCompleto = socios.get(i).getNombre() + " " + socios.get(i).getApellidos();
             tbl.addRow(new Object[]{
-                icon, socios.get(i).getNombre(), socios.get(i).getCorreo(),
+                icon, nombreCompleto, socios.get(i).getCorreo(),
                 socios.get(i).getFechaCreacion(), socios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
         }
     }
 
     private void eventoTabla() {
+        PSocio ps = this;
         tblSocios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
@@ -57,7 +60,7 @@ public class PSocio extends javax.swing.JPanel {
                     if (selectedRow != -1) {
                         String nombre = tblSocios.getValueAt(selectedRow, 1).toString();
 
-                        VRegistrarSocio registrarUsuario = new VRegistrarSocio(nombre);
+                        VRegistrarSocio registrarUsuario = new VRegistrarSocio(ps, nombre);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
 
@@ -214,7 +217,8 @@ public class PSocio extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         dp.setLayer(panelRedondeado1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -251,7 +255,7 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        VRegistrarSocio registrarSocio = new VRegistrarSocio();
+        VRegistrarSocio registrarSocio = new VRegistrarSocio(this);
         registrarSocio.setSize(376, 750);
         registrarSocio.setVisible(true);
 
@@ -268,6 +272,10 @@ public class PSocio extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lbAgregarMouseClicked
 
+    public void actualizarTabla() {
+        socios = CSocio.getRegistros();
+        tabla();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
