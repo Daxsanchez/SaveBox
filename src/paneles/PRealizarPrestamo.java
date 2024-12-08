@@ -719,7 +719,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_rbExternoActionPerformed
 
     private void txtNombreExternoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreExternoFocusGained
-        txtNombreExterno.setText("");
+            txtNombreExterno.setText("");
     }//GEN-LAST:event_txtNombreExternoFocusGained
 
     private void txtNombreExternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreExternoFocusLost
