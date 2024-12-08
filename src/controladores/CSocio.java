@@ -82,8 +82,29 @@ public class CSocio {
 
         return registrado == 1;
     }
-    
-    public static int getUltimoId(){
+
+    public static int actualizarRegistro(Socio socio) {
+        int act = 0;
+        String query = "UPDATE Socio SET ";
+        String campos = Socio.CAMPOS_ACT;
+        query = query + CBaseDatos.adjuntarSimbolo(campos, ",", "?") + " WHERE " + "id" + " = ? ";
+
+        Object[] valores = {socio.getNombre(), socio.getApellidos(), socio.getCorreo(),
+            socio.getDireccion(), socio.getId()};
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            act = ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (NullPointerException ex) {
+            System.out.println(ex);
+        }
+        return act;
+    }
+
+    public static int getUltimoId() {
         ResultSet rs = CBaseDatos.getUltimoRegistro("Socio", "id");
         Integer id = null;
         try {

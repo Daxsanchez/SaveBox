@@ -58,9 +58,9 @@ public class PSocio extends javax.swing.JPanel {
                 if (!e.getValueIsAdjusting()) {
                     int selectedRow = tblSocios.getSelectedRow();
                     if (selectedRow != -1) {
-                        String nombre = tblSocios.getValueAt(selectedRow, 1).toString();
+                        Socio socio = socios.get(tblSocios.getSelectedRow());
 
-                        VRegistrarSocio registrarUsuario = new VRegistrarSocio(ps, nombre);
+                        VRegistrarSocio registrarUsuario = new VRegistrarSocio(ps, socio);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
 
@@ -273,6 +273,7 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_lbAgregarMouseClicked
 
     public void actualizarTabla() {
+        tblSocios.clearSelection();
         socios = CSocio.getRegistros();
         tabla();
     }

@@ -18,6 +18,7 @@ public class Socio {
     private int estatus;
     
     public static String CAMPOS = "nombre,apellidos,edad,correo,direccion,fechaCreacion,estatus";
+    public static String CAMPOS_ACT = "nombre,apellidos,correo,direccion";
 
     public Socio(int id, String nombre, String apellidos, int edad, String correo, String direccion, Date fechaCreacion, int estatus) {
         this.id = id;

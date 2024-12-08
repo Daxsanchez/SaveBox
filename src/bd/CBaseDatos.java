@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * @author daxsa
  */
 public class CBaseDatos {
-    
+
     public static ResultSet getUltimoRegistro(String tabla, String columna) {
         String query = "SELECT TOP 1 * FROM " + tabla + " ORDER BY " + columna + " DESC";
         ResultSet rs = null;
@@ -22,7 +22,7 @@ public class CBaseDatos {
         }
         return rs;
     }
-    
+
     public static String formatearValores(int num) {
         String cad = "";
         if (num > 0) {
@@ -33,7 +33,7 @@ public class CBaseDatos {
         }
         return cad;
     }
-    
+
     public static void setValores(PreparedStatement ps, Object[] valores) {
         try {
             for (int i = 0; i < valores.length; i++) {
@@ -47,7 +47,7 @@ public class CBaseDatos {
                     } else {
                         ps.setString(i + 1, null);
                     }
-                    
+
                 }
             }
         } catch (SQLException ex) {
@@ -56,7 +56,7 @@ public class CBaseDatos {
             System.out.println(ex);
         }
     }
-    
+
     private static Integer getInt(Object valor) {
         Integer vl = null;
         if (valor instanceof Integer) {
@@ -64,12 +64,27 @@ public class CBaseDatos {
         }
         return vl;
     }
-    
+
     private static Double getDouble(Object valor) {
         Double vl = null;
         if (valor instanceof Double) {
             vl = (Double) valor;
         }
         return vl;
+    }
+
+    public static String adjuntarSimbolo(String cad, String separador, String simbolo) {
+        String[] campos = stringToArray(cad, separador);
+        String ncad = "";
+
+        for (int i = 0; i < campos.length; i++) {
+            ncad += (i == 0 ? " " : ", ") + campos[i] + "=" + simbolo;
+        }
+
+        return ncad;
+    }
+
+    public static String[] stringToArray(String cad, String separador) {
+        return cad.split(separador);
     }
 }

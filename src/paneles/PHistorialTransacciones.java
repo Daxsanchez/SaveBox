@@ -6,14 +6,12 @@ import controladores.CRetiro;
 import controladores.CSocio;
 import controladores.CUsuario;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 import modelos.AbonoPrestamo;
 import modelos.Deposito;
 import modelos.Retiro;
 import modelos.Socio;
 import modelos.Usuario;
-import utilerias.Utileria;
 import ventanas.VInicio;
 
 /**
@@ -21,7 +19,7 @@ import ventanas.VInicio;
  * @author daxsa
  */
 public class PHistorialTransacciones extends javax.swing.JPanel {
-    
+
     private DefaultTableModel tbl;
     private ArrayList<Socio> socios = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -29,7 +27,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
     private ArrayList<Deposito> depositos = new ArrayList<>();
     private ArrayList<Retiro> retiros = new ArrayList<>();
     private VInicio vInicio = new VInicio();
-    
+
     public PHistorialTransacciones(VInicio vIni) {
         initComponents();
         vInicio = vIni;
@@ -37,7 +35,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         cargarParametros();
         tablaAbonoP();
     }
-    
+
     private void cargarParametros() {
         socios = CSocio.getRegistros();
         for (Socio s : socios) {
@@ -55,7 +53,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         rbAbono.setSelected(true);
         abonos = CAbonoPrestamo.getHistorialAbonos(null, null, null, null, null, null);
     }
-    
+
     private void tablaAbonoP() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -68,7 +66,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
                 abonos.get(i).getFecha()});
         }
     }
-    
+
     private void tablaDeposito() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -81,7 +79,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
                 depositos.get(i).getFecha()});
         }
     }
-    
+
     private void tablaRetiro() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -94,7 +92,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
                 retiros.get(i).getFecha()});
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -277,7 +275,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         cargarParametros();
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
-    
+
     private void limpiar() {
         cmbSocio.setSelectedIndex(0);
         cmbUsuario.setSelectedIndex(0);
@@ -286,7 +284,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         ftMontoMenor.setText("");
         ftMontoMayor.setText("");
     }
-    
+
     private void filtrar() {
         if (rbAbono.isSelected()) {
             filtrarAbonoP();
@@ -296,18 +294,18 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
             filtrarRetiro();
         }
     }
-    
+
     private void filtrarAbonoP() {
         Integer idSocio = 0, idUsuario = 0;
         if (cmbSocio.getSelectedIndex() == 0) {
             idSocio = null;
         } else {
-            idSocio = cmbSocio.getSelectedIndex();
+            idSocio = socios.get(cmbSocio.getSelectedIndex()).getId();
         }
         if (cmbUsuario.getSelectedIndex() == 0) {
             idUsuario = null;
         } else {
-            idUsuario = cmbUsuario.getSelectedIndex();
+            idSocio = usuarios.get(cmbUsuario.getSelectedIndex()).getId();
         }
         Double montoMenor = null, montoMayor = null;
         if (!ftMontoMenor.getText().isEmpty()) {
@@ -319,10 +317,10 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         abonos = CAbonoPrestamo.getHistorialAbonos(idSocio, idUsuario,
                 montoMenor, montoMayor,
                 dcFechaInicial.getDate(), dcFechaFinal.getDate());
-        
+
         tablaAbonoP();
     }
-    
+
     private void filtrarDeposito() {
         Integer idSocio = 0, idUsuario = 0;
         if (cmbSocio.getSelectedIndex() == 0) {
@@ -345,10 +343,10 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         depositos = CDeposito.getHistorialDepositos(idSocio, idUsuario,
                 montoMenor, montoMayor,
                 dcFechaInicial.getDate(), dcFechaFinal.getDate());
-        
+
         tablaDeposito();
     }
-    
+
     public void filtrarRetiro() {
         Integer idSocio = 0, idUsuario = 0;
         if (cmbSocio.getSelectedIndex() == 0) {
@@ -371,7 +369,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         retiros = CRetiro.getHistorialRetiros(idSocio, idUsuario,
                 montoMenor, montoMayor,
                 dcFechaInicial.getDate(), dcFechaFinal.getDate());
-        
+
         tablaRetiro();
     }
 

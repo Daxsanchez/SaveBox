@@ -26,14 +26,19 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         pSocio = ps;
     }
 
-    public VRegistrarSocio(PSocio ps, String nombre) {
+    public VRegistrarSocio(PSocio ps, Socio so) {
         initComponents();
         pSocio = ps;
         modifica = true;
+        socio = so;
         lbTitulo.setText("Socio");
-        txtNombre.setText(nombre);
-        txtApellidos.setText(nombre);
-        txtMontoMensual.setText("$500");
+        txtNombre.setText(socio.getNombre());
+        txtApellidos.setText(socio.getApellidos());
+        txtCorreo.setText(socio.getCorreo());
+        txtDirección.setText(socio.getDireccion());
+
+        ahorro = CAhorro.ahorroPorIdSocio(socio.getId());
+        txtMontoMensual.setText(ahorro.getAhorrado() + "");
         txtMontoMensual.setEnabled(false);
     }
 
@@ -57,8 +62,6 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         panelRedondeado24 = new utilerias.PanelRedondeado();
         txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        dcFechaNac = new com.toedter.calendar.JDateChooser();
         panelRedondeado25 = new utilerias.PanelRedondeado();
         txtMontoMensual = new javax.swing.JTextField();
 
@@ -288,11 +291,6 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(7, 20, 123));
-        jLabel3.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(7, 20, 123));
-        jLabel3.setText("Fecha Nacimiento:");
-
         panelRedondeado25.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado25.setRoundBottomLeft(16);
         panelRedondeado25.setRoundBottomRight(16);
@@ -349,14 +347,6 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel1)
                                         .addGap(59, 59, 59))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(110, 110, 110)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(panelRedondeado11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -366,6 +356,10 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                                     .addComponent(panelRedondeado25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,11 +380,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 .addComponent(panelRedondeado24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(panelRedondeado25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(dcFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addGap(49, 49, 49)
                 .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(54, 54, 54))
         );
@@ -452,7 +442,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         if (!modifica) {
             guardar();
         } else {
-
+            actualizar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -480,12 +470,24 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         this.dispose();
     }
 
+    public void actualizar() {
+        socio.setNombre(txtNombre.getText());
+        socio.setApellidos(txtApellidos.getText());
+        socio.setDireccion(txtDirección.getText());
+        socio.setCorreo(txtCorreo.getText());
+        int actualizado = CSocio.actualizarRegistro(socio);
+        if (actualizado == 1) {
+            JOptionPane.showMessageDialog(this, "El socio ha sido guardado correctamente", "Socio Guardado",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        pSocio.actualizarTabla();
+        this.dispose();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
-    private com.toedter.calendar.JDateChooser dcFechaNac;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbTitulo;
