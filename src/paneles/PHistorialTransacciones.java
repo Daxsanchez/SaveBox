@@ -300,12 +300,12 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         if (cmbSocio.getSelectedIndex() == 0) {
             idSocio = null;
         } else {
-            idSocio = socios.get(cmbSocio.getSelectedIndex()).getId();
+            idSocio = socios.get(cmbSocio.getSelectedIndex()-1).getId();
         }
         if (cmbUsuario.getSelectedIndex() == 0) {
             idUsuario = null;
         } else {
-            idSocio = usuarios.get(cmbUsuario.getSelectedIndex()).getId();
+            idUsuario = usuarios.get(cmbUsuario.getSelectedIndex()-1).getId();
         }
         Double montoMenor = null, montoMayor = null;
         if (!ftMontoMenor.getText().isEmpty()) {
