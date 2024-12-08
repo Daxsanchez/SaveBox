@@ -693,6 +693,10 @@ public class VInicio extends javax.swing.JFrame {
             acercaDe = null;
 
         }
+        if (pHistorialT != null) {
+            pEspacio.remove(pHistorialT);
+            pHistorialT = null;
+        }
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
