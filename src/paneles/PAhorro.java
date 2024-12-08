@@ -25,12 +25,12 @@ public class PAhorro extends javax.swing.JPanel {
     private VInicio vInicio;
     private DefaultTableModel tbl;
     private ArrayList<Ahorro> ahorros = new ArrayList<>();
-
+    
     public PAhorro(VInicio ini) {
         initComponents();
         vInicio = ini;
         dp = vInicio.getDesktopPane();
-
+        
         tbl = (DefaultTableModel) tblAhorros.getModel();
         ahorros = CAhorro.getRegistros();
         tabla();
@@ -48,15 +48,16 @@ public class PAhorro extends javax.swing.JPanel {
                 ahorros.get(i).getAhorrado()});
         }
     }
-
+    
     private void accionTabla() {
+        PAhorro pAhorro = this;
         TablaAccionEvent ev = new TablaAccionEvent() {
             @Override
             public void onDepositar(int row) {
-                VDepositar depositar = new VDepositar();
+                VDepositar depositar = new VDepositar(pAhorro, ahorros.get(row));
                 depositar.setSize(412, 354);
                 depositar.setVisible(true);
-
+                
                 if (dp != null) {
                     vInicio.centrarInternalFrame(depositar, dp);
                     dp.add(depositar);
@@ -67,13 +68,13 @@ public class PAhorro extends javax.swing.JPanel {
                     }
                 }
             }
-
+            
             @Override
             public void onRetirar(int row) {
-                VRetirar retirar = new VRetirar();
+                VRetirar retirar = new VRetirar(pAhorro, ahorros.get(row));
                 retirar.setSize(412, 310);
                 retirar.setVisible(true);
-
+                
                 if (dp != null) {
                     vInicio.centrarInternalFrame(retirar, dp);
                     dp.add(retirar);
@@ -85,11 +86,11 @@ public class PAhorro extends javax.swing.JPanel {
                 }
             }
         };
-
+        
         tblAhorros.getColumnModel().getColumn(3).setCellRenderer(new TablaAccionCellRender());
         tblAhorros.getColumnModel().getColumn(3).setCellEditor(new TablaAccionCellEditor(ev));
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -199,7 +200,12 @@ public class PAhorro extends javax.swing.JPanel {
     private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
         txtBuscar.setText("Buscar");
     }//GEN-LAST:event_txtBuscarFocusLost
-
+    
+    public void actualizarTabla() {
+        tblAhorros.clearSelection();
+        ahorros = CAhorro.getRegistros();
+        tabla();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

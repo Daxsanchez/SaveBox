@@ -1,18 +1,30 @@
 package ventanas;
 
+import controladores.CDeposito;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
+import modelos.Ahorro;
+import modelos.Deposito;
+import paneles.PAhorro;
 
 /**
  *
  * @author daxsa
  */
 public class VDepositar extends javax.swing.JInternalFrame {
-
-    public VDepositar() {
+    
+    private Ahorro ahorro;
+    private Deposito deposito = new Deposito();
+    private PAhorro pAhorro;
+    
+    public VDepositar(PAhorro pAho, Ahorro aho) {
         initComponents();
+        pAhorro = pAho;
+        ahorro = aho;
         dcFecha.setDate(new Date());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -72,7 +84,7 @@ public class VDepositar extends javax.swing.JInternalFrame {
         cmbMetodo.setBackground(new java.awt.Color(7, 20, 123));
         cmbMetodo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         cmbMetodo.setForeground(new java.awt.Color(255, 255, 255));
-        cmbMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de Pago" }));
+        cmbMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de Pago", "Efectivo", "Transferencia", "Cheque" }));
         cmbMetodo.setBorder(null);
         jPanel1.add(cmbMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 370, 30));
 
@@ -109,7 +121,7 @@ public class VDepositar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtMontoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusGained
@@ -117,11 +129,25 @@ public class VDepositar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoFocusGained
 
     private void txtMontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusLost
-        if(txtMonto.getText().isEmpty()){
+        if (txtMonto.getText().isEmpty()) {
             txtMonto.setText("Monto");
         }
     }//GEN-LAST:event_txtMontoFocusLost
-
+    
+    private void guardar() {
+        deposito.setAhorro(ahorro);
+        deposito.setFecha(dcFecha.getDate());
+        deposito.setMetodo(cmbMetodo.getSelectedItem().toString());
+        deposito.setMonto(Double.parseDouble(txtMonto.getText()));
+        deposito.setUsuario(Config.getUsuarioLog());
+        boolean guardado = CDeposito.guardarRegistro(deposito);
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "El depósito ha sido registrado correctamente", "Depósito Realizado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            pAhorro.actualizarTabla();
+            this.dispose();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelos.Deposito;
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
 import modelos.Ahorro;
 import modelos.Socio;
 import modelos.Usuario;
@@ -84,5 +86,27 @@ public class CDeposito {
             System.out.println(ex);
         }
         return abonos;
+    }
+    
+    public static boolean guardarRegistro(Deposito deposito) {
+        int registrado = 0;
+
+        String query = "INSERT INTO Deposito (" + Deposito.CAMPOS + ") VALUES(";
+
+        Object[] valores = {deposito.getAhorro().getId(), deposito.getMonto(),
+            Utileria.getFechaFormateada(deposito.getFecha(), Utileria.ANIO_MES_DIA),
+            deposito.getMetodo(), deposito.getUsuario().getId()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
     }
 }

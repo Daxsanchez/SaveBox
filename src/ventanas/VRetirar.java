@@ -1,6 +1,12 @@
 package ventanas;
 
+import controladores.CRetiro;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
+import modelos.Ahorro;
+import modelos.Retiro;
+import paneles.PAhorro;
 
 /**
  *
@@ -8,8 +14,14 @@ import java.util.Date;
  */
 public class VRetirar extends javax.swing.JInternalFrame {
 
-    public VRetirar() {
+    private Ahorro ahorro;
+    private Retiro retiro = new Retiro();
+    private PAhorro pAhorro;
+
+    public VRetirar(PAhorro pAho, Ahorro aho) {
         initComponents();
+        pAhorro = pAho;
+        ahorro = aho;
         dcFecha.setDate(new Date());
     }
 
@@ -101,7 +113,7 @@ public class VRetirar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+        guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtMontoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusGained
@@ -109,11 +121,25 @@ public class VRetirar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoFocusGained
 
     private void txtMontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusLost
-        if(txtMonto.getText().isEmpty()){
+        if (txtMonto.getText().isEmpty()) {
             txtMonto.setText("Monto");
         }
     }//GEN-LAST:event_txtMontoFocusLost
 
+    private void guardar() {
+        retiro.setAhorro(ahorro);
+        retiro.setEstatus("APROBADO");
+        retiro.setFecha(dcFecha.getDate());
+        retiro.setMonto(Double.parseDouble(txtMonto.getText()));
+        retiro.setUsuario(Config.getUsuarioLog());
+        boolean guardado = CRetiro.guardarRegistro(retiro);
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "El retiro ha sido registrado correctamente", "Retiro Realizado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            pAhorro.actualizarTabla();
+            this.dispose();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;

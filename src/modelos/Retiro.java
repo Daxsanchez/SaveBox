@@ -8,12 +8,14 @@ import java.util.Date;
  */
 public class Retiro {
 
-    int id;
-    Ahorro ahorro;
-    double monto;
-    Date fecha;
-    String estatus;
-    Usuario usuario;
+    private int id;
+    private Ahorro ahorro;
+    private double monto;
+    private Date fecha;
+    private String estatus;
+    private Usuario usuario;
+    
+    public static String CAMPOS = "idAhorro,monto,fecha,estatus,idUsuario";
 
     public Retiro(int id, Ahorro ahorro, double monto, Date fecha, String estatus, Usuario usuario) {
         this.id = id;

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelos.Retiro;
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import utilerias.Utileria;
 import java.sql.CallableStatement;
@@ -84,5 +86,27 @@ public class CRetiro {
             System.out.println(ex);
         }
         return abonos;
+    }
+
+    public static boolean guardarRegistro(Retiro retiro) {
+        int registrado = 0;
+
+        String query = "INSERT INTO Retiro (" + Retiro.CAMPOS + ") VALUES(";
+
+        Object[] valores = {retiro.getAhorro().getId(), retiro.getMonto(),
+            Utileria.getFechaFormateada(retiro.getFecha(), Utileria.ANIO_MES_DIA),
+            retiro.getEstatus(), retiro.getUsuario().getId()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
     }
 }
