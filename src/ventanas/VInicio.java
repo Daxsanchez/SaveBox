@@ -90,7 +90,6 @@ public class VInicio extends javax.swing.JFrame {
         lbAhorro = new javax.swing.JLabel();
         pIAcerca = new utilerias.PanelRedondeado();
         lbAcerca = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         helpCentro2 = new help.helpCentro();
@@ -337,11 +336,6 @@ public class VInicio extends javax.swing.JFrame {
         lbAhorro.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
         lbAhorro.setText("Ahorros");
-        lbAhorro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbAhorroMouseClicked(evt);
-            }
-        });
 
         javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
         pAho.setLayout(pAhoLayout);
@@ -400,11 +394,6 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("|");
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avatar_chico.png"))); // NOI18N
@@ -426,9 +415,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
                 .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,9 +429,6 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6))
-                    .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -452,7 +436,10 @@ public class VInicio extends javax.swing.JFrame {
                     .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel6)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -624,22 +611,6 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.revalidate(); // Validar cambios
     }//GEN-LAST:event_lbAcercaMouseClicked
 
-    private void lbAhorroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAhorroMouseClicked
-        quitarPaneles(); // Ocultar otros paneles o limpiar la vista
-
-        if (pAhorro == null) {
-           pAhorro = new PAhorro(this); // Crear el panel "AcercaDe"
-            acercaDe.setBounds(x, y, width, height); // Configurar posición y tamaño
-            pEspacio.add(pAhorro); // Agregar al contenedor de paneles
-            pEspacio.setComponentZOrder(pAhorro, 0); // Asegurar que esté al frente
-        }
-
-        pAhorro.setVisible(true); // Mostrar el panel
-        pEspacio.repaint(); // Redibujar el contenedor
-        pEspacio.revalidate(); // Validar cambios
-
-    }//GEN-LAST:event_lbAhorroMouseClicked
-
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -761,7 +732,6 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
