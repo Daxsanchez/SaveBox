@@ -30,8 +30,20 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
             cmbSocio.addItem(s.getNombre() + " " + s.getApellidos());
         }
         dcFecha.setDate(new Date());
+        txtMonto.setText(0 + "");
     }
-
+    
+    public void intereses(){
+        double montoPrestamo = Double.parseDouble(txtMonto.getText());
+        double interes , totalPago;
+        
+        interes = montoPrestamo * 0.07; 
+        totalPago = interes + montoPrestamo;
+        
+        txtTotalInteres.setText(interes + "");
+        txtTotalPagar.setText(totalPago + "");
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,6 +196,11 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         txtMonto.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtMonto.setForeground(new java.awt.Color(7, 20, 123));
         txtMonto.setBorder(null);
+        txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtMontoKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelRedondeado4Layout = new javax.swing.GroupLayout(panelRedondeado4);
         panelRedondeado4.setLayout(panelRedondeado4Layout);
@@ -289,8 +306,10 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         panelRedondeado9.setRoundTopLeft(30);
         panelRedondeado9.setRoundTopRight(30);
 
+        txtTasaInteres.setEditable(false);
         txtTasaInteres.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtTasaInteres.setForeground(new java.awt.Color(7, 20, 123));
+        txtTasaInteres.setText("7%");
         txtTasaInteres.setBorder(null);
 
         javax.swing.GroupLayout panelRedondeado9Layout = new javax.swing.GroupLayout(panelRedondeado9);
@@ -343,6 +362,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         panelRedondeado12.setRoundTopLeft(30);
         panelRedondeado12.setRoundTopRight(30);
 
+        txtTotalPagar.setEditable(false);
         txtTotalPagar.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtTotalPagar.setForeground(new java.awt.Color(7, 20, 123));
         txtTotalPagar.setBorder(null);
@@ -663,7 +683,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                     .addComponent(panelRedondeado14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRedondeado15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRedondeado16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(170, Short.MAX_VALUE))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -715,6 +735,13 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
         reporte();
     }//GEN-LAST:event_btnContratoActionPerformed
+
+    private void txtMontoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyReleased
+
+        if (!txtMonto.getText().isEmpty()) {
+            intereses();
+        }
+    }//GEN-LAST:event_txtMontoKeyReleased
 
     private void reporte() {
         setPrestamo();
