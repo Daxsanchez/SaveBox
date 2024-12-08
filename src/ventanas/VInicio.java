@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import main.Config;
 import paneles.AcercaDe;
 import paneles.PAhorro;
+import paneles.PConfig;
+import paneles.PEmpresa;
+import paneles.PGuia;
 import paneles.PHistorialTransacciones;
 import paneles.PInicio;
 import paneles.PNotificacion;
@@ -43,6 +46,10 @@ public class VInicio extends javax.swing.JFrame {
     private AcercaDe acercaDe = null;
     private PNotificacion pqNotificacion = null;
     private PPerfilUsuario pPerfilUsuario = null;
+    
+    private PGuia pGuia = null;
+    private PConfig pConfig = null;
+    private PEmpresa pEmpresa = null;
 
     public VInicio() {
         initComponents();
@@ -76,10 +83,13 @@ public class VInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         dp = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
+        plConfiguracion = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        plGuia = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        plEmpresa = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         pEspacio = new javax.swing.JPanel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         pI = new utilerias.PanelRedondeado();
@@ -109,12 +119,6 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libro.png"))); // NOI18N
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
-
         lblCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
         lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -122,39 +126,115 @@ public class VInicio extends javax.swing.JFrame {
             }
         });
 
+        plConfiguracion.setBackground(new java.awt.Color(7, 20, 123));
+        plConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plConfiguracionMouseClicked(evt);
+            }
+        });
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
+
+        javax.swing.GroupLayout plConfiguracionLayout = new javax.swing.GroupLayout(plConfiguracion);
+        plConfiguracion.setLayout(plConfiguracionLayout);
+        plConfiguracionLayout.setHorizontalGroup(
+            plConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plConfiguracionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addContainerGap())
+        );
+        plConfiguracionLayout.setVerticalGroup(
+            plConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plConfiguracionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
+
+        plGuia.setBackground(new java.awt.Color(7, 20, 123));
+        plGuia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plGuiaMouseClicked(evt);
+            }
+        });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libro.png"))); // NOI18N
+
+        javax.swing.GroupLayout plGuiaLayout = new javax.swing.GroupLayout(plGuia);
+        plGuia.setLayout(plGuiaLayout);
+        plGuiaLayout.setHorizontalGroup(
+            plGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plGuiaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        plGuiaLayout.setVerticalGroup(
+            plGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plGuiaLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel1))
+        );
+
+        plEmpresa.setBackground(new java.awt.Color(7, 20, 123));
+        plEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                plEmpresaMouseClicked(evt);
+            }
+        });
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
+
+        javax.swing.GroupLayout plEmpresaLayout = new javax.swing.GroupLayout(plEmpresa);
+        plEmpresa.setLayout(plEmpresaLayout);
+        plEmpresaLayout.setHorizontalGroup(
+            plEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(plEmpresaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        plEmpresaLayout.setVerticalGroup(
+            plEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, plEmpresaLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel2))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel1)))))
+                        .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(plConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(plGuia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(plEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(plEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(plGuia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(plConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
                 .addComponent(lblCerrarSesion)
                 .addGap(19, 19, 19))
         );
 
         dp.add(jPanel2);
-        jPanel2.setBounds(0, 0, 62, 757);
+        jPanel2.setBounds(0, 0, 64, 757);
 
         pEspacio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -510,7 +590,7 @@ public class VInicio extends javax.swing.JFrame {
         );
 
         dp.add(panelRedondeado1);
-        panelRedondeado1.setBounds(88, 13, 1310, 82);
+        panelRedondeado1.setBounds(88, 13, 1312, 82);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -704,6 +784,45 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.revalidate(); // Validar cambios
     }//GEN-LAST:event_pIAcercaMouseClicked
 
+    private void plEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plEmpresaMouseClicked
+        quitarPaneles();
+        if (pEmpresa == null) {
+            pEmpresa = new PEmpresa(this);
+            pEmpresa.setVisible(true);
+            pEmpresa.setBounds(x, y, width, height);
+            pEspacio.add(pEmpresa);
+            pEspacio.setComponentZOrder(pEmpresa, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_plEmpresaMouseClicked
+
+    private void plConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plConfiguracionMouseClicked
+        quitarPaneles();
+        if (pConfig == null) {
+            pConfig = new PConfig(this);
+            pConfig.setVisible(true);
+            pConfig.setBounds(x, y, width, height);
+            pEspacio.add(pConfig);
+            pEspacio.setComponentZOrder(pConfig, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_plConfiguracionMouseClicked
+
+    private void plGuiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_plGuiaMouseClicked
+        quitarPaneles();
+        if (pGuia == null) {
+            pGuia = new PGuia(this);
+            pGuia.setVisible(true);
+            pGuia.setBounds(x, y, width, height);
+            pEspacio.add(pGuia);
+            pEspacio.setComponentZOrder(pGuia, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_plGuiaMouseClicked
+
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -858,5 +977,8 @@ public class VInicio extends javax.swing.JFrame {
     private utilerias.PanelRedondeado pSocios;
     private utilerias.PanelRedondeado pUs;
     private utilerias.PanelRedondeado panelRedondeado1;
+    private javax.swing.JPanel plConfiguracion;
+    private javax.swing.JPanel plEmpresa;
+    private javax.swing.JPanel plGuia;
     // End of variables declaration//GEN-END:variables
 }
