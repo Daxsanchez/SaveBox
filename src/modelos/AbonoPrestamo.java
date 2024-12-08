@@ -8,12 +8,14 @@ import java.util.Date;
  */
 public class AbonoPrestamo {
 
-    int id;
-    Prestamo prestamo;
-    double monto;
-    Date fecha;
-    String metodo;
-    Usuario usuario;
+    private int id;
+    private Prestamo prestamo;
+    private double monto;
+    private Date fecha;
+    private String metodo;
+    private Usuario usuario;
+
+    public static String CAMPOS = "idPrestamo,monto,fecha,metodo,idUsuario";
 
     public AbonoPrestamo(int id, Prestamo prestamo, double monto, Date fecha, String metodo) {
         this.id = id;

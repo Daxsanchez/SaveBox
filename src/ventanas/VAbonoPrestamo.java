@@ -1,13 +1,29 @@
 package ventanas;
 
+import controladores.CAbonoPrestamo;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
+import modelos.AbonoPrestamo;
+import modelos.Prestamo;
+import paneles.PPrestamos;
+
 /**
  *
  * @author daxsa
  */
 public class VAbonoPrestamo extends javax.swing.JInternalFrame {
-    
-    public VAbonoPrestamo() {
+
+    private Prestamo prestamo;
+    private AbonoPrestamo abono = new AbonoPrestamo();
+    private PPrestamos pPrestamo;
+
+    public VAbonoPrestamo(PPrestamos pPres, Prestamo p) {
         initComponents();
+        pPrestamo = pPres;
+        prestamo = p;
+        txtRestante.setEditable(false);
+        txtRestante.setText(prestamo.getSaldoRestante() + "");
     }
 
     @SuppressWarnings("unchecked")
@@ -72,7 +88,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         cmbMetodo.setBackground(new java.awt.Color(7, 20, 123));
         cmbMetodo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         cmbMetodo.setForeground(new java.awt.Color(255, 255, 255));
-        cmbMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de Pago" }));
+        cmbMetodo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Metodo de Pago", "Efectivo", "Transferencia", "Cheque" }));
         cmbMetodo.setBorder(null);
         jPanel1.add(cmbMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 370, 30));
 
@@ -118,6 +134,11 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         rbLiquidar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         rbLiquidar.setForeground(new java.awt.Color(7, 20, 123));
         rbLiquidar.setText("Liquidar");
+        rbLiquidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbLiquidarActionPerformed(evt);
+            }
+        });
         jPanel1.add(rbLiquidar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -139,15 +160,39 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoFocusGained
 
     private void txtMontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusLost
-        if(txtMonto.getText().isEmpty()){
+        if (txtMonto.getText().isEmpty()) {
             txtMonto.setText("Monto");
         }
     }//GEN-LAST:event_txtMontoFocusLost
 
     private void btnAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbonarActionPerformed
-        
+        guardar();
     }//GEN-LAST:event_btnAbonarActionPerformed
 
+    private void rbLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidarActionPerformed
+        if (rbLiquidar.isSelected()) {
+            txtMonto.setEditable(false);
+            txtMonto.setText(prestamo.getSaldoRestante() + "");
+        } else {
+            txtMonto.setEditable(true);
+            txtMonto.setText("0");
+        }
+    }//GEN-LAST:event_rbLiquidarActionPerformed
+
+    private void guardar() {
+        abono.setFecha(dcFecha.getDate());
+        abono.setMetodo(cmbMetodo.getSelectedItem().toString());
+        abono.setMonto(Double.parseDouble(txtMonto.getText()));
+        abono.setPrestamo(prestamo);
+        abono.setUsuario(Config.getUsuarioLog());
+        boolean guardado = CAbonoPrestamo.guardarRegistro(abono);
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "El abono ha sido registrado correctamente", "Abono Realizado",
+                    JOptionPane.INFORMATION_MESSAGE);
+            pPrestamo.actualizarTabla();
+            this.dispose();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAbonar;

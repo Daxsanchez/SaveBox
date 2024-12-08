@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import modelos.AbonoPrestamo;
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import utilerias.Utileria;
 import java.sql.CallableStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import modelos.Prestamo;
 import modelos.Socio;
 import modelos.Usuario;
@@ -107,6 +107,28 @@ public class CAbonoPrestamo {
             System.out.println(ex);
         }
         return abonos;
+    }
+
+    public static boolean guardarRegistro(AbonoPrestamo abono) {
+        int registrado = 0;
+
+        String query = "INSERT INTO AbonoPrestamo (" + AbonoPrestamo.CAMPOS + ") VALUES(";
+
+        Object[] valores = {abono.getPrestamo().getId(), abono.getMonto(),
+            Utileria.getFechaFormateada(abono.getFecha(), Utileria.ANIO_MES_DIA),
+            abono.getMetodo(), abono.getUsuario().getId()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
     }
 
 }

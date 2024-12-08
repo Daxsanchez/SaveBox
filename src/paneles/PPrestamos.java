@@ -52,13 +52,13 @@ public class PPrestamos extends javax.swing.JPanel {
     }
 
     private void accionTabla() {
+        PPrestamos pPres = this;
         TablaAccionEventP ev = new TablaAccionEventP() {
             @Override
             public void onAbonar(int row) {
-                VAbonoPrestamo abonar = new VAbonoPrestamo();
+                VAbonoPrestamo abonar = new VAbonoPrestamo(pPres, prestamos.get(row));
                 abonar.setSize(412, 482);
                 abonar.setVisible(true);
-                System.out.println("Entró " + row);
 
                 if (dp != null) {
                     vInicio.centrarInternalFrame(abonar, dp);
@@ -210,6 +210,11 @@ public class PPrestamos extends javax.swing.JPanel {
         vInicio.abrirRealizarPrestamo();
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    public void actualizarTabla() {
+        tblPrestamos.clearSelection();
+        prestamos = CPrestamo.getRegistros();
+        tabla();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
