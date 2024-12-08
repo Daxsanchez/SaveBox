@@ -41,8 +41,8 @@ public class VInicio extends javax.swing.JFrame {
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
     private AcercaDe acercaDe = null;
-    private PNotificacion pqNotificacion = null; 
-    private PPerfilUsuario pPerfilUsuario = null; 
+    private PNotificacion pqNotificacion = null;
+    private PPerfilUsuario pPerfilUsuario = null;
 
     public VInicio() {
         initComponents();
@@ -668,12 +668,12 @@ public class VInicio extends javax.swing.JFrame {
             pqNotificacion = new PNotificacion(this);
             pqNotificacion.setVisible(true);
             pqNotificacion.setBounds(x, y, width, height);
-            pEspacio.add( pqNotificacion);
-            pEspacio.setComponentZOrder( pqNotificacion, 0);
+            pEspacio.add(pqNotificacion);
+            pEspacio.setComponentZOrder(pqNotificacion, 0);
             pEspacio.repaint();
             pEspacio.revalidate();
         }
-        
+
     }//GEN-LAST:event_pNotifiMouseClicked
 
     private void pPerfilUsuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPerfilUsuMouseClicked
@@ -789,6 +789,14 @@ public class VInicio extends javax.swing.JFrame {
         if (pHistorialT != null) {
             pEspacio.remove(pHistorialT);
             pHistorialT = null;
+        }
+        if (pqNotificacion != null) {
+            pEspacio.remove(pqNotificacion);
+            pqNotificacion = null;
+        }
+        if (pPerfilUsuario != null) {
+            pEspacio.remove(pPerfilUsuario);
+            pPerfilUsuario = null;
         }
         pEspacio.invalidate();
         pEspacio.validate();
