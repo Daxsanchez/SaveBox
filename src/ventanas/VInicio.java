@@ -53,10 +53,10 @@ public class VInicio extends javax.swing.JFrame {
 
     public void validarRol() {
         String rol = Config.getRol();
-        if (rol.equals("GESTOR")) {
+        if (rol.equalsIgnoreCase("GESTOR")) {
             pUs.setVisible(false);
             pPres.setVisible(false);
-        } else if (rol.equals("ADMINISTRADOR")) {
+        } else if (rol.equalsIgnoreCase("ADMINISTRADOR")) {
 
         }
     }

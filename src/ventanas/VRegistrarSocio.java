@@ -477,7 +477,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         socio.setCorreo(txtCorreo.getText());
         int actualizado = CSocio.actualizarRegistro(socio);
         if (actualizado == 1) {
-            JOptionPane.showMessageDialog(this, "El socio ha sido guardado correctamente", "Socio Guardado",
+            JOptionPane.showMessageDialog(this, "El socio ha sido actualizado correctamente", "Socio Actualizado",
                     JOptionPane.INFORMATION_MESSAGE);
         }
         pSocio.actualizarTabla();

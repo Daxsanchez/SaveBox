@@ -6,9 +6,11 @@ import controladores.CRetiro;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import main.Config;
 import modelos.AbonoPrestamo;
 import modelos.Deposito;
 import modelos.Retiro;
+import modelos.Usuario;
 import utilerias.Utileria;
 import ventanas.VInicio;
 
@@ -17,27 +19,28 @@ import ventanas.VInicio;
  * @author daxsa
  */
 public class PInicio extends javax.swing.JPanel {
-
+    
     private DefaultTableModel tbl;
     private ArrayList<AbonoPrestamo> abonos = new ArrayList<>();
     private ArrayList<Deposito> depositos = new ArrayList<>();
     private ArrayList<Retiro> retiros = new ArrayList<>();
     private VInicio vInicio = null;
-
+    
     public PInicio(VInicio vIni) {
         initComponents();
         vInicio = vIni;
         tbl = (DefaultTableModel) tblTransacciones.getModel();
-
+        
         Date fechaI = Utileria.sumarRestarDias(new Date(), -100);
         Date fechaF = new Date();
         abonos = CAbonoPrestamo.abonosPorFechas(fechaI, fechaF);
         depositos = CDeposito.depositosPorFechas(fechaI, fechaF);
         retiros = CRetiro.retirosPorFechas(fechaI, fechaF);
-
+        
         tabla();
+        cargarIniUsu();
     }
-
+    
     private void tabla() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -49,14 +52,14 @@ public class PInicio extends javax.swing.JPanel {
                 "Abono Préstamo", abonos.get(i).getMonto(),
                 abonos.get(i).getFecha()});
         }
-
+        
         for (int i = 0; depositos.size() > i; i++) {
             tbl.addRow(new Object[]{
                 depositos.get(i).getAhorro().getSocio().getNombre(),
                 "Depósito", depositos.get(i).getMonto(),
                 depositos.get(i).getFecha()});
         }
-
+        
         for (int i = 0; retiros.size() > i; i++) {
             tbl.addRow(new Object[]{
                 retiros.get(i).getAhorro().getSocio().getNombre(),
@@ -64,7 +67,13 @@ public class PInicio extends javax.swing.JPanel {
                 retiros.get(i).getFecha()});
         }
     }
-
+    
+    private void cargarIniUsu() {
+        Usuario usuario = Config.getUsuarioLog();
+        lbRol.setText(usuario.getRol().toUpperCase());
+        lbNombre.setText(usuario.getNombre() + " " + usuario.getApellidos());
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -80,7 +89,7 @@ public class PInicio extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         lbRol = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
+        lbNombre = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -191,9 +200,9 @@ public class PInicio extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Bienvenido a SaveBox");
 
-        jLabel11.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Dax Naim Sánchez López");
+        lbNombre.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
+        lbNombre.setForeground(new java.awt.Color(255, 255, 255));
+        lbNombre.setText("Dax Naim Sánchez López");
 
         jLabel12.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,7 +249,7 @@ public class PInicio extends javax.swing.JPanel {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRedondeado2Layout.createSequentialGroup()
                         .addGap(249, 249, 249)
-                        .addComponent(jLabel11)))
+                        .addComponent(lbNombre)))
                 .addContainerGap(367, Short.MAX_VALUE))
         );
         panelRedondeado2Layout.setVerticalGroup(
@@ -251,7 +260,7 @@ public class PInicio extends javax.swing.JPanel {
                     .addGroup(panelRedondeado2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11)
+                        .addComponent(lbNombre)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
@@ -297,7 +306,6 @@ public class PInicio extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Pini;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -308,6 +316,7 @@ public class PInicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbBuscar;
+    private javax.swing.JLabel lbNombre;
     private javax.swing.JLabel lbRol;
     private utilerias.PanelRedondeado panelRedondeado2;
     private javax.swing.JTable tblTransacciones;

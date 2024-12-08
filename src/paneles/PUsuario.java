@@ -50,15 +50,16 @@ public class PUsuario extends javax.swing.JPanel {
     }
 
     private void eventoTabla() {
+        PUsuario pUs = this;
         tblUsuarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     int selectedRow = tblUsuarios.getSelectedRow();
                     if (selectedRow != -1) {
-                        String nombre = tblUsuarios.getValueAt(selectedRow, 1).toString();
+                        Usuario us = usuarios.get(tblUsuarios.getSelectedRow());
 
-                        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(nombre);
+                        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(pUs, us);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
 
@@ -258,7 +259,7 @@ public class PUsuario extends javax.swing.JPanel {
     }//GEN-LAST:event_txtBuscarFocusLost
 
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
-        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario();
+        VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(this);
         registrarUsuario.setSize(376, 750);
         registrarUsuario.setVisible(true);
 
@@ -273,6 +274,11 @@ public class PUsuario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_lbAgregarMouseClicked
 
+    public void actualizarTabla() {
+        tblUsuarios.clearSelection();
+        usuarios = CUsuario.getRegistros();
+        tabla();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;

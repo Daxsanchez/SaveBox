@@ -1,5 +1,12 @@
 package ventanas;
 
+import controladores.CUsuario;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import modelos.Usuario;
+import paneles.PUsuario;
+import utilerias.Password;
+
 /**
  *
  * @author rafae
@@ -7,18 +14,26 @@ package ventanas;
 public class VRegistrarUsuario extends javax.swing.JInternalFrame {
 
     private boolean modifica = false;
-    
-    public VRegistrarUsuario() {
+    private Usuario usuario;
+    private PUsuario pUsuario;
+
+    public VRegistrarUsuario(PUsuario pUs) {
         initComponents();
+        pUsuario = pUs;
     }
-    
-    public VRegistrarUsuario(String nombre) {
+
+    public VRegistrarUsuario(PUsuario pUs, Usuario us) {
         initComponents();
+        pUsuario = pUs;
         modifica = true;
+        usuario = us;
         lbTitulo.setText("Usuario");
-        txtNombre.setText(nombre);
-        txtApellidos.setText(nombre);
-        txtUsuario.setText(nombre);
+        txtNombre.setText(us.getNombre());
+        txtApellidos.setText(us.getApellidos());
+        txtDireccion.setText(us.getDireccion());
+        txtUsuario.setText(us.getUsuario());
+        cmbRol.setSelectedItem(us.getRol());
+        pfPass.setText(us.getPass());
     }
 
     @SuppressWarnings("unchecked")
@@ -39,7 +54,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         panelRedondeado15 = new utilerias.PanelRedondeado();
         txtUsuario = new javax.swing.JTextField();
         panelRedondeado17 = new utilerias.PanelRedondeado();
-        txtTelefono = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         panelRedondeado24 = new utilerias.PanelRedondeado();
         pfPass = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
@@ -227,17 +242,17 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         panelRedondeado17.setRoundTopLeft(16);
         panelRedondeado17.setRoundTopRight(16);
 
-        txtTelefono.setBackground(new java.awt.Color(7, 20, 123));
-        txtTelefono.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        txtTelefono.setText("Teléfono");
-        txtTelefono.setBorder(null);
-        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtDireccion.setBackground(new java.awt.Color(7, 20, 123));
+        txtDireccion.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtDireccion.setText("Direccion");
+        txtDireccion.setBorder(null);
+        txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusGained(evt);
+                txtDireccionFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusLost(evt);
+                txtDireccionFocusLost(evt);
             }
         });
 
@@ -249,7 +264,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
             .addGroup(panelRedondeado17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRedondeado17Layout.createSequentialGroup()
                     .addGap(16, 16, 16)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                     .addGap(16, 16, 16)))
         );
         panelRedondeado17Layout.setVerticalGroup(
@@ -258,7 +273,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
             .addGroup(panelRedondeado17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRedondeado17Layout.createSequentialGroup()
                     .addGap(7, 7, 7)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
                     .addGap(8, 8, 8)))
         );
 
@@ -303,6 +318,11 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         btnGuardar.setForeground(new java.awt.Color(7, 20, 123));
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         cmbRol.setBackground(new java.awt.Color(7, 20, 123));
         cmbRol.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
@@ -379,7 +399,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreFocusGained
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        if(txtNombre.getText().isEmpty()){
+        if (txtNombre.getText().isEmpty()) {
             txtNombre.setText("Nombre");
         }
     }//GEN-LAST:event_txtNombreFocusLost
@@ -389,27 +409,27 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtApellidosFocusGained
 
     private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
-        if(txtApellidos.getText().isEmpty()){
+        if (txtApellidos.getText().isEmpty()) {
             txtApellidos.setText("Apellidos");
         }
     }//GEN-LAST:event_txtApellidosFocusLost
 
-    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
-        txtTelefono.setText("");
-    }//GEN-LAST:event_txtTelefonoFocusGained
+    private void txtDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusGained
+        txtDireccion.setText("");
+    }//GEN-LAST:event_txtDireccionFocusGained
 
-    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        if(txtTelefono.getText().isEmpty()){
-            txtTelefono.setText("Telefono");
+    private void txtDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusLost
+        if (txtDireccion.getText().isEmpty()) {
+            txtDireccion.setText("Telefono");
         }
-    }//GEN-LAST:event_txtTelefonoFocusLost
+    }//GEN-LAST:event_txtDireccionFocusLost
 
     private void txtUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusGained
         txtUsuario.setText("");
     }//GEN-LAST:event_txtUsuarioFocusGained
 
     private void txtUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsuarioFocusLost
-        if(txtUsuario.getText().isEmpty()){
+        if (txtUsuario.getText().isEmpty()) {
             txtUsuario.setText("Usuario");
         }
     }//GEN-LAST:event_txtUsuarioFocusLost
@@ -419,11 +439,56 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_pfPassFocusGained
 
     private void pfPassFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pfPassFocusLost
-        if(pfPass.getText().isEmpty()){
+        if (pfPass.getText().isEmpty()) {
             pfPass.setText("Contraseña");
         }
     }//GEN-LAST:event_pfPassFocusLost
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        if (!modifica) {
+            guardar();
+        } else {
+            actualizar();
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void guardar() {
+        usuario = new Usuario();
+        usuario.setNombre(txtNombre.getText());
+        usuario.setApellidos(txtApellidos.getText());
+        usuario.setDireccion(txtDireccion.getText());
+        usuario.setCorreo("");
+        usuario.setRol(cmbRol.getSelectedItem().toString());
+        usuario.setEstatus(1);
+        usuario.setUsuario(txtUsuario.getText());
+        usuario.setSalt(Password.getSalt());
+        usuario.setPass(Password.hashPassword(pfPass.getText(), usuario.getSalt()));
+        usuario.setFechaCreacion(new Date());
+        boolean guardado = CUsuario.guardarRegistro(usuario);
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "El usuario ha sido guardado correctamente", "Usuario Guardado",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        pUsuario.actualizarTabla();
+        this.dispose();
+    }
+
+    public void actualizar() {
+        usuario.setNombre(txtNombre.getText());
+        usuario.setApellidos(txtApellidos.getText());
+        usuario.setDireccion(txtDireccion.getText());
+        usuario.setRol(cmbRol.getSelectedItem().toString());
+        usuario.setUsuario(txtUsuario.getText());
+        usuario.setSalt(Password.getSalt());
+        usuario.setPass(Password.hashPassword(pfPass.getText(), usuario.getSalt()));
+        int actualizado = CUsuario.actualizarRegistro(usuario);
+        if (actualizado == 1) {
+            JOptionPane.showMessageDialog(this, "El usuario ha sido actualizado correctamente", "Usuario Actualizado",
+                    JOptionPane.INFORMATION_MESSAGE);
+        }
+        pUsuario.actualizarTabla();
+        this.dispose();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
@@ -432,7 +497,6 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JLabel lbTitulo;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado11;
@@ -440,13 +504,11 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     private utilerias.PanelRedondeado panelRedondeado14;
     private utilerias.PanelRedondeado panelRedondeado15;
     private utilerias.PanelRedondeado panelRedondeado17;
-    private utilerias.PanelRedondeado panelRedondeado22;
-    private utilerias.PanelRedondeado panelRedondeado23;
     private utilerias.PanelRedondeado panelRedondeado24;
     private javax.swing.JPasswordField pfPass;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

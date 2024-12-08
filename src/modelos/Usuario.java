@@ -7,23 +7,26 @@ import java.util.Date;
  * @author zeta9
  */
 public class Usuario {
-    
-    int id;
-    String nombre;
-    String apellidos;
-    int edad;
-    String correo;
-    String direccion;
-    String rol;
-    String usuario;
-    String pass;
-    String salt;
-    double salario;
-    Date fechaCreacion;
-    int estatus;
-    Empresa empresa;
 
-    public Usuario(int id, String nombre, String apellidos, int edad, String correo, String direccion, String rol, String usuario, 
+    private int id;
+    private String nombre;
+    private String apellidos;
+    private int edad;
+    private String correo;
+    private String direccion;
+    private String rol;
+    private String usuario;
+    private String pass;
+    private String salt;
+    private double salario;
+    private Date fechaCreacion;
+    private int estatus;
+    private Empresa empresa;
+
+    public static String CAMPOS = "nombre,apellidos,edad,correo,direccion,rol,usuario,pass,salario,fechaCreacion,estatus,idEmpresa,salt";
+    public static String CAMPOS_ACT = "nombre,apellidos,correo,direccion,rol,usuario,pass,salt";
+
+    public Usuario(int id, String nombre, String apellidos, int edad, String correo, String direccion, String rol, String usuario,
             String pass, String salt, double salario, Date fechaCreacion, int estatus, Empresa empresa) {
         this.id = id;
         this.nombre = nombre;
@@ -156,6 +159,4 @@ public class Usuario {
         this.empresa = empresa;
     }
 
-    
-    
 }
