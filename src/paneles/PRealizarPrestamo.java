@@ -1,7 +1,15 @@
 package paneles;
 
+import controladores.CPrestamo;
+import controladores.CSocio;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
+import modelos.Prestamo;
+import modelos.Socio;
+import utilerias.GenerarReporte;
 import ventanas.VInicio;
 
 /**
@@ -11,10 +19,16 @@ import ventanas.VInicio;
 public class PRealizarPrestamo extends javax.swing.JPanel {
 
     private VInicio vInicio = null;
-    
+    private Prestamo prestamo = new Prestamo();
+    private ArrayList<Socio> socios = new ArrayList<>();
+
     public PRealizarPrestamo(VInicio ini) {
         initComponents();
         vInicio = ini;
+        socios = CSocio.getRegistros();
+        for (Socio s : socios) {
+            cmbSocio.addItem(s.getNombre() + " " + s.getApellidos());
+        }
         dcFecha.setDate(new Date());
     }
 
@@ -362,6 +376,11 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         btnContrato.setForeground(new java.awt.Color(7, 20, 123));
         btnContrato.setText("Contrato");
         btnContrato.setBorder(null);
+        btnContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContratoActionPerformed(evt);
+            }
+        });
         panelRedondeado13.add(btnContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 150, 40));
 
         panelRedondeado14.setBackground(new java.awt.Color(255, 255, 255));
@@ -404,6 +423,11 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         btnRealizarPrestamo.setForeground(new java.awt.Color(7, 20, 123));
         btnRealizarPrestamo.setText("Realizar Préstamo");
         btnRealizarPrestamo.setBorder(null);
+        btnRealizarPrestamo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRealizarPrestamoActionPerformed(evt);
+            }
+        });
         panelRedondeado16.add(btnRealizarPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 200, 40));
 
         dcFecha.setBackground(new java.awt.Color(255, 255, 255));
@@ -574,7 +598,6 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -597,7 +620,6 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                                 .addComponent(rbExterno, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBuscarSocio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel28)
@@ -641,7 +663,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                     .addComponent(panelRedondeado14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRedondeado15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(panelRedondeado16, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -661,13 +683,13 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void rbExternoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbExternoActionPerformed
-        if(rbExterno.isSelected()){
+        if (rbExterno.isSelected()) {
             pExterno.setBackground(Color.WHITE);
             txtNombreExterno.setEnabled(true);
             btnBuscarSocio.setEnabled(false);
             cmbSocio.setEnabled(false);
             txtNombreExterno.requestFocus();
-        }else{
+        } else {
             pExterno.setBackground(new Color(242, 242, 242));
             txtNombreExterno.setEnabled(false);
             btnBuscarSocio.setEnabled(true);
@@ -681,11 +703,45 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreExternoFocusGained
 
     private void txtNombreExternoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreExternoFocusLost
-        if(txtNombreExterno.getText().isEmpty()){
+        if (txtNombreExterno.getText().isEmpty()) {
             txtNombreExterno.setText("Nombre externo");
         }
     }//GEN-LAST:event_txtNombreExternoFocusLost
 
+    private void btnRealizarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPrestamoActionPerformed
+        guardar();
+    }//GEN-LAST:event_btnRealizarPrestamoActionPerformed
+
+    private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
+        reporte();
+    }//GEN-LAST:event_btnContratoActionPerformed
+
+    private void reporte() {
+        setPrestamo();
+        GenerarReporte reporte = new GenerarReporte("Contrato", prestamo);
+        reporte.run();
+    }
+
+    private void setPrestamo() {
+        prestamo.setEstatus("APROBADO");
+        prestamo.setFechaAprobacion(dcFecha.getDate());
+        prestamo.setIntereses(0.07);
+        Double monto = Double.valueOf(txtMonto.getText());
+        prestamo.setMonto(monto);
+        prestamo.setSaldoRestante(monto);
+        prestamo.setSocio(socios.get(cmbSocio.getSelectedIndex() - 1));
+        prestamo.setUsuario(Config.getUsuarioLog());
+    }
+
+    private void guardar() {
+        setPrestamo();
+        boolean guardado = CPrestamo.guardarRegistro(prestamo);
+        if (guardado) {
+            JOptionPane.showMessageDialog(this, "Se ha registrado el préstamo correctamente",
+                    "Prestamo Realizado", JOptionPane.INFORMATION_MESSAGE);
+            vInicio.abrirPrestamo();
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarSocio;

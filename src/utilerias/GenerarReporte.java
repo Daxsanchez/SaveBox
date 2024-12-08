@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import modelos.Prestamo;
 import modelos.Socio;
 
 /**
@@ -17,18 +18,18 @@ import modelos.Socio;
 public class GenerarReporte extends Thread {
 
     private String nombre;
-    private ArrayList<Socio> datos;
+    private Prestamo prestamo;
 
-    public GenerarReporte(String nombre, ArrayList<Socio> datos) {
+    public GenerarReporte(String nombre, Prestamo p) {
         this.nombre = nombre;
-        this.datos = datos;
+        prestamo = p;
     }
 
     @Override
     public void run() {
         try {
             generarPDF();
-            Thread.sleep(3000);// Simula reporte pesado
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -45,13 +46,11 @@ public class GenerarReporte extends Thread {
             // Título
             documento.add(new Paragraph("Reporte de Datos"));
 
-            for (Socio socio : datos) {
-                StringBuilder sb = new StringBuilder();
-                sb.append("Nombre: ").append(socio.getNombre()).append(" ")
-                        .append(", Edad: ").append(socio.getEdad());
-                // Nuevo párrafo para cada fila
-                documento.add(new Paragraph(sb.toString().trim()));
-            }
+            StringBuilder sb = new StringBuilder();
+            sb.append("Nombre: ").append(prestamo.getSocio().getNombre() + " " + prestamo.getSocio().getApellidos()).append(" ")
+                    .append(", Monto de prestamp: ").append(prestamo.getMonto());
+            // Nuevo párrafo para cada fila
+            documento.add(new Paragraph(sb.toString().trim()));
 
             documento.close();
             System.out.println("Reporte PDF generado con éxito en: " + rutaArchivo);

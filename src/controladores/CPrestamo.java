@@ -1,10 +1,14 @@
 package controladores;
 
 import static bd.BaseConexion.getConexion;
+import bd.CBaseDatos;
 import java.sql.ResultSet;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import modelos.Prestamo;
+import utilerias.Utileria;
 
 /**
  *
@@ -58,5 +62,29 @@ public class CPrestamo {
             e.printStackTrace();
         }
         return prestamo;
+    }
+
+    public static boolean guardarRegistro(Prestamo prestamo) {
+        int registrado = 0;
+        String fechaLiquidacion = "2024-12-07";
+
+        String query = "INSERT INTO Prestamo (" + Prestamo.CAMPOS + ") VALUES(";
+
+        Object[] valores = {prestamo.getSocio().getId(), prestamo.getMonto(), prestamo.getIntereses(),
+            Utileria.getFechaFormateada(prestamo.getFechaAprobacion(), Utileria.ANIO_MES_DIA),
+            fechaLiquidacion, prestamo.getSaldoRestante(),
+            prestamo.getEstatus(), prestamo.getUsuario().getId()};
+
+        query = query + CBaseDatos.formatearValores(valores.length) + ")";
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            registrado = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+
+        return registrado == 1;
     }
 }
