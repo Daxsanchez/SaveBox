@@ -142,8 +142,8 @@ public class PAhorro extends javax.swing.JPanel {
 
         add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 340, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ahorro.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 60));
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\loaning_money_bag_icon_152048.png")); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 60));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));

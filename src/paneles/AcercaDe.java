@@ -41,43 +41,13 @@ public class AcercaDe extends javax.swing.JPanel {
         initComponents();
         vInicio = ini;
         dp = vInicio.getDesktopPane();
-        initializeCarousel();
+    
     }
 
  
    
 
-    private void initializeCarousel() {
-        // Inicializa la lista de imágenes
-        images = new ArrayList<>();
-        images.add(new ImageIcon("C:\\ruta\\a\\imagen1.jpg"));
-        images.add(new ImageIcon("C:\\ruta\\a\\imagen2.jpg"));
-        images.add(new ImageIcon("C:\\ruta\\a\\imagen3.jpg"));
-
-        // Inicia el hilo para el carrusel
-        Thread carouselThread;
-       carouselThread = new Thread(() -> {
-           while (running) {
-               try {
-                   // Cambia la imagen cada 2 segundos
-                   SwingUtilities.invokeLater(() -> {
-                       carouselLabel.setIcon(images.get(currentIndex));
-                       currentIndex = (currentIndex + 1) % images.size();
-                   });
-                   Thread.sleep(2000); // Tiempo entre cada cambio
-               } catch (InterruptedException e) {
-                   Thread.currentThread().interrupt();
-               }
-           }
-       });
-        carouselThread.start();
-    }
-
-    @Override
-    public void removeNotify() {
-        super.removeNotify();
-        running = false; // Detener el hilo cuando el panel deje de usarse
-    }
+      
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

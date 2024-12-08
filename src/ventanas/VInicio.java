@@ -337,6 +337,11 @@ public class VInicio extends javax.swing.JFrame {
         lbAhorro.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
         lbAhorro.setText("Ahorros");
+        lbAhorro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAhorroMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
         pAho.setLayout(pAhoLayout);
@@ -618,6 +623,22 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.repaint(); // Redibujar el contenedor
         pEspacio.revalidate(); // Validar cambios
     }//GEN-LAST:event_lbAcercaMouseClicked
+
+    private void lbAhorroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAhorroMouseClicked
+        quitarPaneles(); // Ocultar otros paneles o limpiar la vista
+
+        if (pAhorro == null) {
+           pAhorro = new PAhorro(this); // Crear el panel "AcercaDe"
+            acercaDe.setBounds(x, y, width, height); // Configurar posición y tamaño
+            pEspacio.add(pAhorro); // Agregar al contenedor de paneles
+            pEspacio.setComponentZOrder(pAhorro, 0); // Asegurar que esté al frente
+        }
+
+        pAhorro.setVisible(true); // Mostrar el panel
+        pEspacio.repaint(); // Redibujar el contenedor
+        pEspacio.revalidate(); // Validar cambios
+
+    }//GEN-LAST:event_lbAhorroMouseClicked
 
     public void abrirRealizarPrestamo() {
         quitarPaneles();
