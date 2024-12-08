@@ -93,9 +93,8 @@ public void generarPDF() {
         agregarCelda(tabla, "Nombre del Socio", prestamo.getSocio().getNombre() + " " + prestamo.getSocio().getApellidos());
         agregarCelda(tabla, "Monto del Préstamo", String.valueOf(prestamo.getMonto()));
         agregarCelda(tabla, "Usuario que aprobó", prestamo.getUsuario().getNombre());
-        agregarCelda(tabla, "Tasa de Intereses", String.valueOf(prestamo.getIntereses()));
+        agregarCelda(tabla, "Tasa de Intereses", String.valueOf((char) prestamo.getIntereses()));
         agregarCelda(tabla, "Fecha de Aprobación", prestamo.getFechaAprobacion().toString());
-
         // Agregar tabla al documento
         documento.add(tabla);
 

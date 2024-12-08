@@ -1,6 +1,8 @@
 package ventanas;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -48,6 +50,7 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.repaint();
         pEspacio.revalidate();
 
+                
         validarRol();
     }
 
@@ -71,7 +74,7 @@ public class VInicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblCerrarSesion = new javax.swing.JLabel();
         pEspacio = new javax.swing.JPanel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         pI = new utilerias.PanelRedondeado();
@@ -105,7 +108,12 @@ public class VInicio extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        lblCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCerrarSesionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,7 +126,7 @@ public class VInicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel1)))))
@@ -134,7 +142,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addComponent(lblCerrarSesion)
                 .addGap(19, 19, 19))
         );
 
@@ -445,7 +453,7 @@ public class VInicio extends javax.swing.JFrame {
         );
 
         dp.add(panelRedondeado1);
-        panelRedondeado1.setBounds(88, 13, 1342, 82);
+        panelRedondeado1.setBounds(88, 13, 1310, 82);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -591,6 +599,12 @@ public class VInicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pAhoMouseClicked
 
+    private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
+    Login login = new Login();
+    login.setVisible(true);
+    this.dispose();    
+    }//GEN-LAST:event_lblCerrarSesionMouseClicked
+
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -706,7 +720,6 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -718,6 +731,7 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbPrestamo;
     private javax.swing.JLabel lbSocio;
     private javax.swing.JLabel lbUsuario;
+    private javax.swing.JLabel lblCerrarSesion;
     private utilerias.PanelRedondeado pAho;
     private javax.swing.JPanel pEspacio;
     private utilerias.PanelRedondeado pI;
