@@ -11,6 +11,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import main.Config;
+import paneles.AcercaDe;
 import paneles.PAhorro;
 import paneles.PHistorialTransacciones;
 import paneles.PInicio;
@@ -37,6 +38,7 @@ public class VInicio extends javax.swing.JFrame {
     private PRealizarPrestamo pRPrestamo = null;
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
+    private AcercaDe acercaDe = null;
 
     public VInicio() {
         initComponents();
@@ -50,7 +52,6 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.repaint();
         pEspacio.revalidate();
 
-                
         validarRol();
     }
 
@@ -74,7 +75,7 @@ public class VInicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        lblCerrarSesion = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         pEspacio = new javax.swing.JPanel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         pI = new utilerias.PanelRedondeado();
@@ -98,8 +99,6 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        dp.setBackground(new java.awt.Color(255, 255, 255));
-
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
@@ -108,12 +107,7 @@ public class VInicio extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
 
-        lblCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
-        lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCerrarSesionMouseClicked(evt);
-            }
-        });
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,7 +120,7 @@ public class VInicio extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel1)))))
@@ -142,12 +136,12 @@ public class VInicio extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCerrarSesion)
+                .addComponent(jLabel4)
                 .addGap(19, 19, 19))
         );
 
         dp.add(jPanel2);
-        jPanel2.setBounds(0, 0, 62, 757);
+        jPanel2.setBounds(0, 0, 74, 757);
 
         pEspacio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -378,6 +372,11 @@ public class VInicio extends javax.swing.JFrame {
         lbAcerca.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbAcerca.setForeground(new java.awt.Color(255, 255, 255));
         lbAcerca.setText("Acerca de");
+        lbAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAcercaMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pIAcercaLayout = new javax.swing.GroupLayout(pIAcerca);
         pIAcerca.setLayout(pIAcercaLayout);
@@ -453,7 +452,7 @@ public class VInicio extends javax.swing.JFrame {
         );
 
         dp.add(panelRedondeado1);
-        panelRedondeado1.setBounds(88, 13, 1310, 82);
+        panelRedondeado1.setBounds(88, 13, 1354, 88);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -600,10 +599,25 @@ public class VInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_pAhoMouseClicked
 
     private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
-    Login login = new Login();
-    login.setVisible(true);
-    this.dispose();    
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_lblCerrarSesionMouseClicked
+
+    private void lbAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAcercaMouseClicked
+        quitarPaneles(); // Ocultar otros paneles o limpiar la vista
+
+        if (acercaDe == null) {
+            acercaDe = new AcercaDe(this); // Crear el panel "AcercaDe"
+            acercaDe.setBounds(x, y, width, height); // Configurar posición y tamaño
+            pEspacio.add(acercaDe); // Agregar al contenedor de paneles
+            pEspacio.setComponentZOrder(acercaDe, 0); // Asegurar que esté al frente
+        }
+
+        acercaDe.setVisible(true); // Mostrar el panel
+        pEspacio.repaint(); // Redibujar el contenedor
+        pEspacio.revalidate(); // Validar cambios
+    }//GEN-LAST:event_lbAcercaMouseClicked
 
     public void abrirRealizarPrestamo() {
         quitarPaneles();
@@ -682,6 +696,11 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(pAhorro);
             pAhorro = null;
         }
+        if (acercaDe != null) {
+            pEspacio.remove(acercaDe);
+            acercaDe = null;
+
+        }
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
@@ -720,6 +739,7 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
@@ -731,7 +751,6 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbPrestamo;
     private javax.swing.JLabel lbSocio;
     private javax.swing.JLabel lbUsuario;
-    private javax.swing.JLabel lblCerrarSesion;
     private utilerias.PanelRedondeado pAho;
     private javax.swing.JPanel pEspacio;
     private utilerias.PanelRedondeado pI;
