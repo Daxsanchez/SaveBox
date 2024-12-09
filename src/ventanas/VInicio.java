@@ -502,16 +502,16 @@ public class VInicio extends javax.swing.JFrame {
         pAhoLayout.setHorizontalGroup(
             pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pAhoLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addContainerGap()
                 .addComponent(lbAhorro)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         pAhoLayout.setVerticalGroup(
             pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhoLayout.createSequentialGroup()
-                .addContainerGap(18, Short.MAX_VALUE)
+            .addGroup(pAhoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
                 .addComponent(lbAhorro)
-                .addGap(17, 17, 17))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         panelRedondeado1.add(pAho, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 12, -1, -1));
@@ -544,19 +544,18 @@ public class VInicio extends javax.swing.JFrame {
         pIAcercaLayout.setHorizontalGroup(
             pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pIAcercaLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addComponent(lbAcerca)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         pIAcercaLayout.setVerticalGroup(
             pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pIAcercaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbAcerca)
-                .addGap(36, 36, 36))
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(lbAcerca))
         );
 
-        panelRedondeado1.add(pIAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, 44));
+        panelRedondeado1.add(pIAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, -1, 30));
 
         pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
         pNotificacion.setRoundBottomLeft(20);
