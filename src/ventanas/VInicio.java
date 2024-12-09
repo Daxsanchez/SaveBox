@@ -107,10 +107,10 @@ public class VInicio extends javax.swing.JFrame {
         lbAcerca = new javax.swing.JLabel();
         pNotificacion = new utilerias.PanelRedondeado();
         lblNotificacion = new javax.swing.JLabel();
-        helpCentro2 = new help.helpCentro();
         pPerfil = new utilerias.PanelRedondeado();
         lblPerfil = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        helpCentro2 = new help.helpCentro();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -556,7 +556,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        panelRedondeado1.add(pIAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(822, 18, -1, 44));
+        panelRedondeado1.add(pIAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, -1, 44));
 
         pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
         pNotificacion.setRoundBottomLeft(20);
@@ -581,22 +581,18 @@ public class VInicio extends javax.swing.JFrame {
         pNotificacion.setLayout(pNotificacionLayout);
         pNotificacionLayout.setHorizontalGroup(
             pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pNotificacionLayout.createSequentialGroup()
+                .addGap(0, 10, Short.MAX_VALUE)
+                .addComponent(lblNotificacion))
         );
         pNotificacionLayout.setVerticalGroup(
             pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addGroup(pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 32, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pNotificacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        panelRedondeado1.add(pNotificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1034, 18, -1, -1));
+        panelRedondeado1.add(pNotificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 20, 50, 50));
 
         pPerfil.setBackground(new java.awt.Color(7, 20, 123));
         pPerfil.setRoundBottomLeft(20);
@@ -639,7 +635,8 @@ public class VInicio extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("|");
-        panelRedondeado1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 22, -1, 54));
+        panelRedondeado1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, -1, 54));
+        panelRedondeado1.add(helpCentro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, -1, 60));
 
         dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1312, 80));
 
