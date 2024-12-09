@@ -63,7 +63,7 @@ public class PSocio extends javax.swing.JPanel {
                         VRegistrarSocio registrarUsuario = new VRegistrarSocio(ps, socio);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
-
+                        dp.setLayout(null);
                         if (dp != null) {
                             try {
                                 vInicio.centrarInternalFrame(registrarUsuario, dp);
@@ -268,7 +268,7 @@ public class PSocio extends javax.swing.JPanel {
         registrarSocio.setSize(376, 750);
         registrarSocio.setVisible(true);
         dp.setLayout(null);
-
+        dp.setLayout(null);
         if (dp != null) {
             vInicio.centrarInternalFrame(registrarSocio, dp);
             dp.add(registrarSocio);

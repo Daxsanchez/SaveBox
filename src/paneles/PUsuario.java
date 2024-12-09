@@ -62,7 +62,7 @@ public class PUsuario extends javax.swing.JPanel {
                         VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(pUs, us);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
-
+                        dp.setLayout(null);
                         if (dp != null) {
                             try {
                                 vInicio.centrarInternalFrame(registrarUsuario, dp);
