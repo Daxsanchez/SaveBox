@@ -107,9 +107,9 @@ public class VInicio extends javax.swing.JFrame {
         lbAcerca = new javax.swing.JLabel();
         pNotificacion = new utilerias.PanelRedondeado();
         lblNotificacion = new javax.swing.JLabel();
+        helpCentro2 = new help.helpCentro();
         pPerfil = new utilerias.PanelRedondeado();
         lblPerfil = new javax.swing.JLabel();
-        helpCentro1 = new help.helpCentro();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -314,6 +314,7 @@ public class VInicio extends javax.swing.JFrame {
         panelRedondeado1.setRoundBottomRight(50);
         panelRedondeado1.setRoundTopLeft(50);
         panelRedondeado1.setRoundTopRight(50);
+        panelRedondeado1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pI.setBackground(new java.awt.Color(7, 20, 123));
         pI.setRoundBottomLeft(50);
@@ -353,6 +354,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
+        panelRedondeado1.add(pI, new org.netbeans.lib.awtextra.AbsoluteConstraints(65, 12, -1, -1));
+
         pSocios.setBackground(new java.awt.Color(7, 20, 123));
         pSocios.setRoundBottomLeft(50);
         pSocios.setRoundBottomRight(50);
@@ -390,6 +393,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(lbSocio)
                 .addGap(17, 17, 17))
         );
+
+        panelRedondeado1.add(pSocios, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 12, -1, -1));
 
         pUs.setBackground(new java.awt.Color(7, 20, 123));
         pUs.setRoundBottomLeft(50);
@@ -429,6 +434,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
+        panelRedondeado1.add(pUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(357, 12, -1, -1));
+
         pPres.setBackground(new java.awt.Color(7, 20, 123));
         pPres.setRoundBottomLeft(50);
         pPres.setRoundBottomRight(50);
@@ -467,6 +474,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
+        panelRedondeado1.add(pPres, new org.netbeans.lib.awtextra.AbsoluteConstraints(502, 12, -1, -1));
+
         pAho.setBackground(new java.awt.Color(7, 20, 123));
         pAho.setRoundBottomLeft(50);
         pAho.setRoundBottomRight(50);
@@ -504,6 +513,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(lbAhorro)
                 .addGap(17, 17, 17))
         );
+
+        panelRedondeado1.add(pAho, new org.netbeans.lib.awtextra.AbsoluteConstraints(683, 12, -1, -1));
 
         pIAcerca.setBackground(new java.awt.Color(7, 20, 123));
         pIAcerca.setRoundBottomLeft(50);
@@ -545,6 +556,8 @@ public class VInicio extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
+        panelRedondeado1.add(pIAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(822, 18, -1, 44));
+
         pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
         pNotificacion.setRoundBottomLeft(20);
         pNotificacion.setRoundBottomRight(20);
@@ -569,17 +582,21 @@ public class VInicio extends javax.swing.JFrame {
         pNotificacionLayout.setHorizontalGroup(
             pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(37, 37, 37)
+                .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE))
         );
         pNotificacionLayout.setVerticalGroup(
             pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNotificacion)
-                .addContainerGap(8, Short.MAX_VALUE))
+                .addGroup(pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(helpCentro2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
+
+        panelRedondeado1.add(pNotificacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1034, 18, -1, -1));
 
         pPerfil.setBackground(new java.awt.Color(7, 20, 123));
         pPerfil.setRoundBottomLeft(20);
@@ -604,10 +621,9 @@ public class VInicio extends javax.swing.JFrame {
         pPerfil.setLayout(pPerfilLayout);
         pPerfilLayout.setHorizontalGroup(
             pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPerfilLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblPerfil)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPerfilLayout.createSequentialGroup()
+                .addGap(0, 24, Short.MAX_VALUE)
+                .addComponent(lblPerfil))
         );
         pPerfilLayout.setVerticalGroup(
             pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -617,64 +633,13 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelRedondeado1.add(pPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(1205, 12, -1, -1));
+
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("|");
-
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
+        panelRedondeado1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 22, -1, 54));
 
         dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1312, 80));
 
@@ -1111,7 +1076,7 @@ public class VInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
-    private help.helpCentro helpCentro1;
+    private help.helpCentro helpCentro2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
