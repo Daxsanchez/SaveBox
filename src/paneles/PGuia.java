@@ -30,24 +30,56 @@ public class PGuia extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
         setBackground(new java.awt.Color(7, 20, 123));
         setForeground(new java.awt.Color(7, 20, 123));
         setMinimumSize(new java.awt.Dimension(1300, 690));
         setPreferredSize(new java.awt.Dimension(1300, 690));
 
+        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
+        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel19.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel19.setText("Guia de Usuario");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/guia-turistico.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator2)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1)
+                .addGap(38, 38, 38)
+                .addComponent(jLabel19)
+                .addContainerGap(874, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(537, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }

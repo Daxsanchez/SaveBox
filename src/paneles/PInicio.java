@@ -248,7 +248,7 @@ public class PInicio extends javax.swing.JPanel {
                         .addGap(186, 186, 186)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
+                        .addGap(264, 264, 264)
                         .addComponent(lbNombre)))
                 .addContainerGap(367, Short.MAX_VALUE))
         );
@@ -261,7 +261,7 @@ public class PInicio extends javax.swing.JPanel {
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(jLabel12))
@@ -286,7 +286,7 @@ public class PInicio extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(Pini, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 100, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
