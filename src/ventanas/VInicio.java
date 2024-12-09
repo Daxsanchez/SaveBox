@@ -44,10 +44,10 @@ public class VInicio extends javax.swing.JFrame {
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
     private AcercaDe acercaDe = null;
-    
+
     private PConfig plConfiguracion = null;
     private PEmpresa plEmpresa = null;
-    private PGuia plGuia = null; 
+    private PGuia plGuia = null;
     private PPerfilUsuario plUsuario = null;
     private PNotificacion plNotificacion = null;
 
@@ -635,7 +635,7 @@ public class VInicio extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("|");
         panelRedondeado1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, -1, 54));
-        panelRedondeado1.add(helpCentro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 10, -1, 60));
+        panelRedondeado1.add(helpCentro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, 60));
 
         dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1312, 80));
 
@@ -810,11 +810,10 @@ public class VInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_pCerrarSesionMouseEntered
 
     private void pCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCerrarSesionMouseExited
-       salePanel(pCerrarSesion, lblCerrarSesion);
+        salePanel(pCerrarSesion, lblCerrarSesion);
     }//GEN-LAST:event_pCerrarSesionMouseExited
     //----------------------------------------------------------------------------------------- Cerrar Sesion  
 
-    
     //----------------------------------------------------------------------------------------- Configuracion  
 
     private void pConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseClicked
@@ -838,8 +837,7 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pConfiguracion, lblConfiguracion);
     }//GEN-LAST:event_pConfiguracionMouseExited
     //----------------------------------------------------------------------------------------- Configuracion
-    
-    
+
     //----------------------------------------------------------------------------------------- Guia de Usuario
     private void pGuiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseClicked
         quitarPaneles();
@@ -862,8 +860,7 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pGuia, lblGuia);
     }//GEN-LAST:event_pGuiaMouseExited
     //----------------------------------------------------------------------------------------- Guia de Usuario
-    
-    
+
     //----------------------------------------------------------------------------------------- Empresa
     private void pEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseClicked
         quitarPaneles();
@@ -886,8 +883,7 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pEmpresa, lblEmpresa);
     }//GEN-LAST:event_pEmpresaMouseExited
     //----------------------------------------------------------------------------------------- Empresa
-    
-    
+
     //----------------------------------------------------------------------------------------- Notificacion
     private void pNotificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pNotificacionMouseClicked
         quitarPaneles();
@@ -910,7 +906,7 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pNotificacion, lblNotificacion);
     }//GEN-LAST:event_pNotificacionMouseExited
     //----------------------------------------------------------------------------------------- Notificacion
-    
+
     //----------------------------------------------------------------------------------------- Perfil
     private void pPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPerfilMouseClicked
         quitarPaneles();
@@ -933,9 +929,7 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pPerfil, lblPerfil);
     }//GEN-LAST:event_pPerfilMouseExited
     //----------------------------------------------------------------------------------------- Perfil
-    
-    
-    
+
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -1037,7 +1031,11 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(plNotificacion);
             plNotificacion = null;
         }
-        
+        if (pHistorialT != null) {
+            pEspacio.remove(pHistorialT);
+            pHistorialT = null;
+        }
+
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
