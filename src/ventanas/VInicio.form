@@ -359,7 +359,9 @@
                           <Component id="pAho" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="pIAcerca" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="184" max="32767" attributes="0"/>
+                          <EmptySpace pref="88" max="32767" attributes="0"/>
+                          <Component id="helpCentro1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="pNotificacion" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                           <Component id="pPerfil" min="-2" max="-2" attributes="0"/>
@@ -383,10 +385,11 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="pPerfil" min="-2" max="-2" attributes="0"/>
                                       <Component id="pNotificacion" min="-2" max="-2" attributes="0"/>
+                                      <Component id="helpCentro1" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="12" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -759,10 +762,10 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="lblPerfil" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -786,6 +789,8 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="help.helpCentro" name="helpCentro1">
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
