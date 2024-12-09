@@ -110,6 +110,8 @@ public class VInicio extends javax.swing.JFrame {
         lblGuia = new javax.swing.JLabel();
         pEmpresa = new utilerias.PanelRedondeado();
         lblEmpresa = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -423,7 +425,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(59, 59, 59)
                 .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(100, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -529,7 +531,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(pConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 106, -1, -1));
+        jPanel2.add(pConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         pGuia.setBackground(new java.awt.Color(7, 20, 123));
         pGuia.setRoundBottomLeft(20);
@@ -556,14 +558,14 @@ public class VInicio extends javax.swing.JFrame {
             pGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pGuiaLayout.createSequentialGroup()
                 .addComponent(lblGuia)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pGuiaLayout.setVerticalGroup(
             pGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(lblGuia, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jPanel2.add(pGuia, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 54, 50, -1));
+        jPanel2.add(pGuia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 50, -1));
 
         pEmpresa.setBackground(new java.awt.Color(7, 20, 123));
         pEmpresa.setRoundBottomLeft(20);
@@ -599,6 +601,35 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel2.add(pEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 10, -1, -1));
 
+        jPanel3.setBackground(new java.awt.Color(7, 20, 123));
+
+        jLabel2.setBackground(new java.awt.Color(7, 20, 123));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 60, 60));
+
         javax.swing.GroupLayout pEspacioLayout = new javax.swing.GroupLayout(pEspacio);
         pEspacio.setLayout(pEspacioLayout);
         pEspacioLayout.setHorizontalGroup(
@@ -608,7 +639,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         pEspacioLayout.setVerticalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -912,6 +943,19 @@ public class VInicio extends javax.swing.JFrame {
     private void pPerfilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPerfilMouseExited
         salePanel(pPerfil, lblPerfil);
     }//GEN-LAST:event_pPerfilMouseExited
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        quitarPaneles();
+        if (plEmpresa == null) {
+            plEmpresa = new PEmpresa(this);
+            plEmpresa.setVisible(true);
+            plEmpresa.setBounds(x, y, width, height);
+            pEspacio.add(plEmpresa);
+            pEspacio.setComponentZOrder(plEmpresa, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
     //----------------------------------------------------------------------------------------- Perfil
 
     public void abrirRealizarPrestamo() {
@@ -1055,8 +1099,10 @@ public class VInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbAcerca;
     private javax.swing.JLabel lbAhorro;
     private javax.swing.JLabel lbInicio;

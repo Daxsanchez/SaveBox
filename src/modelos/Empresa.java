@@ -6,6 +6,7 @@ package modelos;
  */
 public class Empresa {
 
+    private Integer id;
     private String razonSocial;
     private String rfc;
     private String contacto;
@@ -45,6 +46,14 @@ public class Empresa {
 
     public String getRfc() {
         return rfc;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public void setRfc(String rfc) {

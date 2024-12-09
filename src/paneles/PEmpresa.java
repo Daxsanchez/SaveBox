@@ -4,6 +4,7 @@
  */
 package paneles;
 
+import controladores.CEmpresa;
 import modelos.Empresa;
 import ventanas.VInicio;
 
@@ -18,12 +19,23 @@ public class PEmpresa extends javax.swing.JPanel {
      */
     private javax.swing.JDesktopPane dp;
     private VInicio vInicio;
+    private Empresa emp = CEmpresa.getEmpresa();
     
     public PEmpresa(VInicio ini) {
         initComponents();
         vInicio = ini;
         dp = vInicio.getDesktopPane();
-        
+        txtRazon.setText(emp.getRazonSocial());
+        txtRFC.setText(emp.getRfc());
+        txtContacto.setText(emp.getContacto());
+        txtDireccion.setText(emp.getDireccion());
+        txtColonia.setText(emp.getColonia());
+        txtEstado.setText(emp.getEstado());
+        txtMunicipio.setText(emp.getMunicipio());
+        txtCP.setText(emp.getCp());
+        txtCorreo.setText(emp.getCorreo());
+        txtTelefono.setText(emp.getTel());
+        txtCelular.setText(emp.getCel());
     }
 
     /**
