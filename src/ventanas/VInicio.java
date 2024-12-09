@@ -13,8 +13,13 @@ import javax.swing.JPanel;
 import main.Config;
 import paneles.AcercaDe;
 import paneles.PAhorro;
+import paneles.PConfig;
+import paneles.PEmpresa;
+import paneles.PGuia;
 import paneles.PHistorialTransacciones;
 import paneles.PInicio;
+import paneles.PNotificacion;
+import paneles.PPerfilUsuario;
 import paneles.PSocio;
 import paneles.PUsuario;
 import paneles.PPrestamos;
@@ -39,6 +44,12 @@ public class VInicio extends javax.swing.JFrame {
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
     private AcercaDe acercaDe = null;
+    
+    private PConfig plConfiguracion = null;
+    private PEmpresa plEmpresa = null;
+    private PGuia plGuia = null; 
+    private PPerfilUsuario plUsuario = null;
+    private PNotificacion plNotificacion = null;
 
     public VInicio() {
         initComponents();
@@ -827,7 +838,16 @@ public class VInicio extends javax.swing.JFrame {
     //----------------------------------------------------------------------------------------- Configuracion  
 
     private void pConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseClicked
-        
+        quitarPaneles();
+        if (plConfiguracion == null) {
+            plConfiguracion = new PConfig(this);
+            plConfiguracion.setVisible(true);
+            plConfiguracion.setBounds(x, y, width, height);
+            pEspacio.add(plConfiguracion);
+            pEspacio.setComponentZOrder(plConfiguracion, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pConfiguracionMouseClicked
 
     private void pConfiguracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseEntered
@@ -842,7 +862,16 @@ public class VInicio extends javax.swing.JFrame {
     
     //----------------------------------------------------------------------------------------- Guia de Usuario
     private void pGuiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseClicked
-        // TODO add your handling code here:
+        quitarPaneles();
+        if (plGuia == null) {
+            plGuia = new PGuia(this);
+            plGuia.setVisible(true);
+            plGuia.setBounds(x, y, width, height);
+            pEspacio.add(plGuia);
+            pEspacio.setComponentZOrder(plGuia, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pGuiaMouseClicked
 
     private void pGuiaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseEntered
@@ -857,7 +886,16 @@ public class VInicio extends javax.swing.JFrame {
     
     //----------------------------------------------------------------------------------------- Empresa
     private void pEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseClicked
-        // TODO add your handling code here:
+        quitarPaneles();
+        if (plEmpresa == null) {
+            plEmpresa = new PEmpresa(this);
+            plEmpresa.setVisible(true);
+            plEmpresa.setBounds(x, y, width, height);
+            pEspacio.add(plEmpresa);
+            pEspacio.setComponentZOrder(plEmpresa, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pEmpresaMouseClicked
 
     private void pEmpresaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseEntered
@@ -872,7 +910,16 @@ public class VInicio extends javax.swing.JFrame {
     
     //----------------------------------------------------------------------------------------- Notificacion
     private void pNotificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pNotificacionMouseClicked
-        // TODO add your handling code here:
+        quitarPaneles();
+        if (plNotificacion == null) {
+            plNotificacion = new PNotificacion(this);
+            plNotificacion.setVisible(true);
+            plNotificacion.setBounds(x, y, width, height);
+            pEspacio.add(plNotificacion);
+            pEspacio.setComponentZOrder(plNotificacion, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pNotificacionMouseClicked
 
     private void pNotificacionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pNotificacionMouseEntered
@@ -886,7 +933,16 @@ public class VInicio extends javax.swing.JFrame {
     
     //----------------------------------------------------------------------------------------- Perfil
     private void pPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPerfilMouseClicked
-        // TODO add your handling code here:
+        quitarPaneles();
+        if (plUsuario == null) {
+            plUsuario = new PPerfilUsuario(this);
+            plUsuario.setVisible(true);
+            plUsuario.setBounds(x, y, width, height);
+            pEspacio.add(plUsuario);
+            pEspacio.setComponentZOrder(plUsuario, 0);
+            pEspacio.repaint();
+            pEspacio.revalidate();
+        }
     }//GEN-LAST:event_pPerfilMouseClicked
 
     private void pPerfilMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pPerfilMouseEntered
@@ -897,9 +953,6 @@ public class VInicio extends javax.swing.JFrame {
         salePanel(pPerfil, lblPerfil);
     }//GEN-LAST:event_pPerfilMouseExited
     //----------------------------------------------------------------------------------------- Perfil
-    
-    
-    
     
     
     
@@ -984,6 +1037,27 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(acercaDe);
             acercaDe = null;
         }
+        if (plConfiguracion != null) {
+            pEspacio.remove(plConfiguracion);
+            plConfiguracion = null;
+        }
+        if (plEmpresa != null) {
+            pEspacio.remove(plEmpresa);
+            plEmpresa = null;
+        }
+        if (plGuia != null) {
+            pEspacio.remove(plGuia);
+            plGuia = null;
+        }
+        if (plUsuario != null) {
+            pEspacio.remove(plUsuario);
+            plUsuario = null;
+        }
+        if (plNotificacion != null) {
+            pEspacio.remove(plNotificacion);
+            plNotificacion = null;
+        }
+        
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
