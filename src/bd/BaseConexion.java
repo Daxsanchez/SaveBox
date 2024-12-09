@@ -15,7 +15,7 @@ public class BaseConexion {
     private static String servidor = "127.0.0.1"; // nombre servidor
     private static String baseDatos = "SaveBox"; //nombre base de datos
     private static String usuario = "sa"; // usuario de la base de datos
-    private static String pass = "254398"; // contraseña de la base de datos
+    private static String pass = "12345"; // contraseña de la base de datos
     public static Connection conexion = null;
 
     public static void conectar() {
