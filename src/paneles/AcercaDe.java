@@ -58,7 +58,6 @@ public class AcercaDe extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         panelRedondeado4 = new utilerias.PanelRedondeado();
         panelRedondeado5 = new utilerias.PanelRedondeado();
@@ -67,7 +66,9 @@ public class AcercaDe extends javax.swing.JPanel {
         lblDescargar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,12 +80,7 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel19.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Tu solución para gestionar y organizar Salarios.");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 360, 60));
-
-        jLabel20.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("version 0.0.1");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 100, 60));
+        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, 310, 60));
 
         panelRedondeado1.setBackground(new java.awt.Color(0, 0, 102));
         panelRedondeado1.setRoundBottomLeft(20);
@@ -122,6 +118,10 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(0, 0, 102));
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Grey minimalist business project presentation  (1).png"))); // NOI18N
 
+        jLabel20.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel20.setText("version 0.0.1");
+
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
         panelRedondeado1Layout.setHorizontalGroup(
@@ -136,6 +136,10 @@ public class AcercaDe extends javax.swing.JPanel {
                         .addComponent(panelRedondeado4, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(196, 196, 196)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,7 +148,9 @@ public class AcercaDe extends javax.swing.JPanel {
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 394, Short.MAX_VALUE)
                     .addComponent(panelRedondeado4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(343, 343, 343)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(330, 330, 330)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -154,7 +160,10 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel21.setFont(new java.awt.Font("Agrandir", 0, 60)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("SaveBox");
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, 80));
+        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, 80));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/bfc93e2a-7ed1-4ca6-a6a1-d8fbc45e021c (1) (1).jpg"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDescargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDescargarMouseClicked
@@ -277,6 +286,7 @@ public class AcercaDe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
