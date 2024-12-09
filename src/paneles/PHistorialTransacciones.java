@@ -241,7 +241,6 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         btnFiltrar.setForeground(new java.awt.Color(7, 20, 123));
         btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/filtrar.png"))); // NOI18N
         btnFiltrar.setText("Filtrar");
-        btnFiltrar.setActionCommand("Filtrar");
         btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFiltrarActionPerformed(evt);

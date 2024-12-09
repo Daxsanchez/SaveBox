@@ -103,6 +103,7 @@ public class PAhorro extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAhorros = new javax.swing.JTable();
         txtBuscar = new javax.swing.JTextField();
+        helpCentro1 = new help.helpCentro();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -191,6 +192,7 @@ public class PAhorro extends javax.swing.JPanel {
             }
         });
         add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 297, -1));
+        add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
@@ -208,6 +210,7 @@ public class PAhorro extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private help.helpCentro helpCentro1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
