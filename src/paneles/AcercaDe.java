@@ -144,117 +144,117 @@ public class AcercaDe extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDescargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDescargarMouseClicked
-            // Crear una instancia de la clase GenerarReporte
-    GenerarReporte generarReporte = new GenerarReporte("Reporte_XAD_Code");
+        // Crear una instancia de la clase GenerarReporte
+        GenerarReporte generarReporte = new GenerarReporte("Reporte_XAD_Code");
 
-    // Ejecutar el hilo para generar el PDF
-    generarReporte.start();
-}
-
-// Clase para generar el PDF
-class GenerarReporte extends Thread {
-
-    private String nombre;
-
-    public GenerarReporte(String nombre) {
-        this.nombre = nombre;
-    }
-
-    @Override
-    public void run() {
-        try {
-            generarPDF();
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-        } catch (DocumentException ex) {
-            Logger.getLogger(AcercaDe.class.getName()).log(Level.SEVERE, null, ex);
+        // Ejecutar el hilo para generar el PDF
+        generarReporte.start();
         }
-        System.out.println("Reporte generado exitosamente.");
-    }
 
-    public void generarPDF() throws DocumentException {
-        Document documento = new Document();
-        String rutaArchivo = obtenerRuta();
-        try {
-            // Crear archivo PDF
-            PdfWriter writer = PdfWriter.getInstance(documento, new FileOutputStream(rutaArchivo));
-            documento.open();
+        // Clase para generar el PDF
+        class GenerarReporte extends Thread {
 
-            // Encabezado del documento
-            Paragraph encabezado = new Paragraph("XAD Code - Propietarios y Roles",
-                    FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20, BaseColor.BLUE));
-            encabezado.setAlignment(Paragraph.ALIGN_CENTER);
-            documento.add(encabezado);
+            private String nombre;
 
-            // Espacio después del encabezado
-            documento.add(new Paragraph("\n"));
+            public GenerarReporte(String nombre) {
+                this.nombre = nombre;
+            }
 
-            // Crear tabla para mostrar la información
-            PdfPTable tabla = new PdfPTable(2); // Dos columnas
-            tabla.setWidthPercentage(100); // Ancho completo
-            tabla.setSpacingBefore(10f);
-            tabla.setSpacingAfter(10f);
+            @Override
+            public void run() {
+                try {
+                    generarPDF();
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                } catch (DocumentException ex) {
+                    Logger.getLogger(AcercaDe.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println("Reporte generado exitosamente.");
+            }
 
-            // Encabezados de la tabla
-            PdfPCell celdaEncabezado;
+            public void generarPDF() throws DocumentException {
+                Document documento = new Document();
+                String rutaArchivo = obtenerRuta();
+                try {
+                    // Crear archivo PDF
+                    PdfWriter writer = PdfWriter.getInstance(documento, new FileOutputStream(rutaArchivo));
+                    documento.open();
 
-            celdaEncabezado = new PdfPCell(new Phrase("Rol", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
-            celdaEncabezado.setBackgroundColor(BaseColor.DARK_GRAY);
-            celdaEncabezado.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-            tabla.addCell(celdaEncabezado);
+                    // Encabezado del documento
+                    Paragraph encabezado = new Paragraph("XAD Code - Propietarios y Roles",
+                        FontFactory.getFont(FontFactory.HELVETICA_BOLD, 20, BaseColor.BLUE));
+                    encabezado.setAlignment(Paragraph.ALIGN_CENTER);
+                    documento.add(encabezado);
 
-            celdaEncabezado = new PdfPCell(new Phrase("Nombre", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
-            celdaEncabezado.setBackgroundColor(BaseColor.DARK_GRAY);
-            celdaEncabezado.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-            tabla.addCell(celdaEncabezado);
+                    // Espacio después del encabezado
+                    documento.add(new Paragraph("\n"));
 
-            // Filas de la tabla con los datos de los dueños de XAD Code
-            agregarCelda(tabla, "CEO", "Dax Naim Sánchez López");
-            agregarCelda(tabla, "Developer", "Jesús Aldahir Hernández Medina");
-            agregarCelda(tabla, "Developer", "Ángel Rafael Herrera Carvajal");
+                    // Crear tabla para mostrar la información
+                    PdfPTable tabla = new PdfPTable(2); // Dos columnas
+                    tabla.setWidthPercentage(100); // Ancho completo
+                    tabla.setSpacingBefore(10f);
+                    tabla.setSpacingAfter(10f);
 
-            // Agregar tabla al documento
-            documento.add(tabla);
+                    // Encabezados de la tabla
+                    PdfPCell celdaEncabezado;
 
-            // Cerrar el documento
-            documento.close();
-            writer.close();
+                    celdaEncabezado = new PdfPCell(new Phrase("Rol", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
+                    celdaEncabezado.setBackgroundColor(BaseColor.DARK_GRAY);
+                    celdaEncabezado.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+                    tabla.addCell(celdaEncabezado);
 
-            System.out.println("Reporte PDF generado con éxito en: " + rutaArchivo);
-        } catch (FileNotFoundException e) {
-            System.out.println("Error al crear el archivo PDF: " + e.getMessage());
-        } catch (DocumentException e) {
-            System.out.println("Error al crear el documento: " + e.getMessage());
-        }
-    }
+                    celdaEncabezado = new PdfPCell(new Phrase("Nombre", FontFactory.getFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.WHITE)));
+                    celdaEncabezado.setBackgroundColor(BaseColor.DARK_GRAY);
+                    celdaEncabezado.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+                    tabla.addCell(celdaEncabezado);
 
-    // Método para agregar celdas a la tabla
-    private void agregarCelda(PdfPTable tabla, String campo, String valor) {
-        PdfPCell celdaCampo = new PdfPCell(new Phrase(campo, FontFactory.getFont(FontFactory.HELVETICA, 12)));
-        celdaCampo.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
-        celdaCampo.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
-        celdaCampo.setPadding(5);
-        tabla.addCell(celdaCampo);
+                    // Filas de la tabla con los datos de los dueños de XAD Code
+                    agregarCelda(tabla, "CEO", "Dax Naim Sánchez López");
+                    agregarCelda(tabla, "Developer", "Jesús Aldahir Hernández Medina");
+                    agregarCelda(tabla, "Developer", "Ángel Rafael Herrera Carvajal");
 
-        PdfPCell celdaValor = new PdfPCell(new Phrase(valor, FontFactory.getFont(FontFactory.HELVETICA, 12)));
-        celdaValor.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
-        celdaValor.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
-        celdaValor.setPadding(5);
-        tabla.addCell(celdaValor);
-    }
+                    // Agregar tabla al documento
+                    documento.add(tabla);
 
-    // Método para obtener la ruta donde guardar el archivo PDF
-    private String obtenerRuta() {
-        JFileChooser chooser = new JFileChooser();
-        chooser.setDialogTitle("Guardar PDF");
-        chooser.setSelectedFile(new java.io.File(nombre + ".pdf"));
+                    // Cerrar el documento
+                    documento.close();
+                    writer.close();
 
-        int userSelection = chooser.showSaveDialog(null);
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            return chooser.getSelectedFile().getAbsolutePath();
-        }
-        return null;
-    }
+                    System.out.println("Reporte PDF generado con éxito en: " + rutaArchivo);
+                } catch (FileNotFoundException e) {
+                    System.out.println("Error al crear el archivo PDF: " + e.getMessage());
+                } catch (DocumentException e) {
+                    System.out.println("Error al crear el documento: " + e.getMessage());
+                }
+            }
+
+            // Método para agregar celdas a la tabla
+            private void agregarCelda(PdfPTable tabla, String campo, String valor) {
+                PdfPCell celdaCampo = new PdfPCell(new Phrase(campo, FontFactory.getFont(FontFactory.HELVETICA, 12)));
+                celdaCampo.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+                celdaCampo.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
+                celdaCampo.setPadding(5);
+                tabla.addCell(celdaCampo);
+
+                PdfPCell celdaValor = new PdfPCell(new Phrase(valor, FontFactory.getFont(FontFactory.HELVETICA, 12)));
+                celdaValor.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+                celdaValor.setVerticalAlignment(PdfPCell.ALIGN_MIDDLE);
+                celdaValor.setPadding(5);
+                tabla.addCell(celdaValor);
+            }
+
+            // Método para obtener la ruta donde guardar el archivo PDF
+            private String obtenerRuta() {
+                JFileChooser chooser = new JFileChooser();
+                chooser.setDialogTitle("Guardar PDF");
+                chooser.setSelectedFile(new java.io.File(nombre + ".pdf"));
+
+                int userSelection = chooser.showSaveDialog(null);
+                if (userSelection == JFileChooser.APPROVE_OPTION) {
+                    return chooser.getSelectedFile().getAbsolutePath();
+                }
+                return null;
+            }
     }//GEN-LAST:event_lblDescargarMouseClicked
 
 
