@@ -66,14 +66,13 @@ public class AcercaDe extends javax.swing.JPanel {
         lblDescargar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator1.setBackground(new java.awt.Color(204, 204, 204));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 1470, 10));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\bfc93e2a-7ed1-4ca6-a6a1-d8fbc45e021c (1) (1).jpg")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
@@ -99,20 +98,15 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 102));
         jLabel18.setText("Descargar Información de la empresa");
-        panelRedondeado4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 450, 80));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\imagen_2024-12-08_040205685.png")); // NOI18N
+        panelRedondeado4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 450, 80));
         panelRedondeado4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 110, 144));
 
-        lblDescargar.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\descargar (1).png")); // NOI18N
         lblDescargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDescargarMouseClicked(evt);
             }
         });
         panelRedondeado4.add(lblDescargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\Grey minimalist business project presentation  (1).png")); // NOI18N
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
@@ -141,6 +135,10 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("SaveBox");
         add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, 80));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/avatar_chico.png"))); // NOI18N
+        jLabel5.setText("jLabel5");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDescargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDescargarMouseClicked
@@ -266,6 +264,7 @@ public class AcercaDe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDescargar;
     private utilerias.PanelRedondeado panelRedondeado1;
