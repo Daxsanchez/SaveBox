@@ -91,16 +91,18 @@ public class PPrestamos extends javax.swing.JPanel {
         helpCentro1 = new help.helpCentro();
 
         setBackground(new java.awt.Color(7, 20, 123));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(null);
 
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 73, 1110, 20));
+        add(jSeparator2);
+        jSeparator2.setBounds(30, 73, 1110, 20);
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Prestamos Efectuados");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, 50));
+        add(jLabel18);
+        jLabel18.setBounds(100, 10, 396, 50);
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(22);
@@ -136,7 +138,7 @@ public class PPrestamos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                .addComponent(txtBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
                 .addContainerGap())
         );
         panelRedondeado2Layout.setVerticalGroup(
@@ -149,18 +151,21 @@ public class PPrestamos extends javax.swing.JPanel {
                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 20, 340, 30));
+        add(panelRedondeado2);
+        panelRedondeado2.setBounds(900, 20, 340, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, -1, 60));
+        add(jLabel1);
+        jLabel1.setBounds(40, 0, 50, 60);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo2.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\6.png")); // NOI18N
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel3MouseClicked(evt);
             }
         });
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, -1, -1));
+        add(jLabel3);
+        jLabel3.setBounds(1250, 10, 50, 50);
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
@@ -192,8 +197,10 @@ public class PPrestamos extends javax.swing.JPanel {
         tblPrestamos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblPrestamos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1340, 600));
-        add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, -1, -1));
+        add(jScrollPane1);
+        jScrollPane1.setBounds(0, 90, 1340, 600);
+        add(helpCentro1);
+        helpCentro1.setBounds(830, 0, 64, 64);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
