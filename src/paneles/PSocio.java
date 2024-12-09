@@ -267,6 +267,7 @@ public class PSocio extends javax.swing.JPanel {
         VRegistrarSocio registrarSocio = new VRegistrarSocio(this);
         registrarSocio.setSize(376, 750);
         registrarSocio.setVisible(true);
+        dp.setLayout(null);
 
         if (dp != null) {
             vInicio.centrarInternalFrame(registrarSocio, dp);

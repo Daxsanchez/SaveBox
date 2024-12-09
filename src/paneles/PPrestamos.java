@@ -59,6 +59,7 @@ public class PPrestamos extends javax.swing.JPanel {
                 VAbonoPrestamo abonar = new VAbonoPrestamo(pPres, prestamos.get(row));
                 abonar.setSize(412, 482);
                 abonar.setVisible(true);
+                dp.setLayout(null);
 
                 if (dp != null) {
                     vInicio.centrarInternalFrame(abonar, dp);

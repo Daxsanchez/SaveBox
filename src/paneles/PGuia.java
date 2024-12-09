@@ -4,6 +4,17 @@
  */
 package paneles;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import ventanas.VInicio;
 
 /**
@@ -34,6 +45,9 @@ public class PGuia extends javax.swing.JPanel {
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         helpCentro1 = new help.helpCentro();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setForeground(new java.awt.Color(7, 20, 123));
@@ -49,22 +63,61 @@ public class PGuia extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/guia-turistico.png"))); // NOI18N
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel22.setBackground(new java.awt.Color(0, 0, 102));
+        jLabel22.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel22.setText("Descargar Guía De usuario");
+
+        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\descargar (1).png")); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(447, 447, 447)
+                        .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(596, 596, 596)
+                        .addComponent(jLabel2)))
+                .addContainerGap(524, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(336, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel1)
                 .addGap(38, 38, 38)
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 787, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,16 +132,110 @@ public class PGuia extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(39, 39, 39)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        generarGuiaSaveBox();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
+private static void generarGuiaSaveBox() {
+ // Crear un JFileChooser para que el usuario seleccione la ubicación y nombre del archivo
+    JFileChooser fileChooser = new JFileChooser();
+    fileChooser.setDialogTitle("Guardar Guía de Usuario");
+    fileChooser.setSelectedFile(new File("guia_usuario_savebox.pdf"));  // Nombre predeterminado
+
+    // Filtrar para solo mostrar archivos PDF
+    FileNameExtensionFilter filter = new FileNameExtensionFilter("Archivos PDF", "pdf");
+    fileChooser.setFileFilter(filter);
+
+    // Mostrar el diálogo de guardado
+    int result = fileChooser.showSaveDialog(null);
+    
+    // Si el usuario seleccionó un archivo (confirmó la acción)
+    if (result == JFileChooser.APPROVE_OPTION) {
+        // Obtener el archivo seleccionado
+        File archivoSeleccionado = fileChooser.getSelectedFile();
+
+        // Verificar si el archivo ya tiene la extensión .pdf
+        String archivoRuta = archivoSeleccionado.getAbsolutePath();
+        if (!archivoRuta.endsWith(".pdf")) {
+            archivoRuta += ".pdf";  // Agregar la extensión si no está
+        }
+
+        // Crear el documento PDF
+        Document document = new Document();
+
+        try {
+            // Escribir el archivo PDF
+            PdfWriter.getInstance(document, new FileOutputStream(archivoRuta));
+            document.open();
+
+            // Título de la guía
+            Font tituloFont = new Font(Font.FontFamily.HELVETICA, 16, Font.BOLD);
+            Paragraph titulo = new Paragraph("Guía de Usuario: SaveBox", tituloFont);
+            document.add(titulo);
+            document.add(new Paragraph("\n")); // Salto de línea
+
+            // Descripción de la aplicación
+            Font subTituloFont = new Font(Font.FontFamily.HELVETICA, 14, Font.BOLD);
+            Paragraph subtitulo = new Paragraph("Descripción de la aplicación", subTituloFont);
+            document.add(subtitulo);
+            document.add(new Paragraph("SaveBox es una aplicación de caja de ahorros donde los usuarios pueden gestionar los ahorros de socios de la empresa de forma segura y sencilla."));
+            document.add(new Paragraph("\n"));
+
+            // Depósitos
+            Paragraph depSubtitulo = new Paragraph("Depósitos", subTituloFont);
+            document.add(depSubtitulo);
+            document.add(new Paragraph("Los usuarios pueden realizar depósitos en la cuenta de ahorro de socios a través de la aplicación de Escritorio. El dinero depositado estará disponible para su uso en cualquier momento."));
+            document.add(new Paragraph("\n"));
+
+            // Retiros
+            Paragraph retiroSubtitulo = new Paragraph("Retiros", subTituloFont);
+            document.add(retiroSubtitulo);
+            document.add(new Paragraph("Los usuarios pueden retirar el dinero de la cuenta de ahorro del socio según sea necesario. El proceso es simple y rápido."));
+            document.add(new Paragraph("\n"));
+
+            // Préstamos
+            Paragraph prestamoSubtitulo = new Paragraph("Préstamos", subTituloFont);
+            document.add(prestamoSubtitulo);
+            document.add(new Paragraph("Los usuarios pueden solicitar préstamos según las condiciones establecidas en la aplicación. Los préstamos están sujetos a aprobación."));
+            document.add(new Paragraph("\n"));
+
+            // Información para administradores y gestores
+            Font adminFont = new Font(Font.FontFamily.HELVETICA, 12, Font.ITALIC);
+            Paragraph adminSubtitulo = new Paragraph("Roles de Administradores y Gestores", adminFont);
+            document.add(adminSubtitulo);
+            document.add(new Paragraph("Los administradores tienen acceso completo a todas las funcionalidades de la aplicación, incluyendo la gestión de cuentas y transacciones. Solo los gestores pueden interactuar con los servicios básicos de depósito, retiro."));
+            document.add(new Paragraph("\n"));
+
+            // Cerrar el documento
+            document.close();
+
+            // Mensaje de confirmación
+            JOptionPane.showMessageDialog(null, "Guía de usuario generada exitosamente en: " + archivoRuta);
+
+        } catch (DocumentException | FileNotFoundException e) {
+            // Manejo de excepciones
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al generar la guía de usuario.");
+        }
+    } else {
+        // Si el usuario cancela el guardado
+        JOptionPane.showMessageDialog(null, "Guardado cancelado.");
+    }
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private help.helpCentro helpCentro1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 }
