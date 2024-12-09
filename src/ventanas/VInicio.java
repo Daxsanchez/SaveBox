@@ -32,8 +32,8 @@ import paneles.PRealizarPrestamo;
 public class VInicio extends javax.swing.JFrame {
 
     private static VEmpresa vntEmpresa = null;
-    private static int x = 30;
-    private static int y = 30;
+    private static int x = 100;
+    private static int y = 110;
     private static int width = 1300;
     private static int height = 600;
     private PInicio pinicio = null;
@@ -82,15 +82,6 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         dp = new javax.swing.JDesktopPane();
-        jPanel2 = new javax.swing.JPanel();
-        pCerrarSesion = new utilerias.PanelRedondeado();
-        lblCerrarSesion = new javax.swing.JLabel();
-        pConfiguracion = new utilerias.PanelRedondeado();
-        lblConfiguracion = new javax.swing.JLabel();
-        pGuia = new utilerias.PanelRedondeado();
-        lblGuia = new javax.swing.JLabel();
-        pEmpresa = new utilerias.PanelRedondeado();
-        lblEmpresa = new javax.swing.JLabel();
         pEspacio = new javax.swing.JPanel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         pI = new utilerias.PanelRedondeado();
@@ -110,12 +101,357 @@ public class VInicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         pIAcerca = new utilerias.PanelRedondeado();
         lbAcerca = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        pCerrarSesion = new utilerias.PanelRedondeado();
+        lblCerrarSesion = new javax.swing.JLabel();
+        pConfiguracion = new utilerias.PanelRedondeado();
+        lblConfiguracion = new javax.swing.JLabel();
+        pGuia = new utilerias.PanelRedondeado();
+        lblGuia = new javax.swing.JLabel();
+        pEmpresa = new utilerias.PanelRedondeado();
+        lblEmpresa = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         dp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        pEspacio.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
+        panelRedondeado1.setRoundBottomLeft(50);
+        panelRedondeado1.setRoundBottomRight(50);
+        panelRedondeado1.setRoundTopLeft(50);
+        panelRedondeado1.setRoundTopRight(50);
+
+        pI.setBackground(new java.awt.Color(7, 20, 123));
+        pI.setRoundBottomLeft(50);
+        pI.setRoundBottomRight(50);
+        pI.setRoundTopLeft(50);
+        pI.setRoundTopRight(50);
+        pI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pIMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pIMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pIMouseExited(evt);
+            }
+        });
+        pI.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbInicio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbInicio.setForeground(new java.awt.Color(255, 255, 255));
+        lbInicio.setText("Inicio");
+        pI.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 20));
+
+        pSocios.setBackground(new java.awt.Color(7, 20, 123));
+        pSocios.setRoundBottomLeft(50);
+        pSocios.setRoundBottomRight(50);
+        pSocios.setRoundTopLeft(50);
+        pSocios.setRoundTopRight(50);
+        pSocios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pSociosMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pSociosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pSociosMouseExited(evt);
+            }
+        });
+
+        lbSocio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbSocio.setForeground(new java.awt.Color(255, 255, 255));
+        lbSocio.setText("Socios");
+
+        javax.swing.GroupLayout pSociosLayout = new javax.swing.GroupLayout(pSocios);
+        pSocios.setLayout(pSociosLayout);
+        pSociosLayout.setHorizontalGroup(
+            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pSociosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbSocio)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+        pSociosLayout.setVerticalGroup(
+            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSociosLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbSocio)
+                .addContainerGap())
+        );
+
+        pUs.setBackground(new java.awt.Color(7, 20, 123));
+        pUs.setRoundBottomLeft(50);
+        pUs.setRoundBottomRight(50);
+        pUs.setRoundTopLeft(50);
+        pUs.setRoundTopRight(50);
+        pUs.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pUsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pUsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pUsMouseExited(evt);
+            }
+        });
+
+        lbUsuario.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        lbUsuario.setText("Usuario");
+
+        javax.swing.GroupLayout pUsLayout = new javax.swing.GroupLayout(pUs);
+        pUs.setLayout(pUsLayout);
+        pUsLayout.setHorizontalGroup(
+            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pUsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addGap(28, 28, 28))
+        );
+        pUsLayout.setVerticalGroup(
+            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pUsLayout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(lbUsuario)
+                .addContainerGap())
+        );
+
+        pPres.setBackground(new java.awt.Color(7, 20, 123));
+        pPres.setRoundBottomLeft(50);
+        pPres.setRoundBottomRight(50);
+        pPres.setRoundTopLeft(50);
+        pPres.setRoundTopRight(50);
+        pPres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPresMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pPresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pPresMouseExited(evt);
+            }
+        });
+        pPres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbPrestamo.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbPrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        lbPrestamo.setText("Prestamos");
+        pPres.add(lbPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 20));
+
+        pAho.setBackground(new java.awt.Color(7, 20, 123));
+        pAho.setRoundBottomLeft(50);
+        pAho.setRoundBottomRight(50);
+        pAho.setRoundTopLeft(50);
+        pAho.setRoundTopRight(50);
+        pAho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pAhoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pAhoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pAhoMouseExited(evt);
+            }
+        });
+
+        lbAhorro.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
+        lbAhorro.setText("Ahorros");
+
+        javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
+        pAho.setLayout(pAhoLayout);
+        pAhoLayout.setHorizontalGroup(
+            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pAhoLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(lbAhorro)
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        pAhoLayout.setVerticalGroup(
+            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhoLayout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(lbAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
+        pNotificacion.setRoundBottomLeft(20);
+        pNotificacion.setRoundBottomRight(20);
+        pNotificacion.setRoundTopLeft(20);
+        pNotificacion.setRoundTopRight(20);
+        pNotificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pNotificacionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pNotificacionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pNotificacionMouseExited(evt);
+            }
+        });
+
+        lblNotificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
+
+        javax.swing.GroupLayout pNotificacionLayout = new javax.swing.GroupLayout(pNotificacion);
+        pNotificacion.setLayout(pNotificacionLayout);
+        pNotificacionLayout.setHorizontalGroup(
+            pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pNotificacionLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(lblNotificacion)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        pNotificacionLayout.setVerticalGroup(
+            pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pNotificacionLayout.createSequentialGroup()
+                .addComponent(lblNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        pPerfil.setBackground(new java.awt.Color(7, 20, 123));
+        pPerfil.setRoundBottomLeft(20);
+        pPerfil.setRoundBottomRight(20);
+        pPerfil.setRoundTopLeft(20);
+        pPerfil.setRoundTopRight(20);
+        pPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pPerfilMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pPerfilMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pPerfilMouseExited(evt);
+            }
+        });
+
+        lblPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avatar_chico.png"))); // NOI18N
+
+        javax.swing.GroupLayout pPerfilLayout = new javax.swing.GroupLayout(pPerfil);
+        pPerfil.setLayout(pPerfilLayout);
+        pPerfilLayout.setHorizontalGroup(
+            pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPerfilLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
+                .addComponent(lblPerfil)
+                .addGap(14, 14, 14))
+        );
+        pPerfilLayout.setVerticalGroup(
+            pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPerfilLayout.createSequentialGroup()
+                .addComponent(lblPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("|");
+
+        pIAcerca.setBackground(new java.awt.Color(7, 20, 123));
+        pIAcerca.setRoundBottomLeft(50);
+        pIAcerca.setRoundBottomRight(50);
+        pIAcerca.setRoundTopLeft(50);
+        pIAcerca.setRoundTopRight(50);
+        pIAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pIAcercaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pIAcercaMouseExited(evt);
+            }
+        });
+
+        lbAcerca.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        lbAcerca.setForeground(new java.awt.Color(255, 255, 255));
+        lbAcerca.setText("Acerca de");
+        lbAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbAcercaMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pIAcercaLayout = new javax.swing.GroupLayout(pIAcerca);
+        pIAcerca.setLayout(pIAcercaLayout);
+        pIAcercaLayout.setHorizontalGroup(
+            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pIAcercaLayout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(lbAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        pIAcercaLayout.setVerticalGroup(
+            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pIAcercaLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(lbAcerca)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
+        panelRedondeado1.setLayout(panelRedondeado1Layout);
+        panelRedondeado1Layout.setHorizontalGroup(
+            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, 61)
+                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38)
+                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(100, Short.MAX_VALUE))
+        );
+        panelRedondeado1Layout.setVerticalGroup(
+            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(pI, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                    .addComponent(pSocios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addComponent(pPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(14, 14, 14))
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
 
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -246,8 +582,6 @@ public class VInicio extends javax.swing.JFrame {
             }
         });
 
-        lblEmpresa.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\logo.jpg")); // NOI18N
-
         javax.swing.GroupLayout pEmpresaLayout = new javax.swing.GroupLayout(pEmpresa);
         pEmpresa.setLayout(pEmpresaLayout);
         pEmpresaLayout.setHorizontalGroup(
@@ -265,357 +599,29 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel2.add(pEmpresa, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 10, -1, -1));
 
-        dp.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, -1));
-
-        pEspacio.setBackground(new java.awt.Color(255, 255, 255));
-
         javax.swing.GroupLayout pEspacioLayout = new javax.swing.GroupLayout(pEspacio);
         pEspacio.setLayout(pEspacioLayout);
         pEspacioLayout.setHorizontalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1404, Short.MAX_VALUE)
+            .addGroup(pEspacioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
         pEspacioLayout.setVerticalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 760, Short.MAX_VALUE)
-        );
-
-        dp.add(pEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, -1, 760));
-
-        panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
-        panelRedondeado1.setRoundBottomLeft(50);
-        panelRedondeado1.setRoundBottomRight(50);
-        panelRedondeado1.setRoundTopLeft(50);
-        panelRedondeado1.setRoundTopRight(50);
-
-        pI.setBackground(new java.awt.Color(7, 20, 123));
-        pI.setRoundBottomLeft(50);
-        pI.setRoundBottomRight(50);
-        pI.setRoundTopLeft(50);
-        pI.setRoundTopRight(50);
-        pI.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pIMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pIMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pIMouseExited(evt);
-            }
-        });
-        pI.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbInicio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbInicio.setForeground(new java.awt.Color(255, 255, 255));
-        lbInicio.setText("Inicio");
-        pI.add(lbInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 20));
-
-        pSocios.setBackground(new java.awt.Color(7, 20, 123));
-        pSocios.setRoundBottomLeft(50);
-        pSocios.setRoundBottomRight(50);
-        pSocios.setRoundTopLeft(50);
-        pSocios.setRoundTopRight(50);
-        pSocios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pSociosMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pSociosMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pSociosMouseExited(evt);
-            }
-        });
-
-        lbSocio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbSocio.setForeground(new java.awt.Color(255, 255, 255));
-        lbSocio.setText("Socios");
-
-        javax.swing.GroupLayout pSociosLayout = new javax.swing.GroupLayout(pSocios);
-        pSocios.setLayout(pSociosLayout);
-        pSociosLayout.setHorizontalGroup(
-            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pSociosLayout.createSequentialGroup()
+            .addGroup(pEspacioLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbSocio)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-        pSociosLayout.setVerticalGroup(
-            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSociosLayout.createSequentialGroup()
-                .addContainerGap(24, Short.MAX_VALUE)
-                .addComponent(lbSocio)
-                .addContainerGap())
-        );
-
-        pUs.setBackground(new java.awt.Color(7, 20, 123));
-        pUs.setRoundBottomLeft(50);
-        pUs.setRoundBottomRight(50);
-        pUs.setRoundTopLeft(50);
-        pUs.setRoundTopRight(50);
-        pUs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pUsMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pUsMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pUsMouseExited(evt);
-            }
-        });
-
-        lbUsuario.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lbUsuario.setText("Usuario");
-
-        javax.swing.GroupLayout pUsLayout = new javax.swing.GroupLayout(pUs);
-        pUs.setLayout(pUsLayout);
-        pUsLayout.setHorizontalGroup(
-            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pUsLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        pUsLayout.setVerticalGroup(
-            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pUsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-
-        pPres.setBackground(new java.awt.Color(7, 20, 123));
-        pPres.setRoundBottomLeft(50);
-        pPres.setRoundBottomRight(50);
-        pPres.setRoundTopLeft(50);
-        pPres.setRoundTopRight(50);
-        pPres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pPresMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pPresMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pPresMouseExited(evt);
-            }
-        });
-        pPres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lbPrestamo.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbPrestamo.setForeground(new java.awt.Color(255, 255, 255));
-        lbPrestamo.setText("Prestamos");
-        pPres.add(lbPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 100, 20));
-
-        pAho.setBackground(new java.awt.Color(7, 20, 123));
-        pAho.setRoundBottomLeft(50);
-        pAho.setRoundBottomRight(50);
-        pAho.setRoundTopLeft(50);
-        pAho.setRoundTopRight(50);
-        pAho.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pAhoMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pAhoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pAhoMouseExited(evt);
-            }
-        });
-
-        lbAhorro.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
-        lbAhorro.setText("Ahorros");
-
-        javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
-        pAho.setLayout(pAhoLayout);
-        pAhoLayout.setHorizontalGroup(
-            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhoLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(lbAhorro)
-                .addContainerGap())
-        );
-        pAhoLayout.setVerticalGroup(
-            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAhoLayout.createSequentialGroup()
-                .addComponent(lbAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
-        pNotificacion.setRoundBottomLeft(20);
-        pNotificacion.setRoundBottomRight(20);
-        pNotificacion.setRoundTopLeft(20);
-        pNotificacion.setRoundTopRight(20);
-        pNotificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pNotificacionMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pNotificacionMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pNotificacionMouseExited(evt);
-            }
-        });
-
-        lblNotificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/noti.png"))); // NOI18N
-
-        javax.swing.GroupLayout pNotificacionLayout = new javax.swing.GroupLayout(pNotificacion);
-        pNotificacion.setLayout(pNotificacionLayout);
-        pNotificacionLayout.setHorizontalGroup(
-            pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNotificacion)
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        pNotificacionLayout.setVerticalGroup(
-            pNotificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pNotificacionLayout.createSequentialGroup()
-                .addComponent(lblNotificacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(pEspacioLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 164, Short.MAX_VALUE))
         );
 
-        pPerfil.setBackground(new java.awt.Color(7, 20, 123));
-        pPerfil.setRoundBottomLeft(20);
-        pPerfil.setRoundBottomRight(20);
-        pPerfil.setRoundTopLeft(20);
-        pPerfil.setRoundTopRight(20);
-        pPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                pPerfilMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pPerfilMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pPerfilMouseExited(evt);
-            }
-        });
-
-        lblPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/avatar_chico.png"))); // NOI18N
-
-        javax.swing.GroupLayout pPerfilLayout = new javax.swing.GroupLayout(pPerfil);
-        pPerfil.setLayout(pPerfilLayout);
-        pPerfilLayout.setHorizontalGroup(
-            pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pPerfilLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblPerfil)
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        pPerfilLayout.setVerticalGroup(
-            pPerfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pPerfilLayout.createSequentialGroup()
-                .addComponent(lblPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("|");
-
-        pIAcerca.setBackground(new java.awt.Color(7, 20, 123));
-        pIAcerca.setRoundBottomLeft(50);
-        pIAcerca.setRoundBottomRight(50);
-        pIAcerca.setRoundTopLeft(50);
-        pIAcerca.setRoundTopRight(50);
-        pIAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                pIAcercaMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                pIAcercaMouseExited(evt);
-            }
-        });
-
-        lbAcerca.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        lbAcerca.setForeground(new java.awt.Color(255, 255, 255));
-        lbAcerca.setText("Acerca de");
-        lbAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbAcercaMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pIAcercaLayout = new javax.swing.GroupLayout(pIAcerca);
-        pIAcerca.setLayout(pIAcercaLayout);
-        pIAcercaLayout.setHorizontalGroup(
-            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pIAcercaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pIAcercaLayout.setVerticalGroup(
-            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pIAcercaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbAcerca)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(70, 70, 70)
-                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
-                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(150, 150, 150)
-                .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 13, 1350, 80));
+        dp.add(pEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 1490, 900));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
