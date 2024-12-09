@@ -61,12 +61,13 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel20 = new javax.swing.JLabel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         panelRedondeado4 = new utilerias.PanelRedondeado();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        panelRedondeado5 = new utilerias.PanelRedondeado();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         lblDescargar = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -83,7 +84,7 @@ public class AcercaDe extends javax.swing.JPanel {
         jLabel20.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("version 0.0.1");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 100, 60));
+        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 100, 60));
 
         panelRedondeado1.setBackground(new java.awt.Color(0, 0, 102));
         panelRedondeado1.setRoundBottomLeft(20);
@@ -94,55 +95,70 @@ public class AcercaDe extends javax.swing.JPanel {
         panelRedondeado4.setBackground(new java.awt.Color(248, 244, 244));
         panelRedondeado4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel18.setBackground(new java.awt.Color(0, 0, 102));
-        jLabel18.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 0, 102));
-        jLabel18.setText("Descargar Información de la empresa");
-        panelRedondeado4.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 450, 80));
-        panelRedondeado4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 110, 144));
+        panelRedondeado5.setBackground(new java.awt.Color(248, 244, 244));
+        panelRedondeado5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel22.setBackground(new java.awt.Color(0, 0, 102));
+        jLabel22.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel22.setText("Descargar Información de la empresa");
+        panelRedondeado5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 450, 70));
+
+        panelRedondeado4.add(panelRedondeado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, 70));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagen_2024-12-08_040205685.png"))); // NOI18N
+        panelRedondeado4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, 110, 160));
+
+        lblDescargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/descargar (1).png"))); // NOI18N
         lblDescargar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblDescargarMouseClicked(evt);
             }
         });
-        panelRedondeado4.add(lblDescargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, -1, -1));
+        panelRedondeado4.add(lblDescargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 210, 40, 50));
+
+        jLabel18.setBackground(new java.awt.Color(0, 0, 102));
+        jLabel18.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 102));
+        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Grey minimalist business project presentation  (1).png"))); // NOI18N
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
         panelRedondeado1Layout.setHorizontalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelRedondeado4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
+                        .addComponent(jLabel18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panelRedondeado4, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(196, 196, 196)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(20, 20, 20)
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 394, Short.MAX_VALUE)
                     .addComponent(panelRedondeado4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(343, 343, 343)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 1250, 420));
+        add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1260, 440));
 
         jLabel21.setFont(new java.awt.Font("Agrandir", 0, 60)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("SaveBox");
         add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, 80));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/avatar_chico.png"))); // NOI18N
-        jLabel5.setText("jLabel5");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 60, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblDescargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDescargarMouseClicked
-        // Crear una instancia de la clase GenerarReporte
+         // Crear una instancia de la clase GenerarReporte
         GenerarReporte generarReporte = new GenerarReporte("Reporte_XAD_Code");
 
         // Ejecutar el hilo para generar el PDF
@@ -253,6 +269,7 @@ public class AcercaDe extends javax.swing.JPanel {
                 }
                 return null;
             }
+    
     }//GEN-LAST:event_lblDescargarMouseClicked
 
 
@@ -260,15 +277,16 @@ public class AcercaDe extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblDescargar;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado4;
+    private utilerias.PanelRedondeado panelRedondeado5;
     private utilerias.Utileria utileria1;
     private utilerias.Utileria utileria2;
     // End of variables declaration//GEN-END:variables
