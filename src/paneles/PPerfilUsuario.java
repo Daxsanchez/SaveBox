@@ -6,6 +6,7 @@ package paneles;
 
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import main.Config;
 import modelos.Ahorro;
 import modelos.Usuario;
 import ventanas.VInicio;
@@ -21,7 +22,10 @@ public class PPerfilUsuario extends javax.swing.JPanel {
     public PPerfilUsuario(VInicio ini) {
         initComponents();
         vInicio = ini;
-        dp = vInicio.getDesktopPane();       
+        dp = vInicio.getDesktopPane();  
+        Usuario usuario = Config.getUsuarioLog();
+        
+        txtNombre1.setText(usuario.getNombre());
     }
 
     /**

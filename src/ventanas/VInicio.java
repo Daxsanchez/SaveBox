@@ -72,14 +72,14 @@ public class VInicio extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         dp = new javax.swing.JDesktopPane();
         jPanel2 = new javax.swing.JPanel();
-        pCerrarSesion = new javax.swing.JPanel();
+        pCerrarSesion = new utilerias.PanelRedondeado();
         lblCerrarSesion = new javax.swing.JLabel();
-        pGuiaUsuario = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        pConfiguracion = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        pEmpresa = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        pConfiguracion = new utilerias.PanelRedondeado();
+        lblConfiguracion = new javax.swing.JLabel();
+        pGuia = new utilerias.PanelRedondeado();
+        lblGuia = new javax.swing.JLabel();
+        pEmpresa = new utilerias.PanelRedondeado();
+        lblEmpresa = new javax.swing.JLabel();
         helpCentro2 = new help.helpCentro();
         pEspacio = new javax.swing.JPanel();
         panelRedondeado1 = new utilerias.PanelRedondeado();
@@ -102,12 +102,24 @@ public class VInicio extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        dp.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
 
         pCerrarSesion.setBackground(new java.awt.Color(7, 20, 123));
+        pCerrarSesion.setRoundBottomLeft(20);
+        pCerrarSesion.setRoundBottomRight(20);
+        pCerrarSesion.setRoundTopLeft(20);
+        pCerrarSesion.setRoundTopRight(20);
         pCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pCerrarSesionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pCerrarSesionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pCerrarSesionMouseExited(evt);
             }
         });
 
@@ -117,10 +129,10 @@ public class VInicio extends javax.swing.JFrame {
         pCerrarSesion.setLayout(pCerrarSesionLayout);
         pCerrarSesionLayout.setHorizontalGroup(
             pCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pCerrarSesionLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCerrarSesionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pCerrarSesionLayout.setVerticalGroup(
             pCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,61 +142,108 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pGuiaUsuario.setBackground(new java.awt.Color(7, 20, 123));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libro.png"))); // NOI18N
-
-        javax.swing.GroupLayout pGuiaUsuarioLayout = new javax.swing.GroupLayout(pGuiaUsuario);
-        pGuiaUsuario.setLayout(pGuiaUsuarioLayout);
-        pGuiaUsuarioLayout.setHorizontalGroup(
-            pGuiaUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pGuiaUsuarioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap())
-        );
-        pGuiaUsuarioLayout.setVerticalGroup(
-            pGuiaUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pGuiaUsuarioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
         pConfiguracion.setBackground(new java.awt.Color(7, 20, 123));
+        pConfiguracion.setRoundBottomLeft(20);
+        pConfiguracion.setRoundBottomRight(20);
+        pConfiguracion.setRoundTopLeft(20);
+        pConfiguracion.setRoundTopRight(20);
+        pConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pConfiguracionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pConfiguracionMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pConfiguracionMouseExited(evt);
+            }
+        });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
+        lblConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configuracion.png"))); // NOI18N
 
         javax.swing.GroupLayout pConfiguracionLayout = new javax.swing.GroupLayout(pConfiguracion);
         pConfiguracion.setLayout(pConfiguracionLayout);
         pConfiguracionLayout.setHorizontalGroup(
             pConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pConfiguracionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConfiguracionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblConfiguracion)
+                .addContainerGap())
         );
         pConfiguracionLayout.setVerticalGroup(
             pConfiguracionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pConfiguracionLayout.createSequentialGroup()
-                .addComponent(jLabel3)
-                .addGap(0, 8, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pConfiguracionLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblConfiguracion)
+                .addContainerGap())
+        );
+
+        pGuia.setBackground(new java.awt.Color(7, 20, 123));
+        pGuia.setRoundBottomLeft(20);
+        pGuia.setRoundBottomRight(20);
+        pGuia.setRoundTopLeft(20);
+        pGuia.setRoundTopRight(20);
+        pGuia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pGuiaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pGuiaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pGuiaMouseExited(evt);
+            }
+        });
+
+        lblGuia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libro.png"))); // NOI18N
+
+        javax.swing.GroupLayout pGuiaLayout = new javax.swing.GroupLayout(pGuia);
+        pGuia.setLayout(pGuiaLayout);
+        pGuiaLayout.setHorizontalGroup(
+            pGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pGuiaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblGuia)
+                .addContainerGap())
+        );
+        pGuiaLayout.setVerticalGroup(
+            pGuiaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblGuia)
         );
 
         pEmpresa.setBackground(new java.awt.Color(7, 20, 123));
+        pEmpresa.setRoundBottomLeft(20);
+        pEmpresa.setRoundBottomRight(20);
+        pEmpresa.setRoundTopLeft(20);
+        pEmpresa.setRoundTopRight(20);
+        pEmpresa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pEmpresaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                pEmpresaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                pEmpresaMouseExited(evt);
+            }
+        });
+
+        lblEmpresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
 
         javax.swing.GroupLayout pEmpresaLayout = new javax.swing.GroupLayout(pEmpresa);
         pEmpresa.setLayout(pEmpresaLayout);
         pEmpresaLayout.setHorizontalGroup(
             pEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmpresaLayout.createSequentialGroup()
+                .addGap(0, 2, Short.MAX_VALUE)
+                .addComponent(lblEmpresa))
         );
         pEmpresaLayout.setVerticalGroup(
             pEmpresaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 62, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pEmpresaLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblEmpresa))
         );
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logoTec.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -193,38 +252,34 @@ public class VInicio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(pCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pConfiguracion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(pCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 4, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pGuiaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(pGuia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pConfiguracion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pGuiaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pGuia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pConfiguracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 447, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 514, Short.MAX_VALUE)
                 .addComponent(pCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(106, 106, 106))
         );
 
-        dp.add(jPanel2);
-        jPanel2.setBounds(0, 0, 68, 757);
-        dp.add(helpCentro2);
-        helpCentro2.setBounds(0, 0, 12, 12);
+        dp.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        dp.add(helpCentro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pEspacio.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -232,15 +287,14 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.setLayout(pEspacioLayout);
         pEspacioLayout.setHorizontalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1359, Short.MAX_VALUE)
+            .addGap(0, 1381, Short.MAX_VALUE)
         );
         pEspacioLayout.setVerticalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGap(0, 763, Short.MAX_VALUE)
         );
 
-        dp.add(pEspacio);
-        pEspacio.setBounds(90, 110, 1359, 757);
+        dp.add(pEspacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 110, -1, -1));
 
         panelRedondeado1.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado1.setRoundBottomLeft(50);
@@ -524,8 +578,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
-        dp.add(panelRedondeado1);
-        panelRedondeado1.setBounds(88, 13, 1310, 82);
+        dp.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(88, 13, 1312, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -686,12 +739,70 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.revalidate(); // Validar cambios
     }//GEN-LAST:event_lbAcercaMouseClicked
 
+    //----------------------------------------------------------------------------------------- Cerrar Sesion
     private void pCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCerrarSesionMouseClicked
-       Login login = new Login();
-       login.setVisible(true);
-       this.dispose();
+        Login login = new Login();
+        login.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_pCerrarSesionMouseClicked
 
+    private void pCerrarSesionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCerrarSesionMouseEntered
+        entraPanel(pCerrarSesion, lblCerrarSesion);
+    }//GEN-LAST:event_pCerrarSesionMouseEntered
+
+    private void pCerrarSesionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCerrarSesionMouseExited
+       salePanel(pCerrarSesion, lblCerrarSesion);
+    }//GEN-LAST:event_pCerrarSesionMouseExited
+    //----------------------------------------------------------------------------------------- Cerrar Sesion  
+
+    
+    //----------------------------------------------------------------------------------------- Configuracion  
+
+    private void pConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseClicked
+        
+    }//GEN-LAST:event_pConfiguracionMouseClicked
+
+    private void pConfiguracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseEntered
+        entraPanel(pConfiguracion, lblConfiguracion);
+    }//GEN-LAST:event_pConfiguracionMouseEntered
+
+    private void pConfiguracionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pConfiguracionMouseExited
+        salePanel(pConfiguracion, lblConfiguracion);
+    }//GEN-LAST:event_pConfiguracionMouseExited
+    //----------------------------------------------------------------------------------------- Configuracion
+    
+    
+    //----------------------------------------------------------------------------------------- Guia de Usuario
+    private void pGuiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pGuiaMouseClicked
+
+    private void pGuiaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseEntered
+        entraPanel(pGuia, lblGuia);
+    }//GEN-LAST:event_pGuiaMouseEntered
+
+    private void pGuiaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pGuiaMouseExited
+        salePanel(pGuia, lblGuia);
+    }//GEN-LAST:event_pGuiaMouseExited
+    //----------------------------------------------------------------------------------------- Guia de Usuario
+    
+    
+    //----------------------------------------------------------------------------------------- Empresa
+    private void pEmpresaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pEmpresaMouseClicked
+
+    private void pEmpresaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseEntered
+        entraPanel(pEmpresa, lblEmpresa);
+    }//GEN-LAST:event_pEmpresaMouseEntered
+
+    private void pEmpresaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pEmpresaMouseExited
+        salePanel(pEmpresa, lblEmpresa);
+    }//GEN-LAST:event_pEmpresaMouseExited
+    //----------------------------------------------------------------------------------------- Empresa
+    
+    
+    
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -772,7 +883,6 @@ public class VInicio extends javax.swing.JFrame {
         if (acercaDe != null) {
             pEspacio.remove(acercaDe);
             acercaDe = null;
-
         }
         pEspacio.invalidate();
         pEspacio.validate();
@@ -809,9 +919,6 @@ public class VInicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane dp;
     private help.helpCentro helpCentro2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
@@ -823,12 +930,15 @@ public class VInicio extends javax.swing.JFrame {
     private javax.swing.JLabel lbSocio;
     private javax.swing.JLabel lbUsuario;
     private javax.swing.JLabel lblCerrarSesion;
+    private javax.swing.JLabel lblConfiguracion;
+    private javax.swing.JLabel lblEmpresa;
+    private javax.swing.JLabel lblGuia;
     private utilerias.PanelRedondeado pAho;
-    private javax.swing.JPanel pCerrarSesion;
-    private javax.swing.JPanel pConfiguracion;
-    private javax.swing.JPanel pEmpresa;
+    private utilerias.PanelRedondeado pCerrarSesion;
+    private utilerias.PanelRedondeado pConfiguracion;
+    private utilerias.PanelRedondeado pEmpresa;
     private javax.swing.JPanel pEspacio;
-    private javax.swing.JPanel pGuiaUsuario;
+    private utilerias.PanelRedondeado pGuia;
     private utilerias.PanelRedondeado pI;
     private utilerias.PanelRedondeado pIAcerca;
     private utilerias.PanelRedondeado pPres;
