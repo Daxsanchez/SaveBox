@@ -25,7 +25,13 @@ public class PPerfilUsuario extends javax.swing.JPanel {
         dp = vInicio.getDesktopPane();  
         Usuario usuario = Config.getUsuarioLog();
         
-        txtNombre1.setText(usuario.getNombre());
+        txtNombre.setText(usuario.getNombre());
+        txtApellidos.setText(usuario.getApellidos());
+        txtCorreo.setText(usuario.getCorreo());
+        txtDireccion.setText(usuario.getDireccion());
+        txtEdad.setText(usuario.getEdad() + "");
+        txtId.setText(usuario.getId() + "");
+        txtRol.setText(usuario.getRol());
     }
 
     /**
@@ -41,22 +47,20 @@ public class PPerfilUsuario extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        txtNombre1 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        txtNombre2 = new javax.swing.JTextField();
-        txtNombre3 = new javax.swing.JTextField();
-        txtNombre4 = new javax.swing.JTextField();
+        txtApellidos = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel34 = new javax.swing.JLabel();
-        txtNombre5 = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        txtNombre6 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        txtNombre7 = new javax.swing.JTextField();
+        txtRol = new javax.swing.JTextField();
         jLabel27 = new javax.swing.JLabel();
-        txtNombre8 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
@@ -74,25 +78,25 @@ public class PPerfilUsuario extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/perfil (2).png"))); // NOI18N
 
-        txtNombre1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre1.setForeground(new java.awt.Color(7, 20, 123));
-
-        jLabel26.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText("Status:");
+        txtNombre.setEditable(false);
+        txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel31.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel31.setForeground(new java.awt.Color(255, 255, 255));
         jLabel31.setText("Apellidos:");
 
-        txtNombre2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre2.setForeground(new java.awt.Color(7, 20, 123));
+        txtApellidos.setEditable(false);
+        txtApellidos.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtApellidos.setForeground(new java.awt.Color(7, 20, 123));
 
-        txtNombre3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre3.setForeground(new java.awt.Color(7, 20, 123));
+        txtEdad.setEditable(false);
+        txtEdad.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(7, 20, 123));
 
-        txtNombre4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre4.setForeground(new java.awt.Color(7, 20, 123));
+        txtDireccion.setEditable(false);
+        txtDireccion.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtDireccion.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel32.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel32.setForeground(new java.awt.Color(255, 255, 255));
@@ -106,29 +110,29 @@ public class PPerfilUsuario extends javax.swing.JPanel {
         jLabel34.setForeground(new java.awt.Color(255, 255, 255));
         jLabel34.setText("Correo:");
 
-        txtNombre5.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre5.setForeground(new java.awt.Color(7, 20, 123));
+        txtCorreo.setEditable(false);
+        txtCorreo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel35.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel35.setForeground(new java.awt.Color(255, 255, 255));
         jLabel35.setText("Edad:");
 
-        txtNombre6.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre6.setForeground(new java.awt.Color(7, 20, 123));
+        txtId.setEditable(false);
+        txtId.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtId.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel36.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(255, 255, 255));
         jLabel36.setText("Id:");
 
-        txtNombre7.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        txtNombre7.setForeground(new java.awt.Color(7, 20, 123));
+        txtRol.setEditable(false);
+        txtRol.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        txtRol.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel27.setFont(new java.awt.Font("Agrandir", 0, 24)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Nombre:");
-
-        txtNombre8.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        txtNombre8.setForeground(new java.awt.Color(7, 20, 123));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icon/estrella-en-negro-de-forma-de-cinco-puntas.png"))); // NOI18N
 
@@ -137,17 +141,12 @@ public class PPerfilUsuario extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel26)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtNombre8, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 1270, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -173,14 +172,14 @@ public class PPerfilUsuario extends javax.swing.JPanel {
                                 .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(8, 8, 8)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(113, 113, 113)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(111, 111, 111)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
@@ -189,11 +188,8 @@ public class PPerfilUsuario extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26)
-                            .addComponent(txtNombre8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel2)))
@@ -204,37 +200,38 @@ public class PPerfilUsuario extends javax.swing.JPanel {
                         .addGap(194, 194, 194)
                         .addComponent(jLabel6))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(37, 37, 37)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel27))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel31))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel32))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel34))
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel35))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel36))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtNombre7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel33)))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(txtRol, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel33))))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -243,7 +240,6 @@ public class PPerfilUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
@@ -253,13 +249,12 @@ public class PPerfilUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField txtNombre1;
-    private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtNombre3;
-    private javax.swing.JTextField txtNombre4;
-    private javax.swing.JTextField txtNombre5;
-    private javax.swing.JTextField txtNombre6;
-    private javax.swing.JTextField txtNombre7;
-    private javax.swing.JTextField txtNombre8;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtRol;
     // End of variables declaration//GEN-END:variables
 }
