@@ -44,8 +44,8 @@ public class PAhorro extends javax.swing.JPanel {
         }
         for (int i = 0; ahorros.size() > i; i++) {
             tbl.addRow(new Object[]{
-                ahorros.get(i).getSocio().getNombre(), ahorros.get(i).getMontoMensual(),
-                ahorros.get(i).getAhorrado()});
+                ahorros.get(i).getSocio().getNombre() + " " + ahorros.get(i).getSocio().getApellidos(),
+                ahorros.get(i).getMontoMensual(), ahorros.get(i).getAhorrado()});
         }
     }
 
@@ -100,10 +100,10 @@ public class PAhorro extends javax.swing.JPanel {
         jLabel18 = new javax.swing.JLabel();
         panelRedondeado2 = new utilerias.PanelRedondeado();
         jLabel2 = new javax.swing.JLabel();
+        txtBuscar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblAhorros = new javax.swing.JTable();
-        txtBuscar = new javax.swing.JTextField();
         helpCentro1 = new help.helpCentro();
 
         setBackground(new java.awt.Color(7, 20, 123));
@@ -123,28 +123,28 @@ public class PAhorro extends javax.swing.JPanel {
         panelRedondeado2.setRoundBottomRight(22);
         panelRedondeado2.setRoundTopLeft(22);
         panelRedondeado2.setRoundTopRight(22);
+        panelRedondeado2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar (1).png"))); // NOI18N
+        panelRedondeado2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 5, -1, -1));
 
-        javax.swing.GroupLayout panelRedondeado2Layout = new javax.swing.GroupLayout(panelRedondeado2);
-        panelRedondeado2.setLayout(panelRedondeado2Layout);
-        panelRedondeado2Layout.setHorizontalGroup(
-            panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addContainerGap(309, Short.MAX_VALUE))
-        );
-        panelRedondeado2Layout.setVerticalGroup(
-            panelRedondeado2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado2Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel2))
-        );
+        txtBuscar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(7, 20, 123));
+        txtBuscar.setText("Buscar");
+        txtBuscar.setBorder(null);
+        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtBuscarFocusGained(evt);
+            }
+        });
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        panelRedondeado2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 0, 290, 30));
 
         add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 340, 30));
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\saveBox\\SaveBox\\src\\imagenes\\loaning_money_bag_icon_152048.png")); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 60));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -179,30 +179,26 @@ public class PAhorro extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblAhorros);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 600));
-
-        txtBuscar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(7, 20, 123));
-        txtBuscar.setText("Buscar");
-        txtBuscar.setBorder(null);
-        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusLost(evt);
-            }
-        });
-        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 297, -1));
         add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if (!txtBuscar.getText().isEmpty()) {
+            buscar();
+        } else {
+            ahorros = CAhorro.getRegistros();
+            tabla();
+        }
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
         txtBuscar.setText("");
     }//GEN-LAST:event_txtBuscarFocusGained
 
-    private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
-        txtBuscar.setText("Buscar");
-    }//GEN-LAST:event_txtBuscarFocusLost
+    private void buscar() {
+        ahorros = CAhorro.porNombreSocio(txtBuscar.getText());
+        tabla();
+    }
 
     public void actualizarTabla() {
         tblAhorros.clearSelection();

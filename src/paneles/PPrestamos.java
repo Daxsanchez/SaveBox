@@ -46,8 +46,8 @@ public class PPrestamos extends javax.swing.JPanel {
             double saldoRestante = prestamos.get(i).getSaldoRestante();
             double abonado = prestamos.get(i).getMonto() - saldoRestante;
             tbl.addRow(new Object[]{
-                prestamos.get(i).getSocio().getNombre(), abonado,
-                saldoRestante, prestamos.get(i).getFechaAprobacion()});
+                prestamos.get(i).getSocio().getNombre() + " " + prestamos.get(i).getSocio().getApellidos(),
+                abonado, saldoRestante, prestamos.get(i).getFechaAprobacion()});
         }
     }
 
@@ -82,13 +82,13 @@ public class PPrestamos extends javax.swing.JPanel {
 
         jSeparator2 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPrestamos = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        panelRedondeado1 = new utilerias.PanelRedondeado();
         jLabel2 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(null);
@@ -96,17 +96,13 @@ public class PPrestamos extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         add(jSeparator2);
-        jSeparator2.setBounds(30, 73, 1110, 20);
+        jSeparator2.setBounds(0, 73, 1330, 20);
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Prestamos Efectuados");
         add(jLabel18);
-        jLabel18.setBounds(100, 10, 396, 50);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo.png"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(40, 0, 50, 60);
+        jLabel18.setBounds(10, 20, 396, 50);
 
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -149,11 +145,15 @@ public class PPrestamos extends javax.swing.JPanel {
         add(jScrollPane1);
         jScrollPane1.setBounds(0, 90, 1340, 600);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
+        panelRedondeado1.setRoundBottomLeft(30);
+        panelRedondeado1.setRoundBottomRight(30);
+        panelRedondeado1.setRoundTopLeft(30);
+        panelRedondeado1.setRoundTopRight(30);
+        panelRedondeado1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar (1).png"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 30));
+        panelRedondeado1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
 
         txtBuscar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(7, 20, 123));
@@ -163,19 +163,30 @@ public class PPrestamos extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBuscarFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusLost(evt);
-            }
         });
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 10, 320, 20));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
+        panelRedondeado1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 220, 30));
 
-        add(jPanel1);
-        jPanel1.setBounds(660, 20, 370, 40);
+        add(panelRedondeado1);
+        panelRedondeado1.setBounds(940, 20, 290, 40);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+        add(jLabel4);
+        jLabel4.setBounds(1240, 20, 60, 50);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -186,13 +197,27 @@ public class PPrestamos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscarActionPerformed
 
-    private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
-        txtBuscar.setText("Buscar");
-    }//GEN-LAST:event_txtBuscarFocusLost
-
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
         txtBuscar.setText("");
     }//GEN-LAST:event_txtBuscarFocusGained
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        vInicio.abrirRealizarPrestamo();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if (!txtBuscar.getText().isEmpty()) {
+            buscar();
+        } else {
+            prestamos = CPrestamo.getRegistros();
+            tabla();
+        }
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void buscar() {
+        prestamos = CPrestamo.porNombreSocio(txtBuscar.getText());
+        tabla();
+    }
 
     public void actualizarTabla() {
         tblPrestamos.clearSelection();
@@ -201,13 +226,13 @@ public class PPrestamos extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
+    private utilerias.PanelRedondeado panelRedondeado1;
     private javax.swing.JTable tblPrestamos;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

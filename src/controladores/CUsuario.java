@@ -160,4 +160,34 @@ public class CUsuario {
         return act;
     }
 
+    public static ArrayList<Usuario> porNombre(String nom) {
+        String consulta = "SELECT * FROM Usuario WHERE nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%'";
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setEdad(rs.getInt(4));
+                usuario.setCorreo(rs.getString(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setRol(rs.getString(7));
+                usuario.setUsuario(rs.getString(8));
+                usuario.setPass(rs.getString(9));
+                usuario.setSalario(rs.getDouble(10));
+                usuario.setFechaCreacion(rs.getDate(11));
+                usuario.setEstatus(rs.getInt(12));
+                //usuario.setEmpresa(empresa);
+                usuario.setSalt(rs.getString(14));
+                usuarios.add(usuario);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return usuarios;
+    }
+
 }

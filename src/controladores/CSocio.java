@@ -83,6 +83,30 @@ public class CSocio {
         return registrado == 1;
     }
 
+    public static ArrayList<Socio> porNombre(String nom) {
+        String consulta = "SELECT * FROM Socio WHERE nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%'";
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Socio socio = new Socio();
+                socio.setId(rs.getInt(1));
+                socio.setNombre(rs.getString(2));
+                socio.setApellidos(rs.getString(3));
+                socio.setEdad(rs.getInt(4));
+                socio.setCorreo(rs.getString(5));
+                socio.setDireccion(rs.getString(6));
+                socio.setFechaCreacion(rs.getDate(7));
+                socio.setEstatus(rs.getInt(8));
+                socios.add(socio);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return socios;
+    }
+
     public static int actualizarRegistro(Socio socio) {
         int act = 0;
         String query = "UPDATE Socio SET ";

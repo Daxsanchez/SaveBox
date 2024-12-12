@@ -44,7 +44,8 @@ public class PUsuario extends javax.swing.JPanel {
         }
         for (int i = 0; usuarios.size() > i; i++) {
             tbl.addRow(new Object[]{
-                icon, usuarios.get(i).getNombre(), usuarios.get(i).getCorreo(), usuarios.get(i).getRol(),
+                icon, usuarios.get(i).getNombre() + " " + usuarios.get(i).getApellidos(),
+                usuarios.get(i).getCorreo(), usuarios.get(i).getRol(),
                 usuarios.get(i).getFechaCreacion(), usuarios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
         }
     }
@@ -131,8 +132,10 @@ public class PUsuario extends javax.swing.JPanel {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtBuscarFocusGained(evt);
             }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusLost(evt);
+        });
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
             }
         });
 
@@ -262,10 +265,6 @@ public class PUsuario extends javax.swing.JPanel {
         txtBuscar.setText("");
     }//GEN-LAST:event_txtBuscarFocusGained
 
-    private void txtBuscarFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusLost
-        txtBuscar.setText("Buscar");
-    }//GEN-LAST:event_txtBuscarFocusLost
-
     private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
         VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(this);
         registrarUsuario.setSize(376, 750);
@@ -282,6 +281,20 @@ public class PUsuario extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_lbAgregarMouseClicked
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if (!txtBuscar.getText().isEmpty()) {
+            buscar();
+        } else {
+            usuarios = CUsuario.getRegistros();
+            tabla();
+        }
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void buscar() {
+        usuarios = CUsuario.porNombre(txtBuscar.getText());
+        tabla();
+    }
 
     public void actualizarTabla() {
         tblUsuarios.clearSelection();

@@ -41,7 +41,6 @@ public class PSocio extends javax.swing.JPanel {
         for (int i = 0; i < filas; i++) {
             tbl.removeRow(0);
         }
-        System.out.println(socios.get(15).getNombre());
         for (int i = 0; socios.size() > i; i++) {
             String nombreCompleto = socios.get(i).getNombre() + " " + socios.get(i).getApellidos();
             tbl.addRow(new Object[]{
@@ -124,6 +123,11 @@ public class PSocio extends javax.swing.JPanel {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtBuscarFocusLost(evt);
+            }
+        });
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
             }
         });
 
@@ -281,6 +285,20 @@ public class PSocio extends javax.swing.JPanel {
             System.out.println("No se encontró un JDesktopPane para añadir el InternalFrame");
         }
     }//GEN-LAST:event_lbAgregarMouseClicked
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        if (!txtBuscar.getText().isEmpty()) {
+            buscar();
+        } else {
+            socios = CSocio.getRegistros();
+            tabla();
+        }
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
+    private void buscar() {
+        socios = CSocio.porNombre(txtBuscar.getText());
+        tabla();
+    }
 
     public void actualizarTabla() {
         tblSocios.clearSelection();

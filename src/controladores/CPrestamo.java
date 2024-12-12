@@ -87,4 +87,31 @@ public class CPrestamo {
 
         return registrado == 1;
     }
+
+    public static ArrayList<Prestamo> porNombreSocio(String nom) {
+        String consulta = "SELECT * FROM Prestamo p "
+                + "INNER JOIN Socio s ON s.id = p.idSocio "
+                + "WHERE s.nombre LIKE '" + nom + "%' OR s.apellidos LIKE '" + nom + "%'";
+        ArrayList<Prestamo> prestamos = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Prestamo prestamo = new Prestamo();
+                prestamo.setId(rs.getInt(1));
+                prestamo.setSocio(CSocio.socioPorId(rs.getInt(2)));
+                prestamo.setMonto(rs.getDouble(3));
+                prestamo.setIntereses(rs.getDouble(4));
+                prestamo.setFechaAprobacion(rs.getDate(5));
+                prestamo.setFechaLiquidacion(rs.getDate(6));
+                prestamo.setSaldoRestante(rs.getDouble(7));
+                prestamo.setEstatus(rs.getString(8));
+                prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamos.add(prestamo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return prestamos;
+    }
 }

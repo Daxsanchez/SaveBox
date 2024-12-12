@@ -101,4 +101,29 @@ public class CAhorro {
         }
         return ahorro;
     }
+
+    public static ArrayList<Ahorro> porNombreSocio(String nom) {
+        String consulta = "SELECT * FROM Ahorro a "
+                + "INNER JOIN Socio s ON s.id = a.idSocio "
+                + "WHERE s.nombre LIKE '" + nom + "%' OR s.apellidos LIKE '" + nom + "%'";
+        ArrayList<Ahorro> ahorros = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Ahorro ahorro = new Ahorro();
+                ahorro.setId(rs.getInt(1));
+                ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
+                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setFechaApertura(rs.getDate(4));
+                ahorro.setEstatus(rs.getInt(5));
+                ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+                ahorro.setAhorrado(rs.getDouble(7));
+                ahorros.add(ahorro);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return ahorros;
+    }
 }
