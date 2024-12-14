@@ -30,7 +30,7 @@ import paneles.PRealizarPrestamo;
  * @author daxsa
  */
 public class VInicio extends javax.swing.JFrame {
-
+    
     private static VEmpresa vntEmpresa = null;
     private static int x = 100;
     private static int y = 110;
@@ -44,38 +44,38 @@ public class VInicio extends javax.swing.JFrame {
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
     private AcercaDe acercaDe = null;
-
+    
     private PConfig plConfiguracion = null;
     private PEmpresa plEmpresa = null;
     private PGuia plGuia = null;
     private PPerfilUsuario plUsuario = null;
     private PNotificacion plNotificacion = null;
-
+    
     public VInicio() {
         initComponents();
-
+        
         pinicio = new PInicio(this);
         pinicio.setVisible(true);
-
+        
         pinicio.setBounds(x, y, width, height);
         pEspacio.add(pinicio);
         pEspacio.setComponentZOrder(pinicio, 0);
         pEspacio.repaint();
         pEspacio.revalidate();
-
+        
         validarRol();
     }
-
+    
     public void validarRol() {
         String rol = Config.getRol();
         if (rol.equalsIgnoreCase("GESTOR")) {
             pUs.setVisible(false);
             pPres.setVisible(false);
         } else if (rol.equalsIgnoreCase("ADMINISTRADOR")) {
-
+            
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -114,6 +114,7 @@ public class VInicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -476,6 +477,11 @@ public class VInicio extends javax.swing.JFrame {
         });
 
         lblCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
+        lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCerrarSesionMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout pCerrarSesionLayout = new javax.swing.GroupLayout(pCerrarSesion);
         pCerrarSesion.setLayout(pCerrarSesionLayout);
@@ -807,7 +813,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.add(acercaDe); // Agregar al contenedor de paneles
             pEspacio.setComponentZOrder(acercaDe, 0); // Asegurar que esté al frente
         }
-
+        
         acercaDe.setVisible(true); // Mostrar el panel
         pEspacio.repaint(); // Redibujar el contenedor
         pEspacio.revalidate(); // Validar cambios
@@ -956,8 +962,22 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }//GEN-LAST:event_jLabel2MouseClicked
-    //----------------------------------------------------------------------------------------- Perfil
 
+    private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
+        cerrarSesion();
+    }//GEN-LAST:event_lblCerrarSesionMouseClicked
+    
+    private void cerrarSesion() {
+        Config.setUsuarioLog(null);
+        Config.setRol(null);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Login().setVisible(true);
+            }
+        });
+        dispose();
+    }
+    
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -970,7 +990,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-
+    
     public void abrirPrestamo() {
         quitarPaneles();
         if (pprestamo == null) {
@@ -983,7 +1003,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-
+    
     public void abrirHistorialTransacciones() {
         quitarPaneles();
         if (pHistorialT == null) {
@@ -996,7 +1016,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-
+    
     public void abrirInicio() {
         quitarPaneles();
         if (pinicio == null) {
@@ -1009,7 +1029,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-
+    
     public void quitarPaneles() {
         if (pinicio != null) {
             pEspacio.remove(pinicio);
@@ -1063,35 +1083,35 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(pHistorialT);
             pHistorialT = null;
         }
-
+        
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
     }
-
+    
     private void entraPanel(JPanel panel, JLabel lb) {
         panel.setBackground(Color.WHITE);
         lb.setForeground(Color.decode("#07147b"));
     }
-
+    
     private void salePanel(JPanel panel, JLabel lb) {
         panel.setBackground(Color.decode("#07147b"));
         lb.setForeground(Color.WHITE);
     }
-
+    
     public void centrarInternalFrame(JInternalFrame internalFrame, JDesktopPane desktopPane) {
         int desktopWidth = desktopPane.getWidth();
         int desktopHeight = desktopPane.getHeight();
-
+        
         int frameWidth = internalFrame.getWidth();
         int frameHeight = internalFrame.getHeight();
-
+        
         int x = (desktopWidth - frameWidth) / 2;
         int y = (desktopHeight - frameHeight) / 2;
-
+        
         internalFrame.setLocation(x, y);
     }
-
+    
     public JDesktopPane getDesktopPane() {
         return this.dp;
     }

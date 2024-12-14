@@ -143,7 +143,7 @@ public class PPrestamos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPrestamos);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(0, 90, 1340, 600);
+        jScrollPane1.setBounds(0, 80, 1340, 520);
 
         panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado1.setRoundBottomLeft(30);

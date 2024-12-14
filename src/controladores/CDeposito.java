@@ -66,19 +66,7 @@ public class CDeposito {
             ResultSet rs = cs.executeQuery();
 
             while (rs.next()) {
-                Socio s = new Socio();
-                Ahorro a = new Ahorro();
-                Deposito deposito = new Deposito();
-                Usuario us = new Usuario();
-
-                s.setNombre(rs.getString("socio"));
-                a.setSocio(s);
-                us.setId(rs.getInt("idU"));
-                us.setNombre(rs.getString("usuario"));
-                deposito.setAhorro(a);
-                deposito.setUsuario(us);
-                deposito.setMonto(rs.getDouble("monto"));
-                deposito.setFecha(rs.getDate("fecha"));
+                Deposito deposito = depositoPorId(rs.getInt("idDeposito"));
                 abonos.add(deposito);
             }
 
@@ -87,7 +75,7 @@ public class CDeposito {
         }
         return abonos;
     }
-    
+
     public static boolean guardarRegistro(Deposito deposito) {
         int registrado = 0;
 
@@ -108,5 +96,25 @@ public class CDeposito {
         }
 
         return registrado == 1;
+    }
+
+    public static Deposito depositoPorId(int id) {
+        String consulta = "SELECT * FROM Deposito WHERE id = " + id;
+        Deposito deposito = new Deposito();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                deposito.setId(rs.getInt(1));
+                deposito.setAhorro(CAhorro.ahorroPorId(rs.getInt(2)));
+                deposito.setMonto(rs.getDouble(3));
+                deposito.setFecha(rs.getDate(4));
+                deposito.setMetodo(rs.getString(5));
+                deposito.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return deposito;
     }
 }

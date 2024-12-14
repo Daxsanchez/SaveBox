@@ -87,19 +87,7 @@ public class CAbonoPrestamo {
             ResultSet rs = cs.executeQuery();
 
             while (rs.next()) {
-                Socio s = new Socio();
-                Prestamo p = new Prestamo();
-                AbonoPrestamo abono = new AbonoPrestamo();
-                Usuario us = new Usuario();
-
-                s.setNombre(rs.getString("socio"));
-                p.setSocio(s);
-                us.setId(rs.getInt("idU"));
-                us.setNombre(rs.getString("usuario"));
-                abono.setPrestamo(p);
-                abono.setUsuario(us);
-                abono.setMonto(rs.getDouble("monto"));
-                abono.setFecha(rs.getDate("fecha"));
+                AbonoPrestamo abono = abonoPorId(rs.getInt("idAbono"));
                 abonos.add(abono);
             }
 
@@ -107,6 +95,26 @@ public class CAbonoPrestamo {
             System.out.println(ex);
         }
         return abonos;
+    }
+
+    public static AbonoPrestamo abonoPorId(int id) {
+        String consulta = "SELECT * FROM AbonoPrestamo WHERE id = " + id;
+        AbonoPrestamo abono = new AbonoPrestamo();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                abono.setId(rs.getInt(1));
+                abono.setPrestamo(CPrestamo.prestamoPorId(rs.getInt(2)));
+                abono.setMonto(rs.getDouble(3));
+                abono.setFecha(rs.getDate(4));
+                abono.setMetodo(rs.getString(5));
+                abono.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return abono;
     }
 
     public static boolean guardarRegistro(AbonoPrestamo abono) {

@@ -178,7 +178,7 @@ public class PAhorro extends javax.swing.JPanel {
         tblAhorros.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblAhorros);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 600));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1300, 510));
         add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 0, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

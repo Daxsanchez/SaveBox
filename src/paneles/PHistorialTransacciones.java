@@ -61,7 +61,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         }
         for (int i = 0; abonos.size() > i; i++) {
             tbl.addRow(new Object[]{
-                abonos.get(i).getPrestamo().getSocio().getNombre(),
+                abonos.get(i).getPrestamo().getSocio().getNombre() + " " + abonos.get(i).getPrestamo().getSocio().getApellidos(),
                 abonos.get(i).getUsuario().getNombre(), abonos.get(i).getMonto(),
                 abonos.get(i).getFecha()});
         }
@@ -74,7 +74,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         }
         for (int i = 0; depositos.size() > i; i++) {
             tbl.addRow(new Object[]{
-                depositos.get(i).getAhorro().getSocio().getNombre(),
+                depositos.get(i).getAhorro().getSocio().getNombre() + " " + depositos.get(i).getAhorro().getSocio().getApellidos(),
                 depositos.get(i).getUsuario().getNombre(), depositos.get(i).getMonto(),
                 depositos.get(i).getFecha()});
         }
@@ -87,7 +87,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         }
         for (int i = 0; retiros.size() > i; i++) {
             tbl.addRow(new Object[]{
-                retiros.get(i).getAhorro().getSocio().getNombre(),
+                retiros.get(i).getAhorro().getSocio().getNombre() + " " + retiros.get(i).getAhorro().getSocio().getApellidos(),
                 retiros.get(i).getUsuario().getNombre(), retiros.get(i).getMonto(),
                 retiros.get(i).getFecha()});
         }
@@ -137,7 +137,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(7, 20, 123));
         jLabel1.setText("Usuario:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 70, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 70, 70, 30));
 
         cmbSocio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
         jPanel1.add(cmbSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 230, 30));
@@ -145,7 +145,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(7, 20, 123));
         jLabel2.setText("Fecha final:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 200, 100, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 200, 100, 30));
 
         bgGrupo.add(rbRetiro);
         rbRetiro.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
@@ -165,7 +165,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 50, 30));
 
         cmbUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos" }));
-        jPanel1.add(cmbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 70, 230, 30));
+        jPanel1.add(cmbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 70, 230, 30));
 
         jLabel4.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(7, 20, 123));
@@ -176,7 +176,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(7, 20, 123));
         jLabel5.setText("Monto mayor a:");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 140, 30));
-        jPanel1.add(dcFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 200, 230, 30));
+        jPanel1.add(dcFechaFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 200, 230, 30));
 
         jLabel6.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(7, 20, 123));
@@ -188,8 +188,8 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(7, 20, 123));
         jLabel7.setText("Fecha inicial:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 140, 110, 30));
-        jPanel1.add(dcFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 140, 230, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, 110, 30));
+        jPanel1.add(dcFechaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 140, 230, 30));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
@@ -221,7 +221,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         tblTransacciones.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblTransacciones);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 1180, 350));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 1250, 320));
 
         bgGrupo.add(rbAbono);
         rbAbono.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
@@ -235,7 +235,7 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
                 jLabel8MouseClicked(evt);
             }
         });
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 70, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 70, -1, -1));
 
         btnFiltrar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         btnFiltrar.setForeground(new java.awt.Color(7, 20, 123));
@@ -299,12 +299,12 @@ public class PHistorialTransacciones extends javax.swing.JPanel {
         if (cmbSocio.getSelectedIndex() == 0) {
             idSocio = null;
         } else {
-            idSocio = socios.get(cmbSocio.getSelectedIndex()-1).getId();
+            idSocio = socios.get(cmbSocio.getSelectedIndex() - 1).getId();
         }
         if (cmbUsuario.getSelectedIndex() == 0) {
             idUsuario = null;
         } else {
-            idUsuario = usuarios.get(cmbUsuario.getSelectedIndex()-1).getId();
+            idUsuario = usuarios.get(cmbUsuario.getSelectedIndex() - 1).getId();
         }
         Double montoMenor = null, montoMayor = null;
         if (!ftMontoMenor.getText().isEmpty()) {

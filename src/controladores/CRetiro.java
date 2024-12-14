@@ -66,19 +66,7 @@ public class CRetiro {
             ResultSet rs = cs.executeQuery();
 
             while (rs.next()) {
-                Socio s = new Socio();
-                Ahorro a = new Ahorro();
-                Retiro retiro = new Retiro();
-                Usuario us = new Usuario();
-
-                s.setNombre(rs.getString("socio"));
-                a.setSocio(s);
-                us.setId(rs.getInt("idU"));
-                us.setNombre(rs.getString("usuario"));
-                retiro.setAhorro(a);
-                retiro.setUsuario(us);
-                retiro.setMonto(rs.getDouble("monto"));
-                retiro.setFecha(rs.getDate("fecha"));
+                Retiro retiro = retiroPorId(rs.getInt("idRetiro"));
                 abonos.add(retiro);
             }
 
@@ -108,5 +96,25 @@ public class CRetiro {
         }
 
         return registrado == 1;
+    }
+
+    public static Retiro retiroPorId(int id) {
+        String consulta = "SELECT * FROM Retiro WHERE id = " + id;
+        Retiro deposito = new Retiro();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                deposito.setId(rs.getInt(1));
+                deposito.setAhorro(CAhorro.ahorroPorId(rs.getInt(2)));
+                deposito.setMonto(rs.getDouble(3));
+                deposito.setFecha(rs.getDate(4));
+                deposito.setEstatus(rs.getString(5));
+                deposito.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return deposito;
     }
 }
