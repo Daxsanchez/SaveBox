@@ -39,6 +39,54 @@ public class CSocio {
         return socios;
     }
 
+    public static ArrayList<Socio> getSociosActivos() {
+        String consulta = "SELECT * FROM Socio WHERE estatus = 1";
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Socio socio = new Socio();
+                socio.setId(rs.getInt(1));
+                socio.setNombre(rs.getString(2));
+                socio.setApellidos(rs.getString(3));
+                socio.setEdad(rs.getInt(4));
+                socio.setCorreo(rs.getString(5));
+                socio.setDireccion(rs.getString(6));
+                socio.setFechaCreacion(rs.getDate(7));
+                socio.setEstatus(rs.getInt(8));
+                socios.add(socio);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return socios;
+    }
+
+    public static ArrayList<Socio> getSociosInactivos() {
+        String consulta = "SELECT * FROM Socio WHERE estatus = 0";
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Socio socio = new Socio();
+                socio.setId(rs.getInt(1));
+                socio.setNombre(rs.getString(2));
+                socio.setApellidos(rs.getString(3));
+                socio.setEdad(rs.getInt(4));
+                socio.setCorreo(rs.getString(5));
+                socio.setDireccion(rs.getString(6));
+                socio.setFechaCreacion(rs.getDate(7));
+                socio.setEstatus(rs.getInt(8));
+                socios.add(socio);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return socios;
+    }
+
     public static Socio socioPorId(int id) {
         String consulta = "SELECT * FROM Socio WHERE id = " + id;
         Socio socio = new Socio();
@@ -142,6 +190,26 @@ public class CSocio {
 
         }
         return id;
+    }
+
+    public static int estatus(Socio socio) {
+        int act = 0;
+        String query = "UPDATE Socio SET ";
+        String campos = "estatus";
+        query = query + CBaseDatos.adjuntarSimbolo(campos, ",", "?") + " WHERE " + "id" + " = ? ";
+
+        Object[] valores = {socio.getEstatus(), socio.getId()};
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            act = ps.executeUpdate();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } catch (NullPointerException ex) {
+            System.out.println(ex);
+        }
+        return act;
     }
 
 }

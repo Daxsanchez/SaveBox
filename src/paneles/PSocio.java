@@ -27,7 +27,7 @@ public class PSocio extends javax.swing.JPanel {
         initComponents();
         vInicio = ini;
         this.dp = ini.getDesktopPane();
-        socios = CSocio.getRegistros();
+        socios = CSocio.getSociosActivos();
         tbl = (DefaultTableModel) tblSocios.getModel();
         icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
         tabla();
@@ -83,6 +83,7 @@ public class PSocio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgFiltra = new javax.swing.ButtonGroup();
         dp = new javax.swing.JDesktopPane();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         jLabel18 = new javax.swing.JLabel();
@@ -94,6 +95,8 @@ public class PSocio extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSocios = new javax.swing.JTable();
         helpCentro1 = new help.helpCentro();
+        rbActivo = new javax.swing.JRadioButton();
+        rbInactivo = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -102,10 +105,12 @@ public class PSocio extends javax.swing.JPanel {
         panelRedondeado1.setRoundBottomRight(10);
         panelRedondeado1.setRoundTopLeft(10);
         panelRedondeado1.setRoundTopRight(10);
+        panelRedondeado1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Socios Registrados");
+        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 419, -1));
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(30);
@@ -154,12 +159,16 @@ public class PSocio extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelRedondeado1.add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 20, -1, -1));
+
         lbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarUsuario.png"))); // NOI18N
         lbAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbAgregarMouseClicked(evt);
             }
         });
+        panelRedondeado1.add(lbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, -1, -1));
+        panelRedondeado1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 77, 840, 10));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
@@ -191,48 +200,31 @@ public class PSocio extends javax.swing.JPanel {
         tblSocios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblSocios);
 
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(438, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbAgregar)
-                        .addGap(20, 20, 20))))
-            .addComponent(jScrollPane1)
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbAgregar)
-                                .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
-        );
+        panelRedondeado1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 1300, 498));
+        panelRedondeado1.add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, -1, -1));
+
+        bgFiltra.add(rbActivo);
+        rbActivo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbActivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbActivo.setSelected(true);
+        rbActivo.setText("Activos");
+        rbActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivoActionPerformed(evt);
+            }
+        });
+        panelRedondeado1.add(rbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 80, -1, -1));
+
+        bgFiltra.add(rbInactivo);
+        rbInactivo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbInactivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbInactivo.setText("Inactivos");
+        rbInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbInactivoActionPerformed(evt);
+            }
+        });
+        panelRedondeado1.add(rbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 80, -1, -1));
 
         dp.setLayer(panelRedondeado1, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
@@ -240,7 +232,9 @@ public class PSocio extends javax.swing.JPanel {
         dp.setLayout(dpLayout);
         dpLayout.setHorizontalGroup(
             dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelRedondeado1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(dpLayout.createSequentialGroup()
+                .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         dpLayout.setVerticalGroup(
             dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +245,7 @@ public class PSocio extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dp, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,6 +289,18 @@ public class PSocio extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void rbInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbInactivoActionPerformed
+        tblSocios.clearSelection();
+        socios = CSocio.getSociosInactivos();
+        tabla();
+    }//GEN-LAST:event_rbInactivoActionPerformed
+
+    private void rbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivoActionPerformed
+        tblSocios.clearSelection();
+        socios = CSocio.getSociosActivos();
+        tabla();
+    }//GEN-LAST:event_rbActivoActionPerformed
+
     private void buscar() {
         socios = CSocio.porNombre(txtBuscar.getText());
         tabla();
@@ -302,11 +308,13 @@ public class PSocio extends javax.swing.JPanel {
 
     public void actualizarTabla() {
         tblSocios.clearSelection();
-        socios = CSocio.getRegistros();
+        rbActivo.setSelected(true);
+        socios = CSocio.getSociosActivos();
         tabla();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgFiltra;
     private javax.swing.JDesktopPane dp;
     private help.helpCentro helpCentro1;
     private javax.swing.JLabel jLabel1;
@@ -316,6 +324,8 @@ public class PSocio extends javax.swing.JPanel {
     private javax.swing.JLabel lbAgregar;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado2;
+    private javax.swing.JRadioButton rbActivo;
+    private javax.swing.JRadioButton rbInactivo;
     private javax.swing.JTable tblSocios;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

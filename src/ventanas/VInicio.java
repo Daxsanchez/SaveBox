@@ -30,7 +30,7 @@ import paneles.PRealizarPrestamo;
  * @author daxsa
  */
 public class VInicio extends javax.swing.JFrame {
-    
+
     private static VEmpresa vntEmpresa = null;
     private static int x = 100;
     private static int y = 110;
@@ -44,38 +44,38 @@ public class VInicio extends javax.swing.JFrame {
     private PAhorro pAhorro = null;
     private PHistorialTransacciones pHistorialT = null;
     private AcercaDe acercaDe = null;
-    
+
     private PConfig plConfiguracion = null;
     private PEmpresa plEmpresa = null;
     private PGuia plGuia = null;
     private PPerfilUsuario plUsuario = null;
     private PNotificacion plNotificacion = null;
-    
+
     public VInicio() {
         initComponents();
-        
+
         pinicio = new PInicio(this);
         pinicio.setVisible(true);
-        
+
         pinicio.setBounds(x, y, width, height);
         pEspacio.add(pinicio);
         pEspacio.setComponentZOrder(pinicio, 0);
         pEspacio.repaint();
         pEspacio.revalidate();
-        
+
         validarRol();
     }
-    
+
     public void validarRol() {
         String rol = Config.getRol();
         if (rol.equalsIgnoreCase("GESTOR")) {
             pUs.setVisible(false);
             pPres.setVisible(false);
         } else if (rol.equalsIgnoreCase("ADMINISTRADOR")) {
-            
+
         }
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -167,27 +167,12 @@ public class VInicio extends javax.swing.JFrame {
                 pSociosMouseExited(evt);
             }
         });
+        pSocios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbSocio.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbSocio.setForeground(new java.awt.Color(255, 255, 255));
         lbSocio.setText("Socios");
-
-        javax.swing.GroupLayout pSociosLayout = new javax.swing.GroupLayout(pSocios);
-        pSocios.setLayout(pSociosLayout);
-        pSociosLayout.setHorizontalGroup(
-            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pSociosLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbSocio)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-        pSociosLayout.setVerticalGroup(
-            pSociosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pSociosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lbSocio)
-                .addContainerGap())
-        );
+        pSocios.add(lbSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 14, -1, 30));
 
         pUs.setBackground(new java.awt.Color(7, 20, 123));
         pUs.setRoundBottomLeft(50);
@@ -205,27 +190,12 @@ public class VInicio extends javax.swing.JFrame {
                 pUsMouseExited(evt);
             }
         });
+        pUs.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbUsuario.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbUsuario.setForeground(new java.awt.Color(255, 255, 255));
         lbUsuario.setText("Usuario");
-
-        javax.swing.GroupLayout pUsLayout = new javax.swing.GroupLayout(pUs);
-        pUs.setLayout(pUsLayout);
-        pUsLayout.setHorizontalGroup(
-            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pUsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-                .addGap(28, 28, 28))
-        );
-        pUsLayout.setVerticalGroup(
-            pUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pUsLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(lbUsuario)
-                .addContainerGap())
-        );
+        pUs.add(lbUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, 66, 30));
 
         pPres.setBackground(new java.awt.Color(7, 20, 123));
         pPres.setRoundBottomLeft(50);
@@ -248,7 +218,7 @@ public class VInicio extends javax.swing.JFrame {
         lbPrestamo.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbPrestamo.setForeground(new java.awt.Color(255, 255, 255));
         lbPrestamo.setText("Prestamos");
-        pPres.add(lbPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 100, 20));
+        pPres.add(lbPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 14, 100, 30));
 
         pAho.setBackground(new java.awt.Color(7, 20, 123));
         pAho.setRoundBottomLeft(50);
@@ -266,27 +236,12 @@ public class VInicio extends javax.swing.JFrame {
                 pAhoMouseExited(evt);
             }
         });
+        pAho.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbAhorro.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbAhorro.setForeground(new java.awt.Color(255, 255, 255));
         lbAhorro.setText("Ahorros");
-
-        javax.swing.GroupLayout pAhoLayout = new javax.swing.GroupLayout(pAho);
-        pAho.setLayout(pAhoLayout);
-        pAhoLayout.setHorizontalGroup(
-            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pAhoLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(lbAhorro)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        pAhoLayout.setVerticalGroup(
-            pAhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pAhoLayout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
-                .addComponent(lbAhorro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        pAho.add(lbAhorro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, 20));
 
         pNotificacion.setBackground(new java.awt.Color(7, 20, 123));
         pNotificacion.setRoundBottomLeft(20);
@@ -369,6 +324,9 @@ public class VInicio extends javax.swing.JFrame {
         pIAcerca.setRoundTopLeft(50);
         pIAcerca.setRoundTopRight(50);
         pIAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pIAcercaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 pIAcercaMouseEntered(evt);
             }
@@ -376,32 +334,12 @@ public class VInicio extends javax.swing.JFrame {
                 pIAcercaMouseExited(evt);
             }
         });
+        pIAcerca.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbAcerca.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         lbAcerca.setForeground(new java.awt.Color(255, 255, 255));
         lbAcerca.setText("Acerca de");
-        lbAcerca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbAcercaMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pIAcercaLayout = new javax.swing.GroupLayout(pIAcerca);
-        pIAcerca.setLayout(pIAcercaLayout);
-        pIAcercaLayout.setHorizontalGroup(
-            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pIAcercaLayout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(lbAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pIAcercaLayout.setVerticalGroup(
-            pIAcercaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pIAcercaLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lbAcerca)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        pIAcerca.add(lbAcerca, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 90, -1));
 
         javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
         panelRedondeado1.setLayout(panelRedondeado1Layout);
@@ -410,23 +348,23 @@ public class VInicio extends javax.swing.JFrame {
             .addGroup(panelRedondeado1Layout.createSequentialGroup()
                 .addGap(65, 65, 65)
                 .addComponent(pI, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(58, 58, 58)
-                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(61, 61, 61)
-                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(pSocios, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56)
+                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54)
+                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(58, 58, 58)
+                .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(91, 91, 91)
                 .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(pPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(55, 55, 55))
         );
         panelRedondeado1Layout.setVerticalGroup(
             panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,25 +373,23 @@ public class VInicio extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(panelRedondeado1Layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pUs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pI, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-                                    .addComponent(pSocios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pUs, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pI, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                                .addComponent(pSocios, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE))
+                            .addComponent(pPres, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pAho, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(pPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(14, 14, 14))
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(pIAcerca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(pNotificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(14, 14, 14))
         );
 
         jPanel2.setBackground(new java.awt.Color(7, 20, 123));
@@ -645,7 +581,7 @@ public class VInicio extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelRedondeado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         pEspacioLayout.setVerticalGroup(
             pEspacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -804,21 +740,6 @@ public class VInicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_pAhoMouseClicked
 
-    private void lbAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAcercaMouseClicked
-        quitarPaneles(); // Ocultar otros paneles o limpiar la vista
-
-        if (acercaDe == null) {
-            acercaDe = new AcercaDe(this); // Crear el panel "AcercaDe"
-            acercaDe.setBounds(x, y, width, height); // Configurar posición y tamaño
-            pEspacio.add(acercaDe); // Agregar al contenedor de paneles
-            pEspacio.setComponentZOrder(acercaDe, 0); // Asegurar que esté al frente
-        }
-        
-        acercaDe.setVisible(true); // Mostrar el panel
-        pEspacio.repaint(); // Redibujar el contenedor
-        pEspacio.revalidate(); // Validar cambios
-    }//GEN-LAST:event_lbAcercaMouseClicked
-
     //----------------------------------------------------------------------------------------- Cerrar Sesion
     private void pCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pCerrarSesionMouseClicked
         Login login = new Login();
@@ -966,7 +887,22 @@ public class VInicio extends javax.swing.JFrame {
     private void lblCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCerrarSesionMouseClicked
         cerrarSesion();
     }//GEN-LAST:event_lblCerrarSesionMouseClicked
-    
+
+    private void pIAcercaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pIAcercaMouseClicked
+        quitarPaneles(); 
+
+        if (acercaDe == null) {
+            acercaDe = new AcercaDe(this);
+            acercaDe.setBounds(x, y, width, height);
+            pEspacio.add(acercaDe);
+            pEspacio.setComponentZOrder(acercaDe, 0);
+        }
+
+        acercaDe.setVisible(true);
+        pEspacio.repaint();
+        pEspacio.revalidate();
+    }//GEN-LAST:event_pIAcercaMouseClicked
+
     private void cerrarSesion() {
         Config.setUsuarioLog(null);
         Config.setRol(null);
@@ -977,7 +913,7 @@ public class VInicio extends javax.swing.JFrame {
         });
         dispose();
     }
-    
+
     public void abrirRealizarPrestamo() {
         quitarPaneles();
         if (pRPrestamo == null) {
@@ -990,7 +926,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-    
+
     public void abrirPrestamo() {
         quitarPaneles();
         if (pprestamo == null) {
@@ -1003,7 +939,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-    
+
     public void abrirHistorialTransacciones() {
         quitarPaneles();
         if (pHistorialT == null) {
@@ -1016,7 +952,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-    
+
     public void abrirInicio() {
         quitarPaneles();
         if (pinicio == null) {
@@ -1029,7 +965,7 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.revalidate();
         }
     }
-    
+
     public void quitarPaneles() {
         if (pinicio != null) {
             pEspacio.remove(pinicio);
@@ -1083,35 +1019,35 @@ public class VInicio extends javax.swing.JFrame {
             pEspacio.remove(pHistorialT);
             pHistorialT = null;
         }
-        
+
         pEspacio.invalidate();
         pEspacio.validate();
         pEspacio.repaint();
     }
-    
+
     private void entraPanel(JPanel panel, JLabel lb) {
         panel.setBackground(Color.WHITE);
         lb.setForeground(Color.decode("#07147b"));
     }
-    
+
     private void salePanel(JPanel panel, JLabel lb) {
         panel.setBackground(Color.decode("#07147b"));
         lb.setForeground(Color.WHITE);
     }
-    
+
     public void centrarInternalFrame(JInternalFrame internalFrame, JDesktopPane desktopPane) {
         int desktopWidth = desktopPane.getWidth();
         int desktopHeight = desktopPane.getHeight();
-        
+
         int frameWidth = internalFrame.getWidth();
         int frameHeight = internalFrame.getHeight();
-        
+
         int x = (desktopWidth - frameWidth) / 2;
         int y = (desktopHeight - frameHeight) / 2;
-        
+
         internalFrame.setLocation(x, y);
     }
-    
+
     public JDesktopPane getDesktopPane() {
         return this.dp;
     }

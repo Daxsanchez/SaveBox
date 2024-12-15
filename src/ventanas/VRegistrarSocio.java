@@ -4,6 +4,8 @@ import bd.CBaseDatos;
 import controladores.CAhorro;
 import controladores.CSocio;
 import java.util.Date;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import main.Config;
 import modelos.Ahorro;
@@ -20,10 +22,14 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     private Socio socio = new Socio();
     private Ahorro ahorro = new Ahorro();
     private PSocio pSocio;
+    private Icon iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
+    private boolean estatus = true;
 
     public VRegistrarSocio(PSocio ps) {
         initComponents();
         pSocio = ps;
+        btnEstatus.setEnabled(false);
+        btnEstatus.setIcon(iconEstatus);
     }
 
     public VRegistrarSocio(PSocio ps, Socio so) {
@@ -40,6 +46,15 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         ahorro = CAhorro.ahorroPorIdSocio(socio.getId());
         txtMontoMensual.setText(ahorro.getAhorrado() + "");
         txtMontoMensual.setEnabled(false);
+        estatus = socio.getEstatus() == 1;
+        if (estatus) {
+            iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
+            btnEstatus.setText("Eliminar");
+        } else {
+            iconEstatus = new ImageIcon(getClass().getResource("/imagenes/palomita.png"));
+            btnEstatus.setText("Activar");
+        }
+        btnEstatus.setIcon(iconEstatus);
     }
 
     @SuppressWarnings("unchecked")
@@ -64,6 +79,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         btnGuardar = new javax.swing.JButton();
         panelRedondeado25 = new utilerias.PanelRedondeado();
         txtMontoMensual = new javax.swing.JTextField();
+        btnEstatus = new javax.swing.JButton();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -108,12 +124,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtApellidos.setForeground(new java.awt.Color(255, 255, 255));
         txtApellidos.setText("Apellidos");
         txtApellidos.setBorder(null);
-        txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtApellidosFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtApellidosFocusLost(evt);
+        txtApellidos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtApellidosMouseClicked(evt);
             }
         });
 
@@ -178,12 +191,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtNombre.setForeground(new java.awt.Color(255, 255, 255));
         txtNombre.setText("Nombre");
         txtNombre.setBorder(null);
-        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreFocusLost(evt);
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
             }
         });
 
@@ -215,12 +225,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtDirección.setForeground(new java.awt.Color(255, 255, 255));
         txtDirección.setText("Dirección");
         txtDirección.setBorder(null);
-        txtDirección.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDirecciónFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDirecciónFocusLost(evt);
+        txtDirección.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDirecciónMouseClicked(evt);
             }
         });
 
@@ -256,12 +263,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtCorreo.setForeground(new java.awt.Color(255, 255, 255));
         txtCorreo.setText("Correo");
         txtCorreo.setBorder(null);
-        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCorreoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCorreoFocusLost(evt);
+        txtCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCorreoMouseClicked(evt);
             }
         });
 
@@ -302,12 +306,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtMontoMensual.setForeground(new java.awt.Color(255, 255, 255));
         txtMontoMensual.setText("Monto mensual");
         txtMontoMensual.setBorder(null);
-        txtMontoMensual.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMontoMensualFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMontoMensualFocusLost(evt);
+        txtMontoMensual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMontoMensualMouseClicked(evt);
             }
         });
 
@@ -327,6 +328,13 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 .addComponent(txtMontoMensual, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        btnEstatus.setText("Eliminar");
+        btnEstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstatusActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -353,13 +361,14 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                                     .addComponent(panelRedondeado13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado24, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(panelRedondeado25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(panelRedondeado25, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(9, 9, 9)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -381,7 +390,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 .addGap(30, 30, 30)
                 .addComponent(panelRedondeado25, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54))
         );
 
@@ -390,54 +401,6 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
-        txtNombre.setText("");
-    }//GEN-LAST:event_txtNombreFocusGained
-
-    private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
-        if (txtNombre.getText().isEmpty()) {
-            txtNombre.setText("Nombre");
-        }
-    }//GEN-LAST:event_txtNombreFocusLost
-
-    private void txtApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusGained
-        txtApellidos.setText("");
-    }//GEN-LAST:event_txtApellidosFocusGained
-
-    private void txtApellidosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusLost
-        if (txtApellidos.getText().isEmpty()) {
-            txtApellidos.setText("Apellidos");
-        }
-    }//GEN-LAST:event_txtApellidosFocusLost
-
-    private void txtDirecciónFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirecciónFocusGained
-        txtDirección.setText("");
-    }//GEN-LAST:event_txtDirecciónFocusGained
-
-    private void txtDirecciónFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDirecciónFocusLost
-        if (txtDirección.getText().isEmpty()) {
-            txtDirección.setText("Telefono");
-        }
-    }//GEN-LAST:event_txtDirecciónFocusLost
-
-    private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
-        txtCorreo.setText("");
-    }//GEN-LAST:event_txtCorreoFocusGained
-
-    private void txtCorreoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusLost
-        if (txtCorreo.getText().isEmpty()) {
-            txtCorreo.setText("Correo");
-        }
-    }//GEN-LAST:event_txtCorreoFocusLost
-
-    private void txtMontoMensualFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoMensualFocusGained
-        txtMontoMensual.setText("");
-    }//GEN-LAST:event_txtMontoMensualFocusGained
-
-    private void txtMontoMensualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoMensualFocusLost
-
-    }//GEN-LAST:event_txtMontoMensualFocusLost
-
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         if (!modifica) {
             guardar();
@@ -445,6 +408,38 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             actualizar();
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        txtNombre.setText("");
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtApellidosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidosMouseClicked
+        txtApellidos.setText("");
+    }//GEN-LAST:event_txtApellidosMouseClicked
+
+    private void txtDirecciónMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDirecciónMouseClicked
+        txtDirección.setText("");
+    }//GEN-LAST:event_txtDirecciónMouseClicked
+
+    private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseClicked
+        txtCorreo.setText("");
+    }//GEN-LAST:event_txtCorreoMouseClicked
+
+    private void txtMontoMensualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMensualMouseClicked
+        txtMontoMensual.setText("");
+    }//GEN-LAST:event_txtMontoMensualMouseClicked
+
+    private void btnEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatusActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea " + (estatus ? "eliminar" : "activar") + " esta socio?",
+                "Confirme esta acción", JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION) {
+            socio.setEstatus(estatus ? 0 : 1);
+            CSocio.estatus(socio);
+            JOptionPane.showMessageDialog(null, "Socio " + (estatus ? "eliminado" : "activado"));
+            pSocio.actualizarTabla();
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnEstatusActionPerformed
 
     private void guardar() {
         socio.setNombre(txtNombre.getText());
@@ -485,6 +480,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEstatus;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
