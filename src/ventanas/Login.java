@@ -193,16 +193,16 @@ public class Login extends javax.swing.JFrame {
         btnL.setLayout(btnLLayout);
         btnLLayout.setHorizontalGroup(
             btnLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnLLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(loginBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnLLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(loginBtnTxt)
+                .addGap(34, 34, 34))
         );
         btnLLayout.setVerticalGroup(
             btnLLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnLLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnLLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(loginBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(loginBtnTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -347,7 +347,8 @@ public class Login extends javax.swing.JFrame {
                 });
                 dispose();
             } else {
-                JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
+                JOptionPane.showMessageDialog(null, "Ingrese nuevamente su contraseña",
+                        "Contraseña incorrecta",JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this, "El usuario ingresado no existe",

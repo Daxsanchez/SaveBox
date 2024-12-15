@@ -190,4 +190,82 @@ public class CUsuario {
         return usuarios;
     }
 
+    public static ArrayList<Usuario> getUsuariosActivos() {
+        String consulta = "SELECT * FROM Usuario WHERE estatus = 1";
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setEdad(rs.getInt(4));
+                usuario.setCorreo(rs.getString(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setRol(rs.getString(7));
+                usuario.setUsuario(rs.getString(8));
+                usuario.setPass(rs.getString(9));
+                usuario.setSalario(rs.getDouble(10));
+                usuario.setFechaCreacion(rs.getDate(11));
+                usuario.setEstatus(rs.getInt(12));
+                //usuario.setEmpresa(empresa);
+                usuario.setSalt(rs.getString(14));
+                usuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return usuarios;
+    }
+
+    public static ArrayList<Usuario> getUsuariosInactivos() {
+        String consulta = "SELECT * FROM Usuario WHERE estatus = 0";
+        ArrayList<Usuario> usuarios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setId(rs.getInt(1));
+                usuario.setNombre(rs.getString(2));
+                usuario.setApellidos(rs.getString(3));
+                usuario.setEdad(rs.getInt(4));
+                usuario.setCorreo(rs.getString(5));
+                usuario.setDireccion(rs.getString(6));
+                usuario.setRol(rs.getString(7));
+                usuario.setUsuario(rs.getString(8));
+                usuario.setPass(rs.getString(9));
+                usuario.setSalario(rs.getDouble(10));
+                usuario.setFechaCreacion(rs.getDate(11));
+                usuario.setEstatus(rs.getInt(12));
+                //usuario.setEmpresa(empresa);
+                usuario.setSalt(rs.getString(14));
+                usuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return usuarios;
+    }
+    
+    public static int estatus(Usuario usuario) {
+        int act = 0;
+        String query = "UPDATE Usuario SET ";
+        String campos = "estatus";
+        query = query + CBaseDatos.adjuntarSimbolo(campos, ",", "?") + " WHERE " + "id" + " = ? ";
+
+        Object[] valores = {usuario.getEstatus(), usuario.getId()};
+
+        try {
+            PreparedStatement ps = getConexion().prepareStatement(query);
+            CBaseDatos.setValores(ps, valores);
+            act = ps.executeUpdate();
+        } catch (SQLException | NullPointerException ex) {
+            System.out.println(ex);
+        }
+        return act;
+    }
+
 }

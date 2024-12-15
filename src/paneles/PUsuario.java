@@ -16,27 +16,27 @@ import ventanas.VRegistrarUsuario;
  * @author daxsa
  */
 public class PUsuario extends javax.swing.JPanel {
-
+    
     private DefaultTableModel tbl;
     private VInicio vInicio;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ImageIcon icon;
-
+    
     public PUsuario(VInicio ini) {
         initComponents();
         vInicio = ini;
         this.dp = vInicio.getDesktopPane();
-
-        usuarios = CUsuario.getRegistros();
+        
+        usuarios = CUsuario.getUsuariosActivos();
         tbl = (DefaultTableModel) tblUsuarios.getModel();
         icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
         tabla();
-
+        
         tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
-
+        
         eventoTabla();
     }
-
+    
     private void tabla() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -49,7 +49,7 @@ public class PUsuario extends javax.swing.JPanel {
                 usuarios.get(i).getFechaCreacion(), usuarios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
         }
     }
-
+    
     private void eventoTabla() {
         PUsuario pUs = this;
         tblUsuarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -59,7 +59,7 @@ public class PUsuario extends javax.swing.JPanel {
                     int selectedRow = tblUsuarios.getSelectedRow();
                     if (selectedRow != -1) {
                         Usuario us = usuarios.get(tblUsuarios.getSelectedRow());
-
+                        
                         VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(pUs, us);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
@@ -78,11 +78,12 @@ public class PUsuario extends javax.swing.JPanel {
             }
         });
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgEstatus = new javax.swing.ButtonGroup();
         dp = new javax.swing.JDesktopPane();
         panelRedondeado1 = new utilerias.PanelRedondeado();
         jLabel18 = new javax.swing.JLabel();
@@ -94,6 +95,8 @@ public class PUsuario extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblUsuarios = new javax.swing.JTable();
         helpCentro1 = new help.helpCentro();
+        rbActivo = new javax.swing.JRadioButton();
+        rbInactivo = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -113,10 +116,12 @@ public class PUsuario extends javax.swing.JPanel {
         panelRedondeado1.setRoundBottomRight(10);
         panelRedondeado1.setRoundTopLeft(10);
         panelRedondeado1.setRoundTopRight(10);
+        panelRedondeado1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Usuarios Registrados");
+        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 419, -1));
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(30);
@@ -162,12 +167,16 @@ public class PUsuario extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelRedondeado1.add(panelRedondeado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, -1, -1));
+
         lbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregarUsuario.png"))); // NOI18N
         lbAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbAgregarMouseClicked(evt);
             }
         });
+        panelRedondeado1.add(lbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 20, -1, -1));
+        panelRedondeado1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 92, 931, 10));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
@@ -199,54 +208,38 @@ public class PUsuario extends javax.swing.JPanel {
         tblUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblUsuarios);
 
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 931, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(410, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado1Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lbAgregar)
-                        .addGap(20, 20, 20))))
-            .addComponent(jScrollPane1)
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18)
-                            .addGroup(panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lbAgregar)
-                                .addComponent(panelRedondeado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(helpCentro1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(21, 21, 21)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 486, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
-        );
+        panelRedondeado1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 1300, 486));
+        panelRedondeado1.add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, -1, -1));
+
+        bgEstatus.add(rbActivo);
+        rbActivo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbActivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbActivo.setSelected(true);
+        rbActivo.setText("Activos");
+        rbActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivoActionPerformed(evt);
+            }
+        });
+        panelRedondeado1.add(rbActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 80, -1, -1));
+
+        bgEstatus.add(rbInactivo);
+        rbInactivo.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbInactivo.setForeground(new java.awt.Color(255, 255, 255));
+        rbInactivo.setText("Inactivos");
+        rbInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbInactivoActionPerformed(evt);
+            }
+        });
+        panelRedondeado1.add(rbInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 80, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(125, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(dp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
             .addComponent(panelRedondeado1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -270,7 +263,7 @@ public class PUsuario extends javax.swing.JPanel {
         registrarUsuario.setSize(376, 750);
         registrarUsuario.setVisible(true);
         dp.setLayout(null);
-
+        
         if (dp != null) {
             try {
                 vInicio.centrarInternalFrame(registrarUsuario, dp);
@@ -291,18 +284,32 @@ public class PUsuario extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void rbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivoActionPerformed
+        tblUsuarios.clearSelection();
+        usuarios = CUsuario.getUsuariosActivos();
+        tabla();
+    }//GEN-LAST:event_rbActivoActionPerformed
+
+    private void rbInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbInactivoActionPerformed
+        tblUsuarios.clearSelection();
+        usuarios = CUsuario.getUsuariosInactivos();
+        tabla();
+    }//GEN-LAST:event_rbInactivoActionPerformed
+    
     private void buscar() {
         usuarios = CUsuario.porNombre(txtBuscar.getText());
         tabla();
     }
-
+    
     public void actualizarTabla() {
         tblUsuarios.clearSelection();
-        usuarios = CUsuario.getRegistros();
+        rbActivo.setSelected(true);
+        usuarios = CUsuario.getUsuariosActivos();
         tabla();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgEstatus;
     private javax.swing.JDesktopPane dp;
     private help.helpCentro helpCentro1;
     private javax.swing.JLabel jLabel1;
@@ -312,6 +319,8 @@ public class PUsuario extends javax.swing.JPanel {
     private javax.swing.JLabel lbAgregar;
     private utilerias.PanelRedondeado panelRedondeado1;
     private utilerias.PanelRedondeado panelRedondeado2;
+    private javax.swing.JRadioButton rbActivo;
+    private javax.swing.JRadioButton rbInactivo;
     private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

@@ -200,7 +200,7 @@ public class PSocio extends javax.swing.JPanel {
         tblSocios.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblSocios);
 
-        panelRedondeado1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 1300, 498));
+        panelRedondeado1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 124, 1300, 480));
         panelRedondeado1.add(helpCentro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 20, -1, -1));
 
         bgFiltra.add(rbActivo);

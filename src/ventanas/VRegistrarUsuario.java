@@ -2,6 +2,8 @@ package ventanas;
 
 import controladores.CUsuario;
 import java.util.Date;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelos.Usuario;
 import paneles.PUsuario;
@@ -16,10 +18,14 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     private boolean modifica = false;
     private Usuario usuario;
     private PUsuario pUsuario;
+    private Icon iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
+    private boolean estatus = true;
 
     public VRegistrarUsuario(PUsuario pUs) {
         initComponents();
         pUsuario = pUs;
+        btnEstatus.setEnabled(false);
+        btnEstatus.setIcon(iconEstatus);
     }
 
     public VRegistrarUsuario(PUsuario pUs, Usuario us) {
@@ -34,6 +40,16 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         txtUsuario.setText(us.getUsuario());
         cmbRol.setSelectedItem(us.getRol());
         pfPass.setText(us.getPass());
+
+        estatus = usuario.getEstatus() == 1;
+        if (estatus) {
+            iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
+            btnEstatus.setText("Eliminar");
+        } else {
+            iconEstatus = new ImageIcon(getClass().getResource("/imagenes/palomita.png"));
+            btnEstatus.setText("Activar");
+        }
+        btnEstatus.setIcon(iconEstatus);
     }
 
     @SuppressWarnings("unchecked")
@@ -59,6 +75,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         pfPass = new javax.swing.JPasswordField();
         btnGuardar = new javax.swing.JButton();
         cmbRol = new javax.swing.JComboBox<>();
+        btnEstatus = new javax.swing.JButton();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -329,6 +346,13 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         cmbRol.setForeground(new java.awt.Color(255, 255, 255));
         cmbRol.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona un rol", "Administrador", "Gestor" }));
 
+        btnEstatus.setText("Eliminar");
+        btnEstatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstatusActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -350,6 +374,10 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(panelRedondeado11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(panelRedondeado17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -358,10 +386,6 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                                     .addComponent(cmbRol, 0, 311, Short.MAX_VALUE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,9 +408,11 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
                 .addComponent(panelRedondeado15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(panelRedondeado24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(54, 54, 54))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+                    .addComponent(btnEstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -452,6 +478,18 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void btnEstatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstatusActionPerformed
+        int op = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea " + (estatus ? "eliminar" : "activar") + " esta usuario?",
+                "Confirme esta acción", JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION) {
+            usuario.setEstatus(estatus ? 0 : 1);
+            CUsuario.estatus(usuario);
+            JOptionPane.showMessageDialog(null, "Usuario " + (estatus ? "eliminado" : "activado"));
+            pUsuario.actualizarTabla();
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnEstatusActionPerformed
+
     private void guardar() {
         usuario = new Usuario();
         usuario.setNombre(txtNombre.getText());
@@ -491,6 +529,7 @@ public class VRegistrarUsuario extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEstatus;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<String> cmbRol;
     private javax.swing.JLabel jLabel1;
