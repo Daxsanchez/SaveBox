@@ -44,7 +44,7 @@ public class PSocio extends javax.swing.JPanel {
         for (int i = 0; socios.size() > i; i++) {
             String nombreCompleto = socios.get(i).getNombre() + " " + socios.get(i).getApellidos();
             tbl.addRow(new Object[]{
-                icon, nombreCompleto, socios.get(i).getCorreo(),
+                icon, nombreCompleto, socios.get(i).getCorreo(), socios.get(i).getTelefono(),
                 socios.get(i).getFechaCreacion(), socios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
         }
     }
@@ -109,8 +109,8 @@ public class PSocio extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Socios");
-        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 120, -1));
+        jLabel18.setText("Socios Registrados");
+        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 340, -1));
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(30);
@@ -182,11 +182,11 @@ public class PSocio extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Foto", "Nombre", "Correo", "Fecha registro", "Estado"
+                "Foto", "Nombre", "Correo", "Teléfono", "Fecha registro", "Estado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

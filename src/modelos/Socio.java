@@ -7,7 +7,7 @@ import java.util.Date;
  * @author zeta9
  */
 public class Socio {
-    
+
     private int id;
     private String nombre;
     private String apellidos;
@@ -16,11 +16,12 @@ public class Socio {
     private String direccion;
     private Date fechaCreacion;
     private int estatus;
-    
-    public static String CAMPOS = "nombre,apellidos,edad,correo,direccion,fechaCreacion,estatus";
-    public static String CAMPOS_ACT = "nombre,apellidos,correo,direccion";
+    private String telefono;
 
-    public Socio(int id, String nombre, String apellidos, int edad, String correo, String direccion, Date fechaCreacion, int estatus) {
+    public static String CAMPOS = "nombre,apellidos,edad,correo,direccion,fechaCreacion,estatus,telefono";
+    public static String CAMPOS_ACT = "nombre,apellidos,correo,direccion,telefono";
+
+    public Socio(int id, String nombre, String apellidos, int edad, String correo, String direccion, Date fechaCreacion, int estatus, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -29,6 +30,7 @@ public class Socio {
         this.direccion = direccion;
         this.fechaCreacion = fechaCreacion;
         this.estatus = estatus;
+        this.telefono = telefono;
     }
 
     public Socio() {
@@ -97,6 +99,13 @@ public class Socio {
     public void setEstatus(int estatus) {
         this.estatus = estatus;
     }
-    
-    
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
 }

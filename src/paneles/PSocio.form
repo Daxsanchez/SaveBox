@@ -76,11 +76,11 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Socios"/>
+                <Property name="text" type="java.lang.String" value="Socios Registrados"/>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="6" y="24" width="120" height="-1"/>
+                  <AbsoluteConstraints x="6" y="24" width="340" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -209,10 +209,11 @@
                       <Color blue="7b" green="14" red="7" type="rgb"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
+                      <Table columnCount="6" rowCount="0">
                         <Column editable="false" title="Foto" type="java.lang.Object"/>
                         <Column editable="false" title="Nombre" type="java.lang.Object"/>
                         <Column editable="false" title="Correo" type="java.lang.Object"/>
+                        <Column editable="false" title="Tel&#xe9;fono" type="java.lang.Object"/>
                         <Column editable="false" title="Fecha registro" type="java.lang.Object"/>
                         <Column editable="false" title="Estado" type="java.lang.Object"/>
                       </Table>

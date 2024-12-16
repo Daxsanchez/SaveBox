@@ -17,10 +17,12 @@ public class Prestamo {
     private double saldoRestante;
     private String estatus;
     private Usuario usuario;
-    
-    public static String CAMPOS = "idSocio,monto,intereses,fechaAprobacion,fechaLiquidacion,saldoRestante,estatus,idUsuario";
+    private double interesPendiente;
 
-    public Prestamo(int id, Socio socio, int monto, double intereses, Date fechaAprobacion, Date fechaLiquidacion, double saldoRestante, String estatus, Usuario usuario) {
+    public static String CAMPOS = "idSocio,monto,intereses,fechaAprobacion,fechaLiquidacion,saldoRestante,estatus,idUsuario,interesPendiente";
+
+    public Prestamo(int id, Socio socio, int monto, double intereses, Date fechaAprobacion, Date fechaLiquidacion,
+            double saldoRestante, String estatus, Usuario usuario, double interesPendiente) {
         this.id = id;
         this.socio = socio;
         this.monto = monto;
@@ -30,6 +32,7 @@ public class Prestamo {
         this.saldoRestante = saldoRestante;
         this.estatus = estatus;
         this.usuario = usuario;
+        this.interesPendiente = interesPendiente;
     }
 
     public Prestamo() {
@@ -105,6 +108,14 @@ public class Prestamo {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public double getInteresPendiente() {
+        return interesPendiente;
+    }
+
+    public void setInteresPendiente(double interesPendiente) {
+        this.interesPendiente = interesPendiente;
     }
 
 }

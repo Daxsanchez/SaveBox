@@ -35,7 +35,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         dcFecha = new com.toedter.calendar.JDateChooser();
         panelRedondeado3 = new utilerias.PanelRedondeado();
-        txtMonto = new javax.swing.JTextField();
+        txtMonto = new javax.swing.JFormattedTextField();
         cmbMetodo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         btnAbonar = new javax.swing.JButton();
@@ -69,16 +69,14 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         panelRedondeado3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtMonto.setBackground(new java.awt.Color(7, 20, 123));
-        txtMonto.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        txtMonto.setForeground(new java.awt.Color(255, 255, 255));
-        txtMonto.setText("Monto");
         txtMonto.setBorder(null);
-        txtMonto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMontoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMontoFocusLost(evt);
+        txtMonto.setForeground(new java.awt.Color(255, 255, 255));
+        txtMonto.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtMonto.setText("Monto");
+        txtMonto.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        txtMonto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMontoMouseClicked(evt);
             }
         });
         txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -86,7 +84,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
                 txtMontoKeyTyped(evt);
             }
         });
-        panelRedondeado3.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 250, 30));
+        panelRedondeado3.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 2, 230, 40));
 
         jPanel1.add(panelRedondeado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 280, 40));
 
@@ -161,16 +159,6 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMontoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusGained
-        txtMonto.setText("");
-    }//GEN-LAST:event_txtMontoFocusGained
-
-    private void txtMontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusLost
-        if (txtMonto.getText().isEmpty()) {
-            txtMonto.setText("Monto");
-        }
-    }//GEN-LAST:event_txtMontoFocusLost
-
     private void btnAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbonarActionPerformed
         boolean valida = validaciones();
         if (valida) {
@@ -196,8 +184,11 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         if (!numeros) {
             evt.consume();
         }
-        evt = null;
     }//GEN-LAST:event_txtMontoKeyTyped
+
+    private void txtMontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMouseClicked
+        txtMonto.setText("");
+    }//GEN-LAST:event_txtMontoMouseClicked
 
     private boolean validaciones() {
         if (cmbMetodo.getSelectedIndex() == 0) {
@@ -222,7 +213,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private void guardar() {
         abono.setFecha(dcFecha.getDate());
         abono.setMetodo(cmbMetodo.getSelectedItem().toString());
-        abono.setMonto(Double.parseDouble(txtMonto.getText()));
+        abono.setMonto(Double.parseDouble(txtMonto.getValue().toString()));
         abono.setPrestamo(prestamo);
         abono.setUsuario(Config.getUsuarioLog());
         boolean guardado = CAbonoPrestamo.guardarRegistro(abono);
@@ -246,7 +237,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private utilerias.PanelRedondeado panelRedondeado3;
     private utilerias.PanelRedondeado panelRedondeado4;
     private javax.swing.JRadioButton rbLiquidar;
-    private javax.swing.JTextField txtMonto;
+    private javax.swing.JFormattedTextField txtMonto;
     private javax.swing.JTextField txtRestante;
     // End of variables declaration//GEN-END:variables
 }

@@ -33,6 +33,7 @@ public class CPrestamo {
                 prestamo.setSaldoRestante(rs.getDouble(7));
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamo.setInteresPendiente(rs.getDouble(10));
                 prestamos.add(prestamo);
             }
         } catch (Exception e) {
@@ -58,6 +59,7 @@ public class CPrestamo {
                 prestamo.setSaldoRestante(rs.getDouble(7));
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamo.setInteresPendiente(rs.getDouble(10));
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {
@@ -83,6 +85,7 @@ public class CPrestamo {
                 prestamo.setSaldoRestante(rs.getDouble(7));
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamo.setInteresPendiente(rs.getDouble(10));
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {
@@ -107,6 +110,7 @@ public class CPrestamo {
                 prestamo.setSaldoRestante(rs.getDouble(7));
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamo.setInteresPendiente(rs.getDouble(10));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -116,14 +120,13 @@ public class CPrestamo {
 
     public static boolean guardarRegistro(Prestamo prestamo) {
         int registrado = 0;
-        String fechaLiquidacion = "2024-12-07";
 
         String query = "INSERT INTO Prestamo (" + Prestamo.CAMPOS + ") VALUES(";
 
         Object[] valores = {prestamo.getSocio().getId(), prestamo.getMonto(), prestamo.getIntereses(),
             Utileria.getFechaFormateada(prestamo.getFechaAprobacion(), Utileria.ANIO_MES_DIA),
-            fechaLiquidacion, prestamo.getSaldoRestante(),
-            prestamo.getEstatus(), prestamo.getUsuario().getId()};
+            null, prestamo.getSaldoRestante(),
+            prestamo.getEstatus(), prestamo.getUsuario().getId(), prestamo.getInteresPendiente()};
 
         query = query + CBaseDatos.formatearValores(valores.length) + ")";
 
@@ -158,6 +161,7 @@ public class CPrestamo {
                 prestamo.setSaldoRestante(rs.getDouble(7));
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
+                prestamo.setInteresPendiente(rs.getDouble(10));
                 prestamos.add(prestamo);
             }
         } catch (Exception e) {

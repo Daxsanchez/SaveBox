@@ -31,6 +31,7 @@ public class CSocio {
                 socio.setDireccion(rs.getString(6));
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
                 socios.add(socio);
             }
         } catch (Exception e) {
@@ -55,6 +56,7 @@ public class CSocio {
                 socio.setDireccion(rs.getString(6));
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
                 socios.add(socio);
             }
         } catch (SQLException e) {
@@ -79,6 +81,7 @@ public class CSocio {
                 socio.setDireccion(rs.getString(6));
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
                 socios.add(socio);
             }
         } catch (SQLException e) {
@@ -102,6 +105,7 @@ public class CSocio {
                 socio.setDireccion(rs.getString(6));
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -116,7 +120,8 @@ public class CSocio {
 
         Object[] valores = {socio.getNombre(), socio.getApellidos(), socio.getEdad(),
             socio.getCorreo(), socio.getDireccion(),
-            Utileria.getFechaFormateada(socio.getFechaCreacion(), Utileria.ANIO_MES_DIA), socio.getEstatus()};
+            Utileria.getFechaFormateada(socio.getFechaCreacion(), Utileria.ANIO_MES_DIA),
+            socio.getEstatus(), socio.getTelefono()};
 
         query = query + CBaseDatos.formatearValores(valores.length) + ")";
 
@@ -148,10 +153,63 @@ public class CSocio {
                 socio.setDireccion(rs.getString(6));
                 socio.setFechaCreacion(rs.getDate(7));
                 socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
                 socios.add(socio);
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return socios;
+    }
+    
+    public static ArrayList<Socio> porCorreo(String correo, boolean estatus) {
+        String consulta = "SELECT * FROM Socio WHERE correo LIKE '" + correo + "%' "
+                + "AND estatus = " + (estatus ? 1 : 0);
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Socio socio = new Socio();
+                socio.setId(rs.getInt(1));
+                socio.setNombre(rs.getString(2));
+                socio.setApellidos(rs.getString(3));
+                socio.setEdad(rs.getInt(4));
+                socio.setCorreo(rs.getString(5));
+                socio.setDireccion(rs.getString(6));
+                socio.setFechaCreacion(rs.getDate(7));
+                socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
+                socios.add(socio);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return socios;
+    }
+    
+    public static ArrayList<Socio> porTelefono(String telefono, boolean estatus) {
+        String consulta = "SELECT * FROM Socio WHERE telefono LIKE '" + telefono + "%' "
+                + "AND estatus = " + (estatus ? 1 : 0);
+        ArrayList<Socio> socios = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Socio socio = new Socio();
+                socio.setId(rs.getInt(1));
+                socio.setNombre(rs.getString(2));
+                socio.setApellidos(rs.getString(3));
+                socio.setEdad(rs.getInt(4));
+                socio.setCorreo(rs.getString(5));
+                socio.setDireccion(rs.getString(6));
+                socio.setFechaCreacion(rs.getDate(7));
+                socio.setEstatus(rs.getInt(8));
+                socio.setTelefono(rs.getString(9));
+                socios.add(socio);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return socios;
     }
@@ -163,15 +221,13 @@ public class CSocio {
         query = query + CBaseDatos.adjuntarSimbolo(campos, ",", "?") + " WHERE " + "id" + " = ? ";
 
         Object[] valores = {socio.getNombre(), socio.getApellidos(), socio.getCorreo(),
-            socio.getDireccion(), socio.getId()};
+            socio.getDireccion(), socio.getTelefono(), socio.getId()};
 
         try {
             PreparedStatement ps = getConexion().prepareStatement(query);
             CBaseDatos.setValores(ps, valores);
             act = ps.executeUpdate();
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        } catch (NullPointerException ex) {
+        } catch (SQLException | NullPointerException ex) {
             System.out.println(ex);
         }
         return act;
