@@ -16,27 +16,27 @@ import ventanas.VRegistrarUsuario;
  * @author daxsa
  */
 public class PUsuario extends javax.swing.JPanel {
-    
+
     private DefaultTableModel tbl;
     private VInicio vInicio;
     private ArrayList<Usuario> usuarios = new ArrayList<>();
     private ImageIcon icon;
-    
+
     public PUsuario(VInicio ini) {
         initComponents();
         vInicio = ini;
         this.dp = vInicio.getDesktopPane();
-        
+
         usuarios = CUsuario.getUsuariosActivos();
         tbl = (DefaultTableModel) tblUsuarios.getModel();
         icon = new ImageIcon(getClass().getResource("/imagenes/avatarAzul.png"));
         tabla();
-        
+
         tblUsuarios.getColumnModel().getColumn(0).setCellRenderer(new IconCellRenderer());
-        
+
         eventoTabla();
     }
-    
+
     private void tabla() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
@@ -49,7 +49,7 @@ public class PUsuario extends javax.swing.JPanel {
                 usuarios.get(i).getFechaCreacion(), usuarios.get(i).getEstatus() == 1 ? "Activo" : "Inactivo"});
         }
     }
-    
+
     private void eventoTabla() {
         PUsuario pUs = this;
         tblUsuarios.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -59,7 +59,7 @@ public class PUsuario extends javax.swing.JPanel {
                     int selectedRow = tblUsuarios.getSelectedRow();
                     if (selectedRow != -1) {
                         Usuario us = usuarios.get(tblUsuarios.getSelectedRow());
-                        
+
                         VRegistrarUsuario registrarUsuario = new VRegistrarUsuario(pUs, us);
                         registrarUsuario.setSize(376, 750);
                         registrarUsuario.setVisible(true);
@@ -78,7 +78,7 @@ public class PUsuario extends javax.swing.JPanel {
             }
         });
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -263,7 +263,7 @@ public class PUsuario extends javax.swing.JPanel {
         registrarUsuario.setSize(376, 750);
         registrarUsuario.setVisible(true);
         dp.setLayout(null);
-        
+
         if (dp != null) {
             try {
                 vInicio.centrarInternalFrame(registrarUsuario, dp);
@@ -279,7 +279,11 @@ public class PUsuario extends javax.swing.JPanel {
         if (!txtBuscar.getText().isEmpty()) {
             buscar();
         } else {
-            usuarios = CUsuario.getRegistros();
+            if (rbActivo.isSelected()) {
+                usuarios = CUsuario.getUsuariosActivos();
+            } else {
+                usuarios = CUsuario.getUsuariosInactivos();
+            }
             tabla();
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
@@ -295,12 +299,12 @@ public class PUsuario extends javax.swing.JPanel {
         usuarios = CUsuario.getUsuariosInactivos();
         tabla();
     }//GEN-LAST:event_rbInactivoActionPerformed
-    
+
     private void buscar() {
-        usuarios = CUsuario.porNombre(txtBuscar.getText());
+        usuarios = CUsuario.porNombre(txtBuscar.getText(), rbActivo.isSelected());
         tabla();
     }
-    
+
     public void actualizarTabla() {
         tblUsuarios.clearSelection();
         rbActivo.setSelected(true);

@@ -18,20 +18,18 @@ import ventanas.VInicio;
  */
 public class PPrestamos extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PPrestamos
-     */
     private javax.swing.JDesktopPane dp;
     private DefaultTableModel tbl;
     private VInicio vInicio = null;
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
+    private TablaAccionEventP ev;
 
     public PPrestamos(VInicio vIni) {
         initComponents();
         vInicio = vIni;
         dp = vIni.getDesktopPane();
 
-        prestamos = CPrestamo.getRegistros();
+        prestamos = CPrestamo.getPrestamosAprobados();
         tbl = (DefaultTableModel) tblPrestamos.getModel();
         tabla();
         accionTabla();
@@ -43,17 +41,16 @@ public class PPrestamos extends javax.swing.JPanel {
             tbl.removeRow(0);
         }
         for (int i = 0; prestamos.size() > i; i++) {
-            double saldoRestante = prestamos.get(i).getSaldoRestante();
-            double abonado = prestamos.get(i).getMonto() - saldoRestante;
             tbl.addRow(new Object[]{
                 prestamos.get(i).getSocio().getNombre() + " " + prestamos.get(i).getSocio().getApellidos(),
-                abonado, saldoRestante, prestamos.get(i).getFechaAprobacion()});
+                prestamos.get(i).getMonto(), prestamos.get(i).getSaldoRestante(),
+                prestamos.get(i).getFechaAprobacion()});
         }
     }
 
     private void accionTabla() {
         PPrestamos pPres = this;
-        TablaAccionEventP ev = new TablaAccionEventP() {
+        ev = new TablaAccionEventP() {
             @Override
             public void onAbonar(int row) {
                 VAbonoPrestamo abonar = new VAbonoPrestamo(pPres, prestamos.get(row));
@@ -74,12 +71,16 @@ public class PPrestamos extends javax.swing.JPanel {
         };
         tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRenderP());
         tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditorP(ev));
+        tblPrestamos.getColumnModel().getColumn(4).setMinWidth(75);
+        tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(150);
+        tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(100);
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        bgEstatus = new javax.swing.ButtonGroup();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel18 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -89,6 +90,8 @@ public class PPrestamos extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtBuscar = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        rbLiquidado = new javax.swing.JRadioButton();
+        rbAprobado = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(7, 20, 123));
         setLayout(null);
@@ -96,13 +99,13 @@ public class PPrestamos extends javax.swing.JPanel {
         jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         add(jSeparator2);
-        jSeparator2.setBounds(0, 73, 1330, 20);
+        jSeparator2.setBounds(0, 110, 1330, 20);
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Prestamos Efectuados");
         add(jLabel18);
-        jLabel18.setBounds(10, 20, 396, 50);
+        jLabel18.setBounds(10, 40, 396, 50);
 
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -124,7 +127,7 @@ public class PPrestamos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Socio", "Abonado", "Restante", "Fecha Aprobado", "Acciones"
+                "Socio", "Monto", "Restante", "Fecha Aprobado", "Abonar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -143,7 +146,7 @@ public class PPrestamos extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblPrestamos);
 
         add(jScrollPane1);
-        jScrollPane1.setBounds(0, 80, 1340, 520);
+        jScrollPane1.setBounds(0, 130, 1310, 470);
 
         panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado1.setRoundBottomLeft(30);
@@ -164,11 +167,6 @@ public class PPrestamos extends javax.swing.JPanel {
                 txtBuscarFocusGained(evt);
             }
         });
-        txtBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscarActionPerformed(evt);
-            }
-        });
         txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtBuscarKeyReleased(evt);
@@ -186,16 +184,37 @@ public class PPrestamos extends javax.swing.JPanel {
             }
         });
         add(jLabel4);
-        jLabel4.setBounds(1240, 20, 60, 50);
+        jLabel4.setBounds(1240, 20, 60, 70);
+
+        bgEstatus.add(rbLiquidado);
+        rbLiquidado.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbLiquidado.setForeground(new java.awt.Color(255, 255, 255));
+        rbLiquidado.setText("Liquidados");
+        rbLiquidado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbLiquidadoActionPerformed(evt);
+            }
+        });
+        add(rbLiquidado);
+        rbLiquidado.setBounds(1100, 80, 98, 20);
+
+        bgEstatus.add(rbAprobado);
+        rbAprobado.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbAprobado.setForeground(new java.awt.Color(255, 255, 255));
+        rbAprobado.setSelected(true);
+        rbAprobado.setText("Aprobados");
+        rbAprobado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbAprobadoActionPerformed(evt);
+            }
+        });
+        add(rbAprobado);
+        rbAprobado.setBounds(960, 80, 110, 23);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         vInicio.abrirRealizarPrestamo();
     }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void txtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscarActionPerformed
 
     private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
         txtBuscar.setText("");
@@ -209,23 +228,60 @@ public class PPrestamos extends javax.swing.JPanel {
         if (!txtBuscar.getText().isEmpty()) {
             buscar();
         } else {
-            prestamos = CPrestamo.getRegistros();
+            tblPrestamos.clearSelection();
+            if (rbAprobado.isSelected()) {
+                prestamos = CPrestamo.getPrestamosAprobados();
+            } else {
+                prestamos = CPrestamo.getPrestamosLiquidados();
+            }
             tabla();
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
 
+    private void rbAprobadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAprobadoActionPerformed
+        prestamos = CPrestamo.getPrestamosAprobados();
+        tabla();
+        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRenderP());
+        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditorP(ev));
+        actualizarColumnas();
+        tblPrestamos.clearSelection();
+    }//GEN-LAST:event_rbAprobadoActionPerformed
+
+    private void rbLiquidadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidadoActionPerformed
+        prestamos = CPrestamo.getPrestamosLiquidados();
+        tabla();
+        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(null);
+        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(null);
+        actualizarColumnas();
+        tblPrestamos.clearSelection();
+    }//GEN-LAST:event_rbLiquidadoActionPerformed
+
+    private void actualizarColumnas() {
+        if (rbLiquidado.isSelected()) {
+            tblPrestamos.getColumnModel().getColumn(4).setMinWidth(0);
+            tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(0);
+            tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(0);
+        } else {
+            tblPrestamos.getColumnModel().getColumn(4).setMinWidth(75);
+            tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(150);
+            tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(100);
+        }
+    }
+
     private void buscar() {
-        prestamos = CPrestamo.porNombreSocio(txtBuscar.getText());
+        prestamos = CPrestamo.porNombreSocio(txtBuscar.getText(), rbAprobado.isSelected() ? "APROBADO" : "LIQUIDADO");
         tabla();
     }
 
     public void actualizarTabla() {
         tblPrestamos.clearSelection();
-        prestamos = CPrestamo.getRegistros();
+        rbAprobado.setSelected(true);
+        prestamos = CPrestamo.getPrestamosAprobados();
         tabla();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup bgEstatus;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -233,6 +289,8 @@ public class PPrestamos extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private utilerias.PanelRedondeado panelRedondeado1;
+    private javax.swing.JRadioButton rbAprobado;
+    private javax.swing.JRadioButton rbLiquidado;
     private javax.swing.JTable tblPrestamos;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

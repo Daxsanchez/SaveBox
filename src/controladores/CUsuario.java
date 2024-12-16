@@ -160,8 +160,9 @@ public class CUsuario {
         return act;
     }
 
-    public static ArrayList<Usuario> porNombre(String nom) {
-        String consulta = "SELECT * FROM Usuario WHERE nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%'";
+    public static ArrayList<Usuario> porNombre(String nom, boolean estatus) {
+        String consulta = "SELECT * FROM Usuario WHERE (nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%') "
+                + "AND estatus = " + (estatus ? 1 : 0);
         ArrayList<Usuario> usuarios = new ArrayList<>();
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);
@@ -249,7 +250,7 @@ public class CUsuario {
         }
         return usuarios;
     }
-    
+
     public static int estatus(Usuario usuario) {
         int act = 0;
         String query = "UPDATE Usuario SET ";

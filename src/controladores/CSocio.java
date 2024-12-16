@@ -131,8 +131,9 @@ public class CSocio {
         return registrado == 1;
     }
 
-    public static ArrayList<Socio> porNombre(String nom) {
-        String consulta = "SELECT * FROM Socio WHERE nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%'";
+    public static ArrayList<Socio> porNombre(String nom, boolean estatus) {
+        String consulta = "SELECT * FROM Socio WHERE (nombre LIKE '" + nom + "%' OR apellidos LIKE '" + nom + "%') "
+                + "AND estatus = " + (estatus ? 1 : 0);
         ArrayList<Socio> socios = new ArrayList<>();
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);

@@ -81,6 +81,11 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
                 txtMontoFocusLost(evt);
             }
         });
+        txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoKeyTyped(evt);
+            }
+        });
         panelRedondeado3.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 250, 30));
 
         jPanel1.add(panelRedondeado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 280, 40));
@@ -117,6 +122,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         panelRedondeado4.setRoundTopRight(50);
         panelRedondeado4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtRestante.setEditable(false);
         txtRestante.setBackground(new java.awt.Color(7, 20, 123));
         txtRestante.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
         txtRestante.setForeground(new java.awt.Color(255, 255, 255));
@@ -166,7 +172,10 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoFocusLost
 
     private void btnAbonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbonarActionPerformed
-        guardar();
+        boolean valida = validaciones();
+        if (valida) {
+            guardar();
+        }
     }//GEN-LAST:event_btnAbonarActionPerformed
 
     private void rbLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidarActionPerformed
@@ -178,6 +187,37 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
             txtMonto.setText("0");
         }
     }//GEN-LAST:event_rbLiquidarActionPerformed
+
+    private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57 || key == 46;
+
+        if (!numeros) {
+            evt.consume();
+        }
+        evt = null;
+    }//GEN-LAST:event_txtMontoKeyTyped
+
+    private boolean validaciones() {
+        if (cmbMetodo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe de seleccionar un método de pago",
+                    "Seleccione Método", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (dcFecha.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Debe de seleccionar la fecha en la que se realizó el pago",
+                    "Seleccione Fecha", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        double monto = Double.parseDouble(txtMonto.getText());
+        if (monto > prestamo.getSaldoRestante()) {
+            JOptionPane.showMessageDialog(this, "El monto no puede ser mayor al saldo restante",
+                    "Monto inválido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
 
     private void guardar() {
         abono.setFecha(dcFecha.getDate());

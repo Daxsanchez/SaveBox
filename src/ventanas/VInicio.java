@@ -411,6 +411,7 @@ public class VInicio extends javax.swing.JFrame {
                 pCerrarSesionMouseExited(evt);
             }
         });
+        pCerrarSesion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cerrar-sesion.png"))); // NOI18N
         lblCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -418,25 +419,9 @@ public class VInicio extends javax.swing.JFrame {
                 lblCerrarSesionMouseClicked(evt);
             }
         });
+        pCerrarSesion.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 37, -1));
 
-        javax.swing.GroupLayout pCerrarSesionLayout = new javax.swing.GroupLayout(pCerrarSesion);
-        pCerrarSesion.setLayout(pCerrarSesionLayout);
-        pCerrarSesionLayout.setHorizontalGroup(
-            pCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCerrarSesionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pCerrarSesionLayout.setVerticalGroup(
-            pCerrarSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pCerrarSesionLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblCerrarSesion)
-                .addContainerGap())
-        );
-
-        jPanel2.add(pCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 684, -1, -1));
+        jPanel2.add(pCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 666, 70, 70));
 
         pConfiguracion.setBackground(new java.awt.Color(7, 20, 123));
         pConfiguracion.setRoundBottomLeft(20);

@@ -109,8 +109,8 @@ public class PSocio extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Socios Registrados");
-        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 419, -1));
+        jLabel18.setText("Socios");
+        panelRedondeado1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 24, 120, -1));
 
         panelRedondeado2.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado2.setRoundBottomLeft(30);
@@ -284,7 +284,11 @@ public class PSocio extends javax.swing.JPanel {
         if (!txtBuscar.getText().isEmpty()) {
             buscar();
         } else {
-            socios = CSocio.getRegistros();
+            if (rbActivo.isSelected()) {
+                socios = CSocio.getSociosActivos();
+            } else {
+                socios = CSocio.getSociosInactivos();
+            }
             tabla();
         }
     }//GEN-LAST:event_txtBuscarKeyReleased
@@ -302,7 +306,7 @@ public class PSocio extends javax.swing.JPanel {
     }//GEN-LAST:event_rbActivoActionPerformed
 
     private void buscar() {
-        socios = CSocio.porNombre(txtBuscar.getText());
+        socios = CSocio.porNombre(txtBuscar.getText(), rbActivo.isSelected());
         tabla();
     }
 
