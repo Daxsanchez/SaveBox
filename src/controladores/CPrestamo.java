@@ -2,9 +2,7 @@ package controladores;
 
 import static bd.BaseConexion.getConexion;
 import bd.CBaseDatos;
-import java.sql.ResultSet;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import modelos.Prestamo;
@@ -34,6 +32,7 @@ public class CPrestamo {
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
                 prestamo.setInteresPendiente(rs.getDouble(10));
+                prestamo.setUltimaActualizacionIntereses(rs.getDate(11));
                 prestamos.add(prestamo);
             }
         } catch (Exception e) {
@@ -60,6 +59,7 @@ public class CPrestamo {
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
                 prestamo.setInteresPendiente(rs.getDouble(10));
+                prestamo.setUltimaActualizacionIntereses(rs.getDate(11));
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {
@@ -86,6 +86,7 @@ public class CPrestamo {
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
                 prestamo.setInteresPendiente(rs.getDouble(10));
+                prestamo.setUltimaActualizacionIntereses(rs.getDate(11));
                 prestamos.add(prestamo);
             }
         } catch (SQLException e) {
@@ -111,6 +112,7 @@ public class CPrestamo {
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
                 prestamo.setInteresPendiente(rs.getDouble(10));
+                prestamo.setUltimaActualizacionIntereses(rs.getDate(11));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -125,8 +127,9 @@ public class CPrestamo {
 
         Object[] valores = {prestamo.getSocio().getId(), prestamo.getMonto(), prestamo.getIntereses(),
             Utileria.getFechaFormateada(prestamo.getFechaAprobacion(), Utileria.ANIO_MES_DIA),
-            null, prestamo.getSaldoRestante(),
-            prestamo.getEstatus(), prestamo.getUsuario().getId(), prestamo.getInteresPendiente()};
+            null, prestamo.getSaldoRestante(), prestamo.getEstatus(),
+            prestamo.getUsuario().getId(), prestamo.getInteresPendiente(),
+            Utileria.getFechaFormateada(prestamo.getUltimaActualizacionIntereses(), Utileria.ANIO_MES_DIA)};
 
         query = query + CBaseDatos.formatearValores(valores.length) + ")";
 
@@ -162,11 +165,27 @@ public class CPrestamo {
                 prestamo.setEstatus(rs.getString(8));
                 prestamo.setUsuario(CUsuario.usuarioPorId(rs.getInt(9)));
                 prestamo.setInteresPendiente(rs.getDouble(10));
+                prestamo.setUltimaActualizacionIntereses(rs.getDate(11));
                 prestamos.add(prestamo);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return prestamos;
+    }
+
+    public static void actualizarIntereses() {
+        String procedimiento = "{call sp_InteresMensual}";
+
+        try {
+            Connection conexion = getConexion();
+            CallableStatement cs = conexion.prepareCall(procedimiento);
+
+            cs.execute();
+            System.out.println("Intereses actualizados correctamente.");
+
+        } catch (SQLException ex) {
+            System.err.println("Error al actualizar los intereses: " + ex.getMessage());
+        }
     }
 }

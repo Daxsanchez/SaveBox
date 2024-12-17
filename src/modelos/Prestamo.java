@@ -18,11 +18,13 @@ public class Prestamo {
     private String estatus;
     private Usuario usuario;
     private double interesPendiente;
+    private Date ultimaActualizacionIntereses;
 
-    public static String CAMPOS = "idSocio,monto,intereses,fechaAprobacion,fechaLiquidacion,saldoRestante,estatus,idUsuario,interesPendiente";
+    public static String CAMPOS = "idSocio,monto,intereses,fechaAprobacion,fechaLiquidacion,"
+            + "saldoRestante,estatus,idUsuario,interesPendiente,ultimaActualizacionInteres";
 
     public Prestamo(int id, Socio socio, int monto, double intereses, Date fechaAprobacion, Date fechaLiquidacion,
-            double saldoRestante, String estatus, Usuario usuario, double interesPendiente) {
+            double saldoRestante, String estatus, Usuario usuario, double interesPendiente, Date ultimaActualizacionIntereses) {
         this.id = id;
         this.socio = socio;
         this.monto = monto;
@@ -33,6 +35,7 @@ public class Prestamo {
         this.estatus = estatus;
         this.usuario = usuario;
         this.interesPendiente = interesPendiente;
+        this.ultimaActualizacionIntereses = ultimaActualizacionIntereses;
     }
 
     public Prestamo() {
@@ -116,6 +119,14 @@ public class Prestamo {
 
     public void setInteresPendiente(double interesPendiente) {
         this.interesPendiente = interesPendiente;
+    }
+
+    public Date getUltimaActualizacionIntereses() {
+        return ultimaActualizacionIntereses;
+    }
+
+    public void setUltimaActualizacionIntereses(Date ultimaActualizacionIntereses) {
+        this.ultimaActualizacionIntereses = ultimaActualizacionIntereses;
     }
 
 }

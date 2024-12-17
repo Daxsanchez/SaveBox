@@ -584,6 +584,9 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
 
     private void dcFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcFechaPropertyChange
         cuotas();
+        if (!txtMonto.getText().isEmpty()) {
+            intereses();
+        }
     }//GEN-LAST:event_dcFechaPropertyChange
 
     private void btnBuscarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSocioActionPerformed
@@ -633,6 +636,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         prestamo.setSocio(socios.get(cmbSocio.getSelectedIndex() - 1));
         prestamo.setUsuario(Config.getUsuarioLog());
         prestamo.setInteresPendiente(0);
+        prestamo.setUltimaActualizacionIntereses(dcFecha.getDate());
     }
 
     private void guardar() {
