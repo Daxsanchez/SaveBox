@@ -13,19 +13,20 @@ import paneles.PPrestamos;
  * @author daxsa
  */
 public class VAbonoPrestamo extends javax.swing.JInternalFrame {
-
+    
     private Prestamo prestamo;
     private AbonoPrestamo abono = new AbonoPrestamo();
     private PPrestamos pPrestamo;
-
+    
     public VAbonoPrestamo(PPrestamos pPres, Prestamo p) {
         initComponents();
         pPrestamo = pPres;
         prestamo = p;
         txtRestante.setEditable(false);
-        txtRestante.setText(prestamo.getSaldoRestante() + "");
+        Double saldoPendiente = prestamo.getSaldoRestante() + prestamo.getInteresPendiente();
+        txtRestante.setText(saldoPendiente.toString());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -169,7 +170,8 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private void rbLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidarActionPerformed
         if (rbLiquidar.isSelected()) {
             txtMonto.setEditable(false);
-            txtMonto.setText(prestamo.getSaldoRestante() + "");
+            double restante = Double.parseDouble(txtRestante.getText());
+            txtMonto.setValue(restante);
         } else {
             txtMonto.setEditable(true);
             txtMonto.setText("0");
@@ -178,9 +180,9 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
         int key = evt.getKeyChar();
-
+        
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-
+        
         if (!numeros) {
             evt.consume();
         }
@@ -189,7 +191,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private void txtMontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMouseClicked
         txtMonto.setText("");
     }//GEN-LAST:event_txtMontoMouseClicked
-
+    
     private boolean validaciones() {
         if (cmbMetodo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Debe de seleccionar un método de pago",
@@ -209,7 +211,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         }
         return true;
     }
-
+    
     private void guardar() {
         abono.setFecha(dcFecha.getDate());
         abono.setMetodo(cmbMetodo.getSelectedItem().toString());

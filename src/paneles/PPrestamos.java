@@ -44,7 +44,7 @@ public class PPrestamos extends javax.swing.JPanel {
             tbl.addRow(new Object[]{
                 prestamos.get(i).getSocio().getNombre() + " " + prestamos.get(i).getSocio().getApellidos(),
                 prestamos.get(i).getMonto(), prestamos.get(i).getSaldoRestante(),
-                prestamos.get(i).getFechaAprobacion()});
+                prestamos.get(i).getFechaAprobacion(), prestamos.get(i).getInteresPendiente()});
         }
     }
 
@@ -69,11 +69,11 @@ public class PPrestamos extends javax.swing.JPanel {
                 }
             }
         };
-        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRenderP());
-        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditorP(ev));
-        tblPrestamos.getColumnModel().getColumn(4).setMinWidth(75);
-        tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(150);
-        tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(100);
+        tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(new TablaAccionCellRenderP());
+        tblPrestamos.getColumnModel().getColumn(5).setCellEditor(new TablaAccionCellEditorP(ev));
+        tblPrestamos.getColumnModel().getColumn(5).setMinWidth(75);
+        tblPrestamos.getColumnModel().getColumn(5).setMaxWidth(150);
+        tblPrestamos.getColumnModel().getColumn(5).setPreferredWidth(100);
     }
 
     @SuppressWarnings("unchecked")
@@ -127,11 +127,11 @@ public class PPrestamos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Socio", "Monto", "Restante", "Fecha Aprobado", "Abonar"
+                "Socio", "Monto", "Restante", "Fecha Aprobado", "Interés Pendiente", "Abonar"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -241,8 +241,8 @@ public class PPrestamos extends javax.swing.JPanel {
     private void rbAprobadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAprobadoActionPerformed
         prestamos = CPrestamo.getPrestamosAprobados();
         tabla();
-        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new TablaAccionCellRenderP());
-        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(new TablaAccionCellEditorP(ev));
+        tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(new TablaAccionCellRenderP());
+        tblPrestamos.getColumnModel().getColumn(5).setCellEditor(new TablaAccionCellEditorP(ev));
         actualizarColumnas();
         tblPrestamos.clearSelection();
     }//GEN-LAST:event_rbAprobadoActionPerformed
@@ -250,8 +250,8 @@ public class PPrestamos extends javax.swing.JPanel {
     private void rbLiquidadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidadoActionPerformed
         prestamos = CPrestamo.getPrestamosLiquidados();
         tabla();
-        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(null);
-        tblPrestamos.getColumnModel().getColumn(4).setCellEditor(null);
+        tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(null);
+        tblPrestamos.getColumnModel().getColumn(5).setCellEditor(null);
         actualizarColumnas();
         tblPrestamos.clearSelection();
     }//GEN-LAST:event_rbLiquidadoActionPerformed
