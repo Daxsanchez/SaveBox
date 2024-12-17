@@ -1,13 +1,12 @@
 package paneles;
 
+import accionAhorro.InteresAlerta;
 import accionPrestamo.TablaAccionCellEditorP;
 import accionPrestamo.TablaAccionCellRenderP;
 import accionPrestamo.TablaAccionEventP;
-import controladores.CAbonoPrestamo;
 import controladores.CPrestamo;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
-import modelos.AbonoPrestamo;
 import modelos.Prestamo;
 import ventanas.VAbonoPrestamo;
 import ventanas.VInicio;
@@ -33,6 +32,7 @@ public class PPrestamos extends javax.swing.JPanel {
         tbl = (DefaultTableModel) tblPrestamos.getModel();
         tabla();
         accionTabla();
+        tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new InteresAlerta());
     }
 
     private void tabla() {
@@ -46,6 +46,19 @@ public class PPrestamos extends javax.swing.JPanel {
                 prestamos.get(i).getMonto(), prestamos.get(i).getSaldoRestante(),
                 prestamos.get(i).getFechaAprobacion(), prestamos.get(i).getInteresPendiente()});
         }
+    }
+
+    private String interes(Prestamo prestamo) {
+        String intPen = null;
+        Double interes = prestamo.getInteresPendiente();
+        if (interes > 0) {
+            double meses = prestamo.getMonto() * 0.07;
+            int mesesEntero = (int) (interes / meses);
+            intPen = interes + " - Meses " + mesesEntero;
+        } else {
+            intPen = interes.toString();
+        }
+        return intPen;
     }
 
     private void accionTabla() {
@@ -258,13 +271,13 @@ public class PPrestamos extends javax.swing.JPanel {
 
     private void actualizarColumnas() {
         if (rbLiquidado.isSelected()) {
-            tblPrestamos.getColumnModel().getColumn(4).setMinWidth(0);
-            tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(0);
-            tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(0);
+            tblPrestamos.getColumnModel().getColumn(5).setMinWidth(0);
+            tblPrestamos.getColumnModel().getColumn(5).setMaxWidth(0);
+            tblPrestamos.getColumnModel().getColumn(5).setPreferredWidth(0);
         } else {
-            tblPrestamos.getColumnModel().getColumn(4).setMinWidth(75);
-            tblPrestamos.getColumnModel().getColumn(4).setMaxWidth(150);
-            tblPrestamos.getColumnModel().getColumn(4).setPreferredWidth(100);
+            tblPrestamos.getColumnModel().getColumn(5).setMinWidth(75);
+            tblPrestamos.getColumnModel().getColumn(5).setMaxWidth(150);
+            tblPrestamos.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
     }
 
