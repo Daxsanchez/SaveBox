@@ -11,12 +11,13 @@ import javax.swing.table.DefaultTableCellRenderer;
  * @author daxsa
  */
 public class InteresAlerta extends DefaultTableCellRenderer {
-    
+
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-        
-        Double interesPendiente = Double.valueOf(value.toString());
+
+        String[] partes = value.toString().split(" ");
+        Double interesPendiente = Double.valueOf(partes[0]);
         if (isSelected == false) {
             if (interesPendiente > 0) {
                 comp.setBackground(Color.RED);
@@ -28,5 +29,5 @@ public class InteresAlerta extends DefaultTableCellRenderer {
         }
         return comp;
     }
-    
+
 }

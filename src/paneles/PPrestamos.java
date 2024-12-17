@@ -16,51 +16,58 @@ import ventanas.VInicio;
  * @author rafae
  */
 public class PPrestamos extends javax.swing.JPanel {
-
+    
     private javax.swing.JDesktopPane dp;
     private DefaultTableModel tbl;
     private VInicio vInicio = null;
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
     private TablaAccionEventP ev;
-
+    
     public PPrestamos(VInicio vIni) {
         initComponents();
         vInicio = vIni;
         dp = vIni.getDesktopPane();
-
+        
         prestamos = CPrestamo.getPrestamosAprobados();
         tbl = (DefaultTableModel) tblPrestamos.getModel();
         tabla();
         accionTabla();
         tblPrestamos.getColumnModel().getColumn(4).setCellRenderer(new InteresAlerta());
     }
-
+    
     private void tabla() {
         int filas = tbl.getRowCount();
         for (int i = 0; i < filas; i++) {
             tbl.removeRow(0);
         }
         for (int i = 0; prestamos.size() > i; i++) {
+            String interesPendiente = interes(prestamos.get(i));
             tbl.addRow(new Object[]{
                 prestamos.get(i).getSocio().getNombre() + " " + prestamos.get(i).getSocio().getApellidos(),
                 prestamos.get(i).getMonto(), prestamos.get(i).getSaldoRestante(),
-                prestamos.get(i).getFechaAprobacion(), prestamos.get(i).getInteresPendiente()});
+                prestamos.get(i).getFechaAprobacion(), interesPendiente});
         }
     }
-
+    
     private String interes(Prestamo prestamo) {
         String intPen = null;
         Double interes = prestamo.getInteresPendiente();
         if (interes > 0) {
             double meses = prestamo.getMonto() * 0.07;
-            int mesesEntero = (int) (interes / meses);
-            intPen = interes + " - Meses " + mesesEntero;
+            meses = (interes / meses);
+            int mesEntero = 0;
+            if (meses > 0 && meses < 1) {
+                meses = 1;
+                mesEntero = (int) meses;
+            }
+            mesEntero = (int) Math.round(meses);
+            intPen = interes + " - Meses " + mesEntero;
         } else {
             intPen = interes.toString();
         }
         return intPen;
     }
-
+    
     private void accionTabla() {
         PPrestamos pPres = this;
         ev = new TablaAccionEventP() {
@@ -70,7 +77,7 @@ public class PPrestamos extends javax.swing.JPanel {
                 abonar.setSize(412, 482);
                 abonar.setVisible(true);
                 dp.setLayout(null);
-
+                
                 if (dp != null) {
                     vInicio.centrarInternalFrame(abonar, dp);
                     dp.add(abonar);
@@ -88,7 +95,7 @@ public class PPrestamos extends javax.swing.JPanel {
         tblPrestamos.getColumnModel().getColumn(5).setMaxWidth(150);
         tblPrestamos.getColumnModel().getColumn(5).setPreferredWidth(100);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -268,7 +275,7 @@ public class PPrestamos extends javax.swing.JPanel {
         actualizarColumnas();
         tblPrestamos.clearSelection();
     }//GEN-LAST:event_rbLiquidadoActionPerformed
-
+    
     private void actualizarColumnas() {
         if (rbLiquidado.isSelected()) {
             tblPrestamos.getColumnModel().getColumn(5).setMinWidth(0);
@@ -280,12 +287,12 @@ public class PPrestamos extends javax.swing.JPanel {
             tblPrestamos.getColumnModel().getColumn(5).setPreferredWidth(100);
         }
     }
-
+    
     private void buscar() {
         prestamos = CPrestamo.porNombreSocio(txtBuscar.getText(), rbAprobado.isSelected() ? "APROBADO" : "LIQUIDADO");
         tabla();
     }
-
+    
     public void actualizarTabla() {
         tblPrestamos.clearSelection();
         rbAprobado.setSelected(true);

@@ -559,6 +559,10 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombreExternoFocusLost
 
     private void btnRealizarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPrestamoActionPerformed
+        boolean valida = validaciones();
+        if (!valida) {
+            return;
+        }
         guardar();
     }//GEN-LAST:event_btnRealizarPrestamoActionPerformed
 
@@ -643,10 +647,38 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         setPrestamo();
         boolean guardado = CPrestamo.guardarRegistro(prestamo);
         if (guardado) {
+            new Thread(() -> {
+                CPrestamo.actualizarIntereses();
+            }).start();
             JOptionPane.showMessageDialog(this, "Se ha registrado el préstamo correctamente",
                     "Prestamo Realizado", JOptionPane.INFORMATION_MESSAGE);
             vInicio.abrirPrestamo();
         }
+    }
+
+    private boolean validaciones() {
+        if (cmbSocio.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe de seleccionar un socio",
+                    "Socio no seleccionado", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (dcFecha.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Debe de seleccionar una fecha",
+                    "Fecha no seleccionada", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (txtMonto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Debe de introducir un monto",
+                    "Monto no introducido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        double monto = Double.parseDouble(txtMonto.getText());
+        if (monto <= 0) {
+            JOptionPane.showMessageDialog(this, "Debe ingresar un monto mayor a 0",
+                    "Monto inválido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
