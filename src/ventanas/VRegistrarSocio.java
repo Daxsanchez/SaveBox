@@ -17,21 +17,22 @@ import paneles.PSocio;
  * @author rafae
  */
 public class VRegistrarSocio extends javax.swing.JInternalFrame {
-    
+
     private boolean modifica = false;
     private Socio socio = new Socio();
     private Ahorro ahorro = new Ahorro();
     private PSocio pSocio;
     private Icon iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
     private boolean estatus = true;
-    
+
     public VRegistrarSocio(PSocio ps) {
         initComponents();
         pSocio = ps;
         btnEstatus.setEnabled(false);
         btnEstatus.setIcon(iconEstatus);
+        dcFechaIA.setDate(new Date());
     }
-    
+
     public VRegistrarSocio(PSocio ps, Socio so) {
         initComponents();
         pSocio = ps;
@@ -42,7 +43,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtApellidos.setText(socio.getApellidos());
         txtCorreo.setText(socio.getCorreo());
         txtDirección.setText(socio.getDireccion());
-        
+
         ahorro = CAhorro.ahorroPorIdSocio(socio.getId());
         txtMontoMensual.setText(ahorro.getAhorrado() + "");
         txtMontoMensual.setEnabled(false);
@@ -55,8 +56,10 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             btnEstatus.setText("Activar");
         }
         btnEstatus.setIcon(iconEstatus);
+        dcFechaIA.setEnabled(false);
+        dcFechaIA.setDate(CAhorro.ahorroPorId(socio.getId()).getFechaApertura());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -82,6 +85,9 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtTelefono = new javax.swing.JTextField();
         panelRedondeado11 = new utilerias.PanelRedondeado();
         txtApellidos = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        dcFechaIA = new com.toedter.calendar.JDateChooser();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -219,7 +225,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             .addGroup(panelRedondeado17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(panelRedondeado17Layout.createSequentialGroup()
                     .addGap(7, 7, 7)
-                    .addComponent(txtDirección)
+                    .addComponent(txtDirección, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addGap(8, 8, 8)))
         );
 
@@ -255,7 +261,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 604, 130, 50));
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 670, 130, 50));
 
         panelRedondeado25.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado25.setRoundBottomLeft(16);
@@ -282,7 +288,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         });
         panelRedondeado25.add(txtMontoMensual, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, 300, 30));
 
-        jPanel2.add(panelRedondeado25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 320, 40));
+        jPanel2.add(panelRedondeado25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 320, 40));
 
         btnEstatus.setText("Eliminar");
         btnEstatus.addActionListener(new java.awt.event.ActionListener() {
@@ -290,7 +296,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
                 btnEstatusActionPerformed(evt);
             }
         });
-        jPanel2.add(btnEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(194, 600, 130, 50));
+        jPanel2.add(btnEstatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 670, 130, 50));
 
         panelRedondeado12.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado12.setRoundBottomLeft(16);
@@ -368,7 +374,18 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
 
         jPanel2.add(panelRedondeado11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 320, 40));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 690));
+        jLabel3.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(7, 20, 123));
+        jLabel3.setText("Fecha inico ahorro:");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 130, -1));
+
+        jLabel4.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(7, 20, 123));
+        jLabel4.setText("Ahorro:");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, -1));
+        jPanel2.add(dcFechaIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 630, 180, -1));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -419,14 +436,14 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
 
     private void txtMontoMensualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoMensualKeyTyped
         int key = evt.getKeyChar();
-        
+
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-        
+
         if (!numeros) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMontoMensualKeyTyped
-    
+
     private void guardar() {
         socio.setNombre(txtNombre.getText());
         socio.setApellidos(txtApellidos.getText());
@@ -441,7 +458,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
             ahorro.setMontoMensual(Double.parseDouble(txtMontoMensual.getValue().toString()));
             ahorro.setEstatus(1);
             ahorro.setAhorrado(0);
-            ahorro.setFechaApertura(new Date());
+            ahorro.setFechaApertura(dcFechaIA.getDate());
             ahorro.setSocio(socio);
             ahorro.setUsuario(Config.getUsuarioLog());
             CAhorro.guardarRegistro(ahorro);
@@ -451,7 +468,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         pSocio.actualizarTabla();
         this.dispose();
     }
-    
+
     public void actualizar() {
         socio.setNombre(txtNombre.getText());
         socio.setApellidos(txtApellidos.getText());
@@ -470,8 +487,11 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEstatus;
     private javax.swing.JButton btnGuardar;
+    private com.toedter.calendar.JDateChooser dcFechaIA;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lbTitulo;

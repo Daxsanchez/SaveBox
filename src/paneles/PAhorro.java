@@ -104,7 +104,7 @@ public class PAhorro extends javax.swing.JPanel {
             @Override
             public void onDepositar(int row) {
                 VDepositar depositar = new VDepositar(pAhorro, ahorros.get(row));
-                depositar.setSize(412, 354);
+                depositar.setSize(412, 450);
                 depositar.setVisible(true);
                 dp.setLayout(null);
 
