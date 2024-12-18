@@ -95,7 +95,7 @@ public class PAhorro extends javax.swing.JPanel {
         mesEntero = (int) Math.round(mesesAhorrado);
         mesesFaltantes = ahorradoFaltante + " - Meses " + mesEntero;
 
-        return mesesFaltantes;
+        return ahorro.getEstatus() == 1 ? mesesFaltantes : "0";
     }
 
     private void accionTabla() {
