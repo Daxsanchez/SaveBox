@@ -13,18 +13,19 @@ import paneles.PAhorro;
  * @author daxsa
  */
 public class VRetirar extends javax.swing.JInternalFrame {
-
+    
     private Ahorro ahorro;
     private Retiro retiro = new Retiro();
     private PAhorro pAhorro;
-
+    
     public VRetirar(PAhorro pAho, Ahorro aho) {
         initComponents();
         pAhorro = pAho;
         ahorro = aho;
         dcFecha.setDate(new Date());
+        txtMonto.setValue(ahorro.getAhorrado());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,7 +35,7 @@ public class VRetirar extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         dcFecha = new com.toedter.calendar.JDateChooser();
         panelRedondeado3 = new utilerias.PanelRedondeado();
-        txtMonto = new javax.swing.JTextField();
+        txtMonto = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
 
@@ -64,19 +65,16 @@ public class VRetirar extends javax.swing.JInternalFrame {
         panelRedondeado3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtMonto.setBackground(new java.awt.Color(7, 20, 123));
-        txtMonto.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        txtMonto.setBorder(null);
         txtMonto.setForeground(new java.awt.Color(255, 255, 255));
         txtMonto.setText("Monto");
-        txtMonto.setBorder(null);
-        txtMonto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtMontoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtMontoFocusLost(evt);
+        txtMonto.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        txtMonto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMontoKeyTyped(evt);
             }
         });
-        panelRedondeado3.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 6, 350, 30));
+        panelRedondeado3.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 330, 30));
 
         jPanel1.add(panelRedondeado3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 380, 40));
 
@@ -116,21 +114,21 @@ public class VRetirar extends javax.swing.JInternalFrame {
         guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-    private void txtMontoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusGained
-        txtMonto.setText("");
-    }//GEN-LAST:event_txtMontoFocusGained
-
-    private void txtMontoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMontoFocusLost
-        if (txtMonto.getText().isEmpty()) {
-            txtMonto.setText("Monto");
+    private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
+        int key = evt.getKeyChar();
+        
+        boolean numeros = key >= 48 && key <= 57 || key == 46;
+        
+        if (!numeros) {
+            evt.consume();
         }
-    }//GEN-LAST:event_txtMontoFocusLost
-
+    }//GEN-LAST:event_txtMontoKeyTyped
+    
     private void guardar() {
         retiro.setAhorro(ahorro);
         retiro.setEstatus("APROBADO");
         retiro.setFecha(dcFecha.getDate());
-        retiro.setMonto(Double.parseDouble(txtMonto.getText()));
+        retiro.setMonto(Double.parseDouble(txtMonto.getValue().toString()));
         retiro.setUsuario(Config.getUsuarioLog());
         boolean guardado = CRetiro.guardarRegistro(retiro);
         if (guardado) {
@@ -149,6 +147,6 @@ public class VRetirar extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private utilerias.PanelRedondeado panelRedondeado3;
-    private javax.swing.JTextField txtMonto;
+    private javax.swing.JFormattedTextField txtMonto;
     // End of variables declaration//GEN-END:variables
 }

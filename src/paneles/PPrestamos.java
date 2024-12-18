@@ -1,6 +1,6 @@
 package paneles;
 
-import accionAhorro.InteresAlerta;
+import accionPrestamo.InteresAlerta;
 import accionPrestamo.TablaAccionCellEditorP;
 import accionPrestamo.TablaAccionCellRenderP;
 import accionPrestamo.TablaAccionEventP;

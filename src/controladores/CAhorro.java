@@ -38,6 +38,52 @@ public class CAhorro {
         return ahorros;
     }
 
+    public static ArrayList<Ahorro> getAhorrosVigentes() {
+        String consulta = "SELECT * FROM Ahorro WHERE estatus = 1";
+        ArrayList<Ahorro> ahorros = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Ahorro ahorro = new Ahorro();
+                ahorro.setId(rs.getInt(1));
+                ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
+                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setFechaApertura(rs.getDate(4));
+                ahorro.setEstatus(rs.getInt(5));
+                ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+                ahorro.setAhorrado(rs.getDouble(7));
+                ahorros.add(ahorro);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return ahorros;
+    }
+
+    public static ArrayList<Ahorro> getAhorrosFinalizados() {
+        String consulta = "SELECT * FROM Ahorro WHERE estatus = 0";
+        ArrayList<Ahorro> ahorros = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Ahorro ahorro = new Ahorro();
+                ahorro.setId(rs.getInt(1));
+                ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
+                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setFechaApertura(rs.getDate(4));
+                ahorro.setEstatus(rs.getInt(5));
+                ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
+                ahorro.setAhorrado(rs.getDouble(7));
+                ahorros.add(ahorro);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return ahorros;
+    }
+
     public static Ahorro ahorroPorId(int id) {
         String consulta = "SELECT * FROM Ahorro WHERE id = " + id;
         Ahorro ahorro = new Ahorro();
@@ -102,10 +148,11 @@ public class CAhorro {
         return ahorro;
     }
 
-    public static ArrayList<Ahorro> porNombreSocio(String nom) {
+    public static ArrayList<Ahorro> porNombreSocio(String nom, int estatus) {
         String consulta = "SELECT * FROM Ahorro a "
                 + "INNER JOIN Socio s ON s.id = a.idSocio "
-                + "WHERE s.nombre LIKE '" + nom + "%' OR s.apellidos LIKE '" + nom + "%'";
+                + "WHERE (s.nombre LIKE '" + nom + "%' OR s.apellidos LIKE '" + nom + "%') "
+                + "AND a.estatus = " + estatus;
         ArrayList<Ahorro> ahorros = new ArrayList<>();
         try {
             ResultSet rs = getConexion().createStatement().executeQuery(consulta);
