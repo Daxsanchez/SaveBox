@@ -13,19 +13,21 @@ import paneles.PAhorro;
  * @author daxsa
  */
 public class VRetirar extends javax.swing.JInternalFrame {
-    
+
     private Ahorro ahorro;
     private Retiro retiro = new Retiro();
     private PAhorro pAhorro;
-    
+
     public VRetirar(PAhorro pAho, Ahorro aho) {
         initComponents();
         pAhorro = pAho;
         ahorro = aho;
         dcFecha.setDate(new Date());
         txtMonto.setValue(ahorro.getAhorrado());
+        txtMonto.setEditable(false);
+        txtMonto.setEnabled(false);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,19 +113,23 @@ public class VRetirar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        guardar();
+        int op = JOptionPane.showConfirmDialog(this, "¿Está seguro que desea retirar el ahorro del socio "
+                + ahorro.getSocio().getNombre() + " " + ahorro.getSocio().getApellidos() + "?",
+                "Retirar", JOptionPane.YES_NO_OPTION);
+        if (op == JOptionPane.YES_OPTION)
+            guardar();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
         int key = evt.getKeyChar();
-        
+
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-        
+
         if (!numeros) {
             evt.consume();
         }
     }//GEN-LAST:event_txtMontoKeyTyped
-    
+
     private void guardar() {
         retiro.setAhorro(ahorro);
         retiro.setEstatus("APROBADO");

@@ -136,6 +136,12 @@ public class PAhorro extends javax.swing.JPanel {
 
             @Override
             public void onRetirar(int row) {
+                if (new Date().after(Config.getFechaCierre()) && ahorros.get(row).getSocio().getEstatus() == 1) {
+                    JOptionPane.showMessageDialog(null, "Aún no es la fecha de cierre. Si desea retirar este ahorro "
+                            + "antes de la fecha de cierre, debe de eliminar al socio asociado a esta cuenta de ahorro.",
+                            "Retiro inválido", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 VRetirar retirar = new VRetirar(pAhorro, ahorros.get(row));
                 retirar.setSize(412, 310);
                 retirar.setVisible(true);
