@@ -1,19 +1,22 @@
 package ventanas;
 
+import controladores.CConfiguracion;
 import controladores.CUsuario;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import main.Config;
+import modelos.Configuracion;
 
 public class Login extends javax.swing.JFrame {
-
+    
     int xMouse, yMouse;
-
+    
     public Login() {
         initComponents();
         txtUsuario.requestFocus();
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -335,7 +338,7 @@ public class Login extends javax.swing.JFrame {
             inicarSesion();
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
-
+    
     private void inicarSesion() {
         if (CUsuario.usuarioExistente(txtUsuario.getText())) {
             boolean autetificar = CUsuario.autentificarUsuario(txtPassword.getText(), txtUsuario.getText());
@@ -348,7 +351,7 @@ public class Login extends javax.swing.JFrame {
                 dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "Ingrese nuevamente su contraseña",
-                        "Contraseña incorrecta",JOptionPane.ERROR_MESSAGE);
+                        "Contraseña incorrecta", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(this, "El usuario ingresado no existe",

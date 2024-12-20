@@ -9,6 +9,8 @@ import accionAhorro.TablaAccionEvent;
 import controladores.CAhorro;
 import java.util.ArrayList;
 import java.util.Date;
+import javax.swing.JOptionPane;
+import main.Config;
 import modelos.Ahorro;
 import utilerias.Utileria;
 import ventanas.VDepositar;
@@ -98,11 +100,24 @@ public class PAhorro extends javax.swing.JPanel {
         return ahorro.getEstatus() == 1 ? mesesFaltantes : "0";
     }
 
+    private double ahorroEstimado(Ahorro ahorro) {
+        Date fechaApertura = new Date(ahorro.getFechaApertura().getTime());
+        Date fechaCierre = new Date(Config.getFechaCierre().getTime());
+        int meses = (int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1;
+        double ahorroEstimado = meses * ahorro.getMontoMensual();
+        return ahorroEstimado;
+    }
+
     private void accionTabla() {
         PAhorro pAhorro = this;
         ev = new TablaAccionEvent() {
             @Override
             public void onDepositar(int row) {
+                if (ahorros.get(row).getAhorrado() >= ahorroEstimado(ahorros.get(row))) {
+                    JOptionPane.showMessageDialog(null, "Este socio llegó al límite de su ahorro",
+                            "Ahorro completado", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 VDepositar depositar = new VDepositar(pAhorro, ahorros.get(row));
                 depositar.setSize(412, 450);
                 depositar.setVisible(true);

@@ -4,8 +4,6 @@ import static bd.BaseConexion.getConexion;
 import bd.CBaseDatos;
 import modelos.Configuracion;
 import java.sql.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import utilerias.Utileria;
 
 /**

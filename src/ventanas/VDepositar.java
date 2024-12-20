@@ -7,6 +7,7 @@ import main.Config;
 import modelos.Ahorro;
 import modelos.Deposito;
 import paneles.PAhorro;
+import utilerias.Utileria;
 
 /**
  *
@@ -119,7 +120,10 @@ public class VDepositar extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        guardar();
+        boolean validar = validaciones();
+        if (validar) {
+            guardar();
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
@@ -131,6 +135,35 @@ public class VDepositar extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_txtMontoKeyTyped
+
+    private boolean validaciones() {
+        double monto = Double.parseDouble(txtMonto.getText());
+        if (monto == 0) {
+            JOptionPane.showMessageDialog(this, "No puede realizar un depósito de 0",
+                    "Monto inválido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (monto > ahorroFaltante()) {
+            JOptionPane.showMessageDialog(this, "No puede realizar un depósito mayor ahorro total",
+                    "Monto inválido", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        if (cmbMetodo.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe seleccionar el método por el que se hizo el pago",
+                    "Seleccione un método", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
+    private double ahorroFaltante() {
+        Date fechaApertura = new Date(ahorro.getFechaApertura().getTime());
+        Date fechaCierre = new Date(Config.getFechaCierre().getTime());
+        int meses = (int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1;
+        double ahorroFaltante = meses * ahorro.getMontoMensual();
+        ahorroFaltante -= ahorro.getAhorrado();
+        return ahorroFaltante;
+    }
 
     private void guardar() {
         deposito.setAhorro(ahorro);

@@ -3,6 +3,7 @@ package paneles;
 import controladores.CConfiguracion;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import main.Config;
 import modelos.Configuracion;
 import ventanas.VInicio;
 
@@ -11,11 +12,11 @@ import ventanas.VInicio;
  * @author zeta9
  */
 public class PConfig extends javax.swing.JPanel {
-
+    
     private javax.swing.JDesktopPane dp;
     private VInicio vInicio;
     private Configuracion configuracion;
-
+    
     public PConfig(VInicio ini) {
         initComponents();
         vInicio = ini;
@@ -26,7 +27,7 @@ public class PConfig extends javax.swing.JPanel {
         ftInteresSocio.setValue(configuracion.getInteresSocio() * 100);
         ftInteresExterno.setValue(configuracion.getInteresExterno() * 100);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -184,9 +185,9 @@ public class PConfig extends javax.swing.JPanel {
 
     private void ftPrecioAccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftPrecioAccionKeyTyped
         int key = evt.getKeyChar();
-
+        
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-
+        
         if (!numeros) {
             evt.consume();
         }
@@ -194,9 +195,9 @@ public class PConfig extends javax.swing.JPanel {
 
     private void ftInteresSocioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftInteresSocioKeyTyped
         int key = evt.getKeyChar();
-
+        
         boolean numeros = key >= 48 && key <= 57;
-
+        
         if (!numeros) {
             evt.consume();
         }
@@ -204,14 +205,14 @@ public class PConfig extends javax.swing.JPanel {
 
     private void ftInteresExternoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ftInteresExternoKeyTyped
         int key = evt.getKeyChar();
-
+        
         boolean numeros = key >= 48 && key <= 57;
-
+        
         if (!numeros) {
             evt.consume();
         }
     }//GEN-LAST:event_ftInteresExternoKeyTyped
-
+    
     private boolean validaciones() {
         if (dcFechaCierre.getDate() == null) {
             JOptionPane.showMessageDialog(this, "Debe de introducir una fecha",
@@ -246,7 +247,7 @@ public class PConfig extends javax.swing.JPanel {
         }
         return true;
     }
-
+    
     private void actualizar() {
         double interesSocio = Double.parseDouble(ftInteresSocio.getValue().toString());
         double interesExterno = Double.parseDouble(ftInteresExterno.getValue().toString());
@@ -256,6 +257,10 @@ public class PConfig extends javax.swing.JPanel {
         configuracion.setInteresExterno(interesExterno / 100);
         int actualizar = CConfiguracion.actualizar(configuracion);
         if (actualizar == 1) {
+            Config.setFechaCierre(configuracion.getFechaCierre());
+            Config.setPrecioAccion(configuracion.getPrecioAccion());
+            Config.setInteresSocio(configuracion.getInteresSocio());
+            Config.setInteresExterno(configuracion.getInteresExterno());
             JOptionPane.showMessageDialog(this, "Los parámetros han sido actualizados correctamente",
                     "Parámetros actualizados", JOptionPane.INFORMATION_MESSAGE);
         }

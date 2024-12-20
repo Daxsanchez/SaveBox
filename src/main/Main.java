@@ -2,7 +2,9 @@ package main;
 
 import com.formdev.flatlaf.FlatLaf;
 import com.formdev.flatlaf.FlatLightLaf;
+import controladores.CConfiguracion;
 import controladores.CPrestamo;
+import modelos.Configuracion;
 import ventanas.Login;
 
 /**
@@ -17,6 +19,7 @@ public class Main {
 
         new Thread(() -> {
             CPrestamo.actualizarIntereses();
+            llenarConfig();
         }).start();
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -24,5 +27,13 @@ public class Main {
                 new Login().setVisible(true);
             }
         });
+    }
+
+    private static void llenarConfig() {
+        Configuracion conf = CConfiguracion.getConfiguracion();
+        Config.setFechaCierre(conf.getFechaCierre());
+        Config.setPrecioAccion(conf.getPrecioAccion());
+        Config.setInteresSocio(conf.getInteresSocio());
+        Config.setInteresExterno(conf.getInteresExterno());
     }
 }
