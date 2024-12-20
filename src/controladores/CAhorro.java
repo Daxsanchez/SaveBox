@@ -25,7 +25,7 @@ public class CAhorro {
                 Ahorro ahorro = new Ahorro();
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
@@ -48,7 +48,7 @@ public class CAhorro {
                 Ahorro ahorro = new Ahorro();
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
@@ -71,7 +71,7 @@ public class CAhorro {
                 Ahorro ahorro = new Ahorro();
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
@@ -93,7 +93,7 @@ public class CAhorro {
             while (rs.next()) {
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
@@ -110,7 +110,7 @@ public class CAhorro {
 
         String query = "INSERT INTO Ahorro (" + Ahorro.CAMPOS + ") VALUES(";
 
-        Object[] valores = {ahorro.getSocio().getId(), ahorro.getMontoMensual(),
+        Object[] valores = {ahorro.getSocio().getId(), ahorro.getMontoQuincenal(),
             Utileria.getFechaFormateada(ahorro.getFechaApertura(), Utileria.ANIO_MES_DIA), ahorro.getEstatus(),
             ahorro.getUsuario().getId(), ahorro.getAhorrado()};
 
@@ -136,7 +136,7 @@ public class CAhorro {
             while (rs.next()) {
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));
@@ -161,7 +161,7 @@ public class CAhorro {
                 Ahorro ahorro = new Ahorro();
                 ahorro.setId(rs.getInt(1));
                 ahorro.setSocio(CSocio.socioPorId(rs.getInt(2)));
-                ahorro.setMontoMensual(rs.getDouble(3));
+                ahorro.setMontoQuincenal(rs.getDouble(3));
                 ahorro.setFechaApertura(rs.getDate(4));
                 ahorro.setEstatus(rs.getInt(5));
                 ahorro.setUsuario(CUsuario.usuarioPorId(rs.getInt(6)));

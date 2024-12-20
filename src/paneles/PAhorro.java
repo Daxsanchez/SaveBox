@@ -50,36 +50,36 @@ public class PAhorro extends javax.swing.JPanel {
             tbl.removeRow(0);
         }
         for (int i = 0; ahorros.size() > i; i++) {
-            String mesesAhorrado = mesesAhorrado(ahorros.get(i));
-            String mesesFaltantes = mesesFaltantes(ahorros.get(i));
+            String quincenasAhorradas = quincenasAhorrado(ahorros.get(i));
+            String quincenasFaltantes = quincenasFaltantes(ahorros.get(i));
             tbl.addRow(new Object[]{
                 ahorros.get(i).getSocio().getNombre() + " " + ahorros.get(i).getSocio().getApellidos(),
-                ahorros.get(i).getMontoMensual(), mesesAhorrado, ahorros.get(i).getFechaApertura(), mesesFaltantes});
+                ahorros.get(i).getMontoQuincenal(), quincenasAhorradas, ahorros.get(i).getFechaApertura(), quincenasFaltantes});
         }
     }
 
-    private String mesesAhorrado(Ahorro ahorro) {
-        String mesesAhorrado = null;
+    private String quincenasAhorrado(Ahorro ahorro) {
+        String quincenasAhorrado = null;
         Double ahorrado = ahorro.getAhorrado();
-        double meses = ahorrado / ahorro.getMontoMensual();
+        double quincenas = ahorrado / ahorro.getMontoQuincenal();
 
-        int mesEntero = 0;
-        if (meses > 0 && meses < 1) {
-            meses = 1;
-            mesEntero = (int) meses;
+        int quincenaEntera = 0;
+        if (quincenas > 0 && quincenas < 1) {
+            quincenas = 1;
+            quincenaEntera = (int) quincenas;
         }
-        mesEntero = (int) Math.round(meses);
-        mesesAhorrado = ahorrado + " - Meses " + mesEntero;
+        quincenaEntera = (int) Math.round(quincenas);
+        quincenasAhorrado = ahorrado + " - Quincenas " + quincenaEntera;
 
-        return mesesAhorrado;
+        return quincenasAhorrado;
     }
 
-    private String mesesFaltantes(Ahorro ahorro) {
-        String mesesFaltantes = null;
+    private String quincenasFaltantes(Ahorro ahorro) {
+        String quincenasFaltantes = null;
         Date fechaApertura = new Date(ahorro.getFechaApertura().getTime());
-        int mesesSupuestoAhorro = (int) Utileria.diferenciaMeses(fechaApertura, new Date()) + 1;
+        int quincenasSupuestoAhorro = ((int) Utileria.diferenciaMeses(fechaApertura, new Date()) + 1) * 2;
 
-        double supuestoAhorrado = ahorro.getMontoMensual() * mesesSupuestoAhorro;
+        double supuestoAhorrado = ahorro.getMontoQuincenal() * quincenasSupuestoAhorro;
         double ahorrado = ahorro.getAhorrado();
         double ahorradoFaltante = 0;
         if (supuestoAhorrado > ahorrado) {
@@ -87,24 +87,24 @@ public class PAhorro extends javax.swing.JPanel {
         } else if (ahorrado >= supuestoAhorrado) {
             return "0";
         }
-        double mesesAhorrado = ahorradoFaltante / ahorro.getMontoMensual();
+        double quincenasAhorrado = ahorradoFaltante / ahorro.getMontoQuincenal();
 
         int mesEntero = 0;
-        if (mesesAhorrado > 0 && mesesAhorrado < 1) {
-            mesesAhorrado = 1;
-            mesEntero = (int) mesesAhorrado;
+        if (quincenasAhorrado > 0 && quincenasAhorrado < 1) {
+            quincenasAhorrado = 1;
+            mesEntero = (int) quincenasAhorrado;
         }
-        mesEntero = (int) Math.round(mesesAhorrado);
-        mesesFaltantes = ahorradoFaltante + " - Meses " + mesEntero;
+        mesEntero = (int) Math.round(quincenasAhorrado);
+        quincenasFaltantes = ahorradoFaltante + " - Quincenas " + mesEntero;
 
-        return ahorro.getEstatus() == 1 ? mesesFaltantes : "0";
+        return ahorro.getEstatus() == 1 ? quincenasFaltantes : "0";
     }
 
     private double ahorroEstimado(Ahorro ahorro) {
         Date fechaApertura = new Date(ahorro.getFechaApertura().getTime());
         Date fechaCierre = new Date(Config.getFechaCierre().getTime());
-        int meses = (int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1;
-        double ahorroEstimado = meses * ahorro.getMontoMensual();
+        int quincenas = ((int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1) * 2;
+        double ahorroEstimado = quincenas * ahorro.getMontoQuincenal();
         return ahorroEstimado;
     }
 
@@ -233,7 +233,7 @@ public class PAhorro extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Socio", "Monto Mensual", "Ahorrado", "Fecha apertura", "Meses Faltantes", "Acciones"
+                "Socio", "Monto Quincenal", "Ahorrado", "Fecha apertura", "Quincenas Faltantes", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -327,6 +327,9 @@ public class PAhorro extends javax.swing.JPanel {
             tblAhorros.getColumnModel().getColumn(columnaEvento).setMaxWidth(150);
             tblAhorros.getColumnModel().getColumn(columnaEvento).setPreferredWidth(100);
         }
+        tblAhorros.getColumnModel().getColumn(3).setMinWidth(50);
+        tblAhorros.getColumnModel().getColumn(3).setMaxWidth(150);
+        tblAhorros.getColumnModel().getColumn(3).setPreferredWidth(140);
     }
 
     private void buscar() {

@@ -24,7 +24,7 @@ public class VDepositar extends javax.swing.JInternalFrame {
         pAhorro = pAho;
         ahorro = aho;
         dcFecha.setDate(new Date());
-        txtMonto.setValue(ahorro.getMontoMensual());
+        txtMonto.setValue(ahorro.getMontoQuincenal());
     }
 
     @SuppressWarnings("unchecked")
@@ -137,7 +137,7 @@ public class VDepositar extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtMontoKeyTyped
 
     private boolean validaciones() {
-        double monto = Double.parseDouble(txtMonto.getText());
+        double monto = Double.parseDouble(txtMonto.getValue().toString());
         if (monto == 0) {
             JOptionPane.showMessageDialog(this, "No puede realizar un depósito de 0",
                     "Monto inválido", JOptionPane.ERROR_MESSAGE);
@@ -159,8 +159,8 @@ public class VDepositar extends javax.swing.JInternalFrame {
     private double ahorroFaltante() {
         Date fechaApertura = new Date(ahorro.getFechaApertura().getTime());
         Date fechaCierre = new Date(Config.getFechaCierre().getTime());
-        int meses = (int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1;
-        double ahorroFaltante = meses * ahorro.getMontoMensual();
+        int quincenas = ((int) Utileria.diferenciaMeses(fechaApertura, fechaCierre) + 1) * 2;
+        double ahorroFaltante = quincenas * ahorro.getMontoQuincenal();
         ahorroFaltante -= ahorro.getAhorrado();
         return ahorroFaltante;
     }

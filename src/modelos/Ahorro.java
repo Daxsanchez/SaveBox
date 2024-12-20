@@ -10,18 +10,18 @@ public class Ahorro {
 
     private int id;
     private Socio socio;
-    private double montoMensual;
+    private double montoQuincenal;
     private Date fechaApertura;
     private int estatus;
     private Usuario usuario;
     private double ahorrado;
-    
+
     public static String CAMPOS = "idSocio,montoMensual,fechaApertura,estatus,idUsuario,ahorrado";
 
     public Ahorro(int id, Socio socio, double montoMensual, Date fechaApertura, int estatus, Usuario usuario, double ahorrado) {
         this.id = id;
         this.socio = socio;
-        this.montoMensual = montoMensual;
+        this.montoQuincenal = montoMensual;
         this.fechaApertura = fechaApertura;
         this.estatus = estatus;
         this.usuario = usuario;
@@ -47,12 +47,12 @@ public class Ahorro {
         this.socio = socio;
     }
 
-    public double getMontoMensual() {
-        return montoMensual;
+    public double getMontoQuincenal() {
+        return montoQuincenal;
     }
 
-    public void setMontoMensual(double montoMensual) {
-        this.montoMensual = montoMensual;
+    public void setMontoQuincenal(double montoQuincenal) {
+        this.montoQuincenal = montoQuincenal;
     }
 
     public Date getFechaApertura() {

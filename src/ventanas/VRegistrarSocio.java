@@ -274,7 +274,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtMontoMensual.setBorder(null);
         txtMontoMensual.setForeground(new java.awt.Color(255, 255, 255));
         txtMontoMensual.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtMontoMensual.setText("Monto mensual");
+        txtMontoMensual.setText("Monto quincenal");
         txtMontoMensual.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtMontoMensual.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -455,7 +455,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         boolean guardado = CSocio.guardarRegistro(socio);
         if (guardado) {
             socio.setId(CSocio.getUltimoId());
-            ahorro.setMontoMensual(Double.parseDouble(txtMontoMensual.getValue().toString()));
+            ahorro.setMontoQuincenal(Double.parseDouble(txtMontoMensual.getValue().toString()));
             ahorro.setEstatus(1);
             ahorro.setAhorrado(0);
             ahorro.setFechaApertura(dcFechaIA.getDate());
