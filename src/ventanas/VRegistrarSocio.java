@@ -1,6 +1,5 @@
 package ventanas;
 
-import bd.CBaseDatos;
 import controladores.CAhorro;
 import controladores.CSocio;
 import java.util.Date;
@@ -17,22 +16,23 @@ import paneles.PSocio;
  * @author rafae
  */
 public class VRegistrarSocio extends javax.swing.JInternalFrame {
-
+    
     private boolean modifica = false;
     private Socio socio = new Socio();
     private Ahorro ahorro = new Ahorro();
     private PSocio pSocio;
     private Icon iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
     private boolean estatus = true;
-
+    
     public VRegistrarSocio(PSocio ps) {
         initComponents();
         pSocio = ps;
         btnEstatus.setEnabled(false);
         btnEstatus.setIcon(iconEstatus);
         dcFechaIA.setDate(new Date());
+        txtTotalAccion.setEditable(false);
     }
-
+    
     public VRegistrarSocio(PSocio ps, Socio so) {
         initComponents();
         pSocio = ps;
@@ -43,10 +43,11 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtApellidos.setText(socio.getApellidos());
         txtCorreo.setText(socio.getCorreo());
         txtDirección.setText(socio.getDireccion());
-
+        
         ahorro = CAhorro.ahorroPorIdSocio(socio.getId());
-        txtMontoMensual.setText(ahorro.getAhorrado() + "");
-        txtMontoMensual.setEnabled(false);
+        txtAcciones.setValue(ahorro.getMontoQuincenal() / Config.getPrecioAccion());
+        txtAcciones.setEditable(false);
+        txtTotalAccion.setValue(ahorro.getMontoQuincenal());
         estatus = socio.getEstatus() == 1;
         if (estatus) {
             iconEstatus = new ImageIcon(getClass().getResource("/imagenes/salir.png"));
@@ -59,7 +60,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         dcFechaIA.setEnabled(false);
         dcFechaIA.setDate(CAhorro.ahorroPorId(socio.getId()).getFechaApertura());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -79,7 +80,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtCorreo = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         panelRedondeado25 = new utilerias.PanelRedondeado();
-        txtMontoMensual = new javax.swing.JFormattedTextField();
+        txtAcciones = new javax.swing.JFormattedTextField();
         btnEstatus = new javax.swing.JButton();
         panelRedondeado12 = new utilerias.PanelRedondeado();
         txtTelefono = new javax.swing.JTextField();
@@ -88,6 +89,8 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         dcFechaIA = new com.toedter.calendar.JDateChooser();
+        panelRedondeado26 = new utilerias.PanelRedondeado();
+        txtTotalAccion = new javax.swing.JFormattedTextField();
 
         panelRedondeado14.setBackground(new java.awt.Color(7, 20, 123));
         panelRedondeado14.setRoundBottomLeft(16);
@@ -270,25 +273,28 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         panelRedondeado25.setRoundTopRight(16);
         panelRedondeado25.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtMontoMensual.setBackground(new java.awt.Color(7, 20, 123));
-        txtMontoMensual.setBorder(null);
-        txtMontoMensual.setForeground(new java.awt.Color(255, 255, 255));
-        txtMontoMensual.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtMontoMensual.setText("Monto quincenal");
-        txtMontoMensual.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        txtMontoMensual.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtAcciones.setBackground(new java.awt.Color(7, 20, 123));
+        txtAcciones.setBorder(null);
+        txtAcciones.setForeground(new java.awt.Color(255, 255, 255));
+        txtAcciones.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        txtAcciones.setText("Acciones");
+        txtAcciones.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtAcciones.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtMontoMensualMouseClicked(evt);
+                txtAccionesMouseClicked(evt);
             }
         });
-        txtMontoMensual.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAcciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAccionesKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtMontoMensualKeyTyped(evt);
+                txtAccionesKeyTyped(evt);
             }
         });
-        panelRedondeado25.add(txtMontoMensual, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, 300, 30));
+        panelRedondeado25.add(txtAcciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, 120, 30));
 
-        jPanel2.add(panelRedondeado25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 320, 40));
+        jPanel2.add(panelRedondeado25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, -1, 40));
 
         btnEstatus.setText("Eliminar");
         btnEstatus.addActionListener(new java.awt.event.ActionListener() {
@@ -385,6 +391,33 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 540, -1, -1));
         jPanel2.add(dcFechaIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 630, 180, -1));
 
+        panelRedondeado26.setBackground(new java.awt.Color(7, 20, 123));
+        panelRedondeado26.setRoundBottomLeft(16);
+        panelRedondeado26.setRoundBottomRight(16);
+        panelRedondeado26.setRoundTopLeft(16);
+        panelRedondeado26.setRoundTopRight(16);
+        panelRedondeado26.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtTotalAccion.setBackground(new java.awt.Color(7, 20, 123));
+        txtTotalAccion.setBorder(null);
+        txtTotalAccion.setForeground(new java.awt.Color(255, 255, 255));
+        txtTotalAccion.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        txtTotalAccion.setText("Total");
+        txtTotalAccion.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtTotalAccion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTotalAccionMouseClicked(evt);
+            }
+        });
+        txtTotalAccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtTotalAccionKeyTyped(evt);
+            }
+        });
+        panelRedondeado26.add(txtTotalAccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 6, 120, 30));
+
+        jPanel2.add(panelRedondeado26, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 570, 140, 40));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 750));
 
         pack();
@@ -430,20 +463,37 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         txtTelefono.setText("");
     }//GEN-LAST:event_txtTelefonoMouseClicked
 
-    private void txtMontoMensualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMensualMouseClicked
-        txtMontoMensual.setText("");
-    }//GEN-LAST:event_txtMontoMensualMouseClicked
+    private void txtAccionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAccionesMouseClicked
+        txtAcciones.setText("");
+    }//GEN-LAST:event_txtAccionesMouseClicked
 
-    private void txtMontoMensualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoMensualKeyTyped
+    private void txtAccionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionesKeyTyped
         int key = evt.getKeyChar();
-
+        
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-
+        
         if (!numeros) {
             evt.consume();
         }
-    }//GEN-LAST:event_txtMontoMensualKeyTyped
+    }//GEN-LAST:event_txtAccionesKeyTyped
 
+    private void txtTotalAccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTotalAccionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalAccionMouseClicked
+
+    private void txtTotalAccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTotalAccionKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTotalAccionKeyTyped
+
+    private void txtAccionesKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAccionesKeyReleased
+        if (!txtAcciones.getText().isEmpty()) {
+            Double acciones = Double.valueOf(txtAcciones.getText());
+            txtTotalAccion.setValue(acciones * Config.getPrecioAccion());
+        } else {
+            txtTotalAccion.setValue(0);
+        }
+    }//GEN-LAST:event_txtAccionesKeyReleased
+    
     private void guardar() {
         socio.setNombre(txtNombre.getText());
         socio.setApellidos(txtApellidos.getText());
@@ -455,7 +505,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         boolean guardado = CSocio.guardarRegistro(socio);
         if (guardado) {
             socio.setId(CSocio.getUltimoId());
-            ahorro.setMontoQuincenal(Double.parseDouble(txtMontoMensual.getValue().toString()));
+            ahorro.setMontoQuincenal(Double.parseDouble(txtAcciones.getValue().toString()));
             ahorro.setEstatus(1);
             ahorro.setAhorrado(0);
             ahorro.setFechaApertura(dcFechaIA.getDate());
@@ -468,7 +518,7 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
         pSocio.actualizarTabla();
         this.dispose();
     }
-
+    
     public void actualizar() {
         socio.setNombre(txtNombre.getText());
         socio.setApellidos(txtApellidos.getText());
@@ -503,11 +553,13 @@ public class VRegistrarSocio extends javax.swing.JInternalFrame {
     private utilerias.PanelRedondeado panelRedondeado17;
     private utilerias.PanelRedondeado panelRedondeado24;
     private utilerias.PanelRedondeado panelRedondeado25;
+    private utilerias.PanelRedondeado panelRedondeado26;
+    private javax.swing.JFormattedTextField txtAcciones;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDirección;
-    private javax.swing.JFormattedTextField txtMontoMensual;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtTelefono;
+    private javax.swing.JFormattedTextField txtTotalAccion;
     // End of variables declaration//GEN-END:variables
 }
