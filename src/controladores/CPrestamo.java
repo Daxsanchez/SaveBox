@@ -188,4 +188,62 @@ public class CPrestamo {
             System.err.println("Error al actualizar los intereses: " + ex.getMessage());
         }
     }
+
+    public static Integer totalAcciones() {
+        String consulta = "SELECT CAST(SUM(Acciones) AS DECIMAL(10, 0)) AS TotalAcciones "
+                + "FROM (SELECT montoQuincenal / (SELECT precioAccion FROM Configuracion) AS Acciones "
+                + "FROM Ahorro) AS S";
+        Integer totalAcciones = 0;
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            if (rs.next()) {
+                totalAcciones = rs.getInt("TotalAcciones");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return totalAcciones;
+    }
+
+    public static Double totalGanacia() {
+        String consulta = "SELECT SUM((monto*intereses) * DATEDIFF(MONTH,fechaAprobacion,fechaLiquidacion)) "
+                + "AS TotalIntereses FROM Prestamo WHERE estatus = 'LIQUIDADO'";
+        Double totalIntereses = 0.0;
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            if (rs.next()) {
+                totalIntereses = rs.getDouble("TotalIntereses");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return totalIntereses;
+    }
+
+    public static ArrayList<Object[]> socioAcciones(String nombreSocio) {
+        String consulta = "SELECT CONCAT(s.nombre,' ',s.apellidos) AS nombreSocio, "
+                + "(a.montoQuincenal / (SELECT precioAccion FROM Configuracion)) AS Acciones "
+                + "FROM Socio s INNER JOIN Ahorro a  ON s.id = a.idSocio";
+        if (nombreSocio != null) {
+            consulta = consulta + " WHERE s.nombre LIKE '" + nombreSocio + "%' OR s.apellidos LIKE '" + nombreSocio + "%'";
+        }
+        ArrayList<Object[]> accionesArray = new ArrayList<>();
+        try {
+            ResultSet rs = getConexion().createStatement().executeQuery(consulta);
+
+            while (rs.next()) {
+                Object[] valores = new Object[2];
+                String nomSocio = rs.getString("nombreSocio");
+                double acciones = rs.getDouble("Acciones");
+                valores[0] = nomSocio;
+                valores[1] = acciones;
+                accionesArray.add(valores);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return accionesArray;
+    }
 }
