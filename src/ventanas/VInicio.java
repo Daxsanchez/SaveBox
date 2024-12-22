@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -65,6 +66,7 @@ public class VInicio extends javax.swing.JFrame {
         pEspacio.revalidate();
 
         validarRol();
+        this.setIconImage(new ImageIcon("src/imagenes/logoA.jpg").getImage());
     }
 
     public void validarRol() {
