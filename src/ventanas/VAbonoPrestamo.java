@@ -184,6 +184,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private void rbLiquidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidarActionPerformed
         if (rbLiquidar.isSelected()) {
             txtMonto.setEditable(false);
+            
             double restante = Double.parseDouble(txtRestante.getText());
             txtMonto.setValue(restante);
         } else {
@@ -217,8 +218,9 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
                     "Seleccione Fecha", JOptionPane.ERROR_MESSAGE);
             return false;
         }
-        double monto = Double.parseDouble(txtMonto.getText());
-        if (monto > prestamo.getSaldoRestante()) {
+        double monto = Double.parseDouble(txtMonto.getValue().toString());
+
+        if (monto > prestamo.getSaldoRestante()+ prestamo.getInteresPendiente()) {
             JOptionPane.showMessageDialog(this, "El monto no puede ser mayor al saldo restante",
                     "Monto inválido", JOptionPane.ERROR_MESSAGE);
             return false;
