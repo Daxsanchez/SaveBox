@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import main.Config;
 import modelos.AbonoPrestamo;
 import modelos.Prestamo;
+import paneles.PExterno;
 import paneles.PPrestamos;
 
 /**
@@ -13,11 +14,13 @@ import paneles.PPrestamos;
  * @author daxsa
  */
 public class VAbonoPrestamo extends javax.swing.JInternalFrame {
-    
+
     private Prestamo prestamo;
     private AbonoPrestamo abono = new AbonoPrestamo();
     private PPrestamos pPrestamo;
-    
+    private PExterno pExterno;
+    private boolean externo = false;
+
     public VAbonoPrestamo(PPrestamos pPres, Prestamo p) {
         initComponents();
         pPrestamo = pPres;
@@ -25,8 +28,19 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         txtRestante.setEditable(false);
         Double saldoPendiente = prestamo.getSaldoRestante() + prestamo.getInteresPendiente();
         txtRestante.setText(saldoPendiente.toString());
+        externo = false;
     }
-    
+
+    public VAbonoPrestamo(PExterno pExt, Prestamo p) {
+        initComponents();
+        pExterno = pExt;
+        prestamo = p;
+        txtRestante.setEditable(false);
+        Double saldoPendiente = prestamo.getSaldoRestante() + prestamo.getInteresPendiente();
+        txtRestante.setText(saldoPendiente.toString());
+        externo = true;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -180,9 +194,9 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
 
     private void txtMontoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyTyped
         int key = evt.getKeyChar();
-        
+
         boolean numeros = key >= 48 && key <= 57 || key == 46;
-        
+
         if (!numeros) {
             evt.consume();
         }
@@ -191,7 +205,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
     private void txtMontoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMontoMouseClicked
         txtMonto.setText("");
     }//GEN-LAST:event_txtMontoMouseClicked
-    
+
     private boolean validaciones() {
         if (cmbMetodo.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Debe de seleccionar un método de pago",
@@ -211,7 +225,7 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         }
         return true;
     }
-    
+
     private void guardar() {
         abono.setFecha(dcFecha.getDate());
         abono.setMetodo(cmbMetodo.getSelectedItem().toString());
@@ -222,7 +236,11 @@ public class VAbonoPrestamo extends javax.swing.JInternalFrame {
         if (guardado) {
             JOptionPane.showMessageDialog(this, "El abono ha sido registrado correctamente", "Abono Realizado",
                     JOptionPane.INFORMATION_MESSAGE);
-            pPrestamo.actualizarTabla();
+            if(!externo){
+                pPrestamo.actualizarTabla();
+            }else{
+                pExterno.actualizarTabla();
+            }
             this.dispose();
         }
     }

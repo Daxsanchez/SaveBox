@@ -13,22 +13,23 @@ import ventanas.VInicio;
 
 /**
  *
- * @author rafae
+ * @author daxsa
  */
-public class PPrestamos extends javax.swing.JPanel {
+public class PExterno extends javax.swing.JPanel {
 
+    private VInicio vInicio = null;
     private javax.swing.JDesktopPane dp;
     private DefaultTableModel tbl;
-    private VInicio vInicio = null;
     private ArrayList<Prestamo> prestamos = new ArrayList<>();
     private TablaAccionEventP ev;
 
-    public PPrestamos(VInicio vIni) {
+    public PExterno(VInicio vIni) {
         initComponents();
         vInicio = vIni;
+
         dp = vIni.getDesktopPane();
 
-        prestamos = CPrestamo.getPrestamosAprobadosSocio();
+        prestamos = CPrestamo.getPrestamosAprobadosExterno();
         tbl = (DefaultTableModel) tblPrestamos.getModel();
         tabla();
         accionTabla();
@@ -43,10 +44,17 @@ public class PPrestamos extends javax.swing.JPanel {
         for (int i = 0; prestamos.size() > i; i++) {
             String interesPendiente = interes(prestamos.get(i));
             tbl.addRow(new Object[]{
-                prestamos.get(i).getSocio().getNombre() + " " + prestamos.get(i).getSocio().getApellidos(),
+                prestamos.get(i).getExterno().getNombre() + " " + prestamos.get(i).getExterno().getApellidos(),
                 prestamos.get(i).getMonto(), prestamos.get(i).getSaldoRestante(),
                 prestamos.get(i).getFechaAprobacion(), interesPendiente});
         }
+    }
+
+    public void actualizarTabla() {
+        tblPrestamos.clearSelection();
+        rbAprobado.setSelected(true);
+        prestamos = CPrestamo.getPrestamosAprobadosExterno();
+        tabla();
     }
 
     private String interes(Prestamo prestamo) {
@@ -69,11 +77,11 @@ public class PPrestamos extends javax.swing.JPanel {
     }
 
     private void accionTabla() {
-        PPrestamos pPres = this;
+        PExterno pExt = this;
         ev = new TablaAccionEventP() {
             @Override
             public void onAbonar(int row) {
-                VAbonoPrestamo abonar = new VAbonoPrestamo(pPres, prestamos.get(row));
+                VAbonoPrestamo abonar = new VAbonoPrestamo(pExt, prestamos.get(row));
                 abonar.setSize(412, 482);
                 abonar.setVisible(true);
                 dp.setLayout(null);
@@ -101,39 +109,27 @@ public class PPrestamos extends javax.swing.JPanel {
     private void initComponents() {
 
         bgEstatus = new javax.swing.ButtonGroup();
-        jSeparator2 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPrestamos = new javax.swing.JTable();
-        panelRedondeado1 = new utilerias.PanelRedondeado();
-        jLabel2 = new javax.swing.JLabel();
-        txtBuscar = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        rbLiquidado = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        lbAgregar = new javax.swing.JLabel();
         rbAprobado = new javax.swing.JRadioButton();
+        rbLiquidado = new javax.swing.JRadioButton();
 
-        setBackground(new java.awt.Color(7, 20, 123));
-        setLayout(null);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jSeparator2.setBackground(new java.awt.Color(51, 51, 51));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
-        add(jSeparator2);
-        jSeparator2.setBounds(0, 110, 1330, 20);
+        jPanel1.setBackground(new java.awt.Color(7, 20, 123));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel18.setFont(new java.awt.Font("Agrandir", 0, 36)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel18.setText("Prestamos Efectuados");
-        add(jLabel18);
-        jLabel18.setBounds(10, 40, 396, 50);
-
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-        add(jLabel3);
-        jLabel3.setBounds(1250, 10, 0, 0);
+        jLabel18.setText("Préstamos a externos");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, 400, -1));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1410, 10));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setForeground(new java.awt.Color(7, 20, 123));
@@ -147,7 +143,7 @@ public class PPrestamos extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Socio", "Monto", "Restante", "Fecha Aprobado", "Interés Pendiente", "Abonar"
+                "Externo", "Monto", "Restante", "Fecha Aprobado", "Interés Pendiente", "Acciones"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -165,58 +161,18 @@ public class PPrestamos extends javax.swing.JPanel {
         tblPrestamos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblPrestamos);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(0, 130, 1310, 470);
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1230, 320));
 
-        panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRedondeado1.setRoundBottomLeft(30);
-        panelRedondeado1.setRoundBottomRight(30);
-        panelRedondeado1.setRoundTopLeft(30);
-        panelRedondeado1.setRoundTopRight(30);
-        panelRedondeado1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/externo.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar (1).png"))); // NOI18N
-        panelRedondeado1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 40, 40));
-
-        txtBuscar.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        txtBuscar.setForeground(new java.awt.Color(7, 20, 123));
-        txtBuscar.setText("Buscar");
-        txtBuscar.setBorder(null);
-        txtBuscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtBuscarFocusGained(evt);
-            }
-        });
-        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtBuscarKeyReleased(evt);
-            }
-        });
-        panelRedondeado1.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 220, 30));
-
-        add(panelRedondeado1);
-        panelRedondeado1.setBounds(940, 20, 290, 40);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/prestamo.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar.png"))); // NOI18N
+        lbAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lbAgregarMouseClicked(evt);
             }
         });
-        add(jLabel4);
-        jLabel4.setBounds(1240, 20, 60, 70);
-
-        bgEstatus.add(rbLiquidado);
-        rbLiquidado.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        rbLiquidado.setForeground(new java.awt.Color(255, 255, 255));
-        rbLiquidado.setText("Liquidados");
-        rbLiquidado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbLiquidadoActionPerformed(evt);
-            }
-        });
-        add(rbLiquidado);
-        rbLiquidado.setBounds(1100, 80, 98, 20);
+        jPanel1.add(lbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 20, -1, -1));
 
         bgEstatus.add(rbAprobado);
         rbAprobado.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
@@ -228,38 +184,28 @@ public class PPrestamos extends javax.swing.JPanel {
                 rbAprobadoActionPerformed(evt);
             }
         });
-        add(rbAprobado);
-        rbAprobado.setBounds(960, 80, 110, 23);
+        jPanel1.add(rbAprobado, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 70, -1, -1));
+
+        bgEstatus.add(rbLiquidado);
+        rbLiquidado.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        rbLiquidado.setForeground(new java.awt.Color(255, 255, 255));
+        rbLiquidado.setText("Liquidados");
+        rbLiquidado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbLiquidadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rbLiquidado, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 70, -1, -1));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1420, 530));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        vInicio.abrirRealizarPrestamo();
-    }//GEN-LAST:event_jLabel3MouseClicked
-
-    private void txtBuscarFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtBuscarFocusGained
-        txtBuscar.setText("");
-    }//GEN-LAST:event_txtBuscarFocusGained
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        vInicio.abrirRealizarPrestamo();
-    }//GEN-LAST:event_jLabel4MouseClicked
-
-    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
-        if (!txtBuscar.getText().isEmpty()) {
-            buscar();
-        } else {
-            tblPrestamos.clearSelection();
-            if (rbAprobado.isSelected()) {
-                prestamos = CPrestamo.getPrestamosAprobadosSocio();
-            } else {
-                prestamos = CPrestamo.getPrestamosLiquidadosSocio();
-            }
-            tabla();
-        }
-    }//GEN-LAST:event_txtBuscarKeyReleased
+    private void lbAgregarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbAgregarMouseClicked
+        vInicio.abrirPrestamoExterno();
+    }//GEN-LAST:event_lbAgregarMouseClicked
 
     private void rbAprobadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbAprobadoActionPerformed
-        prestamos = CPrestamo.getPrestamosAprobadosSocio();
+        prestamos = CPrestamo.getPrestamosAprobadosExterno();
         tabla();
         tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(new TablaAccionCellRenderP());
         tblPrestamos.getColumnModel().getColumn(5).setCellEditor(new TablaAccionCellEditorP(ev));
@@ -268,7 +214,7 @@ public class PPrestamos extends javax.swing.JPanel {
     }//GEN-LAST:event_rbAprobadoActionPerformed
 
     private void rbLiquidadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbLiquidadoActionPerformed
-        prestamos = CPrestamo.getPrestamosLiquidadosSocio();
+        prestamos = CPrestamo.getPrestamosLiquidadosExterno();
         tabla();
         tblPrestamos.getColumnModel().getColumn(5).setCellRenderer(null);
         tblPrestamos.getColumnModel().getColumn(5).setCellEditor(null);
@@ -288,30 +234,16 @@ public class PPrestamos extends javax.swing.JPanel {
         }
     }
 
-    private void buscar() {
-        prestamos = CPrestamo.porNombreSocio(txtBuscar.getText(), rbAprobado.isSelected() ? "APROBADO" : "LIQUIDADO");
-        tabla();
-    }
-
-    public void actualizarTabla() {
-        tblPrestamos.clearSelection();
-        rbAprobado.setSelected(true);
-        prestamos = CPrestamo.getPrestamosAprobadosSocio();
-        tabla();
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup bgEstatus;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator2;
-    private utilerias.PanelRedondeado panelRedondeado1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lbAgregar;
     private javax.swing.JRadioButton rbAprobado;
     private javax.swing.JRadioButton rbLiquidado;
     private javax.swing.JTable tblPrestamos;
-    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,9 +19,10 @@ public class Prestamo {
     private Usuario usuario;
     private double interesPendiente;
     private Date ultimaActualizacionIntereses;
+    private Externo externo;
 
     public static String CAMPOS = "idSocio,monto,intereses,fechaAprobacion,fechaLiquidacion,"
-            + "saldoRestante,estatus,idUsuario,interesPendiente,ultimaActualizacionInteres";
+            + "saldoRestante,estatus,idUsuario,interesPendiente,ultimaActualizacionInteres,idExterno";
 
     public Prestamo(int id, Socio socio, int monto, double intereses, Date fechaAprobacion, Date fechaLiquidacion,
             double saldoRestante, String estatus, Usuario usuario, double interesPendiente, Date ultimaActualizacionIntereses) {
@@ -127,6 +128,22 @@ public class Prestamo {
 
     public void setUltimaActualizacionIntereses(Date ultimaActualizacionIntereses) {
         this.ultimaActualizacionIntereses = ultimaActualizacionIntereses;
+    }
+
+    public Externo getExterno() {
+        return externo;
+    }
+
+    public void setExterno(Externo externo) {
+        this.externo = externo;
+    }
+
+    public static String getCAMPOS() {
+        return CAMPOS;
+    }
+
+    public static void setCAMPOS(String CAMPOS) {
+        Prestamo.CAMPOS = CAMPOS;
     }
 
 }

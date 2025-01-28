@@ -1,34 +1,33 @@
 package paneles;
 
+import controladores.CExterno;
 import controladores.CPrestamo;
-import controladores.CSocio;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import main.Config;
+import modelos.Externo;
 import modelos.Prestamo;
-import modelos.Socio;
-import utilerias.GenerarReporte;
 import utilerias.Utileria;
-import ventanas.VBuscarSocio;
 import ventanas.VInicio;
 
 /**
  *
  * @author daxsa
  */
-public class PRealizarPrestamo extends javax.swing.JPanel {
+public class PRealizarPrestamoExterno extends javax.swing.JPanel {
 
     private VInicio vInicio = null;
     private Prestamo prestamo = new Prestamo();
-    private ArrayList<Socio> socios = new ArrayList<>();
+    private ArrayList<Externo> externos = new ArrayList<>();
+    private Externo externo = new Externo();
 
-    public PRealizarPrestamo(VInicio ini) {
+    public PRealizarPrestamoExterno(VInicio vIni) {
         initComponents();
-        vInicio = ini;
-        socios = CSocio.getSociosActivos();
-        for (Socio s : socios) {
-            cmbSocio.addItem(s.getNombre() + " " + s.getApellidos());
+        vInicio = vIni;
+        externos = CExterno.getExternosActivos();
+        for (Externo s : externos) {
+            cmbExternos.addItem(s.getNombre() + " " + s.getApellidos());
         }
         txtMonto.setValue(0);
         dcFecha.setDate(new Date());
@@ -36,18 +35,11 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         intereses();
     }
 
-    private void cuotas() {
-        Date fechaFin = Config.getFechaCierre();
-        java.util.Date utilDate = new Date(fechaFin.getTime());
-        long diferencia = Utileria.diferenciaMeses(dcFecha.getDate(), utilDate);
-        txtNumCuotas.setText(diferencia + "");
-    }
-
     private void intereses() {
         double montoPrestamo = Double.parseDouble(txtMonto.getText());
         double interes, totalPago;
 
-        interes = montoPrestamo * Config.getInteresSocio();
+        interes = montoPrestamo * Config.getInteresExterno();
         interes = interes * Double.parseDouble(txtNumCuotas.getText());
         totalPago = interes + montoPrestamo;
 
@@ -67,14 +59,8 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel19 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        cmbSocio = new javax.swing.JComboBox<>();
-        jLabel20 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        panelRedondeado1 = new utilerias.PanelRedondeado();
-        txtFolio = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
         panelRedondeado4 = new utilerias.PanelRedondeado();
         txtMonto = new javax.swing.JFormattedTextField();
@@ -103,9 +89,17 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         btnRealizarPrestamo = new javax.swing.JButton();
         dcFecha = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
-        btnBuscarSocio = new javax.swing.JButton();
+        pExterno = new utilerias.PanelRedondeado();
+        txtNombre = new javax.swing.JTextField();
+        pExterno1 = new utilerias.PanelRedondeado();
+        txtApellidos = new javax.swing.JTextField();
+        pExterno2 = new utilerias.PanelRedondeado();
+        txtTelefono = new javax.swing.JTextField();
+        pExterno3 = new utilerias.PanelRedondeado();
+        txtCorreo = new javax.swing.JTextField();
+        cmbExternos = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(7, 20, 123));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(7, 20, 123));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -139,22 +133,6 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         jLabel19.setText("Datos del Préstamo");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(783, 77, -1, -1));
 
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("|");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(322, 77, -1, 42));
-
-        cmbSocio.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
-        cmbSocio.setForeground(new java.awt.Color(7, 20, 123));
-        cmbSocio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione el socio" }));
-        jPanel1.add(cmbSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 260, 41));
-
-        jLabel20.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setText("Socio");
-        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 77, -1, -1));
-
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,47 +141,13 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
 
         jLabel21.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel21.setText("Datos");
-        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(533, 77, -1, -1));
-
-        panelRedondeado1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRedondeado1.setRoundBottomLeft(30);
-        panelRedondeado1.setRoundBottomRight(30);
-        panelRedondeado1.setRoundTopLeft(30);
-        panelRedondeado1.setRoundTopRight(30);
-
-        txtFolio.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
-        txtFolio.setForeground(new java.awt.Color(7, 20, 123));
-        txtFolio.setBorder(null);
-
-        javax.swing.GroupLayout panelRedondeado1Layout = new javax.swing.GroupLayout(panelRedondeado1);
-        panelRedondeado1.setLayout(panelRedondeado1Layout);
-        panelRedondeado1Layout.setHorizontalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFolio, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        panelRedondeado1Layout.setVerticalGroup(
-            panelRedondeado1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtFolio, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(panelRedondeado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(433, 158, -1, -1));
-
-        jLabel23.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText("Folio:");
-        jPanel1.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 166, -1, -1));
+        jLabel21.setText("Datos Externo");
+        jPanel1.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, 220, -1));
 
         jLabel24.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText("Número de Cuotas:");
-        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 222, -1, -1));
+        jLabel24.setText("Cuotas:");
+        jPanel1.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 150, -1, -1));
 
         panelRedondeado4.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado4.setRoundBottomLeft(30);
@@ -223,45 +167,30 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                 txtMontoKeyTyped(evt);
             }
         });
-        panelRedondeado4.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 1, 270, 30));
+        panelRedondeado4.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 1, 80, 30));
 
-        jPanel1.add(panelRedondeado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 158, 301, -1));
+        jPanel1.add(panelRedondeado4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 140, 120, -1));
 
         jLabel25.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setText("Monto Requerido:");
-        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(797, 165, -1, -1));
+        jPanel1.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, -1, -1));
 
         panelRedondeado5.setBackground(new java.awt.Color(255, 255, 255));
         panelRedondeado5.setRoundBottomLeft(30);
         panelRedondeado5.setRoundBottomRight(30);
         panelRedondeado5.setRoundTopLeft(30);
         panelRedondeado5.setRoundTopRight(30);
+        panelRedondeado5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNumCuotas.setEditable(false);
         txtNumCuotas.setBackground(new java.awt.Color(255, 255, 255));
         txtNumCuotas.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtNumCuotas.setForeground(new java.awt.Color(7, 20, 123));
         txtNumCuotas.setBorder(null);
+        panelRedondeado5.add(txtNumCuotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 53, 18));
 
-        javax.swing.GroupLayout panelRedondeado5Layout = new javax.swing.GroupLayout(panelRedondeado5);
-        panelRedondeado5.setLayout(panelRedondeado5Layout);
-        panelRedondeado5Layout.setHorizontalGroup(
-            panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRedondeado5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtNumCuotas, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        panelRedondeado5Layout.setVerticalGroup(
-            panelRedondeado5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRedondeado5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtNumCuotas, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel1.add(panelRedondeado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(965, 215, 301, -1));
+        jPanel1.add(panelRedondeado5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 140, 70, 30));
 
         jLabel26.setFont(new java.awt.Font("Agrandir", 0, 30)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(255, 255, 255));
@@ -280,7 +209,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         jLabel28.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(255, 255, 255));
         jLabel28.setText("Fecha:");
-        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
+        jPanel1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 210, -1, -1));
 
         jLabel29.setFont(new java.awt.Font("Agrandir", 0, 18)); // NOI18N
         jLabel29.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,7 +231,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         txtTasaInteres.setBackground(new java.awt.Color(255, 255, 255));
         txtTasaInteres.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
         txtTasaInteres.setForeground(new java.awt.Color(7, 20, 123));
-        txtTasaInteres.setText("7%");
+        txtTasaInteres.setText("10%");
         txtTasaInteres.setBorder(null);
 
         javax.swing.GroupLayout panelRedondeado9Layout = new javax.swing.GroupLayout(panelRedondeado9);
@@ -436,7 +365,7 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
                 dcFechaPropertyChange(evt);
             }
         });
-        jPanel1.add(dcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 210, 308, 29));
+        jPanel1.add(dcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 180, 29));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/regresar.png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -446,43 +375,153 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         });
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1133, 16, -1, -1));
 
-        btnBuscarSocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar (1).png"))); // NOI18N
-        btnBuscarSocio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarSocioActionPerformed(evt);
+        pExterno.setBackground(new java.awt.Color(255, 255, 255));
+        pExterno.setRoundBottomLeft(30);
+        pExterno.setRoundBottomRight(30);
+        pExterno.setRoundTopLeft(30);
+        pExterno.setRoundTopRight(30);
+
+        txtNombre.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtNombre.setForeground(new java.awt.Color(7, 20, 123));
+        txtNombre.setText("Nombre");
+        txtNombre.setBorder(null);
+        txtNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreFocusGained(evt);
             }
         });
-        jPanel1.add(btnBuscarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 37, 41));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
+        javax.swing.GroupLayout pExternoLayout = new javax.swing.GroupLayout(pExterno);
+        pExterno.setLayout(pExternoLayout);
+        pExternoLayout.setHorizontalGroup(
+            pExternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExternoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+        pExternoLayout.setVerticalGroup(
+            pExternoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExternoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel1.add(pExterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 150, 190, 40));
+
+        pExterno1.setBackground(new java.awt.Color(255, 255, 255));
+        pExterno1.setRoundBottomLeft(30);
+        pExterno1.setRoundBottomRight(30);
+        pExterno1.setRoundTopLeft(30);
+        pExterno1.setRoundTopRight(30);
+
+        txtApellidos.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtApellidos.setForeground(new java.awt.Color(7, 20, 123));
+        txtApellidos.setText("Apellidos");
+        txtApellidos.setBorder(null);
+        txtApellidos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtApellidosFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pExterno1Layout = new javax.swing.GroupLayout(pExterno1);
+        pExterno1.setLayout(pExterno1Layout);
+        pExterno1Layout.setHorizontalGroup(
+            pExterno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtApellidos, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pExterno1Layout.setVerticalGroup(
+            pExterno1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pExterno1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 170, 40));
+
+        pExterno2.setBackground(new java.awt.Color(255, 255, 255));
+        pExterno2.setRoundBottomLeft(30);
+        pExterno2.setRoundBottomRight(30);
+        pExterno2.setRoundTopLeft(30);
+        pExterno2.setRoundTopRight(30);
+
+        txtTelefono.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(7, 20, 123));
+        txtTelefono.setText("Teléfono");
+        txtTelefono.setBorder(null);
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pExterno2Layout = new javax.swing.GroupLayout(pExterno2);
+        pExterno2.setLayout(pExterno2Layout);
+        pExterno2Layout.setHorizontalGroup(
+            pExterno2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pExterno2Layout.setVerticalGroup(
+            pExterno2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pExterno2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 290, 40));
+
+        pExterno3.setBackground(new java.awt.Color(255, 255, 255));
+        pExterno3.setRoundBottomLeft(30);
+        pExterno3.setRoundBottomRight(30);
+        pExterno3.setRoundTopLeft(30);
+        pExterno3.setRoundTopRight(30);
+
+        txtCorreo.setFont(new java.awt.Font("Agrandir", 0, 12)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(7, 20, 123));
+        txtCorreo.setText("Correo");
+        txtCorreo.setBorder(null);
+        txtCorreo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCorreoFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pExterno3Layout = new javax.swing.GroupLayout(pExterno3);
+        pExterno3.setLayout(pExterno3Layout);
+        pExterno3Layout.setHorizontalGroup(
+            pExterno3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        pExterno3Layout.setVerticalGroup(
+            pExterno3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pExterno3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(pExterno3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, 260, 40));
+
+        cmbExternos.setFont(new java.awt.Font("Agrandir", 0, 14)); // NOI18N
+        cmbExternos.setForeground(new java.awt.Color(7, 20, 123));
+        cmbExternos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un externo" }));
+        jPanel1.add(cmbExternos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 240, 40));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 540));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        vInicio.abrirPrestamo();
-    }//GEN-LAST:event_jLabel2MouseClicked
-
-    private void btnRealizarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPrestamoActionPerformed
-        boolean valida = validaciones();
-        if (!valida) {
-            return;
-        }
-        guardar();
-    }//GEN-LAST:event_btnRealizarPrestamoActionPerformed
-
-    private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
-        reporte();
-    }//GEN-LAST:event_btnContratoActionPerformed
 
     private void txtMontoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMontoKeyReleased
         if (!txtMonto.getText().isEmpty()) {
@@ -500,6 +539,18 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtMontoKeyTyped
 
+    private void btnContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContratoActionPerformed
+        //reporte();
+    }//GEN-LAST:event_btnContratoActionPerformed
+
+    private void btnRealizarPrestamoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRealizarPrestamoActionPerformed
+        boolean valida = validaciones();
+        if (!valida) {
+            return;
+        }
+        guardar();
+    }//GEN-LAST:event_btnRealizarPrestamoActionPerformed
+
     private void dcFechaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dcFechaPropertyChange
         cuotas();
         if (!txtMonto.getText().isEmpty()) {
@@ -507,73 +558,31 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_dcFechaPropertyChange
 
-    private void btnBuscarSocioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarSocioActionPerformed
-        buscarSocio();
-    }//GEN-LAST:event_btnBuscarSocioActionPerformed
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        vInicio.abrirExterno();
+    }//GEN-LAST:event_jLabel2MouseClicked
 
-    public void seleccionarSocio(Socio socio) {
-        int cont = 1;
-        for (Socio s : socios) {
-            if (s.getId() == socio.getId()) {
-                cmbSocio.setSelectedIndex(cont);
-            }
-            cont++;
-        }
-    }
+    private void txtNombreFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusGained
+        txtNombre.setText("");
+    }//GEN-LAST:event_txtNombreFocusGained
 
-    private void buscarSocio() {
-        VBuscarSocio buscarSocio = new VBuscarSocio(this);
-        buscarSocio.setSize(507, 480);
-        buscarSocio.setVisible(true);
-        vInicio.getDesktopPane().setLayout(null);
-        if (vInicio.getDesktopPane() != null) {
-            try {
-                vInicio.centrarInternalFrame(buscarSocio, vInicio.getDesktopPane());
-                vInicio.getDesktopPane().add(buscarSocio);
+    private void txtApellidosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtApellidosFocusGained
+        txtApellidos.setText("");
+    }//GEN-LAST:event_txtApellidosFocusGained
 
-                buscarSocio.setSelected(true);
-            } catch (java.beans.PropertyVetoException ex) {
-                System.out.println(ex);
-            }
-        }
-    }
+    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
+        txtTelefono.setText("");
+    }//GEN-LAST:event_txtTelefonoFocusGained
 
-    private void reporte() {
-        setPrestamo();
-        GenerarReporte reporte = new GenerarReporte("Contrato", prestamo);
-        reporte.run();
-    }
-
-    private void setPrestamo() {
-        prestamo.setEstatus("APROBADO");
-        prestamo.setFechaAprobacion(dcFecha.getDate());
-        prestamo.setIntereses(0.07);
-        Double monto = Double.valueOf(txtMonto.getValue().toString());
-        prestamo.setMonto(monto);
-        prestamo.setSaldoRestante(monto);
-        prestamo.setSocio(socios.get(cmbSocio.getSelectedIndex() - 1));
-        prestamo.setUsuario(Config.getUsuarioLog());
-        prestamo.setInteresPendiente(0);
-        prestamo.setUltimaActualizacionIntereses(dcFecha.getDate());
-    }
-
-    private void guardar() {
-        setPrestamo();
-        boolean guardado = CPrestamo.guardarRegistro(prestamo);
-        if (guardado) {
-            new Thread(() -> {
-                CPrestamo.actualizarIntereses();
-            }).start();
-            JOptionPane.showMessageDialog(this, "Se ha registrado el préstamo correctamente",
-                    "Prestamo Realizado", JOptionPane.INFORMATION_MESSAGE);
-            vInicio.abrirPrestamo();
-        }
-    }
+    private void txtCorreoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCorreoFocusGained
+        txtCorreo.setText("");
+    }//GEN-LAST:event_txtCorreoFocusGained
 
     private boolean validaciones() {
-        if (cmbSocio.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(this, "Debe de seleccionar un socio",
-                    "Socio no seleccionado", JOptionPane.ERROR_MESSAGE);
+        if ((txtNombre.getText().isEmpty() || txtNombre.getText().equalsIgnoreCase("Nombre"))
+                && cmbExternos.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe de introducir el nombre del externo",
+                    "Nombre de externo no introducido", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         if (dcFecha.getDate() == null) {
@@ -595,21 +604,77 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
         return true;
     }
 
+    private void guardar() {
+        if (cmbExternos.getSelectedIndex() == 0) {
+            boolean guardadoExterno = guardarExterno();
+            if (!guardadoExterno) {
+                JOptionPane.showMessageDialog(this, "Ocurrió un error al internar guardar el externo",
+                        "Error al registrar externo", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } else {
+            externo = externos.get(cmbExternos.getSelectedIndex());
+        }
+        setPrestamo();
+        boolean guardado = CPrestamo.guardarRegistro(prestamo);
+        if (guardado) {
+            new Thread(() -> {
+                CPrestamo.actualizarIntereses();
+            }).start();
+            JOptionPane.showMessageDialog(this, "Se ha registrado el préstamo correctamente",
+                    "Prestamo Realizado", JOptionPane.INFORMATION_MESSAGE);
+            vInicio.abrirExterno();
+        }
+    }
+
+    private boolean guardarExterno() {
+        externo = new Externo();
+        externo.setNombre(txtNombre.getText());
+        externo.setApellidos(txtApellidos.getText());
+        externo.setCorreo(txtCorreo.getText());
+        externo.setTelefono(txtTelefono.getText());
+        externo.setFechaCreacion(new Date());
+        externo.setEstatus(1);
+        boolean guardado = CExterno.guardarRegistro(externo);
+        if (guardado) {
+            externo.setId(CExterno.getUltimoId());
+        }
+        return guardado;
+    }
+
+    private void setPrestamo() {
+        prestamo.setEstatus("APROBADO");
+        prestamo.setFechaAprobacion(dcFecha.getDate());
+        prestamo.setIntereses(0.1);
+        Double monto = Double.valueOf(txtMonto.getValue().toString());
+        prestamo.setMonto(monto);
+        prestamo.setSaldoRestante(monto);
+        prestamo.setExterno(externo);
+        prestamo.setUsuario(Config.getUsuarioLog());
+        prestamo.setInteresPendiente(0);
+        prestamo.setUltimaActualizacionIntereses(dcFecha.getDate());
+    }
+
+    private void cuotas() {
+        Date fechaFin = Config.getFechaCierre();
+        java.util.Date utilDate = new Date(fechaFin.getTime());
+        long diferencia = Utileria.diferenciaMeses(dcFecha.getDate(), utilDate);
+        txtNumCuotas.setText(diferencia + "");
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarSocio;
     private javax.swing.JButton btnContrato;
     private javax.swing.JButton btnCronograma;
     private javax.swing.JButton btnPagare;
     private javax.swing.JButton btnRealizarPrestamo;
-    private javax.swing.JComboBox<String> cmbSocio;
+    private javax.swing.JComboBox<String> cmbExternos;
     private com.toedter.calendar.JDateChooser dcFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -617,7 +682,6 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
@@ -625,7 +689,10 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private utilerias.PanelRedondeado panelRedondeado1;
+    private utilerias.PanelRedondeado pExterno;
+    private utilerias.PanelRedondeado pExterno1;
+    private utilerias.PanelRedondeado pExterno2;
+    private utilerias.PanelRedondeado pExterno3;
     private utilerias.PanelRedondeado panelRedondeado10;
     private utilerias.PanelRedondeado panelRedondeado12;
     private utilerias.PanelRedondeado panelRedondeado13;
@@ -635,10 +702,13 @@ public class PRealizarPrestamo extends javax.swing.JPanel {
     private utilerias.PanelRedondeado panelRedondeado4;
     private utilerias.PanelRedondeado panelRedondeado5;
     private utilerias.PanelRedondeado panelRedondeado9;
-    private javax.swing.JTextField txtFolio;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JFormattedTextField txtMonto;
+    private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumCuotas;
     private javax.swing.JTextField txtTasaInteres;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JFormattedTextField txtTotalInteres;
     private javax.swing.JFormattedTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
